@@ -2,17 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SharedRoutingModule } from './shared-routing.module';
-import { HeaderComponent } from './components/header/header.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { HttpClientModule }   from '@angular/common/http';
+import { GenreService } from './services/genre/genre.service';
+
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
-    SharedRoutingModule
+    SharedRoutingModule,
+    HttpClientModule
   ],
-  exports:[HeaderComponent]
+  providers:[ GenreService],
+  exports:[]
 })
 export class SharedModule { }
