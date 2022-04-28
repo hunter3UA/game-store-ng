@@ -3,17 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RootComponent } from './modules/root/components/root/root.component';
-import { RootModule } from './modules/root/root.module';
+import { SharedModule } from './modules/shared/shared.module';
+
 
 
 @NgModule({
   declarations: [
-
+    RootComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RootModule
+    SharedModule
   
   ],
   exports:[],
