@@ -8,7 +8,7 @@ import { RootModule } from './modules/root/root.module';
 
 @NgModule({
   declarations: [
-   
+
   ],
   imports: [
     BrowserModule,
@@ -16,6 +16,7 @@ import { RootModule } from './modules/root/root.module';
     RootModule
   
   ],
+  exports:[],
   providers: [],
   bootstrap: [RootComponent]
 })
