@@ -3,17 +3,21 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class GenreService {
+export class GameService {
 
   constructor(private http:HttpClient) { }
 
-  getAllGenres():Observable<any>{
-      let url=`${environment.apiBaseUrl}genres/getall`;
-      return this.http.get(url);
+
+  deleteGame(id:number):Observable<any>{
+    let url=`${environment.apiBaseUrl}games/remove/${id}`;
+    return this.http.delete(url);
   }
 
+  getAllGames():Observable<any>{
+    let url=`${environment.apiBaseUrl}games`;
+    return this.http.get(url);
+  }
 }

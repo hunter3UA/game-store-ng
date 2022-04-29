@@ -1,1 +1,12 @@
-<p>all-games works!</p>
+<h1>all games</h1>
+
+<div class="container col-4">
+    <div *ngFor="let game of games" class="jumbotron ">
+        <div>Name:{{game.name}}</div>
+        <div>Price:{{game.price}}</div>
+
+        <a class="btn btn-success" href="#">Details</a>
+
+    </div>
+</div>
+

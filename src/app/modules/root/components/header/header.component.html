@@ -13,8 +13,9 @@
           Games
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+          <a class="dropdown-item" [routerLink]="'/games'">All Games</a>   
           <a class="dropdown-item" [routerLink]="'/games/new'">Add Game</a>
-          <a class="dropdown-item" href="#">All Games</a>   
+          <a class="dropdown-item" [routerLink]="'/game/remove'">Remove Game</a>
         </div>
       </li>    
     </ul>
