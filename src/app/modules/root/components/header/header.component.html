@@ -12,10 +12,20 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
           Games
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownGames"> 
           <a class="dropdown-item" [routerLink]="'/games'">All Games</a>   
           <a class="dropdown-item" [routerLink]="'/games/new'">Add Game</a>
-          <a class="dropdown-item" [routerLink]="'/game/remove'">Remove Game</a>
+          <a class="dropdown-item" [routerLink]="'/games/remove'">Remove Game</a>
+        </div>
+      </li>    
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPublishers" role="button" data-toggle="dropdown" aria-expanded="false">
+          Publishers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+          <a class="dropdown-item" [routerLink]="'/publishers'">All Publishers</a>   
+          <a class="dropdown-item" [routerLink]="'/publishers/new'">Add publisher</a>
+          <a class="dropdown-item" [routerLink]="'/publishers/remove'">Remove publisher</a>
         </div>
       </li>    
     </ul>

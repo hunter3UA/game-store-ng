@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,24 +7,22 @@ import { SharedModule } from './modules/shared/shared.module';
 import { HomeComponent } from './modules/root/components/home/home.component';
 import { HeaderComponent } from './modules/root/components/header/header.component';
 import { GameModule } from './modules/game/game.module';
-
-
+import { PublisherModule } from './modules/publisher/publisher.module';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
-  declarations: [
-    RootComponent,
-    HomeComponent,
-    HeaderComponent
-  ],
+  declarations: [RootComponent, HomeComponent, HeaderComponent],
   imports: [
-  
     BrowserModule,
-    AppRoutingModule,  
+    AppRoutingModule,
     SharedModule,
-    GameModule
+    GameModule,
+    PublisherModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
-  exports:[],
+  exports: [],
   providers: [],
-  bootstrap: [RootComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [RootComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -4,9 +4,9 @@ import { HomeComponent } from './modules/root/components/home/home.component';
 import { NotFoundComponent } from './modules/shared/pages/not-found/not-found.component';
 
 const routes: Routes = [
-  {path:'', component:HomeComponent},
-  {path:'home',component:HomeComponent},
-
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '404', component: NotFoundComponent }
 ];
 
 @NgModule({

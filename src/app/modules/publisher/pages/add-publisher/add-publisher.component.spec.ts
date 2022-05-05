@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RemoveGameComponent } from './remove-game.component';
+import { AddPublisherComponent } from './add-publisher.component';
 
-describe('RemoveGameComponent', () => {
-  let component: RemoveGameComponent;
-  let fixture: ComponentFixture<RemoveGameComponent>;
+describe('AddPublisherComponent', () => {
+  let component: AddPublisherComponent;
+  let fixture: ComponentFixture<AddPublisherComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RemoveGameComponent ]
+      declarations: [ AddPublisherComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RemoveGameComponent);
+    fixture = TestBed.createComponent(AddPublisherComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

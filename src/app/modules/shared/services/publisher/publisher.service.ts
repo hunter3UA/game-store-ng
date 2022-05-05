@@ -6,11 +6,11 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class PlatformService {
+export class PublisherService {
   constructor(private http: HttpClient) {}
 
-  getAllPlatforms(): Observable<any> {
-    let url = `${environment.apiBaseUrl}platformTypes`;
+  getAllPublishers(): Observable<any> {
+    let url = `${environment.apiBaseUrl}publishers`;
     return this.http.get(url);
   }
 }

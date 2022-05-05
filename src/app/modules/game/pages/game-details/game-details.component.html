@@ -1,0 +1,24 @@
+<div>
+  <p>Name:{{game?.name}}</p>
+  <p>Key:{{game?.key}}</p>
+  <p>Price:{{game?.price}}</p>
+  <p>unitsInStock:{{game?.unitsInStock}}</p>
+  <div>
+    <ul>Genres
+      <li *ngFor="let genre of game?.genres">
+        {{genre.name}}
+      </li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      Platforms
+      <li *ngFor="let platform of game?.platformTypes">
+        {{platform?.type}}
+      </li>
+    </ul>
+
+  </div>
+  <p>Publisher: {{game?.publisher.companyName}}</p>
+
+</div>

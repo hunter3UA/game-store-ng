@@ -7,7 +7,6 @@ import { HttpClientModule }   from '@angular/common/http';
 import { GenreService } from './services/genre/genre.service';
 
 
-
 @NgModule({
   declarations: [
     NotFoundComponent
@@ -17,7 +16,6 @@ import { GenreService } from './services/genre/genre.service';
     SharedRoutingModule,
     HttpClientModule
   ],
-  providers:[ GenreService],
   exports:[]
 })
 export class SharedModule { }
