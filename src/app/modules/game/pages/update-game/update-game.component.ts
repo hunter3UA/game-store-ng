@@ -1,28 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({
-  selector: 'app-game-details',
-  templateUrl: './game-details.component.html',
+  selector: 'app-update-game',
+  templateUrl: './update-game.component.html',
 })
-export class GameDetailsComponent implements OnInit {
-  game: Game;
+export class UpdateGameComponent implements OnInit {
   key: string;
+  gameComponentModel: any;
+  gameByKey: Game;
   constructor(private gameService: GameService, private route: ActivatedRoute) {
     this.key = this.route.snapshot.params['key'];
   }
 
-  ngOnInit(): void {
-    this.loadGame();
-  }
+  ngOnInit(): void {}
 
   loadGame() {
     this.gameService.getGameByKey(this.key).subscribe((data) => {
       if (data) {
-        this.game = data;
+        this.gameByKey = data;
+        console.log(this.gameByKey);
       }
     });
   }

@@ -1,2 +1,10 @@
-<p>all-publishers works!</p>
-<router-outlet></router-outlet>
+<div class="container col-4">
+  <div *ngFor="let publisher of publishers" class="jumbotron ">
+    <p>CompanyName:{{publisher.companyName}}</p>
+    <p>HomePage:{{publisher.homePage}}</p>
+
+    <!-- <a class="btn btn-success" [routerLink]="['/games',game.key]">Details</a>
+    <a class="btn btn-danger" (click)="removeGame(game.id)">Remove</a> -->
+    <a class="btn btn-danger" (click)="removePublisher(publisher.id)">Remove</a>
+  </div>
+</div>

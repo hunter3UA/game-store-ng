@@ -4,13 +4,12 @@ import { AddPublisherComponent } from './pages/add-publisher/add-publisher.compo
 import { AllPublishersComponent } from './pages/all-publishers/all-publishers.component';
 
 const routes: Routes = [
-  {path:'publishers', component:AllPublishersComponent, children:[
-    {path:'new', component:AddPublisherComponent}
-  ] }
+  { path: 'publishers', component: AllPublishersComponent },
+  { path: 'publishers/new', component: AddPublisherComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PublisherRoutingModule { }
+export class PublisherRoutingModule {}

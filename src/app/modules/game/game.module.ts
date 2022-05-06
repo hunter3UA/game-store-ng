@@ -5,19 +5,18 @@ import { AddGameComponent } from './pages/add-game/add-game.component';
 import { AllGamesComponent } from './pages/all-games/all-games.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
-import { RemoveGameComponent } from './pages/remove-game/remove-game.component';
-import { GameItemComponent } from './parts/game-item/game-item.component';
-
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
+import { UpdateGameComponent } from './pages/update-game/update-game.component';
+import { CommentRoutingModule } from '../comment/comment-routing.module';
+import { CommentModule } from '../comment/comment.module';
 
 @NgModule({
   declarations: [
     AddGameComponent,
     AllGamesComponent,
-    RemoveGameComponent,
-    GameItemComponent,
     GameDetailsComponent,
+    UpdateGameComponent,
   ],
   imports: [
     CommonModule,

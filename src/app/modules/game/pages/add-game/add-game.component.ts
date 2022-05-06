@@ -5,13 +5,13 @@ import {
   CUSTOM_ELEMENTS_SCHEMA,
 } from '@angular/core';
 import { ActivatedRoute, Router, RouteReuseStrategy } from '@angular/router';
-import { AddGameModel } from 'src/app/modules/shared/models/api-models/add.game.model';
+import { AddGameModel } from 'src/app/modules/core/api-models/game/add.game.model';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
-import { GameComponentModel } from '../../models/GameComponentModel';
+import { GameComponentModel } from '../../models/game.component.model';
 
 @Component({
   selector: 'app-add-game',

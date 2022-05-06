@@ -9,16 +9,20 @@ import { HeaderComponent } from './modules/root/components/header/header.compone
 import { GameModule } from './modules/game/game.module';
 import { PublisherModule } from './modules/publisher/publisher.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { CommentModule } from './modules/comment/comment.module';
+import { NotFoundModule } from './modules/not-found/not-found.module';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule,
     GameModule,
     PublisherModule,
+    CommentModule,
     NgMultiSelectDropDownModule.forRoot(),
+    SharedModule,
+    NotFoundModule,
   ],
   exports: [],
   providers: [],

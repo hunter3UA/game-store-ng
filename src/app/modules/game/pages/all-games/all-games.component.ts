@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Game } from 'src/app/modules/shared/models/api-models/game/game';
+import { Game } from 'src/app/modules/core/api-models/game/game';
 import { GameService } from '../../../shared/services/game/game.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class AllGamesComponent implements OnInit {
 
   loadAllGames() {
     this.gameService.getAllGames().subscribe(
-      (data) => {
+      (data: Game[]) => {
         if (data) {
           this.games = data;
           console.log(data);

@@ -1,0 +1,14 @@
+<div *ngFor="let comment of comments">
+  <ul style="list-style-type: none;">
+    <li style="border: 1px solid black; margin:1px">
+      <div>
+        <p>{{comment.name}}</p>
+        <p> {{comment.body}}</p>
+      </div>
+
+
+      <app-comment-item [comments]="comment.answers" *ngIf="comment.answers"></app-comment-item>
+    </li>
+  </ul>
+
+</div>
