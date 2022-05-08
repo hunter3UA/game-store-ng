@@ -4,8 +4,8 @@ import { AddPublisherComponent } from './pages/add-publisher/add-publisher.compo
 import { AllPublishersComponent } from './pages/all-publishers/all-publishers.component';
 
 const routes: Routes = [
-  { path: 'publishers', component: AllPublishersComponent },
-  { path: 'publishers/new', component: AddPublisherComponent },
+  { path: '', component: AllPublishersComponent },
+  { path: 'new', component: AddPublisherComponent },
 ];
 
 @NgModule({

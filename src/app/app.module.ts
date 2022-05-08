@@ -6,8 +6,6 @@ import { RootComponent } from './modules/root/components/root/root.component';
 import { SharedModule } from './modules/shared/shared.module';
 import { HomeComponent } from './modules/root/components/home/home.component';
 import { HeaderComponent } from './modules/root/components/header/header.component';
-import { GameModule } from './modules/game/game.module';
-import { PublisherModule } from './modules/publisher/publisher.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommentModule } from './modules/comment/comment.module';
 import { NotFoundModule } from './modules/not-found/not-found.module';
@@ -17,8 +15,6 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GameModule,
-    PublisherModule,
     CommentModule,
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,

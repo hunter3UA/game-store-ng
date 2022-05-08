@@ -6,10 +6,10 @@ import { GameDetailsComponent } from './pages/game-details/game-details.componen
 import { UpdateGameComponent } from './pages/update-game/update-game.component';
 
 const routes: Routes = [
-  { path: 'games', component: AllGamesComponent },
-  { path: 'games/new', component: AddGameComponent },
-  { path: 'games/:key', component: GameDetailsComponent },
-  { path: 'games/update/:key', component: UpdateGameComponent },
+  { path: '', component: AllGamesComponent },
+  { path: 'new', component: AddGameComponent },
+  { path: ':key', component: GameDetailsComponent },
+  { path: 'update/:key', component: UpdateGameComponent },
 ];
 
 @NgModule({
