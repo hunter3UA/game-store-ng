@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-comment-item',
@@ -6,7 +6,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CommentItemComponent implements OnInit {
   @Input() comments: Array<Comment>;
+
+  @Output() onReply = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}
+
+  reply(id: number) {
+    this.onReply.emit(id);
+  }
 }

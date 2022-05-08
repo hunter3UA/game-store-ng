@@ -1,12 +1,15 @@
 <div *ngFor="let comment of comments">
   <ul style="list-style-type: none;">
-    <li style="border: 1px solid black; margin:1px">
-      <div>
+    <li>
+      <div style="border: 1px solid black; margin:1px; ">
         <p>{{comment.name}}</p>
         <p> {{comment.body}}</p>
+        <button [hidden]="comment.answers.length==0">Show answers</button>
+        <button (click)="reply(comment.id)"> Reply</button>
       </div>
 
-      <app-comment-item [comments]="comment.answers" *ngIf="comment.answers"></app-comment-item>
+      <app-comment-item (onReply)="reply($event)" [comments]="comment.answers" *ngIf="comment.answers">
+      </app-comment-item>
     </li>
   </ul>
 
