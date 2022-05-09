@@ -6,9 +6,10 @@ import { CommentsOfGameComponent } from './pages/comments-of-game/comments-of-ga
 import { GameModule } from '../game/game.module';
 import { CommentItemComponent } from './parts/comment-item/comment-item.component';
 import { FormsModule } from '@angular/forms';
+import { AddCommentComponent } from './parts/add-comment/add-comment.component';
 
 @NgModule({
-  declarations: [CommentsOfGameComponent, CommentItemComponent],
+  declarations: [CommentsOfGameComponent, CommentItemComponent, AddCommentComponent],
   imports: [CommonModule, CommentRoutingModule, FormsModule],
 })
 export class CommentModule {}

@@ -1,4 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
+import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
+import { Comment } from '../../../core/api-models/comment/comment';
 
 @Component({
   selector: 'app-comment-item',
@@ -7,13 +11,46 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CommentItemComponent implements OnInit {
   @Input() comments: Array<Comment>;
 
-  @Output() onReply = new EventEmitter();
+  @Input() parentComment: Comment;
 
-  constructor() {}
+  @Input() gameKey: string;
+
+  newComment: AddCommentModel;
+
+  showForm: boolean;
+
+  constructor(
+    private commentService: CommentService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.newComment = new AddCommentModel();
+    this.route.params.subscribe((params: Params) => {
+      this.gameKey = params['gamekey'];
+    });
+
+    this.showForm = false;
+  }
 
   ngOnInit(): void {}
 
-  reply(id: number) {
-    this.onReply.emit(id);
+  addReply(name: string, body: string, parentId) {
+    this.newComment.name = name;
+    this.newComment.body = body;
+
+    this.newComment.parentCommentId = parentId;
+
+    this.commentService
+      .addComment(this.gameKey, this.newComment)
+      .subscribe((data) => {
+        if (data)
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => {
+              this.router.navigate([`/games/${this.gameKey}/comments`], {
+                fragment: `comment${data.id}`,
+              });
+            });
+      });
   }
 }

@@ -1,16 +1,32 @@
-<div *ngFor="let comment of comments">
-  <ul style="list-style-type: none;">
-    <li>
-      <div style="border: 1px solid black; margin:1px; ">
-        <p>{{comment.name}}</p>
-        <p> {{comment.body}}</p>
-        <button [hidden]="comment.answers.length==0">Show answers</button>
-        <button (click)="reply(comment.id)"> Reply</button>
+<ul style="list-style-type: none;">
+  <li *ngFor="let comment of comments">
+    <div style="border: 1px solid black; margin:1px;  border-radius: 10px;">
+      <p id="comment{{comment.id}}">Author: {{comment.name}}</p>
+      <p *ngIf="parentComment!=null; else withoutAnswer">Message:[<a [routerLink]="'.'"
+          fragment="comment{{parentComment.id}}">{{parentComment.name}}</a>]
+        {{comment.body}}</p>
+      <ng-template #withoutAnswer>
+        <p>Message:{{comment.body}}</p>
+      </ng-template>
+      <a href="#addComment{{comment.id}}" data-toggle="collapse">Reply</a>
+      <div class="collapse" id="addComment{{comment.id}}">
+        <form class="col-5">
+          <div>
+            <label>Name</label>
+            <input class="form-control" type="text" (ngModel)="newComment.name" #name name="name">
+          </div>
+          <div>
+            <label>Body</label>
+            <input class="form-control" type="text" (ngModel)="newComment.body" #body name="body">
+          </div>
+          <div>
+            <input type="button" (click)="addReply(name.value,body.value, comment.id)" value="Add reply">
+          </div>
+        </form>
       </div>
-
-      <app-comment-item (onReply)="reply($event)" [comments]="comment.answers" *ngIf="comment.answers">
-      </app-comment-item>
-    </li>
-  </ul>
-
-</div>
+    </div>
+    <app-comment-item [gameKey]="this.gameKey" [parentComment]="comment" [comments]="comment.answers"
+      *ngIf="comment.answers">
+    </app-comment-item>
+  </li>
+</ul>
