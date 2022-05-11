@@ -1,0 +1,17 @@
+<p>add-genre works!</p>
+<form>
+  <div class="form-group col-4">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control" [(ngModel)]="genreToAdd.name" name="genreName">
+    </div>
+    <div>
+      <label>Parent genre: </label>
+      <select #parentGenre name="parentGenre">
+        <option selected [value]="0">None</option>
+        <option *ngFor="let genre of allGenres" value="{{genre.id}}">{{genre.name}}</option>
+      </select>
+    </div>
+    <input type="button" class="btn btn-success" (click)="addGenre(+parentGenre.value)" value="Add genre">
+  </div>
+</form>

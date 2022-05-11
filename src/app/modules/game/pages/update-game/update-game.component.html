@@ -1,52 +1,48 @@
-<h2>Add game</h2>
-<!-- <div>
+<div>
   <form class="col-4" #form="ngForm">
     <div class="form-group">
       <label for="gameName">Name</label>
-      <input class="form-control" id="gameName" [(ngModel)]="gameModel.name" name="inputName" required
-        #nameOfGame="ngModel">
+      <input class="form-control" [(ngModel)]="gameToEdit.name" name="inputName" required #nameOfGame="ngModel">
       <p *ngIf="nameOfGame.invalid && nameOfGame.touched">Enter valid name of game</p>
     </div>
     <div class="form-group">
       <label for="gamePrice">Price</label>
-      <input class="form-control" id="gamePrice" type="number" min="1" [(ngModel)]="gameModel.price" name="inputPrice">
+      <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
     </div>
     <div class="form-group">
       <label for="gameDiscounted">Discounted</label>
-      <input class="form-control" id="gameDiscounted" type="checkbox" [(ngModel)]="gameModel.discontinued"
-        name="chbDiscounted">
+      <input class="form-control" type="checkbox" [(ngModel)]="gameToEdit.discontinued" name="chbDiscounted">
     </div>
     <div class="form-group">
       <label for="unitsOfGameInStock">Units in stock</label>
-      <input class="form-control" id="unitsOfGameInStock" type="number" [(ngModel)]="gameModel.unitsInStock"
-        name="inputUnitsOfGameInStock">
+      <input class="form-control" type="number" [(ngModel)]="gameToEdit.unitsInStock" name="inputUnitsOfGameInStock">
     </div>
     <div class="form-group">
       <label for="gameDescription">Description</label>
-      <textarea class="form-control" id="gameDescription" rows="3" minlength="10" [(ngModel)]="gameModel.description"
+      <textarea class="form-control" rows="3" minlength="10" [(ngModel)]="gameToEdit.description"
         name="inputDescription"></textarea>
     </div>
     <div class="form-group">
       <ng-multiselect-dropdown #ddlPlatforms="ngModel" required name="ddlPlatforms"
-        [(ngModel)]="gameComponentModel.selectedPlatforms" [data]="gameComponentModel.platforms"
+        [(ngModel)]="gameToEdit.platformTypes" [data]="gameComponentModel.platforms"
         [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
       </ng-multiselect-dropdown>
       <p *ngIf="ddlPlatforms.invalid && ddlPlatforms.touched">You should to choose at least 1 platform</p>
     </div>
     <div class="form-group">
-      <ng-multiselect-dropdown required #genresddl name="ddlGenres" [(ngModel)]="gameComponentModel.selectedGenres"
+      <ng-multiselect-dropdown required #genresddl name="ddlGenres" [(ngModel)]="gameToEdit.genres"
         [data]="gameComponentModel.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
       </ng-multiselect-dropdown>
       <p *ngIf="genresddl.valid && genresddl.touched"></p>
     </div>
     <div class="form-group">
-      <select name="list" [(ngModel)]="gameModel.publisherId" #publishersddl>
-        <option [ngValue]="null" disabled>Select publisher</option>
+      <select name="list" [(ngModel)]="gameToEdit.publisher.id" #publishersddl>
+        <!-- <option [ngValue]="null">None</option> -->
         <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
           {{publisher.companyName}}</option>
       </select>
       <p *ngIf="publishersddl.valid && publishersddl.touched">Choose publisher!</p>
     </div>
-    <input type="button" [disabled]="!form.valid" (click)="addGame()" value="Add game">
+    <!--  <input type="button" [disabled]="!form.valid" (click)="addGame()" value="Add game"> -->
   </form>
-</div> -->
+</div>

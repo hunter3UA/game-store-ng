@@ -1,0 +1,8 @@
+<p>add-platform works!</p>
+<form>
+  <div class="form-group col-4">
+    <label>Type</label>
+    <input type="text" class="form-control" name="type" [(ngModel)]="platformToAdd.type">
+  </div>
+  <input type="button" class="btn btn-success" (click)="addPlatform()" value="Add type">
+</form>

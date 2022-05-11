@@ -1,0 +1,19 @@
+<a [routerLink]="'/platforms/new'">Add platform</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let platform of platforms">
+      <th scope="row">{{platform.id}}</th>
+      <td>{{platform.type}}</td>
+      <td>
+        <button class="btn btn-success">Edit</button>
+        <button class="btn btn-danger" (click)="removePlatform(platform.id)">Remove</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

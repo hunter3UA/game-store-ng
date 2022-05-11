@@ -1,5 +1,5 @@
-import { Genre } from '../genre';
-import { PlatformType } from '../platform.type';
+import { Genre } from '../genre/genre';
+import { PlatformType } from '../platforms/platform.type';
 import { Publisher } from '../publisher/publisher';
 
 export class Game {

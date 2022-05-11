@@ -9,6 +9,7 @@ import { HeaderComponent } from './modules/root/components/header/header.compone
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommentModule } from './modules/comment/comment.module';
 import { NotFoundModule } from './modules/not-found/not-found.module';
+import { OrderModule } from './modules/order/order.module';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
@@ -18,6 +19,7 @@ import { NotFoundModule } from './modules/not-found/not-found.module';
     CommentModule,
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,
+    OrderModule,
     NotFoundModule,
   ],
   exports: [],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
 import { Comment } from '../../../core/api-models/comment/comment';
@@ -16,11 +16,9 @@ export class CommentsOfGameComponent implements OnInit {
     private route: ActivatedRoute,
     private commentService: CommentService
   ) {
-    // this.gamekey = this.route.snapshot.params['gamekey'];
-    this.route.params.subscribe((params: Params) => {
-      this.gamekey = params['gamekey'];
-    });
+    this.gamekey = this.route.snapshot.params['gamekey'];
     this.newComment = new AddCommentModel();
+    this.comments = new Array<Comment>();
   }
 
   ngOnInit(): void {

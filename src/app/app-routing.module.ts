@@ -1,10 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-  PreloadAllModules,
-  PreloadingStrategy,
-  RouterModule,
-  Routes,
-} from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './modules/root/components/home/home.component';
 
 const routes: Routes = [
@@ -21,6 +16,18 @@ const routes: Routes = [
     path: 'games',
     loadChildren: () =>
       import('./modules/game/game.module').then((m) => m.GameModule),
+  },
+  {
+    path: 'platforms',
+    loadChildren: () =>
+      import('./modules/platform-type/platform-type.module').then(
+        (m) => m.PlatformTypeModule
+      ),
+  },
+  {
+    path: 'genres',
+    loadChildren: () =>
+      import('./modules/genre/genre.module').then((m) => m.GenreModule),
   },
 ];
 

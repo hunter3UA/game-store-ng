@@ -17,19 +17,12 @@ export class CommentItemComponent implements OnInit {
 
   newComment: AddCommentModel;
 
-  showForm: boolean;
-
   constructor(
     private commentService: CommentService,
     private router: Router,
     private route: ActivatedRoute
   ) {
     this.newComment = new AddCommentModel();
-    this.route.params.subscribe((params: Params) => {
-      this.gameKey = params['gamekey'];
-    });
-
-    this.showForm = false;
   }
 
   ngOnInit(): void {}
