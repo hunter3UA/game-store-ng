@@ -19,6 +19,6 @@
     </ul>
 
   </div>
-  <p>Publisher: {{game?.publisher.companyName}}</p>
+  <p>Publisher:<a [routerLink]="['/publishers',game?.publisher.id]">{{game?.publisher.companyName}}</a></p>
   <a class="btn btn-success" (click)="downloadGame()">Download game</a>
 </div>

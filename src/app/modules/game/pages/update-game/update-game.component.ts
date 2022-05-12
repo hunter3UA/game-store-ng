@@ -30,10 +30,14 @@ export class UpdateGameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadGame();
     this.loadPlaftorms();
     this.loadGenres();
+    this.loadGame();
     this.loadPublishers();
+  }
+
+  updateGame() {
+    console.log(this.gameToEdit);
   }
 
   loadGame() {

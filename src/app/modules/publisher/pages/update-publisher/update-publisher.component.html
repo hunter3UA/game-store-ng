@@ -1,0 +1,18 @@
+<div>
+  <form class="col-4" #form="ngForm" *ngIf="publisherToEdit">
+    <div class="form-group">
+      <label>Company name</label>
+      <input class="form-control" [(ngModel)]="publisherToEdit.companyName" name="inputCompanyName">
+    </div>
+    <div class="form-group">
+      <label>HomePage</label>
+      <input class="form-control" [(ngModel)]="publisherToEdit.homePage" name="inputHomePage">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea class="form-control" [(ngModel)]="publisherToEdit.description" name="textareaDescription"></textarea>
+    </div>
+    <button class="btn btn-success" (click)="updatePublisher()">Update publisher</button>
+
+  </form>
+</div>

@@ -20,7 +20,7 @@ export class AddPlatformComponent implements OnInit {
 
   addPlatform() {
     this.platformService.addPlatform(this.platformToAdd).subscribe(() => {
-      this.router.navigate(['/platforms/all']);
+      this.router.navigate(['/platforms']);
     });
   }
 }

@@ -11,7 +11,7 @@
       <th scope="row">{{genre.id}}</th>
       <td>{{genre.name}}</td>
       <td>
-        <button class="btn btn-success">Edit</button>
+        <button class="btn btn-success" [routerLink]="['/genres/update',genre.id]">Edit</button>
         <button class="btn btn-danger" (click)="removeGenre(genre.id)">Remove</button>
       </td>
     </tr>

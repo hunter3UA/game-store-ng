@@ -1,9 +1,8 @@
 <div>
-  <form class="col-4" #form="ngForm">
+  <form class="col-4" #form="ngForm" *ngIf="gameToEdit">
     <div class="form-group">
       <label for="gameName">Name</label>
       <input class="form-control" [(ngModel)]="gameToEdit.name" name="inputName" required #nameOfGame="ngModel">
-      <p *ngIf="nameOfGame.invalid && nameOfGame.touched">Enter valid name of game</p>
     </div>
     <div class="form-group">
       <label for="gamePrice">Price</label>
@@ -23,26 +22,22 @@
         name="inputDescription"></textarea>
     </div>
     <div class="form-group">
-      <ng-multiselect-dropdown #ddlPlatforms="ngModel" required name="ddlPlatforms"
-        [(ngModel)]="gameToEdit.platformTypes" [data]="gameComponentModel.platforms"
-        [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
+      <ng-multiselect-dropdown #ddlPlatforms name="ddlPlatforms" [data]="gameComponentModel.platforms"
+        [(ngModel)]="gameToEdit.platformTypes" [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
       </ng-multiselect-dropdown>
-      <p *ngIf="ddlPlatforms.invalid && ddlPlatforms.touched">You should to choose at least 1 platform</p>
     </div>
     <div class="form-group">
-      <ng-multiselect-dropdown required #genresddl name="ddlGenres" [(ngModel)]="gameToEdit.genres"
-        [data]="gameComponentModel.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
+      <ng-multiselect-dropdown #genresddl name="ddlGenres" [data]="gameComponentModel.genres"
+        [(ngModel)]="gameToEdit.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
       </ng-multiselect-dropdown>
-      <p *ngIf="genresddl.valid && genresddl.touched"></p>
     </div>
     <div class="form-group">
-      <select name="list" [(ngModel)]="gameToEdit.publisher.id" #publishersddl>
-        <!-- <option [ngValue]="null">None</option> -->
+      <select name="list" *ngIf="gameToEdit.publisher" [(ngModel)]="gameToEdit.publisher.id" #publishersddl>
+        <option [value]="null">None</option>
         <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
           {{publisher.companyName}}</option>
       </select>
-      <p *ngIf="publishersddl.valid && publishersddl.touched">Choose publisher!</p>
     </div>
-    <!--  <input type="button" [disabled]="!form.valid" (click)="addGame()" value="Add game"> -->
+    <input type="button" (click)="updateGame()" value="Update game">
   </form>
 </div>

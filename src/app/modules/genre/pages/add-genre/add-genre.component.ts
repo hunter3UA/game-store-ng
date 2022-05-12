@@ -28,7 +28,7 @@ export class AddGenreComponent implements OnInit {
   addGenre(parentGenreId: number) {
     this.genreToAdd.parentGenreId = parentGenreId;
     this.genreService.addGenre(this.genreToAdd).subscribe(() => {
-      this.router.navigate(['/genres/all']);
+      this.router.navigate(['/genres']);
     });
   }
 }

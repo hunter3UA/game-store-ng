@@ -40,6 +40,9 @@ export class GameService {
       .post(url, addGameModel)
       .pipe(map((item: any) => this.gameAdapter.adapt(item)));
   }
+
+  updateGame(updateGameModel: any) {}
+
   downloadGame(gameKey: string): Observable<any> {
     let url = `${environment.apiBaseUrl}games/${gameKey}/download`;
     return this.http.get(url, { observe: 'response', responseType: 'blob' });

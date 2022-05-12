@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from 'src/app/modules/core/api-models/game/game';
+import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 import { GameService } from '../../../shared/services/game/game.service';
 
 @Component({
@@ -10,7 +11,11 @@ import { GameService } from '../../../shared/services/game/game.service';
 export class AllGamesComponent implements OnInit {
   games: Array<Game>;
 
-  constructor(private gameService: GameService, private router: Router) {}
+  constructor(
+    private gameService: GameService,
+    private router: Router,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
     this.loadAllGames();
@@ -33,5 +38,15 @@ export class AllGamesComponent implements OnInit {
     this.gameService.deleteGame(id).subscribe((response) => {
       this.loadAllGames();
     });
+  }
+  addOrderItem(gameKey: string, price: number) {
+    this.orderService.addOrderItem(gameKey, price).subscribe(
+      (data) => {
+        this.router.navigate(['/basket']);
+      },
+      (error) => {
+        this.router.navigate(['/basket']);
+      }
+    );
   }
 }

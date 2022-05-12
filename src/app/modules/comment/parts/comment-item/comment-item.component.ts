@@ -23,11 +23,13 @@ export class CommentItemComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.newComment = new AddCommentModel();
+    this.comments = new Array<Comment>();
+    this.gameKey = '';
   }
 
   ngOnInit(): void {}
 
-  addReply(name: string, body: string, parentId) {
+  addReply(name: string, body: string, parentId: number) {
     this.newComment.name = name;
     this.newComment.body = body;
 

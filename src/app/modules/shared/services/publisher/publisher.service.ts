@@ -39,6 +39,12 @@ export class PublisherService {
       .get(url)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
+  updatePublisher(publisherToUpdate: Publisher): Observable<Publisher> {
+    let url = `${environment.apiBaseUrl}publishers/update`;
+    return this.http
+      .put(url, publisherToUpdate)
+      .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
+  }
 
   removePublisher(id: number): Observable<any> {
     let url = `${environment.apiBaseUrl}publishers/remove/${id}`;

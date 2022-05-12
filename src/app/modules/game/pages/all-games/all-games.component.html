@@ -4,7 +4,7 @@
   <div *ngFor="let game of games" class="jumbotron ">
     <div>Name:{{game.name}}</div>
     <div>Price:{{game.price}}</div>
-
+    <a class="btn btn-success" (click)="addOrderItem(game.key,game.price)">Buy</a>
     <a class="btn btn-success" [routerLink]="['/games',game.key]">Details</a>
     <a class="btn btn-info" [routerLink]="['/games/update',game.key]">Edit</a>
     <a class="btn btn-danger" (click)="removeGame(game.id)">Remove</a>

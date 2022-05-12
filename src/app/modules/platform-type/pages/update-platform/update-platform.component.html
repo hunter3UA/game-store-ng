@@ -1,0 +1,7 @@
+<form>
+  <div class="form-group col-4" *ngIf="platformToEdit">
+    <label>Type</label>
+    <input type="text" class="form-control" name="type" [(ngModel)]="platformToEdit.type">
+  </div>
+  <input type="button" class="btn btn-success" (click)="updatePlatform()" value="Update type">
+</form>

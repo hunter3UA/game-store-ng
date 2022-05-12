@@ -20,6 +20,15 @@ export class PlatformService {
     return this.http.get(url);
   }
 
+  getPlatform(id): Observable<any> {
+    let url = `${environment.apiBaseUrl}platformTypes/${id}`;
+    return this.http.get(url);
+  }
+  updatePlatform(platformToUpdate: PlatformType): Observable<any> {
+    let url = `${environment.apiBaseUrl}platformTypes/update`;
+    return this.http.put(url, platformToUpdate);
+  }
+
   removePlatform(id: number): Observable<any> {
     let url = `${environment.apiBaseUrl}platformTypes/remove/${id}`;
     return this.http.delete(url).pipe(map((data: any) => data.text));
