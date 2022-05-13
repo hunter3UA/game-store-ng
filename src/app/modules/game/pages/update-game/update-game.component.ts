@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Game } from 'src/app/modules/core/api-models/game/game';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
@@ -13,7 +14,7 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class UpdateGameComponent implements OnInit {
   key: string;
-  gameToEdit: any = {};
+  gameToEdit: Game;
 
   gameComponentModel: GameComponentModel;
 
@@ -22,11 +23,13 @@ export class UpdateGameComponent implements OnInit {
     private platformService: PlatformService,
     private genreService: GenreService,
     private publisherService: PublisherService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private errorService: ErrorHandlerService
   ) {
     this.key = this.route.snapshot.params['key'];
 
     this.gameComponentModel = new GameComponentModel();
+    this.gameToEdit = new Game();
   }
 
   ngOnInit(): void {
@@ -41,11 +44,9 @@ export class UpdateGameComponent implements OnInit {
   }
 
   loadGame() {
-    this.gameService.getGameByKey(this.key).subscribe((data) => {
-      if (data) {
-        this.gameToEdit = data;
-        console.log(this.gameToEdit);
-      }
+    this.gameService.getGameByKey(this.key).subscribe({
+      next: (data) => (this.gameToEdit = data),
+      error: (error) => this.errorService.handleError(error),
     });
   }
   loadPlaftorms() {

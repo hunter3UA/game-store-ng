@@ -17,6 +17,7 @@ export class UpdateGenreComponent implements OnInit {
     private router: Router
   ) {
     this.genreId = this.route.snapshot.params['id'];
+    this.genreToEdit = new Genre();
   }
 
   ngOnInit(): void {

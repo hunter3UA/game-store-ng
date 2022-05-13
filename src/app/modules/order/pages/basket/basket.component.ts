@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/modules/core/api-models/order/order';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -6,8 +7,10 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './basket.component.html',
 })
 export class BasketComponent implements OnInit {
-  currentOrder: any = {};
-  constructor(private orderService: OrderService) {}
+  currentOrder: Order;
+  constructor(private orderService: OrderService) {
+    this.currentOrder = new Order();
+  }
 
   ngOnInit(): void {
     this.loadOrder();
@@ -16,7 +19,6 @@ export class BasketComponent implements OnInit {
   loadOrder() {
     this.orderService.getOrder().subscribe((data) => {
       this.currentOrder = data;
-      console.log(this.currentOrder);
     });
   }
   removeOrderItem(itemId: number) {

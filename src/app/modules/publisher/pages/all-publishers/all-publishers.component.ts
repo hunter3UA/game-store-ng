@@ -9,7 +9,9 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
 export class AllPublishersComponent implements OnInit {
   publishers: Array<Publisher>;
 
-  constructor(private publisherService: PublisherService) {}
+  constructor(private publisherService: PublisherService) {
+    this.publishers = new Array<Publisher>();
+  }
 
   ngOnInit(): void {
     this.loadPublishers();

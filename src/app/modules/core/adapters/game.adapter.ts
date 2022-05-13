@@ -5,17 +5,18 @@ import { Adapter } from './adapter';
 @Injectable({ providedIn: 'root' })
 export class GameAdapter implements Adapter<Game> {
   adapt(item: any): Game {
-    return new Game(
-      item.id,
-      item.name,
-      item.key,
-      item.description,
-      item.genres,
-      item.platformTypes,
-      item.publisher,
-      item.price,
-      item.discontinued,
-      item.unitsInStock
-    );
+    let game = new Game();
+    game.id = item.id;
+    game.name = item.name;
+    game.key = item.key;
+    game.description = item.description;
+    game.genres = item.genres;
+    game.platformTypes = item.platformTypes;
+    game.publisher = item.publisher;
+    game.price = item.price;
+    game.discontinued = item.discontinued;
+    game.unitsInStock = item.unitsInStock;
+
+    return game;
   }
 }

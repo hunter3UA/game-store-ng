@@ -15,6 +15,7 @@ export class PublisherDetailsComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.publisherId = this.route.snapshot.params['id'];
+    this.currentPublisher = new Publisher();
   }
 
   ngOnInit(): void {
@@ -25,7 +26,6 @@ export class PublisherDetailsComponent implements OnInit {
     this.publisherService.getPublisher(this.publisherId).subscribe((data) => {
       if (data) {
         this.currentPublisher = data;
-        console.log(this.currentPublisher);
       }
     });
   }

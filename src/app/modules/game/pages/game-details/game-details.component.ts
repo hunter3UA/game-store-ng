@@ -17,6 +17,7 @@ export class GameDetailsComponent implements OnInit {
     private errorHandler: ErrorHandlerService
   ) {
     this.key = this.route.snapshot.params['key'];
+    this.game = new Game();
   }
 
   ngOnInit(): void {

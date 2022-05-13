@@ -16,6 +16,7 @@ export class UpdatePlatformComponent implements OnInit {
     private platformService: PlatformService
   ) {
     this.platformId = this.route.snapshot.params['id'];
+    this.platformToEdit = new PlatformType();
   }
 
   ngOnInit(): void {
