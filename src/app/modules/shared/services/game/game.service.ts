@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapter';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { environment } from 'src/environments/environment';
@@ -45,6 +45,10 @@ export class GameService {
 
   downloadGame(gameKey: string): Observable<any> {
     let url = `${environment.apiBaseUrl}games/${gameKey}/download`;
-    return this.http.get(url, { observe: 'response', responseType: 'blob' });
+    return this.http.get(url, {
+      headers: new HttpHeaders({ 'Access-Control-Expose-Headers': '*' }),
+      observe: 'response',
+      responseType: 'blob',
+    });
   }
 }

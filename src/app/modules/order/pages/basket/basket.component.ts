@@ -19,5 +19,9 @@ export class BasketComponent implements OnInit {
       console.log(this.currentOrder);
     });
   }
-  removeOrderItem() {}
+  removeOrderItem(itemId: number) {
+    this.orderService.removeOrderItem(itemId).subscribe(() => {
+      this.loadOrder();
+    });
+  }
 }

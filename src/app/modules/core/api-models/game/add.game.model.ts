@@ -8,5 +8,5 @@ export class AddGameModel {
   public publisherId: number;
   public price: number;
   public discontinued: boolean;
-  public unitsInStock: number;
+  public unitsInStock: number = 0;
 }

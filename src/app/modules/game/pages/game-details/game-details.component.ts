@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Game } from 'src/app/modules/core/api-models/game/game';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({
@@ -11,7 +11,11 @@ import { GameService } from 'src/app/modules/shared/services/game/game.service';
 export class GameDetailsComponent implements OnInit {
   game: Game;
   key: string;
-  constructor(private gameService: GameService, private route: ActivatedRoute) {
+  constructor(
+    private gameService: GameService,
+    private route: ActivatedRoute,
+    private errorHandler: ErrorHandlerService
+  ) {
     this.key = this.route.snapshot.params['key'];
   }
 
@@ -20,15 +24,15 @@ export class GameDetailsComponent implements OnInit {
   }
 
   loadGame() {
-    this.gameService.getGameByKey(this.key).subscribe((data) => {
-      if (data) {
-        this.game = data;
-      }
+    this.gameService.getGameByKey(this.key).subscribe({
+      next: (data) => (this.game = data),
+      error: (error) => this.errorHandler.handleError(error),
     });
   }
   downloadGame() {
     this.gameService.downloadGame(this.key).subscribe((response) => {
       let fileName = response.headers.get('content-disposition');
+      console.log(response);
       console.log(fileName);
       let blob: Blob = response.body as Blob;
       let a = document.createElement('a');
@@ -38,7 +42,3 @@ export class GameDetailsComponent implements OnInit {
     });
   }
 }
-// let fileName = response.headers
-//         .get('content-disposition')
-//         ?.split(';')[1]
-//         .split('=')[1];

@@ -9,7 +9,8 @@
     </div>
     <div class="form-group">
       <label for="gamePrice">Price</label>
-      <input class="form-control" id="gamePrice" type="number" min="1" [(ngModel)]="gameModel.price" name="inputPrice">
+      <input class="form-control" id="gamePrice" type="number" onKeyDown="return false" min="1"
+        [(ngModel)]="gameModel.price" name="inputPrice">
     </div>
     <div class="form-group">
       <label for="gameDiscounted">Discounted</label>
@@ -18,8 +19,8 @@
     </div>
     <div class="form-group">
       <label for="unitsOfGameInStock">Units in stock</label>
-      <input class="form-control" id="unitsOfGameInStock" type="number" [(ngModel)]="gameModel.unitsInStock"
-        name="inputUnitsOfGameInStock">
+      <input class="form-control" id="unitsOfGameInStock" onKeyDown="return false" type="number" min="0"
+        [(ngModel)]="gameModel.unitsInStock" name="inputUnitsOfGameInStock">
     </div>
     <div class="form-group">
       <label for="gameDescription">Description</label>
@@ -27,17 +28,15 @@
         name="inputDescription"></textarea>
     </div>
     <div class="form-group">
-      <ng-multiselect-dropdown #ddlPlatforms="ngModel" required name="ddlPlatforms"
+      <ng-multiselect-dropdown #ddlPlatforms="ngModel" name="ddlPlatforms"
         [(ngModel)]="gameComponentModel.selectedPlatforms" [data]="gameComponentModel.platforms"
         [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
       </ng-multiselect-dropdown>
-      <p *ngIf="ddlPlatforms.invalid && ddlPlatforms.touched">You should to choose at least 1 platform</p>
     </div>
     <div class="form-group">
-      <ng-multiselect-dropdown required #genresddl name="ddlGenres" [(ngModel)]="gameComponentModel.selectedGenres"
+      <ng-multiselect-dropdown #genresddl name="ddlGenres" [(ngModel)]="gameComponentModel.selectedGenres"
         [data]="gameComponentModel.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
       </ng-multiselect-dropdown>
-      <p *ngIf="genresddl.valid && genresddl.touched"></p>
     </div>
     <div class="form-group">
       <select name="list" [(ngModel)]="gameModel.publisherId" #publishersddl>
@@ -45,7 +44,6 @@
         <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
           {{publisher.companyName}}</option>
       </select>
-      <p *ngIf="publishersddl.valid && publishersddl.touched">Choose publisher!</p>
     </div>
     <input type="button" [disabled]="!form.valid" (click)="addGame()" value="Add game">
   </form>

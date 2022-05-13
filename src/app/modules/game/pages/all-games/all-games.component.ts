@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from 'src/app/modules/core/api-models/game/game';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 import { GameService } from '../../../shared/services/game/game.service';
 
@@ -14,7 +15,8 @@ export class AllGamesComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private erroHandler: ErrorHandlerService
   ) {}
 
   ngOnInit(): void {
@@ -22,31 +24,22 @@ export class AllGamesComponent implements OnInit {
   }
 
   loadAllGames() {
-    this.gameService.getAllGames().subscribe(
-      (data: Game[]) => {
-        if (data) {
-          this.games = data;
-          console.log(data);
-        }
-      },
-      (err) => console.log(err)
-    );
+    this.gameService.getAllGames().subscribe({
+      next: (data) => (this.games = data),
+      error: (error) => this.erroHandler.handleError(error),
+    });
   }
 
   removeGame(id: number) {
     console.log(id);
-    this.gameService.deleteGame(id).subscribe((response) => {
+    this.gameService.deleteGame(id).subscribe(() => {
       this.loadAllGames();
     });
   }
-  addOrderItem(gameKey: string, price: number) {
-    this.orderService.addOrderItem(gameKey, price).subscribe(
-      (data) => {
-        this.router.navigate(['/basket']);
-      },
-      (error) => {
-        this.router.navigate(['/basket']);
-      }
-    );
+  addOrderItem(gameKey: string) {
+    this.orderService.addOrderItem(gameKey).subscribe({
+      next: () => this.router.navigate(['/basket']),
+      error: () => this.router.navigate(['/basket']),
+    });
   }
 }
