@@ -21,6 +21,22 @@ export class BasketComponent implements OnInit {
       this.currentOrder = data;
     });
   }
+
+  changeQuantity(id: number, quantity: number) {
+    let val: boolean = false;
+    this.currentOrder.orderDetails.filter((item) => {
+      if (item.id == id && item.quantity != quantity) {
+        val = true;
+      }
+    });
+    if (val) {
+      this.orderService.changeQuantity(+id, +quantity).subscribe({
+        next: () => this.loadOrder(),
+        error: (error) => console.log(error),
+      });
+    }
+  }
+
   removeOrderItem(itemId: number) {
     this.orderService.removeOrderItem(itemId).subscribe(() => {
       this.loadOrder();

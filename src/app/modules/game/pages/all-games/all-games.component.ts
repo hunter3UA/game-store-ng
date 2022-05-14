@@ -31,7 +31,6 @@ export class AllGamesComponent implements OnInit {
   }
 
   removeGame(id: number) {
-    console.log(id);
     this.gameService.deleteGame(id).subscribe(() => {
       this.loadAllGames();
     });

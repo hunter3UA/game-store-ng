@@ -13,7 +13,6 @@ export class GenreService {
   constructor(private http: HttpClient, private genreAdapter: GenreAdapter) {}
 
   addGenre(genreToAdd: AddGenreModel): Observable<any> {
-    if (genreToAdd.parentGenreId == 0) genreToAdd.parentGenreId = null;
     let url = `${environment.apiBaseUrl}genres/new`;
     return this.http
       .post(url, genreToAdd)

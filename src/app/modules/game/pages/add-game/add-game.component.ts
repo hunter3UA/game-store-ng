@@ -57,16 +57,14 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame() {
-    for (let genre of this.gameComponentModel.selectedGenres) {
-      this.gameModel.genresId.push(genre.id);
-    }
-
-    for (let platform of this.gameComponentModel.selectedPlatforms) {
-      this.gameModel.platformsId.push(platform.id);
-    }
-
+    this.gameModel.platformsId = this.gameComponentModel.selectedPlatforms.map(
+      (p) => p.id
+    );
+    this.gameModel.genresId = this.gameComponentModel.selectedGenres.map(
+      (g) => g.id
+    );
     this.gameService.addGame(this.gameModel).subscribe({
-      next: () => this.router.navigate(['/games/all']),
+      next: () => this.router.navigate(['/games']),
       error: (error) => this.errorHandler.handleError(error),
     });
   }

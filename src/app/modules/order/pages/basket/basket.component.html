@@ -11,9 +11,9 @@
   <tbody>
     <tr *ngFor="let item of currentOrder.orderDetails">
       <th scope="row"><a [routerLink]="['/games/',item.game.key]">{{item.game.name}}</a> </th>
-      <td><button class="btn btn-danger">-</button>
-        <input type="number" min="1" [max]="item.game.unitsInStock" onKeyDown="return false" [value]="item.quantity">
-        <button class="btn btn-success">+</button>
+      <td>
+        <input type="number" min="1" [max]="item.game.unitsInStock"
+          (focusout)="changeQuantity(item.id,$event.target.value)" onKeyDown="return false" [value]="item.quantity">
       </td>
       <td>{{item.price}}</td>
       <td>{{item.total}}</td>

@@ -35,5 +35,8 @@ export class OrderService {
     let url = `${environment.apiBaseUrl}basket/details/remove/${itemId}`;
     return this.http.delete(url);
   }
-  changeQuantity() {}
+  changeQuantity(itemId: number, quantity: number): Observable<any> {
+    let url = `${environment.apiBaseUrl}basket/details/update`;
+    return this.http.put(url, { orderDetailsId: itemId, quantity: quantity });
+  }
 }

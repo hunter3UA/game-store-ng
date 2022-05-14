@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapter';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { environment } from 'src/environments/environment';

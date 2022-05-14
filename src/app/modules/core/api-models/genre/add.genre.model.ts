@@ -1,4 +1,7 @@
 export class AddGenreModel {
   name: string;
-  parentGenreId: number;
+  parentGenreId?: number;
+  constructor() {
+    this.parentGenreId = null;
+  }
 }

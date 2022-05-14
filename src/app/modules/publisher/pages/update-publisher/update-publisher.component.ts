@@ -9,7 +9,6 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
 })
 export class UpdatePublisherComponent implements OnInit {
   publisherId: number;
-
   publisherToEdit: Publisher;
   constructor(
     private publisherService: PublisherService,
@@ -17,6 +16,7 @@ export class UpdatePublisherComponent implements OnInit {
     private router: Router
   ) {
     this.publisherId = this.route.snapshot.params['id'];
+    this.publisherToEdit = new Publisher();
   }
 
   ngOnInit(): void {

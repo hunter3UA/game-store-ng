@@ -1,7 +1,9 @@
-<form>
+<form #form="ngForm">
   <div class="form-group col-4">
     <label>Type</label>
-    <input type="text" class="form-control" name="type" [(ngModel)]="platformToEdit.type">
+    <input type="text" required #platformType="ngModel" class="form-control" name="type"
+      [(ngModel)]="platformToEdit.type">
+    <p *ngIf="platformType.invalid && platformType.touched">Enter platform type</p>
   </div>
-  <input type="button" class="btn btn-success" (click)="updatePlatform()" value="Update type">
+  <input type="button" class="btn btn-success" [disabled]="!form.valid" (click)="updatePlatform()" value="Update type">
 </form>

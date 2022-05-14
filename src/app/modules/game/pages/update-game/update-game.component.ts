@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
@@ -14,8 +15,7 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class UpdateGameComponent implements OnInit {
   key: string;
-  gameToEdit: Game;
-
+  gameToEdit: any;
   gameComponentModel: GameComponentModel;
 
   constructor(
@@ -27,9 +27,8 @@ export class UpdateGameComponent implements OnInit {
     private errorService: ErrorHandlerService
   ) {
     this.key = this.route.snapshot.params['key'];
-
     this.gameComponentModel = new GameComponentModel();
-    this.gameToEdit = new Game();
+    this.gameToEdit = new EditGameModel();
   }
 
   ngOnInit(): void {
@@ -45,7 +44,11 @@ export class UpdateGameComponent implements OnInit {
 
   loadGame() {
     this.gameService.getGameByKey(this.key).subscribe({
-      next: (data) => (this.gameToEdit = data),
+      next: (data) => {
+        this.gameToEdit = data;
+        this.gameComponentModel.selectedGenres = this.gameToEdit.genres;
+        this.gameComponentModel.selectedPlatforms = this.gameToEdit.platforms;
+      },
       error: (error) => this.errorService.handleError(error),
     });
   }

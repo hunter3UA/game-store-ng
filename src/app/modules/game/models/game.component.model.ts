@@ -5,8 +5,8 @@ export class GameComponentModel {
   constructor() {
     this.genres = new Array<Genre>();
     this.platforms = new Array<PlatformType>();
-    this.selectedGenres = new Array<number>();
-    this.selectedPlatforms = Array<number>();
+    this.selectedGenres = new Array<any>();
+    this.selectedPlatforms = Array<any>();
   }
   genres: Array<Genre>;
   platforms: Array<PlatformType>;
