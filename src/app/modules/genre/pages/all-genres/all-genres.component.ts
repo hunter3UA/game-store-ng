@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Genre } from 'src/app/modules/core/api-models/genre/genre';
+import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
   templateUrl: './all-genres.component.html',
 })
 export class AllGenresComponent implements OnInit {
-  genres: Array<Genre>;
+  genres: Array<GenreModel>;
 
   constructor(private genreService: GenreService) {}
 

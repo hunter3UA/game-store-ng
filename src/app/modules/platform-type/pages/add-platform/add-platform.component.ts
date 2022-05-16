@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlatformType } from 'src/app/modules/core/api-models/platforms/platform.type';
+import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -8,12 +8,12 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './add-platform.component.html',
 })
 export class AddPlatformComponent implements OnInit {
-  platformToAdd: PlatformType;
+  platformToAdd: PlatformTypeModel;
   constructor(
     private platformService: PlatformService,
     private router: Router
   ) {
-    this.platformToAdd = new PlatformType();
+    this.platformToAdd = new PlatformTypeModel();
   }
 
   ngOnInit(): void {}

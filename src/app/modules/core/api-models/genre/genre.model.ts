@@ -1,6 +1,6 @@
-export class Genre {
+export class GenreModel {
   id: number;
   name: string;
-  subGenres: Array<Genre>;
+  subGenres: Array<GenreModel>;
   parentGenreId?: number | null;
 }

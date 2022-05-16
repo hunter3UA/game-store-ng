@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
-import { Comment } from '../../../core/api-models/comment/comment';
+import { Comment } from '../../../core/api-models/comment/comment.model';
 
 @Component({
   selector: 'app-comments-of-game',

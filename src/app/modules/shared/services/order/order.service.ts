@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderItemAdapter } from 'src/app/modules/core/adapters/order.item.adapter';
-import { Order } from 'src/app/modules/core/api-models/order/order';
-import { OrderDetails } from 'src/app/modules/core/api-models/order/oreder.details';
+import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { OrderDetailsModel } from 'src/app/modules/core/api-models/order/oreder.details.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,14 +17,14 @@ export class OrderService {
     private orderitemAdapter: OrderItemAdapter
   ) {}
 
-  addOrderItem(gameKey: string): Observable<OrderDetails> {
+  addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
     let url = `${environment.apiBaseUrl}games/${gameKey}/buy`;
     return this.http
       .post(url, 1)
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
   }
 
-  getOrder(): Observable<Order> {
+  getOrder(): Observable<OrderModel> {
     let url = `${environment.apiBaseUrl}basket`;
     return this.http
       .get(url)

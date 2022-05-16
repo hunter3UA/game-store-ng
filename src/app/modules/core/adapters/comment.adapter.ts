@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from './adapter';
-import { Comment } from '../api-models/comment/comment';
+import { Comment } from '../api-models/comment/comment.model';
 
 @Injectable({ providedIn: 'root' })
 export class CommentAdapter implements Adapter<Comment> {

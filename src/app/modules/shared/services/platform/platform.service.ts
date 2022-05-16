@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { PlatformAdapter } from 'src/app/modules/core/adapters/platform.adapter';
-import { PlatformType } from 'src/app/modules/core/api-models/platforms/platform.type';
+import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -14,14 +14,14 @@ export class PlatformService {
     private platformAdapter: PlatformAdapter
   ) {}
 
-  addPlatform(platformToAdd: PlatformType): Observable<PlatformType> {
+  addPlatform(platformToAdd: PlatformTypeModel): Observable<PlatformTypeModel> {
     let url = `${environment.apiBaseUrl}platformTypes/add`;
     return this.http
       .post(url, platformToAdd)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 
-  getAllPlatforms(): Observable<PlatformType[]> {
+  getAllPlatforms(): Observable<PlatformTypeModel[]> {
     let url = `${environment.apiBaseUrl}platformTypes`;
     return this.http
       .get(url)
@@ -32,13 +32,15 @@ export class PlatformService {
       );
   }
 
-  getPlatform(id): Observable<PlatformType> {
+  getPlatform(id): Observable<PlatformTypeModel> {
     let url = `${environment.apiBaseUrl}platformTypes/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
-  updatePlatform(platformToUpdate: PlatformType): Observable<PlatformType> {
+  updatePlatform(
+    platformToUpdate: PlatformTypeModel
+  ): Observable<PlatformTypeModel> {
     let url = `${environment.apiBaseUrl}platformTypes/update`;
     return this.http
       .put(url, platformToUpdate)

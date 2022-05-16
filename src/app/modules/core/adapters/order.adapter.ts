@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../api-models/order/order';
+import { OrderModel } from '../api-models/order/order.model';
 import { Adapter } from './adapter';
 
 @Injectable({ providedIn: 'root' })
-export class OrderAdapter implements Adapter<Order> {
-  adapt(item: any): Order {
-    let order = new Order();
+export class OrderAdapter implements Adapter<OrderModel> {
+  adapt(item: any): OrderModel {
+    let order = new OrderModel();
     order.id = item.id;
     order.customerId = item.customerId;
     order.orderDate = item.orderDate;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Publisher } from 'src/app/modules/core/api-models/publisher/publisher';
+import { PublisherModel } from 'src/app/modules/core/api-models/publisher/publisher.model';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './all-publishers.component.html',
 })
 export class AllPublishersComponent implements OnInit {
-  publishers: Array<Publisher>;
+  publishers: Array<PublisherModel>;
 
   constructor(private publisherService: PublisherService) {
-    this.publishers = new Array<Publisher>();
+    this.publishers = new Array<PublisherModel>();
   }
 
   ngOnInit(): void {

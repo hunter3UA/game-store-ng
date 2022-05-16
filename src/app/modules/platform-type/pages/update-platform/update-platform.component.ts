@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PlatformType } from 'src/app/modules/core/api-models/platforms/platform.type';
+import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -9,14 +9,14 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
 })
 export class UpdatePlatformComponent implements OnInit {
   platformId: number;
-  platformToEdit: PlatformType;
+  platformToEdit: PlatformTypeModel;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private platformService: PlatformService
   ) {
     this.platformId = this.route.snapshot.params['id'];
-    this.platformToEdit = new PlatformType();
+    this.platformToEdit = new PlatformTypeModel();
   }
 
   ngOnInit(): void {

@@ -1,8 +1,8 @@
 <div>
-  <p>Name:{{game?.name}}</p>
-  <p>Key:{{game?.key}}</p>
-  <p>Price:{{game?.price}}</p>
-  <p>unitsInStock:{{game?.unitsInStock}}</p>
+  <p>Name:{{game.name}}</p>
+  <p>Key:{{game.key}}</p>
+  <p>Price:{{game.price}}</p>
+  <p>unitsInStock:{{game.unitsInStock}}</p>
   <div>
     <ul>Genres
       <li *ngFor="let genre of game?.genres">
@@ -13,13 +13,13 @@
   <div>
     <ul>
       Platforms
-      <li *ngFor="let platform of game?.platformTypes">
+      <li *ngFor="let platform of game.platformTypes">
         {{platform?.type}}
       </li>
     </ul>
 
   </div>
   <p *ngIf="game.publisher">Publisher:<a
-      [routerLink]="['/publishers',game?.publisher.id]">{{game?.publisher.companyName}}</a></p>
+      [routerLink]="['/publishers',game.publisher.id]">{{game.publisher.companyName}}</a></p>
   <a class="btn btn-success" (click)="downloadGame()">Download game</a>
 </div>

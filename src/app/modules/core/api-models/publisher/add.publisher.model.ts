@@ -1,4 +1,4 @@
-export class AddPublisher {
+export class AddPublisherModel {
   id: number;
   companyName: string;
   description: string;

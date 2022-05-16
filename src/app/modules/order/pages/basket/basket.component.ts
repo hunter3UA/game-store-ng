@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/modules/core/api-models/order/order';
+import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -7,9 +7,9 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './basket.component.html',
 })
 export class BasketComponent implements OnInit {
-  currentOrder: Order;
+  currentOrder: OrderModel;
   constructor(private orderService: OrderService) {
-    this.currentOrder = new Order();
+    this.currentOrder = new OrderModel();
   }
 
   ngOnInit(): void {

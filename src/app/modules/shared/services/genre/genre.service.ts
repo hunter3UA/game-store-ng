@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { GenreAdapter } from 'src/app/modules/core/adapters/genre.adapter';
 import { AddGenreModel } from 'src/app/modules/core/api-models/genre/add.genre.model';
-import { Genre } from 'src/app/modules/core/api-models/genre/genre';
+import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -19,21 +19,21 @@ export class GenreService {
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
-  getGenre(id: number): Observable<Genre> {
+  getGenre(id: number): Observable<GenreModel> {
     let url = `${environment.apiBaseUrl}genres/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
-  updateGenre(genreToUpdate: Genre): Observable<any> {
+  updateGenre(genreToUpdate: GenreModel): Observable<any> {
     let url = `${environment.apiBaseUrl}genres/update`;
     return this.http
       .put(url, genreToUpdate)
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
-  getAllGenres(): Observable<Genre[]> {
+  getAllGenres(): Observable<GenreModel[]> {
     let url = `${environment.apiBaseUrl}genres`;
     return this.http
       .get(url)

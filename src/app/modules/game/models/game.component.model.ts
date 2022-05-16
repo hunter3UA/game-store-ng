@@ -1,19 +1,19 @@
-import { Genre } from '../../core/api-models/genre/genre';
-import { PlatformType } from '../../core/api-models/platforms/platform.type';
-import { Publisher } from '../../core/api-models/publisher/publisher';
+import { GenreModel } from '../../core/api-models/genre/genre.model';
+import { PlatformTypeModel } from '../../core/api-models/platforms/platform.type.model';
+import { PublisherModel } from '../../core/api-models/publisher/publisher.model';
 
 export class GameComponentModel {
   constructor() {
-    this.genres = new Array<Genre>();
-    this.platforms = new Array<PlatformType>();
+    this.genres = new Array<GenreModel>();
+    this.platforms = new Array<PlatformTypeModel>();
     this.selectedGenres = new Array<any>();
     this.selectedPlatforms = Array<any>();
-    this.selectedPublisher = new Publisher();
+    this.selectedPublisher = new PublisherModel();
   }
-  genres: Array<Genre>;
-  platforms: Array<PlatformType>;
+  genres: Array<GenreModel>;
+  platforms: Array<PlatformTypeModel>;
   publishers: Array<any>;
   selectedGenres: Array<any>;
   selectedPlatforms: Array<any>;
-  selectedPublisher: Publisher;
+  selectedPublisher: PublisherModel;
 }

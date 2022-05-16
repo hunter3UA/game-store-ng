@@ -4,7 +4,7 @@ import { map, Observable } from 'rxjs';
 import { CommentAdapter } from 'src/app/modules/core/adapters/comment.adapter';
 import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
 import { environment } from 'src/environments/environment';
-import { Comment } from '../../../core/api-models/comment/comment';
+import { Comment } from '../../../core/api-models/comment/comment.model';
 
 @Injectable({
   providedIn: 'root',

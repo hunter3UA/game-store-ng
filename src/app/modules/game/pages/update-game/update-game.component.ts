@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditGameAdapter } from 'src/app/modules/core/adapters/game.adapters/edit.game.adapter';
 import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
-import { Game } from 'src/app/modules/core/api-models/game/game';
+import { GameModelModel } from 'src/app/modules/core/api-models/game/game.model';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
@@ -16,7 +16,7 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class UpdateGameComponent implements OnInit {
   key: string;
-  gameToEdit: Game;
+  gameToEdit: GameModelModel;
   gameComponentModel: GameComponentModel;
   editedGame: EditGameModel;
 
@@ -31,7 +31,7 @@ export class UpdateGameComponent implements OnInit {
   ) {
     this.key = this.route.snapshot.params['key'];
     this.gameComponentModel = new GameComponentModel();
-    this.gameToEdit = new Game();
+    this.gameToEdit = new GameModelModel();
     this.editedGame = new EditGameModel();
   }
 

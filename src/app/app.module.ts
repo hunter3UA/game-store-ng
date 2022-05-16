@@ -25,11 +25,11 @@ import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor'
   ],
   exports: [],
   providers: [
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ErrorInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [RootComponent],
