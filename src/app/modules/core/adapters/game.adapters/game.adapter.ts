@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Game } from '../api-models/game/game';
-import { Adapter } from './adapter';
+import { Game } from '../../api-models/game/game';
+import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
 export class GameAdapter implements Adapter<Game> {

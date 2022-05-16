@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { GameAdapter } from 'src/app/modules/core/adapters/game.adapter';
+import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { environment } from 'src/environments/environment';
 import { AddGameModel } from '../../../core/api-models/game/add.game.model';
@@ -41,7 +41,10 @@ export class GameService {
       .pipe(map((item: any) => this.gameAdapter.adapt(item)));
   }
 
-  updateGame(updateGameModel: any) {}
+  updateGame(updateGameModel: any): Observable<any> {
+    let url = `${environment.apiBaseUrl}games/update`;
+    return this.http.put(url, updateGameModel);
+  }
 
   downloadGame(gameKey: string): Observable<any> {
     let url = `${environment.apiBaseUrl}games/${gameKey}/download`;

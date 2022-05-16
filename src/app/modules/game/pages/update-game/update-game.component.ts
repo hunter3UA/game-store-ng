@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { EditGameAdapter } from 'src/app/modules/core/adapters/game.adapters/edit.game.adapter';
 import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
 import { Game } from 'src/app/modules/core/api-models/game/game';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
@@ -15,8 +16,9 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class UpdateGameComponent implements OnInit {
   key: string;
-  gameToEdit: any;
+  gameToEdit: Game;
   gameComponentModel: GameComponentModel;
+  editedGame: EditGameModel;
 
   constructor(
     private gameService: GameService,
@@ -24,11 +26,13 @@ export class UpdateGameComponent implements OnInit {
     private genreService: GenreService,
     private publisherService: PublisherService,
     private route: ActivatedRoute,
-    private errorService: ErrorHandlerService
+    private errorService: ErrorHandlerService,
+    private editGameAdapter: EditGameAdapter
   ) {
     this.key = this.route.snapshot.params['key'];
     this.gameComponentModel = new GameComponentModel();
-    this.gameToEdit = new EditGameModel();
+    this.gameToEdit = new Game();
+    this.editedGame = new EditGameModel();
   }
 
   ngOnInit(): void {
@@ -39,20 +43,29 @@ export class UpdateGameComponent implements OnInit {
   }
 
   updateGame() {
-    console.log(this.gameToEdit);
+    this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
+    this.editedGame.publisherId = this.gameComponentModel.selectedPublisher.id;
+    this.editedGame.genres = this.gameToEdit.genres.map((g) => g.id);
+    this.editedGame.platforms = this.gameToEdit.platformTypes.map((p) => p.id);
+    this.gameService.updateGame(this.editedGame).subscribe(() => {
+      this.loadGame();
+    });
   }
 
   loadGame() {
     this.gameService.getGameByKey(this.key).subscribe({
       next: (data) => {
         this.gameToEdit = data;
-        this.gameComponentModel.selectedGenres = this.gameToEdit.genres;
-        this.gameComponentModel.selectedPlatforms = this.gameToEdit.platforms;
-        this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
+        if (this.gameToEdit.publisher) {
+          this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
+        } else {
+          this.gameComponentModel.selectedPublisher.id = null;
+        }
       },
       error: (error) => this.errorService.handleError(error),
     });
   }
+
   loadPlaftorms() {
     this.platformService
       .getAllPlatforms()

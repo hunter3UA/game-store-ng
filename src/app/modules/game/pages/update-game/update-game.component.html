@@ -32,8 +32,8 @@
       </ng-multiselect-dropdown>
     </div>
     <div class="form-group">
-      <select name="list" *ngIf="gameToEdit!=null" [(ngModel)]="gameComponentModel.selectedPublisher" #publishersddl>
-        <option [value]="null">None</option>
+      <select name="list" [(ngModel)]="gameComponentModel.selectedPublisher.id">
+        <option [value]="null" selected>None</option>
         <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher?.id">
           {{publisher.companyName}}</option>
       </select>
