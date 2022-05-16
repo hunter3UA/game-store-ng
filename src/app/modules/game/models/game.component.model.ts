@@ -7,10 +7,12 @@ export class GameComponentModel {
     this.platforms = new Array<PlatformType>();
     this.selectedGenres = new Array<any>();
     this.selectedPlatforms = Array<any>();
+    this.selectedPublisher = {};
   }
   genres: Array<Genre>;
   platforms: Array<PlatformType>;
   publishers: Array<any>;
   selectedGenres: Array<any>;
   selectedPlatforms: Array<any>;
+  selectedPublisher: any;
 }

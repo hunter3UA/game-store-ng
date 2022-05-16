@@ -1,3 +1,7 @@
+import { Genre } from '../genre/genre';
+import { PlatformType } from '../platforms/platform.type';
+import { Publisher } from '../publisher/publisher';
+
 export class EditGameModel {
   public id: number;
   public name: string;
@@ -6,6 +10,13 @@ export class EditGameModel {
   public price: number;
   public discontinued: boolean;
   public unitsInStock: number;
-  public genresId: Array<number> = new Array();
-  public platformsId: Array<number> = new Array();
+  public genres: Array<Genre> | Array<number>;
+  public platforms: Array<PlatformType> | Array<number>;
+  public publisherId: Publisher;
+
+  constructor() {
+    this.genres = new Array<number>();
+    this.platforms = new Array<number>();
+    this.publisherId = new Publisher();
+  }
 }

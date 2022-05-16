@@ -48,6 +48,7 @@ export class UpdateGameComponent implements OnInit {
         this.gameToEdit = data;
         this.gameComponentModel.selectedGenres = this.gameToEdit.genres;
         this.gameComponentModel.selectedPlatforms = this.gameToEdit.platforms;
+        this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
       },
       error: (error) => this.errorService.handleError(error),
     });

@@ -26,7 +26,6 @@ export class AllGamesComponent implements OnInit {
   loadAllGames() {
     this.gameService.getAllGames().subscribe({
       next: (data) => (this.games = data),
-      error: (error) => this.erroHandler.handleError(error),
     });
   }
 

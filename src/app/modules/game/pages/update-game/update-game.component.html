@@ -28,14 +28,13 @@
     </div>
     <div class="form-group">
       <ng-multiselect-dropdown #genresddl name="ddlGenres" [data]="gameComponentModel.genres"
-        [(ngModel)]="gameComponentModel.selectedGenres"
-        [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
+        [(ngModel)]="gameToEdit.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
       </ng-multiselect-dropdown>
     </div>
     <div class="form-group">
-      <select name="list" [(ngModel)]="gameToEdit.publisher.id" #publishersddl>
+      <select name="list" *ngIf="gameToEdit!=null" [(ngModel)]="gameComponentModel.selectedPublisher" #publishersddl>
         <option [value]="null">None</option>
-        <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
+        <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher?.id">
           {{publisher.companyName}}</option>
       </select>
     </div>
