@@ -6,6 +6,13 @@
         name="genreName">
       <p *ngIf="genreName.invalid && genreName.touched">Enter name of genre</p>
     </div>
+    <div class="form-control">
+      <select name="list" [(ngModel)]="genreToEdit.parentGenreId">
+        <option [ngValue]="null" [selected]="genreToEdit.parentGenreId">None</option>
+        <option name="publishers" *ngFor="let genre of allGenres" [ngValue]="genre.id">
+          {{genre.name}}</option>
+      </select>
+    </div>
     <input type="button" [disabled]="!form.valid" class="btn btn-success" (click)="updateGenre()" value="Update genre">
   </div>
 </form>

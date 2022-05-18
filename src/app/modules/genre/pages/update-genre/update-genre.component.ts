@@ -11,6 +11,7 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
 export class UpdateGenreComponent implements OnInit {
   genreId: number;
   genreToEdit: GenreModel;
+  allGenres: Array<GenreModel>;
   constructor(
     private genreService: GenreService,
     private route: ActivatedRoute,
@@ -22,13 +23,23 @@ export class UpdateGenreComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadGenre();
+    this.loadAllGenres();
   }
 
   loadGenre() {
     this.genreService.getGenre(this.genreId).subscribe((data) => {
       this.genreToEdit = data;
+      if (!this.genreToEdit.parentGenreId)
+        this.genreToEdit.parentGenreId = null;
     });
   }
+
+  loadAllGenres() {
+    this.genreService.getAllGenres().subscribe((data) => {
+      this.allGenres = data.filter((el) => el.id != this.genreId);
+    });
+  }
+
   updateGenre() {
     this.genreService.updateGenre(this.genreToEdit).subscribe(() => {
       this.router.navigate(['/genres']);

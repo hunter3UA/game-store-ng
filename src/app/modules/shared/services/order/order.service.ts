@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
@@ -20,12 +20,13 @@ export class OrderService {
   addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
     let url = `${environment.apiBaseUrl}games/${gameKey}/buy`;
     return this.http
-      .post(url, 1)
+      .post(url, +sessionStorage.getItem('id'))
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
   }
 
   getOrder(): Observable<OrderModel> {
-    let url = `${environment.apiBaseUrl}basket`;
+    let id = sessionStorage.getItem('id');
+    let url = `${environment.apiBaseUrl}basket/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));

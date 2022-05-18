@@ -3,23 +3,25 @@
   <p>Key:{{game.key}}</p>
   <p>Price:{{game.price}}</p>
   <p>unitsInStock:{{game.unitsInStock}}</p>
-  <div>
-    <ul>Genres
+  <div>Genres:
+    <ul>
       <li *ngFor="let genre of game?.genres">
         {{genre.name}}
       </li>
     </ul>
+    <div *ngIf="game.genres.length==0">Without genres</div>
   </div>
-  <div>
+  <div> Platforms
     <ul>
-      Platforms
       <li *ngFor="let platform of game.platformTypes">
         {{platform?.type}}
       </li>
     </ul>
-
+    <div *ngIf="game.platformTypes.length==0">Without platforms</div>
   </div>
-  <p *ngIf="game.publisher">Publisher:<a
-      [routerLink]="['/publishers',game.publisher.id]">{{game.publisher.companyName}}</a></p>
+  <p>Publisher:
+    <a *ngIf="game.publisher" [routerLink]="['/publishers',game.publisher.id]">{{game.publisher.companyName}}</a>
+    <a *ngIf="!game.publisher" #unknown>Unknown</a>
+  </p>
   <a class="btn btn-success" (click)="downloadGame()">Download game</a>
 </div>
