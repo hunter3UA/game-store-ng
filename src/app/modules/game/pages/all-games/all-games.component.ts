@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameModelModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 import { GameService } from '../../../shared/services/game/game.service';
 
@@ -9,7 +9,7 @@ import { GameService } from '../../../shared/services/game/game.service';
   templateUrl: './all-games.component.html',
 })
 export class AllGamesComponent implements OnInit {
-  public games: Array<GameModelModel>;
+  public games: Array<GameModel>;
 
   constructor(
     private gameService: GameService,

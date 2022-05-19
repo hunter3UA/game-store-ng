@@ -56,6 +56,10 @@ export class AddGameComponent implements OnInit {
       error: (error) => this.errorHandler.handleError(error),
     });
   }
+  keyDown(val) {
+    if (val.key === '-') return false;
+    return true;
+  }
 
   addGame() {
     this.gameModel.platformsId = this.gameComponentModel.selectedPlatforms.map(

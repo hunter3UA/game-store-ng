@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
-import { GameModelModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
 import { environment } from 'src/environments/environment';
 import { AddGameModel } from '../../../core/api-models/game/add.game.model';
 
@@ -18,7 +18,7 @@ export class GameService {
     return this.http.delete(url);
   }
 
-  getAllGames(): Observable<GameModelModel[]> {
+  getAllGames(): Observable<GameModel[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)
@@ -27,14 +27,14 @@ export class GameService {
       );
   }
 
-  getGameByKey(key: string): Observable<GameModelModel> {
+  getGameByKey(key: string): Observable<GameModel> {
     let url = `${environment.apiBaseUrl}/game/${key}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.gameAdapter.adapt(data)));
   }
 
-  addGame(addGameModel: AddGameModel): Observable<GameModelModel> {
+  addGame(addGameModel: AddGameModel): Observable<GameModel> {
     let url = `${environment.apiBaseUrl}/games/new`;
     return this.http
       .post(url, addGameModel)

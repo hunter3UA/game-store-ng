@@ -1,4 +1,4 @@
-import { GameModelModel } from '../game/game.model';
+import { GameModel } from '../game/game.model';
 
 export class OrderDetailsModel {
   id: number;
@@ -7,6 +7,6 @@ export class OrderDetailsModel {
   price: number;
   discount: number;
   orderId: number;
-  game: GameModelModel;
+  game: GameModel;
   total: number;
 }

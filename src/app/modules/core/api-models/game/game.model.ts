@@ -2,7 +2,7 @@ import { GenreModel } from '../genre/genre.model';
 import { PlatformTypeModel } from '../platforms/platform.type.model';
 import { PublisherModel } from '../publisher/publisher.model';
 
-export class GameModelModel {
+export class GameModel {
   public id: number;
   public name: string;
   public key: string;

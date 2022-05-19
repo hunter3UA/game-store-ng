@@ -7,7 +7,7 @@
   </div>
   <div class="form-group">
     <label for="gamePrice">Price</label>
-    <input class="form-control" id="gamePrice" type="number" #gamePrice onKeyDown="return false" min="1" required
+    <input class="form-control" id="gamePrice" type="number" #gamePrice (keydown)="keyDown($event)" min="1" required
       [(ngModel)]="gameModel.price" name="inputPrice">
     <p *ngIf="gamePrice.invalid && gamePrice.touched">Enter price </p>
   </div>
@@ -18,7 +18,7 @@
   </div>
   <div class="form-group">
     <label for="unitsOfGameInStock">Units in stock</label>
-    <input class="form-control" id="unitsOfGameInStock" onKeyDown="return false" type="number" min="0"
+    <input class="form-control" id="unitsOfGameInStock" type="number" min="0" (keydown)="keyDown($event)"
       [(ngModel)]="gameModel.unitsInStock" name="inputUnitsOfGameInStock">
   </div>
   <div class="form-group">

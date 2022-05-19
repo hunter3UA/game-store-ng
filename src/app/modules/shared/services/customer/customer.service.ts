@@ -9,14 +9,14 @@ export class CustomerService {
 
   login() {
     let id = Math.random() * 100;
-    sessionStorage.setItem('id', Math.round(id).toString());
+    this.cookieService.set('id', Math.round(id).toString(), 1 / 24);
   }
 
   isAuthorized(): boolean {
     let id: any = null;
-    id = sessionStorage.getItem('id');
+    id = this.cookieService.get('id');
     console.log(id);
-    if (id === null) {
+    if (id === '') {
       return false;
     }
     return true;

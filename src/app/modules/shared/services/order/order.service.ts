@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderItemAdapter } from 'src/app/modules/core/adapters/order.item.adapter';
@@ -14,18 +15,19 @@ export class OrderService {
   constructor(
     private http: HttpClient,
     private orderAdapter: OrderAdapter,
-    private orderitemAdapter: OrderItemAdapter
+    private orderitemAdapter: OrderItemAdapter,
+    private cookieService: CookieService
   ) {}
 
   addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
     let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
     return this.http
-      .post(url, +sessionStorage.getItem('id'))
+      .post(url, +this.cookieService.get('id'))
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
   }
 
   getOrder(): Observable<OrderModel> {
-    let id = sessionStorage.getItem('id');
+    let id = this.cookieService.get('id');
     let url = `${environment.apiBaseUrl}/basket/${id}`;
     return this.http
       .get(url)

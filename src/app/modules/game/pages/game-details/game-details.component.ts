@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GameModelModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
@@ -9,7 +9,7 @@ import { GameService } from 'src/app/modules/shared/services/game/game.service';
   templateUrl: './game-details.component.html',
 })
 export class GameDetailsComponent implements OnInit {
-  public game: GameModelModel;
+  public game: GameModel;
   public key: string;
   constructor(
     private gameService: GameService,
@@ -17,7 +17,7 @@ export class GameDetailsComponent implements OnInit {
     private errorHandler: ErrorHandlerService
   ) {
     this.key = this.route.snapshot.params['key'];
-    this.game = new GameModelModel();
+    this.game = new GameModel();
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class GameDetailsComponent implements OnInit {
   }
   downloadGame() {
     this.gameService.downloadGame(this.key).subscribe((response) => {
-      let fileName = response.headers.get('content-disposition');
+      let fileName = this.game.name;
       let blob: Blob = response.body as Blob;
       let a = document.createElement('a');
       a.download = fileName;
