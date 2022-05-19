@@ -18,7 +18,7 @@ export class OrderService {
   ) {}
 
   addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
-    let url = `${environment.apiBaseUrl}games/${gameKey}/buy`;
+    let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
     return this.http
       .post(url, +sessionStorage.getItem('id'))
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
@@ -26,18 +26,18 @@ export class OrderService {
 
   getOrder(): Observable<OrderModel> {
     let id = sessionStorage.getItem('id');
-    let url = `${environment.apiBaseUrl}basket/${id}`;
+    let url = `${environment.apiBaseUrl}/basket/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
   removeOrderItem(itemId: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}basket/details/remove/${itemId}`;
+    let url = `${environment.apiBaseUrl}/basket/details/remove/${itemId}`;
     return this.http.delete(url);
   }
   changeQuantity(itemId: number, quantity: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}basket/details/update`;
+    let url = `${environment.apiBaseUrl}/basket/details/update`;
     return this.http.put(url, { orderDetailsId: itemId, quantity: quantity });
   }
 }

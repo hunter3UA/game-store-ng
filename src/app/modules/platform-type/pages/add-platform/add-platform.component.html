@@ -5,5 +5,5 @@
       [(ngModel)]="platformToAdd.type">
     <p *ngIf="platformType.invalid && platformType.touched">Enter platform type</p>
   </div>
-  <input type="button" [disabled]="!form.valid" class="btn btn-success" (click)="addPlatform()" value="Add type">
+  <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addPlatform()" value="Add type">
 </form>

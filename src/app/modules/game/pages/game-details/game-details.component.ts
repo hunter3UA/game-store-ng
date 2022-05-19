@@ -9,8 +9,8 @@ import { GameService } from 'src/app/modules/shared/services/game/game.service';
   templateUrl: './game-details.component.html',
 })
 export class GameDetailsComponent implements OnInit {
-  game: GameModelModel;
-  key: string;
+  public game: GameModelModel;
+  public key: string;
   constructor(
     private gameService: GameService,
     private route: ActivatedRoute,

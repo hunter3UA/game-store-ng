@@ -20,7 +20,7 @@
             <input class="form-control" type="text" (ngModel)="newComment.body" #body name="body">
           </div>
           <div>
-            <input type="button" (click)="addReply(name.value,body.value, comment.id)" value="Add reply">
+            <input type="submit" (click)="addReply(name.value,body.value, comment.id)" value="Add reply">
           </div>
         </form>
       </div>

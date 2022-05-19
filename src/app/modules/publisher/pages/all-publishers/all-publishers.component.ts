@@ -7,7 +7,7 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './all-publishers.component.html',
 })
 export class AllPublishersComponent implements OnInit {
-  publishers: Array<PublisherModel>;
+  public publishers: Array<PublisherModel>;
 
   constructor(private publisherService: PublisherService) {
     this.publishers = new Array<PublisherModel>();

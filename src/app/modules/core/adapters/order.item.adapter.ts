@@ -14,11 +14,3 @@ export class OrderItemAdapter implements Adapter<OrderDetailsModel> {
     return orderDetails;
   }
 }
-/**id: number;
-  quantity: number;
-  customerId: number;
-  price: number;
-  discount: number;
-  orderId: number;
-  game: Game;
-  total: number; */

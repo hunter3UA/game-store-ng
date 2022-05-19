@@ -15,10 +15,10 @@ import { GameComponentModel } from '../../models/game.component.model';
   templateUrl: './update-game.component.html',
 })
 export class UpdateGameComponent implements OnInit {
-  key: string;
-  gameToEdit: GameModelModel;
-  gameComponentModel: GameComponentModel;
-  editedGame: EditGameModel;
+  public key: string;
+  public gameToEdit: GameModelModel;
+  public gameComponentModel: GameComponentModel;
+  public editedGame: EditGameModel;
 
   constructor(
     private gameService: GameService,

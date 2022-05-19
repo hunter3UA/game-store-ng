@@ -9,9 +9,9 @@ import { Comment } from '../../../core/api-models/comment/comment.model';
   templateUrl: './comments-of-game.component.html',
 })
 export class CommentsOfGameComponent implements OnInit {
-  gamekey: string;
-  comments: Array<Comment>;
-  newComment: AddCommentModel;
+  public gamekey: string;
+  public comments: Array<Comment>;
+  public newComment: AddCommentModel;
   constructor(
     private route: ActivatedRoute,
     private commentService: CommentService

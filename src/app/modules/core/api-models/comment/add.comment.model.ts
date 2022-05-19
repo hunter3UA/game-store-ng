@@ -1,5 +1,5 @@
 export class AddCommentModel {
-  name: string;
-  body: string;
-  parentCommentId: number;
+  public name: string;
+  public body: string;
+  public parentCommentId: number;
 }

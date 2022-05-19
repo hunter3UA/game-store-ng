@@ -7,7 +7,7 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './basket.component.html',
 })
 export class BasketComponent implements OnInit {
-  currentOrder: OrderModel;
+  public currentOrder: OrderModel;
   constructor(private orderService: OrderService) {
     this.currentOrder = new OrderModel();
   }

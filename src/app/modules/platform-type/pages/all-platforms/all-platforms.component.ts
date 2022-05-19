@@ -7,7 +7,7 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './all-platforms.component.html',
 })
 export class AllPlatformsComponent implements OnInit {
-  platforms: Array<PlatformTypeModel>;
+  public platforms: Array<PlatformTypeModel>;
   constructor(private platformService: PlatformService) {
     this.platforms = new Array<PlatformTypeModel>();
   }

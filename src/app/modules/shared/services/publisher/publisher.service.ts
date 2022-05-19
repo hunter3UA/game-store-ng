@@ -16,14 +16,14 @@ export class PublisherService {
   ) {}
 
   addPublisher(publisherToAdd: AddPublisherModel): Observable<PublisherModel> {
-    let url = `${environment.apiBaseUrl}publishers/new`;
+    let url = `${environment.apiBaseUrl}/publishers/new`;
     return this.http
       .post(url, publisherToAdd)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
 
   getAllPublishers(): Observable<PublisherModel[]> {
-    let url = `${environment.apiBaseUrl}publishers`;
+    let url = `${environment.apiBaseUrl}/publishers`;
     return this.http
       .get(url)
       .pipe(
@@ -34,7 +34,7 @@ export class PublisherService {
   }
 
   getPublisher(id: number): Observable<PublisherModel> {
-    let url = `${environment.apiBaseUrl}publishers/${id}`;
+    let url = `${environment.apiBaseUrl}/publishers/${id}`;
     return this.http
       .get(url)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
@@ -42,14 +42,14 @@ export class PublisherService {
   updatePublisher(
     publisherToUpdate: PublisherModel
   ): Observable<PublisherModel> {
-    let url = `${environment.apiBaseUrl}publishers/update`;
+    let url = `${environment.apiBaseUrl}/publishers/update`;
     return this.http
       .put(url, publisherToUpdate)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
 
   removePublisher(id: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}publishers/remove/${id}`;
+    let url = `${environment.apiBaseUrl}/publishers/remove/${id}`;
     return this.http.delete(url);
   }
 }

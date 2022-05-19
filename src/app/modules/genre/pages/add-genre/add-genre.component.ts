@@ -9,8 +9,9 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
   templateUrl: './add-genre.component.html',
 })
 export class AddGenreComponent implements OnInit {
-  genreToAdd: AddGenreModel;
-  allGenres: Array<GenreModel>;
+  public genreToAdd: AddGenreModel;
+  public allGenres: Array<GenreModel>;
+
   constructor(private genreService: GenreService, private router: Router) {
     this.allGenres = new Array<GenreModel>();
     this.genreToAdd = new AddGenreModel();

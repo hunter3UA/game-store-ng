@@ -13,6 +13,6 @@
         <option *ngFor="let genre of allGenres" value="{{genre.id}}">{{genre.name}}</option>
       </select>
     </div>
-    <input type="button" [disabled]="!form.valid" class="btn btn-success" (click)="addGenre()" value="Add genre">
+    <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addGenre()" value="Add genre">
   </div>
 </form>

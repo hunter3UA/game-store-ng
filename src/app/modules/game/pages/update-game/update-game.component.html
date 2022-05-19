@@ -1,43 +1,41 @@
-<div>
-  <form class="col-4" #form="ngForm">
-    <div class="form-group">
-      <label for="gameName">Name</label>
-      <input class="form-control" [(ngModel)]="gameToEdit.name" name="inputName" required #nameOfGame="ngModel">
-    </div>
-    <div class="form-group">
-      <label for="gamePrice">Price</label>
-      <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
-    </div>
-    <div class="form-group">
-      <label for="gameDiscounted">Discounted</label>
-      <input class="form-control" type="checkbox" [(ngModel)]="gameToEdit.discontinued" name="chbDiscounted">
-    </div>
-    <div class="form-group">
-      <label for="unitsOfGameInStock">Units in stock</label>
-      <input class="form-control" type="number" [(ngModel)]="gameToEdit.unitsInStock" name="inputUnitsOfGameInStock">
-    </div>
-    <div class="form-group">
-      <label for="gameDescription">Description</label>
-      <textarea class="form-control" rows="3" minlength="10" [(ngModel)]="gameToEdit.description"
-        name="inputDescription"></textarea>
-    </div>
-    <div class="form-group">
-      <ng-multiselect-dropdown #ddlPlatforms name="ddlPlatforms" [data]="gameComponentModel.platforms"
-        [(ngModel)]="gameToEdit.platformTypes" [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
-      </ng-multiselect-dropdown>
-    </div>
-    <div class="form-group">
-      <ng-multiselect-dropdown #genresddl name="ddlGenres" [data]="gameComponentModel.genres"
-        [(ngModel)]="gameToEdit.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
-      </ng-multiselect-dropdown>
-    </div>
-    <div class="form-group">
-      <select name="list" [(ngModel)]="gameComponentModel.selectedPublisher.id">
-        <option [ngValue]="null" selected>None</option>
-        <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher?.id">
-          {{publisher.companyName}}</option>
-      </select>
-    </div>
-    <input type="button" (click)="updateGame()" value="Update game">
-  </form>
-</div>
+<form class="col-4" #form="ngForm">
+  <div class="form-group">
+    <label for="gameName">Name</label>
+    <input class="form-control" [(ngModel)]="gameToEdit.name" name="inputName" required #nameOfGame="ngModel">
+  </div>
+  <div class="form-group">
+    <label for="gamePrice">Price</label>
+    <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
+  </div>
+  <div class="form-group">
+    <label for="gameDiscounted">Discounted</label>
+    <input class="form-control" type="checkbox" [(ngModel)]="gameToEdit.discontinued" name="chbDiscounted">
+  </div>
+  <div class="form-group">
+    <label for="unitsOfGameInStock">Units in stock</label>
+    <input class="form-control" type="number" [(ngModel)]="gameToEdit.unitsInStock" name="inputUnitsOfGameInStock">
+  </div>
+  <div class="form-group">
+    <label for="gameDescription">Description</label>
+    <textarea class="form-control" rows="3" minlength="10" [(ngModel)]="gameToEdit.description"
+      name="inputDescription"></textarea>
+  </div>
+  <div class="form-group">
+    <ng-multiselect-dropdown #ddlPlatforms name="ddlPlatforms" [data]="gameComponentModel.platforms"
+      [(ngModel)]="gameToEdit.platformTypes" [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="form-group">
+    <ng-multiselect-dropdown #genresddl name="ddlGenres" [data]="gameComponentModel.genres"
+      [(ngModel)]="gameToEdit.genres" [settings]="{idField: 'id',textField: 'name', enableCheckAll: false}">
+    </ng-multiselect-dropdown>
+  </div>
+  <div class="form-group">
+    <select name="list" [(ngModel)]="gameComponentModel.selectedPublisher.id">
+      <option [ngValue]="null" selected>None</option>
+      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher?.id">
+        {{publisher.companyName}}</option>
+    </select>
+  </div>
+  <input type="submit" (click)="updateGame()" value="Update game">
+</form>

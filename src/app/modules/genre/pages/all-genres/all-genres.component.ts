@@ -7,7 +7,7 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
   templateUrl: './all-genres.component.html',
 })
 export class AllGenresComponent implements OnInit {
-  genres: Array<GenreModel>;
+  public genres: Array<GenreModel>;
 
   constructor(private genreService: GenreService) {}
 

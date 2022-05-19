@@ -6,8 +6,8 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   selector: 'app-add-publisher',
   templateUrl: './add-publisher.component.html',
 })
-export class AddPublisherComponent implements OnInit {
-  publisherToAdd: any;
+export class AddPublisherComponent {
+  public publisherToAdd: any;
 
   constructor(
     private publisherService: PublisherService,
@@ -15,8 +15,6 @@ export class AddPublisherComponent implements OnInit {
   ) {
     this.publisherToAdd = {};
   }
-
-  ngOnInit(): void {}
 
   addPublisher() {
     console.log(this.publisherToAdd);

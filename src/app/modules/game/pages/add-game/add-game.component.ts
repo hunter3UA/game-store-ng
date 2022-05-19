@@ -13,9 +13,8 @@ import { GameComponentModel } from '../../models/game.component.model';
   templateUrl: './add-game.component.html',
 })
 export class AddGameComponent implements OnInit {
-  gameComponentModel: GameComponentModel;
-
-  gameModel: AddGameModel;
+  public gameComponentModel: GameComponentModel;
+  public gameModel: AddGameModel;
 
   constructor(
     private genreService: GenreService,
@@ -27,6 +26,8 @@ export class AddGameComponent implements OnInit {
   ) {
     this.gameComponentModel = new GameComponentModel();
     this.gameModel = new AddGameModel();
+    this.gameModel.price = 1;
+    this.gameModel.unitsInStock = 0;
   }
 
   ngOnInit(): void {

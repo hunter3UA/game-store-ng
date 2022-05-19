@@ -8,8 +8,8 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './update-platform.component.html',
 })
 export class UpdatePlatformComponent implements OnInit {
-  platformId: number;
-  platformToEdit: PlatformTypeModel;
+  public platformId: number;
+  public platformToEdit: PlatformTypeModel;
   constructor(
     private route: ActivatedRoute,
     private router: Router,

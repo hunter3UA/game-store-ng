@@ -14,12 +14,12 @@ export class GameService {
   constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
 
   deleteGame(id: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}games/remove/${id}`;
+    let url = `${environment.apiBaseUrl}/games/remove/${id}`;
     return this.http.delete(url);
   }
 
   getAllGames(): Observable<GameModelModel[]> {
-    let url = `${environment.apiBaseUrl}games`;
+    let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)
       .pipe(
@@ -28,26 +28,26 @@ export class GameService {
   }
 
   getGameByKey(key: string): Observable<GameModelModel> {
-    let url = `${environment.apiBaseUrl}game/${key}`;
+    let url = `${environment.apiBaseUrl}/game/${key}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.gameAdapter.adapt(data)));
   }
 
   addGame(addGameModel: AddGameModel): Observable<GameModelModel> {
-    let url = `${environment.apiBaseUrl}games/new`;
+    let url = `${environment.apiBaseUrl}/games/new`;
     return this.http
       .post(url, addGameModel)
       .pipe(map((item: any) => this.gameAdapter.adapt(item)));
   }
 
   updateGame(updateGameModel: any): Observable<any> {
-    let url = `${environment.apiBaseUrl}games/update`;
+    let url = `${environment.apiBaseUrl}/games/update`;
     return this.http.put(url, updateGameModel);
   }
 
   downloadGame(gameKey: string): Observable<any> {
-    let url = `${environment.apiBaseUrl}games/${gameKey}/download`;
+    let url = `${environment.apiBaseUrl}/games/${gameKey}/download`;
     return this.http.get(url, {
       headers: new HttpHeaders({ 'Access-Control-Expose-Headers': '*' }),
       observe: 'response',

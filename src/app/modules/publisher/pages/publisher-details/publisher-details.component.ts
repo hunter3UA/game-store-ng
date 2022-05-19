@@ -8,8 +8,8 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './publisher-details.component.html',
 })
 export class PublisherDetailsComponent implements OnInit {
-  publisherId: number;
-  currentPublisher: PublisherModel;
+  public publisherId: number;
+  public currentPublisher: PublisherModel;
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute

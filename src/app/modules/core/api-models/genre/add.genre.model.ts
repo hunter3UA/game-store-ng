@@ -1,6 +1,6 @@
 export class AddGenreModel {
-  name: string;
-  parentGenreId?: number;
+  public name: string;
+  public parentGenreId?: number;
   constructor() {
     this.parentGenreId = null;
   }

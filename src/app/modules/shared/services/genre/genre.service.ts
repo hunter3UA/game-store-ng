@@ -13,28 +13,28 @@ export class GenreService {
   constructor(private http: HttpClient, private genreAdapter: GenreAdapter) {}
 
   addGenre(genreToAdd: AddGenreModel): Observable<any> {
-    let url = `${environment.apiBaseUrl}genres/new`;
+    let url = `${environment.apiBaseUrl}/genres/new`;
     return this.http
       .post(url, genreToAdd)
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
   getGenre(id: number): Observable<GenreModel> {
-    let url = `${environment.apiBaseUrl}genres/${id}`;
+    let url = `${environment.apiBaseUrl}/genres/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
   updateGenre(genreToUpdate: GenreModel): Observable<any> {
-    let url = `${environment.apiBaseUrl}genres/update`;
+    let url = `${environment.apiBaseUrl}/genres/update`;
     return this.http
       .put(url, genreToUpdate)
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
   getAllGenres(): Observable<GenreModel[]> {
-    let url = `${environment.apiBaseUrl}genres`;
+    let url = `${environment.apiBaseUrl}/genres`;
     return this.http
       .get(url)
       .pipe(
@@ -43,7 +43,7 @@ export class GenreService {
   }
 
   removeGenre(id: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}genres/remove/${id}`;
+    let url = `${environment.apiBaseUrl}/genres/remove/${id}`;
     return this.http.delete(url);
   }
 }

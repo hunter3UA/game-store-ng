@@ -5,6 +5,12 @@ import { Comment } from '../api-models/comment/comment.model';
 @Injectable({ providedIn: 'root' })
 export class CommentAdapter implements Adapter<Comment> {
   adapt(item: any): Comment {
-    return new Comment(item.id, item.name, item.body, item.answers);
+    let comment = new Comment();
+    comment.id = item.id;
+    comment.name = item.name;
+    comment.body = item.body;
+    comment.answers = item.answers;
+
+    return comment;
   }
 }

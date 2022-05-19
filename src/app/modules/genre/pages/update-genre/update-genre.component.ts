@@ -9,9 +9,9 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
   templateUrl: './update-genre.component.html',
 })
 export class UpdateGenreComponent implements OnInit {
-  genreId: number;
-  genreToEdit: GenreModel;
-  allGenres: Array<GenreModel>;
+  public genreId: number;
+  public genreToEdit: GenreModel;
+  public allGenres: Array<GenreModel>;
   constructor(
     private genreService: GenreService,
     private route: ActivatedRoute,

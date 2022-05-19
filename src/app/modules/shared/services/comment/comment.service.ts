@@ -17,7 +17,7 @@ export class CommentService {
 
   getComments(gameKey: string): Observable<Comment[]> {
     console.log(gameKey);
-    let url = `${environment.apiBaseUrl}games/${gameKey}/comments`;
+    let url = `${environment.apiBaseUrl}/games/${gameKey}/comments`;
     return this.http
       .get(url)
       .pipe(
@@ -28,7 +28,7 @@ export class CommentService {
   }
 
   addComment(gameKey: string, comment: AddCommentModel): Observable<Comment> {
-    let url = `${environment.apiBaseUrl}games/${gameKey}/newcomment`;
+    let url = `${environment.apiBaseUrl}/games/${gameKey}/newcomment`;
     return this.http
       .post(url, comment)
       .pipe(map((data: any) => this.commentAdapter.adapt(data)));
