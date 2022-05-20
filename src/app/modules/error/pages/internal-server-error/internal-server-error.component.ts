@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-internal-server-error',
   templateUrl: './internal-server-error.component.html',
 })
-export class InternalServerErrorComponent implements OnInit {
+export class InternalServerErrorComponent {
   constructor() {}
-
-  ngOnInit(): void {}
 }

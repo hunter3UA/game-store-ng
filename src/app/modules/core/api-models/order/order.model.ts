@@ -1,9 +1,9 @@
 import { OrderDetailsModel } from './oreder.details.model';
 
 export class OrderModel {
-  id: number;
-  customerId: number;
-  orderDate: string;
-  orderDetails: Array<OrderDetailsModel>;
-  totalSum: number;
+  public id: number;
+  public customerId: number;
+  public orderDate: string;
+  public orderDetails: Array<OrderDetailsModel>;
+  public totalSum: number;
 }

@@ -1,25 +1,20 @@
-<p>add-publisher works!</p>
-<div>
-  <form class="col-4" #form="ngForm">
-    <div class="form-group">
-      <label>Company name</label>
-      <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToAdd.companyName"
-        name="inputCompanyName">
-      <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
-    </div>
-    <div class="form-group">
-      <label>HomePage</label>
-      <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToAdd.homePage"
-        name="inputHomePage">
-      <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToAdd.description"
-        name="textareaDescription"></textarea>
-      <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
-    </div>
-    <button class="btn btn-success" [disabled]="!form.valid" (click)="addPublisher()">Add publisher</button>
-
-  </form>
-</div>
+<form class="col-4" #form="ngForm">
+  <div class="form-group">
+    <label>Company name</label>
+    <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToAdd.companyName"
+      name="inputCompanyName">
+    <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
+  </div>
+  <div class="form-group">
+    <label>HomePage</label>
+    <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToAdd.homePage" name="inputHomePage">
+    <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToAdd.description"
+      name="textareaDescription"></textarea>
+    <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
+  </div>
+  <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="addPublisher()" value="Add publisher">
+</form>

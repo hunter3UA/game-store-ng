@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EditGenreModel } from 'src/app/modules/core/api-models/genre/edit.genre.model';
 import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 

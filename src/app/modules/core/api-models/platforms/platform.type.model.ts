@@ -1,4 +1,4 @@
 export class PlatformTypeModel {
-  id: number;
-  type: string;
+  public id: number;
+  public type: string;
 }

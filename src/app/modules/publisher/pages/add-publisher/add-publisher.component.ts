@@ -17,7 +17,6 @@ export class AddPublisherComponent {
   }
 
   addPublisher() {
-    console.log(this.publisherToAdd);
     this.publisherService
       .addPublisher(this.publisherToAdd)
       .subscribe((response) => {

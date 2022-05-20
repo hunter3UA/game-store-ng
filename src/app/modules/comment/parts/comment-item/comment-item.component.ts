@@ -8,7 +8,7 @@ import { Comment } from '../../../core/api-models/comment/comment.model';
   selector: 'app-comment-item',
   templateUrl: './comment-item.component.html',
 })
-export class CommentItemComponent implements OnInit {
+export class CommentItemComponent {
   @Input() comments: Array<Comment>;
 
   @Input() parentComment: Comment;
@@ -17,17 +17,11 @@ export class CommentItemComponent implements OnInit {
 
   newComment: AddCommentModel;
 
-  constructor(
-    private commentService: CommentService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
+  constructor(private commentService: CommentService, private router: Router) {
     this.newComment = new AddCommentModel();
     this.comments = new Array<Comment>();
     this.gameKey = '';
   }
-
-  ngOnInit(): void {}
 
   addReply(name: string, body: string, parentId: number) {
     this.newComment.name = name;

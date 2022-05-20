@@ -1,6 +1,6 @@
 export class AddPublisherModel {
-  id: number;
-  companyName: string;
-  description: string;
-  homePage: string;
+  public id: number;
+  public companyName: string;
+  public description: string;
+  public homePage: string;
 }

@@ -1,24 +1,22 @@
-<div>
-  <form class="col-4" #form="ngForm">
-    <div class="form-group">
-      <label>Company name</label>
-      <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToEdit.companyName"
-        name="inputCompanyName">
-      <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
-    </div>
-    <div class="form-group">
-      <label>HomePage</label>
-      <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToEdit.homePage"
-        name="inputHomePage">
-      <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
-    </div>
-    <div class="form-group">
-      <label>Description</label>
-      <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToEdit.description"
-        name="textareaDescription"></textarea>
-      <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
-    </div>
-    <button class="btn btn-success" [disabled]="!form.valid" (click)="updatePublisher()">Update publisher</button>
-
-  </form>
-</div>
+<form class="col-4" #form="ngForm">
+  <div class="form-group">
+    <label>Company name</label>
+    <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToEdit.companyName"
+      name="inputCompanyName">
+    <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
+  </div>
+  <div class="form-group">
+    <label>HomePage</label>
+    <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToEdit.homePage"
+      name="inputHomePage">
+    <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToEdit.description"
+      name="textareaDescription"></textarea>
+    <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
+  </div>
+  <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="updatePublisher()"
+    value="Update publisher">
+</form>

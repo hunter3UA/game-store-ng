@@ -1,4 +1,4 @@
 export class OrderItemModel {
-  customerId: number;
-  price: number;
+  public customerId: number;
+  public price: number;
 }
