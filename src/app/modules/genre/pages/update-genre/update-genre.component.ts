@@ -11,6 +11,7 @@ export class UpdateGenreComponent implements OnInit {
   public genreId: number;
   public genreToEdit: GenreModel;
   public allGenres: Array<GenreModel>;
+
   constructor(
     private genreService: GenreService,
     private route: ActivatedRoute,

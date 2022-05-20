@@ -16,8 +16,7 @@
       </td>
       <td>{{item.price}}</td>
       <td>{{item.total}}</td>
-      <td>
-        <input type="submit" class="btn btn-danger" (click)="removeOrderItem(item.id)" value="X">
+      <td><button class="btn btn-danger" (click)="removeOrderItem(item.id)">X</button>
       </td>
     </tr>
   </tbody>

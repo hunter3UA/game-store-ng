@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { CommentRoutingModule } from './comment-routing.module';
 import { CommentsOfGameComponent } from './pages/comments-of-game/comments-of-game.component';
 import { CommentItemComponent } from './parts/comment-item/comment-item.component';

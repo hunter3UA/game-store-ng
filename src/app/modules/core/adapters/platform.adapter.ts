@@ -8,6 +8,7 @@ export class PlatformAdapter implements Adapter<PlatformTypeModel> {
     let platformType = new PlatformTypeModel();
     platformType.id = item.id;
     platformType.type = item.type;
+
     return platformType;
   }
 }

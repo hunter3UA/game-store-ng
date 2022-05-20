@@ -10,6 +10,7 @@ export class PublisherAdapter implements Adapter<PublisherModel> {
     publisher.companyName = item.companyName;
     publisher.description = item.description;
     publisher.homePage = item.homePage;
+
     return publisher;
   }
 }
