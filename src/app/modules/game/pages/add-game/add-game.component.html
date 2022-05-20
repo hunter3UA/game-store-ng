@@ -1,7 +1,7 @@
 <form class="col-4" #form="ngForm">
   <div class="form-group">
     <label for="gameName">Name</label>
-    <input class="form-control" id="gameName" [(ngModel)]="gameModel.name" name="inputName" required
+    <input class="form-control" id="gameName" maxlength="150" [(ngModel)]="gameModel.name" name="inputName" required
       #nameOfGame="ngModel">
     <p *ngIf="nameOfGame.invalid && nameOfGame.touched">Enter valid name of game</p>
   </div>
@@ -12,7 +12,7 @@
     <p *ngIf="gamePrice.invalid && gamePrice.touched">Enter price </p>
   </div>
   <div class="form-group">
-    <label for="gameDiscounted">Discounted</label>
+    <label for="gameDiscounted">Discontinued</label>
     <input class="form-control" id="gameDiscounted" type="checkbox" [(ngModel)]="gameModel.discontinued"
       name="chbDiscounted">
   </div>
@@ -23,8 +23,8 @@
   </div>
   <div class="form-group">
     <label for="gameDescription">Description</label>
-    <textarea class="form-control" id="gameDescription" required rows="3" minlength="10" #gameDescription="ngModel"
-      [(ngModel)]="gameModel.description" name="inputDescription"></textarea>
+    <textarea class="form-control" id="gameDescription" required rows="3" minlength="10" maxlength="5000"
+      #gameDescription="ngModel" [(ngModel)]="gameModel.description" name="inputDescription"></textarea>
     <p *ngIf="gameDescription.invalid && gameDescription.touched">Enter description</p>
   </div>
   <div class="form-group">

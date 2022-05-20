@@ -1,7 +1,7 @@
 <form #form="ngForm">
   <div class="form-group col-4">
     <label>Type</label>
-    <input type="text" required #platformType="ngModel" class="form-control" name="type"
+    <input type="text" required #platformType="ngModel" class="form-control" name="type" maxlength="50"
       [(ngModel)]="platformToEdit.type">
     <p *ngIf="platformType.invalid && platformType.touched">Enter platform type</p>
   </div>

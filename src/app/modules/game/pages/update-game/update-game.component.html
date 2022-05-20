@@ -1,14 +1,15 @@
 <form class="col-4" #form="ngForm">
   <div class="form-group">
     <label for="gameName">Name</label>
-    <input class="form-control" [(ngModel)]="gameToEdit.name" name="inputName" required #nameOfGame="ngModel">
+    <input class="form-control" [(ngModel)]="gameToEdit.name" maxlength="150" name="inputName" required
+      #nameOfGame="ngModel">
   </div>
   <div class="form-group">
     <label for="gamePrice">Price</label>
     <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
   </div>
   <div class="form-group">
-    <label for="gameDiscounted">Discounted</label>
+    <label for="gameDiscounted">Discontinued</label>
     <input class="form-control" type="checkbox" [(ngModel)]="gameToEdit.discontinued" name="chbDiscounted">
   </div>
   <div class="form-group">
@@ -17,7 +18,7 @@
   </div>
   <div class="form-group">
     <label for="gameDescription">Description</label>
-    <textarea class="form-control" rows="3" minlength="10" [(ngModel)]="gameToEdit.description"
+    <textarea class="form-control" rows="3" minlength="10" maxlength="5000" [(ngModel)]="gameToEdit.description"
       name="inputDescription"></textarea>
   </div>
   <div class="form-group">
