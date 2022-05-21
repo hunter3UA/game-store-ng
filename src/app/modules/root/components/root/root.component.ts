@@ -9,7 +9,7 @@ export class RootComponent implements OnInit {
   constructor(private customerService: CustomerService) {}
 
   ngOnInit(): void {
-    this.login();
+    //this.login();
   }
 
   login() {

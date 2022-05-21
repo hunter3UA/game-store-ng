@@ -15,22 +15,20 @@ export class OrderService {
   constructor(
     private http: HttpClient,
     private orderAdapter: OrderAdapter,
-    private orderitemAdapter: OrderItemAdapter,
-    private cookieService: CookieService
+    private orderitemAdapter: OrderItemAdapter
   ) {}
 
   addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
     let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
     return this.http
-      .post(url, +this.cookieService.get('id'))
+      .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
   }
 
   getOrder(): Observable<OrderModel> {
-    let id = this.cookieService.get('id');
-    let url = `${environment.apiBaseUrl}/basket/${id}`;
+    let url = `${environment.apiBaseUrl}/basket`;
     return this.http
-      .get(url)
+      .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 

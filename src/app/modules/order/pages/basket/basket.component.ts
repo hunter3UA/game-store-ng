@@ -19,6 +19,7 @@ export class BasketComponent implements OnInit {
   loadOrder() {
     this.orderService.getOrder().subscribe((data) => {
       this.currentOrder = data;
+      console.log(data);
     });
   }
 
