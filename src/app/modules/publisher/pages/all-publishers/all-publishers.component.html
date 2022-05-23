@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">CompanyName</th>
+      <th scope="col">HomePage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let publisher of publishers">
+      <td>{{publisher.companyName}}</td>
+      <td>{{publisher.homePage}}</td>
+      <td>
+        <a class="btn btn-info" [routerLink]="['/publishers',publisher.id]">Details</a>
+        <a class="btn btn-success" [routerLink]="['/publishers/update',publisher.id]">Update</a>
+        <a class="btn btn-danger" (click)="removePublisher(publisher.id)">Remove</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

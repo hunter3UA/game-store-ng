@@ -1,0 +1,9 @@
+<form #form="ngForm">
+  <div class="form-group col-4">
+    <label>Type</label>
+    <input type="text" class="form-control" required #platformType="ngModel" name="type" maxlength="50"
+      [(ngModel)]="platformToAdd.type">
+    <p *ngIf="platformType.invalid && platformType.touched">Enter platform type</p>
+  </div>
+  <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addPlatform()" value="Add type">
+</form>

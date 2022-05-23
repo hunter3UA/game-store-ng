@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'home'">Home</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Games
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownGames">
+          <a class="dropdown-item" [routerLink]="'/games'">All Games</a>
+          <a class="dropdown-item" [routerLink]="'/games/new'">Add Game</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPublishers" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Publishers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/publishers'">All Publishers</a>
+          <a class="dropdown-item" [routerLink]="'/publishers/new'">Add publisher</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPlatformTypes" role="button"
+          data-toggle="dropdown" aria-expanded="false">
+          Platform types
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/platforms'">All platforms</a>
+          <a class="dropdown-item" [routerLink]="'/platforms/new'">Add platform</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenres" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Genres
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/genres'">All genres</a>
+          <a class="dropdown-item" [routerLink]="'/genres/new'">Add genre</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/basket'">Basket</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">Total:{{totalCountOfGames}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
