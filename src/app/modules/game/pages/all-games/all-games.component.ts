@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 import { GameService } from '../../../shared/services/game/game.service';
 
@@ -14,7 +15,7 @@ export class AllGamesComponent implements OnInit {
   constructor(
     private gameService: GameService,
     private router: Router,
-    private orderService: OrderService
+    private basketService: BasketService
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class AllGamesComponent implements OnInit {
     });
   }
   addOrderItem(gameKey: string) {
-    this.orderService.addOrderItem(gameKey).subscribe({
+    this.basketService.addOrderItem(gameKey).subscribe({
       next: () => this.router.navigate(['/basket']),
       error: () => this.router.navigate(['/basket']),
     });

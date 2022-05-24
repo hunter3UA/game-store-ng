@@ -1,3 +1,4 @@
+<h1>My order</h1>
 <table class="table">
   <thead>
     <tr>
@@ -11,16 +12,12 @@
     <tr *ngFor="let item of currentOrder.orderDetails">
       <th scope="row"><a [routerLink]="['/games/',item.game.key]">{{item.game.name}}</a> </th>
       <td>
-        <input type="number" min="1" [max]="item.game.unitsInStock"
-          (focusout)="changeQuantity(item.id,$event.target.value)" onKeyDown="return false" [value]="item.quantity">
+        <label>Quantity : {{item.quantity}}</label>
       </td>
       <td>{{item.price}}</td>
       <td>{{item.total}}</td>
-      <td><button class="btn btn-danger" (click)="removeOrderItem(item.id)">X</button>
-      </td>
     </tr>
   </tbody>
 </table>
 <div>Total sum: {{currentOrder.totalSum}}</div>
-
-<div><button (click)="makeOrder()">Make order</button></div>
+<app-payment-type></app-payment-type>

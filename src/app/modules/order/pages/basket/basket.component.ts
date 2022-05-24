@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -8,7 +10,11 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 })
 export class BasketComponent implements OnInit {
   public currentOrder: OrderModel;
-  constructor(private orderService: OrderService) {
+  constructor(
+    private basketService: BasketService,
+    private orderService: OrderService,
+    private router: Router
+  ) {
     this.currentOrder = new OrderModel();
   }
 
@@ -17,10 +23,9 @@ export class BasketComponent implements OnInit {
   }
 
   loadOrder() {
-    this.orderService.getOrder().subscribe((data) => {
-      this.currentOrder = data;
-      console.log(data);
-    });
+    this.basketService
+      .getOrder()
+      .subscribe({ next: (data) => (this.currentOrder = data) });
   }
 
   changeQuantity(id: number, quantity: number) {
@@ -31,7 +36,7 @@ export class BasketComponent implements OnInit {
       }
     });
     if (val) {
-      this.orderService.changeQuantity(+id, +quantity).subscribe({
+      this.basketService.changeQuantity(+id, +quantity).subscribe({
         next: () => this.loadOrder(),
         error: (error) => console.log(error),
       });
@@ -39,8 +44,18 @@ export class BasketComponent implements OnInit {
   }
 
   removeOrderItem(itemId: number) {
-    this.orderService.removeOrderItem(itemId).subscribe(() => {
+    this.basketService.removeOrderItem(itemId).subscribe(() => {
       this.loadOrder();
+    });
+  }
+
+  makeOrder() {
+    this.orderService.makeOrder(this.currentOrder.id).subscribe({
+      next: (data) => this.router.navigate(['/order']),
+      error: (error) => {
+        this.loadOrder();
+        alert('Some games was deleted from your order');
+      },
     });
   }
 }
