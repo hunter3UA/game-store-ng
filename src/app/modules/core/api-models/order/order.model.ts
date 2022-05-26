@@ -6,4 +6,5 @@ export class OrderModel {
   public orderDate: string;
   public orderDetails: Array<OrderDetailsModel>;
   public totalSum: number;
+  public status: number;
 }

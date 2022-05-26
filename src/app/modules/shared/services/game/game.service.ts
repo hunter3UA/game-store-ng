@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
 import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
 import { environment } from 'src/environments/environment';
@@ -19,6 +19,14 @@ export class GameService {
   }
 
   getAllGames(): Observable<GameModel[]> {
+    let url = `${environment.apiBaseUrl}/games`;
+    return this.http
+      .get(url)
+      .pipe(
+        map((data: any[]) => data.map((item) => this.gameAdapter.adapt(item)))
+      );
+  }
+  getTotalGames(): Observable<GameModel[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)

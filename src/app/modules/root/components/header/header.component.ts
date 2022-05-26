@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  CACHE_KEY = 'Total';
   public totalCountOfGames: number;
 
-  constructor(private gameService: GameService) {
+  constructor(private gameService: GameService) {}
+  ngOnInit(): void {
     this.loadAllGames();
   }
 
   loadAllGames() {
     this.gameService.getAllGames().subscribe((data) => {
       this.totalCountOfGames = data.length;
-      console.log(data);
     });
   }
 }

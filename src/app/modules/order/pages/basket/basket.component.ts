@@ -23,9 +23,14 @@ export class BasketComponent implements OnInit {
   }
 
   loadOrder() {
-    this.basketService
-      .getOrder()
-      .subscribe({ next: (data) => (this.currentOrder = data) });
+    this.basketService.getOrder().subscribe({
+      next: (data) => {
+        this.currentOrder = data;
+        if (this.currentOrder.status == 1) {
+          this.router.navigate(['/order']);
+        }
+      },
+    });
   }
 
   changeQuantity(id: number, quantity: number) {

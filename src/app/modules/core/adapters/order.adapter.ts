@@ -11,6 +11,7 @@ export class OrderAdapter implements Adapter<OrderModel> {
     order.orderDate = item.orderDate;
     order.orderDetails = item.orderDetails;
     order.totalSum = item.totalSum;
+    order.status = item.status;
     return order;
   }
 }
