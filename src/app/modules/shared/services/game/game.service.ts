@@ -13,9 +13,9 @@ import { AddGameModel } from '../../../core/api-models/game/add.game.model';
 export class GameService {
   constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
 
-  deleteGame(id: number): Observable<any> {
+  deleteGame(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/games/remove/${id}`;
-    return this.http.delete(url);
+    return this.http.delete<boolean>(url);
   }
 
   getAllGames(): Observable<GameModel[]> {
@@ -26,6 +26,7 @@ export class GameService {
         map((data: any[]) => data.map((item) => this.gameAdapter.adapt(item)))
       );
   }
+
   getTotalGames(): Observable<GameModel[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http

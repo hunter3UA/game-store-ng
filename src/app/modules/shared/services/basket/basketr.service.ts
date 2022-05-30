@@ -31,12 +31,18 @@ export class BasketService {
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  removeOrderItem(itemId: number): Observable<any> {
+  removeOrderItem(itemId: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/basket/details/remove/${itemId}`;
-    return this.http.delete(url);
+    return this.http.delete<boolean>(url);
   }
-  changeQuantity(itemId: number, quantity: number): Observable<any> {
+  changeQuantity(
+    itemId: number,
+    quantity: number
+  ): Observable<OrderDetailsModel> {
     let url = `${environment.apiBaseUrl}/basket/details/update`;
-    return this.http.put(url, { orderDetailsId: itemId, quantity: quantity });
+    return this.http.put<OrderDetailsModel>(url, {
+      orderDetailsId: itemId,
+      quantity: quantity,
+    });
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { OrderStatus } from 'src/app/modules/core/enums/order.status';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
@@ -26,7 +27,8 @@ export class BasketComponent implements OnInit {
     this.basketService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-        if (this.currentOrder.status == 1) {
+        console.log(this.currentOrder.orderDetails.length);
+        if (this.currentOrder.status == OrderStatus.Processing) {
           this.router.navigate(['/order']);
         }
       },
@@ -55,12 +57,14 @@ export class BasketComponent implements OnInit {
   }
 
   makeOrder() {
-    this.orderService.makeOrder(this.currentOrder.id).subscribe({
-      next: (data) => this.router.navigate(['/order']),
-      error: (error) => {
-        this.loadOrder();
-        alert('Some games was deleted from your order');
-      },
-    });
+    if (this.currentOrder.orderDetails.length > 0) {
+      this.orderService.makeOrder(this.currentOrder.id).subscribe({
+        next: () => this.router.navigate(['/order']),
+        error: () => {
+          this.loadOrder();
+          alert('Some games was deleted from your order');
+        },
+      });
+    }
   }
 }

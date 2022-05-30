@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EditGameAdapter } from 'src/app/modules/core/adapters/game.adapters/edit.game.adapter';
 import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
 import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
@@ -27,7 +27,8 @@ export class UpdateGameComponent implements OnInit {
     private publisherService: PublisherService,
     private route: ActivatedRoute,
     private errorService: ErrorHandlerService,
-    private editGameAdapter: EditGameAdapter
+    private editGameAdapter: EditGameAdapter,
+    private router: Router
   ) {
     this.key = this.route.snapshot.params['key'];
     this.gameComponentModel = new GameComponentModel();
@@ -38,7 +39,7 @@ export class UpdateGameComponent implements OnInit {
   ngOnInit(): void {
     this.loadPlaftorms();
     this.loadGenres();
-    this.loadGame();
+    this.loadGame(this.key);
     this.loadPublishers();
   }
 
@@ -47,13 +48,15 @@ export class UpdateGameComponent implements OnInit {
     this.editedGame.publisherId = this.gameComponentModel.selectedPublisher.id;
     this.editedGame.genres = this.gameToEdit.genres.map((g) => g.id);
     this.editedGame.platforms = this.gameToEdit.platformTypes.map((p) => p.id);
-    this.gameService.updateGame(this.editedGame).subscribe(() => {
-      this.loadGame();
+    this.gameService.updateGame(this.editedGame).subscribe((response) => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([`/games/update/${response.key}`]);
+      });
     });
   }
 
-  loadGame() {
-    this.gameService.getGameByKey(this.key).subscribe({
+  loadGame(key: string) {
+    this.gameService.getGameByKey(key).subscribe({
       next: (data) => {
         this.gameToEdit = data;
         if (this.gameToEdit.publisher) {

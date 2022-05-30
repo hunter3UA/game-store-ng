@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
@@ -24,9 +24,9 @@ export class OrderService {
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  cancelOrder(orderId: number): Observable<any> {
+  cancelOrder(orderId: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/order/${orderId}`;
-    return this.http.delete(url);
+    return this.http.delete<boolean>(url);
   }
 
   generateInvoiceFile(orderPaymentModel: OrderPaymentModel): Observable<any> {
@@ -35,5 +35,10 @@ export class OrderService {
       observe: 'response',
       responseType: 'blob',
     });
+  }
+
+  payOrder(orderPaymentModel: OrderPaymentModel): Observable<any> {
+    let url = `${environment.apiBaseUrl}/pay`;
+    return this.http.post(url, orderPaymentModel);
   }
 }

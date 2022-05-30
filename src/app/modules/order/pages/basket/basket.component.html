@@ -23,4 +23,5 @@
 </table>
 <div>Total sum: {{currentOrder.totalSum}}</div>
 
-<div><button (click)="makeOrder()">Make order</button></div>
+<button class="btn btn-success" *ngIf="this.currentOrder && this.currentOrder.orderDetails" (click)="makeOrder()">Make
+  order</button>

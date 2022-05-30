@@ -12,7 +12,7 @@ import { environment } from 'src/environments/environment';
 export class GenreService {
   constructor(private http: HttpClient, private genreAdapter: GenreAdapter) {}
 
-  addGenre(genreToAdd: AddGenreModel): Observable<any> {
+  addGenre(genreToAdd: AddGenreModel): Observable<GenreModel> {
     let url = `${environment.apiBaseUrl}/genres/new`;
     return this.http
       .post(url, genreToAdd)
@@ -26,7 +26,7 @@ export class GenreService {
       .pipe(map((data: any) => this.genreAdapter.adapt(data)));
   }
 
-  updateGenre(genreToUpdate: GenreModel): Observable<any> {
+  updateGenre(genreToUpdate: GenreModel): Observable<GenreModel> {
     let url = `${environment.apiBaseUrl}/genres/update`;
     return this.http
       .put(url, genreToUpdate)
@@ -36,14 +36,14 @@ export class GenreService {
   getAllGenres(): Observable<GenreModel[]> {
     let url = `${environment.apiBaseUrl}/genres`;
     return this.http
-      .get(url)
+      .get<GenreModel[]>(url)
       .pipe(
         map((data: any[]) => data.map((item) => this.genreAdapter.adapt(item)))
       );
   }
 
-  removeGenre(id: number): Observable<any> {
+  removeGenre(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/genres/remove/${id}`;
-    return this.http.delete(url);
+    return this.http.delete<boolean>(url);
   }
 }

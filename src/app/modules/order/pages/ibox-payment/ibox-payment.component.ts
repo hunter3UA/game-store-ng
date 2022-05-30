@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
 import { OrderPaymentModel } from 'src/app/modules/core/api-models/order/order.payment.model';
+import { PaymentType } from 'src/app/modules/core/enums/payment.type';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
-  selector: 'app-visa-payment',
-  templateUrl: './visa-payment.component.html',
-  styleUrls: ['./visa-payment.styles.css'],
+  selector: 'app-ibox-payment',
+  templateUrl: './ibox-payment.component.html',
+  styleUrls: ['./ibox-payment.component.css'],
 })
-export class VisaPaymentComponent implements OnInit {
+export class IboxPaymentComponent implements OnInit {
   public currentOrder: OrderModel;
   private orderPaymentModel: OrderPaymentModel;
   constructor(
@@ -29,7 +31,6 @@ export class VisaPaymentComponent implements OnInit {
     this.orderService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-
         if (this.currentOrder.status != 1) {
           this.router.navigate(['/basket']);
         }
@@ -39,9 +40,8 @@ export class VisaPaymentComponent implements OnInit {
   }
 
   payOrder() {
-    console.log(this.currentOrder);
     this.orderPaymentModel.orderId = this.currentOrder.id;
-    this.orderPaymentModel.paymentType = 2;
+    this.orderPaymentModel.paymentType = PaymentType.IBoxPayment;
     this.orderService.payOrder(this.orderPaymentModel).subscribe({
       next: () => {
         alert('Succeeded');

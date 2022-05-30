@@ -5,6 +5,10 @@
       #nameOfGame="ngModel">
   </div>
   <div class="form-group">
+    <label for="gameName">Key</label>
+    <input class="form-control" [(ngModel)]="gameToEdit.key" maxlength="150" name="inputKey" #nameOfGame="ngModel">
+  </div>
+  <div class="form-group">
     <label for="gamePrice">Price</label>
     <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
   </div>

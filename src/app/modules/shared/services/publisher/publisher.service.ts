@@ -48,8 +48,8 @@ export class PublisherService {
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
 
-  removePublisher(id: number): Observable<any> {
+  removePublisher(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/publishers/remove/${id}`;
-    return this.http.delete(url);
+    return this.http.delete<boolean>(url);
   }
 }

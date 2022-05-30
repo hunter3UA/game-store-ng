@@ -14,10 +14,10 @@ export class PlatformService {
     private platformAdapter: PlatformAdapter
   ) {}
 
-  addPlatform(platformToAdd: PlatformTypeModel): Observable<PlatformTypeModel> {
+  addPlatform(type: string): Observable<PlatformTypeModel> {
     let url = `${environment.apiBaseUrl}/platformTypes/add`;
     return this.http
-      .post(url, platformToAdd)
+      .post(url, { type: type })
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 
@@ -38,6 +38,7 @@ export class PlatformService {
       .get(url)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
+
   updatePlatform(
     platformToUpdate: PlatformTypeModel
   ): Observable<PlatformTypeModel> {
@@ -47,8 +48,8 @@ export class PlatformService {
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 
-  removePlatform(id: number): Observable<any> {
+  removePlatform(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/platformTypes/remove/${id}`;
-    return this.http.delete(url).pipe(map((data: any) => data.text));
+    return this.http.delete<boolean>(url);
   }
 }

@@ -29,6 +29,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/genre/genre.module').then((m) => m.GenreModule),
   },
+  {
+    path: '',
+    loadChildren: () =>
+      import('./modules/order/order.module').then((m) => m.OrderModule),
+  },
 ];
 
 @NgModule({

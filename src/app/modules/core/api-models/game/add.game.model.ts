@@ -1,5 +1,4 @@
 export class AddGameModel {
-  public id: number;
   public name: string;
   public key: string;
   public description: string;

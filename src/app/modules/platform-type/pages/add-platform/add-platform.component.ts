@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -8,16 +7,17 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './add-platform.component.html',
 })
 export class AddPlatformComponent {
-  public platformToAdd: PlatformTypeModel;
+  public typeOfPlatform: string;
+
   constructor(
     private platformService: PlatformService,
     private router: Router
   ) {
-    this.platformToAdd = new PlatformTypeModel();
+    this.typeOfPlatform = '';
   }
 
   addPlatform() {
-    this.platformService.addPlatform(this.platformToAdd).subscribe(() => {
+    this.platformService.addPlatform(this.typeOfPlatform).subscribe(() => {
       this.router.navigate(['/platforms']);
     });
   }

@@ -9,8 +9,4 @@ describe('ErrorHandlerService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(ErrorHandlerService);
   });
-
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
 });
