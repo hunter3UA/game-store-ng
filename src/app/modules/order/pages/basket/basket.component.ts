@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderStatus } from 'src/app/modules/core/enums/order.status';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
@@ -14,6 +15,7 @@ export class BasketComponent implements OnInit {
   constructor(
     private basketService: BasketService,
     private orderService: OrderService,
+    private errorHandler: ErrorHandlerService,
     private router: Router
   ) {
     this.currentOrder = new OrderDTO();
@@ -45,7 +47,7 @@ export class BasketComponent implements OnInit {
     if (val) {
       this.basketService.changeQuantity(+id, +quantity).subscribe({
         next: () => this.loadOrder(),
-        error: (error) => console.log(error),
+        error: (error) => this.errorHandler.handleError(error),
       });
     }
   }

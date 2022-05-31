@@ -6,7 +6,6 @@ import { GameService } from 'src/app/modules/shared/services/game/game.service';
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
-  CACHE_KEY = 'Total';
   public totalCountOfGames: number;
 
   constructor(private gameService: GameService) {}

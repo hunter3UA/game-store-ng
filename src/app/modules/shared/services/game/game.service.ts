@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
 import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { environment } from 'src/environments/environment';
@@ -11,7 +11,11 @@ import { AddGameDTO } from '../../../core/api-models/game/add.game.dto';
   providedIn: 'root',
 })
 export class GameService {
-  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
+  public totalGames: number;
+
+  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {
+    this.totalGames = 0;
+  }
 
   deleteGame(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/games/remove/${id}`;
@@ -27,13 +31,9 @@ export class GameService {
       );
   }
 
-  getTotalGames(): Observable<GameDTO[]> {
+  getTotalGames(): Observable<any> {
     let url = `${environment.apiBaseUrl}/games`;
-    return this.http
-      .get(url)
-      .pipe(
-        map((data: any[]) => data.map((item) => this.gameAdapter.adapt(item)))
-      );
+    return this.http.get<GameDTO[]>(url);
   }
 
   getGameByKey(key: string): Observable<GameDTO> {
