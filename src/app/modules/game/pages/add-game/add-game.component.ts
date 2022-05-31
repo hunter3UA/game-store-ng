@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddGameModel } from 'src/app/modules/core/api-models/game/add.game.model';
+import { AddGameDTO } from 'src/app/modules/core/api-models/game/add.game.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
@@ -14,7 +14,7 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class AddGameComponent implements OnInit {
   public gameComponentModel: GameComponentModel;
-  public gameModel: AddGameModel;
+  public gameModel: AddGameDTO;
 
   constructor(
     private genreService: GenreService,
@@ -25,7 +25,7 @@ export class AddGameComponent implements OnInit {
     private errorHandler: ErrorHandlerService
   ) {
     this.gameComponentModel = new GameComponentModel();
-    this.gameModel = new AddGameModel();
+    this.gameModel = new AddGameDTO();
     this.gameModel.price = 1;
     this.gameModel.unitsInStock = 0;
   }

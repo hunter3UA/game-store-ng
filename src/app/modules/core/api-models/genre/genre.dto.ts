@@ -1,6 +1,6 @@
-export class GenreModel {
+export class GenreDTO {
   public id: number;
   public name: string;
-  public subGenres: Array<GenreModel>;
+  public subGenres: Array<GenreDTO>;
   public parentGenreId: number | null;
 }

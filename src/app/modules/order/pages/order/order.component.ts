@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './order.component.html',
 })
 export class OrderComponent implements OnInit {
-  public currentOrder: OrderModel;
+  public currentOrder: OrderDTO;
   constructor(private router: Router, private orderService: OrderService) {
-    this.currentOrder = new OrderModel();
+    this.currentOrder = new OrderDTO();
   }
 
   ngOnInit(): void {

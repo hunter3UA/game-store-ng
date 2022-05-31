@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddPublisherDTO } from 'src/app/modules/core/api-models/publisher/add.publisher.dto';
+import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -7,13 +9,13 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './add-publisher.component.html',
 })
 export class AddPublisherComponent {
-  public publisherToAdd: any;
+  public publisherToAdd: AddPublisherDTO;
 
   constructor(
     private publisherService: PublisherService,
     private router: Router
   ) {
-    this.publisherToAdd = {};
+    this.publisherToAdd = new PublisherDTO();
   }
 
   addPublisher() {

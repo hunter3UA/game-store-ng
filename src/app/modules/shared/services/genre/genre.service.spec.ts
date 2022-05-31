@@ -4,7 +4,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { GenreService } from './genre.service';
-import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
+import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { environment } from 'src/environments/environment';
 
 describe('GenreService', () => {
@@ -21,10 +21,10 @@ describe('GenreService', () => {
   });
 
   it('addGenre(genreToAdd) should return added genre', () => {
-    const fakeGenre: GenreModel = {
+    const fakeGenre: GenreDTO = {
       id: 1,
       name: 'Genre1',
-      subGenres: new Array<GenreModel>(),
+      subGenres: new Array<GenreDTO>(),
       parentGenreId: null,
     };
 
@@ -39,10 +39,10 @@ describe('GenreService', () => {
   });
 
   it('updateGenere(genreToUpdate) should return updated genre', () => {
-    const fakeGenre: GenreModel = {
+    const fakeGenre: GenreDTO = {
       id: 1,
       name: 'Genre1',
-      subGenres: new Array<GenreModel>(),
+      subGenres: new Array<GenreDTO>(),
       parentGenreId: null,
     };
 
@@ -59,17 +59,17 @@ describe('GenreService', () => {
   });
 
   it('getAllGenres() should return array of genres', () => {
-    const fakeGenres: Array<GenreModel> = [
+    const fakeGenres: Array<GenreDTO> = [
       {
         id: 1,
         name: 'Genre1',
-        subGenres: new Array<GenreModel>(),
+        subGenres: new Array<GenreDTO>(),
         parentGenreId: null,
       },
       {
         id: 2,
         name: 'Genre2',
-        subGenres: new Array<GenreModel>(),
+        subGenres: new Array<GenreDTO>(),
         parentGenreId: 1,
       },
     ];
@@ -86,10 +86,10 @@ describe('GenreService', () => {
   });
 
   it('getGenre(id) should return genre', () => {
-    let fakeGenre: GenreModel = {
+    let fakeGenre: GenreDTO = {
       id: 1,
       name: 'Test genre',
-      subGenres: new Array<GenreModel>(),
+      subGenres: new Array<GenreDTO>(),
       parentGenreId: null,
     };
 

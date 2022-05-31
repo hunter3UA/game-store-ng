@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderItemAdapter } from 'src/app/modules/core/adapters/order.item.adapter';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
-import { OrderDetailsModel } from 'src/app/modules/core/api-models/order/oreder.details.model';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderDetailsDTO } from 'src/app/modules/core/api-models/order/oreder.details.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,14 +17,14 @@ export class BasketService {
     private orderitemAdapter: OrderItemAdapter
   ) {}
 
-  addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
+  addOrderItem(gameKey: string): Observable<OrderDetailsDTO> {
     let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
   }
 
-  getOrder(): Observable<OrderModel> {
+  getOrder(): Observable<OrderDTO> {
     let url = `${environment.apiBaseUrl}/basket`;
     return this.http
       .get(url, { withCredentials: true })
@@ -38,9 +38,9 @@ export class BasketService {
   changeQuantity(
     itemId: number,
     quantity: number
-  ): Observable<OrderDetailsModel> {
+  ): Observable<OrderDetailsDTO> {
     let url = `${environment.apiBaseUrl}/basket/details/update`;
-    return this.http.put<OrderDetailsModel>(url, {
+    return this.http.put<OrderDetailsDTO>(url, {
       orderDetailsId: itemId,
       quantity: quantity,
     });

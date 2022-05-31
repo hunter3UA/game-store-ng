@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AddGenreModel } from 'src/app/modules/core/api-models/genre/add.genre.model';
-import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
+import { AddGenreDTO } from 'src/app/modules/core/api-models/genre/add.genre.dto';
+import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
   templateUrl: './add-genre.component.html',
 })
 export class AddGenreComponent implements OnInit {
-  public genreToAdd: AddGenreModel;
-  public allGenres: Array<GenreModel>;
+  public genreToAdd: AddGenreDTO;
+  public allGenres: Array<GenreDTO>;
 
   constructor(private genreService: GenreService, private router: Router) {
-    this.allGenres = new Array<GenreModel>();
-    this.genreToAdd = new AddGenreModel();
+    this.allGenres = new Array<GenreDTO>();
+    this.genreToAdd = new AddGenreDTO();
   }
 
   ngOnInit(): void {

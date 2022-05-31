@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PublisherModel } from 'src/app/modules/core/api-models/publisher/publisher.model';
+import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
 })
 export class PublisherDetailsComponent implements OnInit {
   public publisherId: number;
-  public currentPublisher: PublisherModel;
+  public currentPublisher: PublisherDTO;
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute
   ) {
     this.publisherId = this.route.snapshot.params['id'];
-    this.currentPublisher = new PublisherModel();
+    this.currentPublisher = new PublisherDTO();
   }
 
   ngOnInit(): void {

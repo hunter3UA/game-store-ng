@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderPaymentModel } from 'src/app/modules/core/api-models/order/order.payment.model';
+import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { PaymentType } from 'src/app/modules/core/enums/payment.type';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { FileService } from 'src/app/modules/shared/services/file/file.service';
@@ -12,7 +12,7 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 })
 export class PaymentTypeComponent {
   @Input() orderId: number;
-  private orderPaymentModel: OrderPaymentModel;
+  private orderPaymentModel: OrderPaymentDTO;
 
   constructor(
     private orderService: OrderService,
@@ -20,7 +20,7 @@ export class PaymentTypeComponent {
     private fileService: FileService,
     private errorService: ErrorHandlerService
   ) {
-    this.orderPaymentModel = new OrderPaymentModel();
+    this.orderPaymentModel = new OrderPaymentDTO();
     this.orderId = 0;
   }
 
@@ -33,7 +33,7 @@ export class PaymentTypeComponent {
           .get('content-disposition')
           ?.split(';')[1]
           .split('=')[1];
-        this.fileService.downloadFile(fileName, resp);
+        this.fileService.downloadFile(fileName, resp.body);
         this.router.navigate(['/basket']);
       },
       error: (error) => this.errorService.handleError(error),

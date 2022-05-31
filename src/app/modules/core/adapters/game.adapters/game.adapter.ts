@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { GameModel } from '../../api-models/game/game.model';
+import { GameDTO } from '../../api-models/game/game.dto';
 import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
-export class GameAdapter implements Adapter<GameModel> {
-  adapt(item: any): GameModel {
-    let game = new GameModel();
+export class GameAdapter implements Adapter<GameDTO> {
+  adapt(item: any): GameDTO {
+    let game = new GameDTO();
     game.id = item.id;
     game.name = item.name;
     game.key = item.key;

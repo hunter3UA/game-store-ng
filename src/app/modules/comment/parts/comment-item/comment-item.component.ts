@@ -1,25 +1,25 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
+import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
-import { Comment } from '../../../core/api-models/comment/comment.model';
+import { CommentDTO } from '../../../core/api-models/comment/comment.dto';
 
 @Component({
   selector: 'app-comment-item',
   templateUrl: './comment-item.component.html',
 })
 export class CommentItemComponent {
-  @Input() comments: Array<Comment>;
+  @Input() comments: Array<CommentDTO>;
 
-  @Input() parentComment: Comment;
+  @Input() parentComment: CommentDTO;
 
   @Input() gameKey: string;
 
-  newComment: AddCommentModel;
+  newComment: AddCommentDTO;
 
   constructor(private commentService: CommentService, private router: Router) {
-    this.newComment = new AddCommentModel();
-    this.comments = new Array<Comment>();
+    this.newComment = new AddCommentDTO();
+    this.comments = new Array<CommentDTO>();
     this.gameKey = '';
   }
 

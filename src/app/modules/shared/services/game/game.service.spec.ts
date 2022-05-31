@@ -3,12 +3,12 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { AddGameModel } from 'src/app/modules/core/api-models/game/add.game.model';
-import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
-import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
-import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
-import { PublisherModel } from 'src/app/modules/core/api-models/publisher/publisher.model';
+import { AddGameDTO } from 'src/app/modules/core/api-models/game/add.game.dto';
+import { EditGameDTO } from 'src/app/modules/core/api-models/game/edit.game.dto';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
+import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
+import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
+import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { environment } from 'src/environments/environment';
 
 import { GameService } from './game.service';
@@ -26,7 +26,7 @@ describe('GameService', () => {
   });
 
   it('addGame() should return added game', () => {
-    const fakeAddGame: AddGameModel = {
+    const fakeAddGame: AddGameDTO = {
       key: 'key',
       name: 'test game',
       description: 'desc',
@@ -37,7 +37,7 @@ describe('GameService', () => {
       discontinued: false,
       unitsInStock: 10,
     };
-    const mockResponse = new GameModel();
+    const mockResponse = new GameDTO();
 
     service.addGame(fakeAddGame).subscribe((game) => {
       expect(typeof game).toEqual(typeof mockResponse);
@@ -51,15 +51,15 @@ describe('GameService', () => {
   });
 
   it('getAllGames() should return array of games', () => {
-    const fakeGames: Array<GameModel> = [
+    const fakeGames: Array<GameDTO> = [
       {
         id: 1,
         name: 'test game',
         key: 'test-game',
         description: 'desc',
-        genres: new Array<GenreModel>(),
-        platformTypes: new Array<PlatformTypeModel>(),
-        publisher: new PublisherModel(),
+        genres: new Array<GenreDTO>(),
+        platformTypes: new Array<PlatformTypeDTO>(),
+        publisher: new PublisherDTO(),
         price: 100,
         discontinued: false,
         unitsInStock: 10,
@@ -69,9 +69,9 @@ describe('GameService', () => {
         name: 'test game2',
         key: 'test-game-2',
         description: 'desc2',
-        genres: new Array<GenreModel>(),
-        platformTypes: new Array<PlatformTypeModel>(),
-        publisher: new PublisherModel(),
+        genres: new Array<GenreDTO>(),
+        platformTypes: new Array<PlatformTypeDTO>(),
+        publisher: new PublisherDTO(),
         price: 100,
         discontinued: false,
         unitsInStock: 10,
@@ -80,7 +80,7 @@ describe('GameService', () => {
 
     service.getAllGames().subscribe((games) => {
       expect(games.length).toBe(2),
-        expect(typeof games).toEqual(typeof Array<GameModel>());
+        expect(typeof games).toEqual(typeof Array<GameDTO>());
     });
 
     const request = httpMock.expectOne(`${environment.apiBaseUrl}/games`);
@@ -90,14 +90,14 @@ describe('GameService', () => {
   });
 
   it('getGameByKey(key) should return game', () => {
-    const fakeGame: GameModel = {
+    const fakeGame: GameDTO = {
       id: 1,
       name: 'test game',
       key: 'test-game',
       description: 'desc',
-      genres: new Array<GenreModel>(),
-      platformTypes: new Array<PlatformTypeModel>(),
-      publisher: new PublisherModel(),
+      genres: new Array<GenreDTO>(),
+      platformTypes: new Array<PlatformTypeDTO>(),
+      publisher: new PublisherDTO(),
       price: 100,
       discontinued: false,
       unitsInStock: 10,
@@ -118,7 +118,7 @@ describe('GameService', () => {
   });
 
   it('updateGame() should return updated game', () => {
-    const fakeGame: EditGameModel = {
+    const fakeGame: EditGameDTO = {
       id: 1,
       name: 'test',
       key: 'key',
@@ -131,7 +131,7 @@ describe('GameService', () => {
       description: 'desc',
     };
 
-    const mockGame = new GameModel();
+    const mockGame = new GameDTO();
 
     service.updateGame(fakeGame).subscribe((response) => {
       expect(typeof response).toBe(typeof mockGame);

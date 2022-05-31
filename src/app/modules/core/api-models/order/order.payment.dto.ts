@@ -1,6 +1,6 @@
 import { PaymentType } from '../../enums/payment.type';
 
-export class OrderPaymentModel {
+export class OrderPaymentDTO {
   orderId: number;
   paymentType: PaymentType;
 }

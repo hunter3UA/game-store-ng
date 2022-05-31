@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { GameService } from '../../../shared/services/game/game.service';
@@ -10,7 +10,7 @@ import { GameService } from '../../../shared/services/game/game.service';
   templateUrl: './all-games.component.html',
 })
 export class AllGamesComponent implements OnInit {
-  public games: Array<GameModel>;
+  public games: Array<GameDTO>;
 
   constructor(
     private gameService: GameService,

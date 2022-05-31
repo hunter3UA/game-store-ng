@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderStatus } from 'src/app/modules/core/enums/order.status';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
@@ -10,13 +10,13 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './basket.component.html',
 })
 export class BasketComponent implements OnInit {
-  public currentOrder: OrderModel;
+  public currentOrder: OrderDTO;
   constructor(
     private basketService: BasketService,
     private orderService: OrderService,
     private router: Router
   ) {
-    this.currentOrder = new OrderModel();
+    this.currentOrder = new OrderDTO();
   }
 
   ngOnInit(): void {

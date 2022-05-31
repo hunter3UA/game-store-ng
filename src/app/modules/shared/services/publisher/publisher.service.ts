@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { PublisherAdapter } from 'src/app/modules/core/adapters/publisher.adapter';
-import { AddPublisherModel } from 'src/app/modules/core/api-models/publisher/add.publisher.model';
-import { PublisherModel } from 'src/app/modules/core/api-models/publisher/publisher.model';
+import { AddPublisherDTO } from 'src/app/modules/core/api-models/publisher/add.publisher.dto';
+import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -15,14 +15,14 @@ export class PublisherService {
     private publisherAdapter: PublisherAdapter
   ) {}
 
-  addPublisher(publisherToAdd: AddPublisherModel): Observable<PublisherModel> {
+  addPublisher(publisherToAdd: AddPublisherDTO): Observable<PublisherDTO> {
     let url = `${environment.apiBaseUrl}/publishers/new`;
     return this.http
       .post(url, publisherToAdd)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
 
-  getAllPublishers(): Observable<PublisherModel[]> {
+  getAllPublishers(): Observable<PublisherDTO[]> {
     let url = `${environment.apiBaseUrl}/publishers`;
     return this.http
       .get(url)
@@ -33,15 +33,13 @@ export class PublisherService {
       );
   }
 
-  getPublisher(id: number): Observable<PublisherModel> {
+  getPublisher(id: number): Observable<PublisherDTO> {
     let url = `${environment.apiBaseUrl}/publishers/${id}`;
     return this.http
       .get(url)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));
   }
-  updatePublisher(
-    publisherToUpdate: PublisherModel
-  ): Observable<PublisherModel> {
+  updatePublisher(publisherToUpdate: PublisherDTO): Observable<PublisherDTO> {
     let url = `${environment.apiBaseUrl}/publishers/update`;
     return this.http
       .put(url, publisherToUpdate)

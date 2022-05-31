@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditGameAdapter } from 'src/app/modules/core/adapters/game.adapters/edit.game.adapter';
-import { EditGameModel } from 'src/app/modules/core/api-models/game/edit.game.model';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { EditGameDTO } from 'src/app/modules/core/api-models/game/edit.game.dto';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
@@ -16,9 +16,9 @@ import { GameComponentModel } from '../../models/game.component.model';
 })
 export class UpdateGameComponent implements OnInit {
   public key: string;
-  public gameToEdit: GameModel;
+  public gameToEdit: GameDTO;
   public gameComponentModel: GameComponentModel;
-  public editedGame: EditGameModel;
+  public editedGame: EditGameDTO;
 
   constructor(
     private gameService: GameService,
@@ -32,8 +32,8 @@ export class UpdateGameComponent implements OnInit {
   ) {
     this.key = this.route.snapshot.params['key'];
     this.gameComponentModel = new GameComponentModel();
-    this.gameToEdit = new GameModel();
-    this.editedGame = new EditGameModel();
+    this.gameToEdit = new GameDTO();
+    this.editedGame = new EditGameDTO();
   }
 
   ngOnInit(): void {

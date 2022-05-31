@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { environment } from 'src/environments/environment';
-import { AddGameModel } from '../../../core/api-models/game/add.game.model';
+import { AddGameDTO } from '../../../core/api-models/game/add.game.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class GameService {
     return this.http.delete<boolean>(url);
   }
 
-  getAllGames(): Observable<GameModel[]> {
+  getAllGames(): Observable<GameDTO[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)
@@ -27,7 +27,7 @@ export class GameService {
       );
   }
 
-  getTotalGames(): Observable<GameModel[]> {
+  getTotalGames(): Observable<GameDTO[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)
@@ -36,14 +36,14 @@ export class GameService {
       );
   }
 
-  getGameByKey(key: string): Observable<GameModel> {
+  getGameByKey(key: string): Observable<GameDTO> {
     let url = `${environment.apiBaseUrl}/game/${key}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.gameAdapter.adapt(data)));
   }
 
-  addGame(addGameModel: AddGameModel): Observable<GameModel> {
+  addGame(addGameModel: AddGameDTO): Observable<GameDTO> {
     let url = `${environment.apiBaseUrl}/games/new`;
     return this.http
       .post(url, addGameModel)

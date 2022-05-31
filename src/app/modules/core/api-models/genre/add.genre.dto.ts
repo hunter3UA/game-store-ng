@@ -1,4 +1,4 @@
-export class AddGenreModel {
+export class AddGenreDTO {
   public name: string;
   public parentGenreId: number;
   constructor() {

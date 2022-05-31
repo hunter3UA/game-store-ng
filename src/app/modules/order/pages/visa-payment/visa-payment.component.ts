@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
-import { OrderPaymentModel } from 'src/app/modules/core/api-models/order/order.payment.model';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
@@ -11,15 +11,15 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   styleUrls: ['./visa-payment.styles.css'],
 })
 export class VisaPaymentComponent implements OnInit {
-  public currentOrder: OrderModel;
-  private orderPaymentModel: OrderPaymentModel;
+  public currentOrder: OrderDTO;
+  private orderPaymentModel: OrderPaymentDTO;
   constructor(
     private orderService: OrderService,
     private router: Router,
     private errorHandler: ErrorHandlerService
   ) {
-    this.currentOrder = new OrderModel();
-    this.orderPaymentModel = new OrderPaymentModel();
+    this.currentOrder = new OrderDTO();
+    this.orderPaymentModel = new OrderPaymentDTO();
   }
   ngOnInit(): void {
     this.loadOrder();

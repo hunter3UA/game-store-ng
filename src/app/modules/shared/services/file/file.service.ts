@@ -1,4 +1,3 @@
-import { HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class FileService {
   constructor() {}
 
-  downloadFile(fileName: string, response: any) {
-    let blob: Blob = response.body as Blob;
+  downloadFile(fileName: string, body: any) {
+    let blob: Blob = body as Blob;
     let a = document.createElement('a');
     a.download = fileName;
     a.href = window.URL.createObjectURL(blob);

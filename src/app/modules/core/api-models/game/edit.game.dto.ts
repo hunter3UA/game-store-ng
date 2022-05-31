@@ -1,4 +1,4 @@
-export class EditGameModel {
+export class EditGameDTO {
   public id: number;
   public name: string;
   public key: string;

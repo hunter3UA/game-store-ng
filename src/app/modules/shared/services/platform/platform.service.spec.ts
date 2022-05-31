@@ -3,7 +3,7 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
+import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { environment } from 'src/environments/environment';
 
 import { PlatformService } from './platform.service';
@@ -25,7 +25,7 @@ describe('PlatformService', () => {
     const typeName = 'MyFakeType';
 
     service.addPlatform(typeName).subscribe((response) => {
-      expect(typeof response).toBe(typeof new PlatformTypeModel());
+      expect(typeof response).toBe(typeof new PlatformTypeDTO());
       expect(response).not.toBeNull();
     });
 
@@ -35,11 +35,11 @@ describe('PlatformService', () => {
 
     expect(request.request.method).toBe('POST');
 
-    request.flush(new PlatformTypeModel());
+    request.flush(new PlatformTypeDTO());
   });
 
   it('updatePlatform() should return updated platform', () => {
-    const fakePlatform: PlatformTypeModel = {
+    const fakePlatform: PlatformTypeDTO = {
       id: 1,
       type: 'MyFakeUpdatedType',
     };
@@ -58,7 +58,7 @@ describe('PlatformService', () => {
   });
 
   it('getPlatform(id) should return platform', () => {
-    const fakePlatform: PlatformTypeModel = {
+    const fakePlatform: PlatformTypeDTO = {
       id: 1,
       type: 'Test',
     };
@@ -78,7 +78,7 @@ describe('PlatformService', () => {
   });
 
   it('getAllPlatforms() should return array of platforms', () => {
-    const fakePlatforms: Array<PlatformTypeModel> = [
+    const fakePlatforms: Array<PlatformTypeDTO> = [
       { id: 1, type: 'Platform 1' },
       { id: 2, type: 'Platform 2' },
     ];
