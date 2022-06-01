@@ -21,12 +21,10 @@ export class AllPublishersComponent implements OnInit {
     this.publisherService.getAllPublishers().subscribe((data) => {
       if (data) {
         this.publishers = data;
-        console.log(this.publishers);
       }
     });
   }
   removePublisher(id: number) {
-    console.log(id);
     this.publisherService.removePublisher(id).subscribe((response) => {
       this.loadPublishers();
     });

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
+import { OrderStatus } from 'src/app/modules/core/enums/order.status';
 import { PaymentType } from 'src/app/modules/core/enums/payment.type';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
@@ -31,7 +32,7 @@ export class IboxPaymentComponent implements OnInit {
     this.orderService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-        if (this.currentOrder.status != 1) {
+        if (this.currentOrder.status != OrderStatus.Processing) {
           this.router.navigate(['/basket']);
         }
       },

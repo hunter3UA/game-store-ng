@@ -29,7 +29,6 @@ export class VisaPaymentComponent implements OnInit {
     this.orderService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-
         if (this.currentOrder.status != 1) {
           this.router.navigate(['/basket']);
         }
@@ -39,7 +38,6 @@ export class VisaPaymentComponent implements OnInit {
   }
 
   payOrder() {
-    console.log(this.currentOrder);
     this.orderPaymentModel.orderId = this.currentOrder.id;
     this.orderPaymentModel.paymentType = 2;
     this.orderService.payOrder(this.orderPaymentModel).subscribe({

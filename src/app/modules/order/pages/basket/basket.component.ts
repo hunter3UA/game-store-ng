@@ -29,7 +29,6 @@ export class BasketComponent implements OnInit {
     this.basketService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-        console.log(this.currentOrder.orderDetails.length);
         if (this.currentOrder.status == OrderStatus.Processing) {
           this.router.navigate(['/order']);
         }

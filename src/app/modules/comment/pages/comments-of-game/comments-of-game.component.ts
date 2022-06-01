@@ -42,7 +42,6 @@ export class CommentsOfGameComponent implements OnInit {
     this.commentService.getComments(this.gamekey).subscribe((data) => {
       if (data) {
         this.comments = data;
-        console.log(this.comments);
       }
     });
   }

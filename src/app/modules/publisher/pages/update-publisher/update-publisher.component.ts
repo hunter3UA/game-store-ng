@@ -34,7 +34,7 @@ export class UpdatePublisherComponent implements OnInit {
   updatePublisher() {
     this.publisherService
       .updatePublisher(this.publisherToEdit)
-      .subscribe((data) => {
+      .subscribe(() => {
         this.router.navigate(['/publishers', this.publisherToEdit.id]);
       });
   }
