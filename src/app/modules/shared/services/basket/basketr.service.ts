@@ -18,7 +18,7 @@ export class BasketService {
   ) {}
 
   addOrderItem(gameKey: string): Observable<OrderDetailsDTO> {
-    let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
+    let url = `${environment.apiBaseUrl}/basket/games/${gameKey}/buy`;
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));

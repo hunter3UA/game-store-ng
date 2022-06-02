@@ -109,7 +109,7 @@ describe('GameService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/game/test-game`
+      `${environment.apiBaseUrl}/games/test-game`
     );
 
     expect(request.request.method).toBe('GET');

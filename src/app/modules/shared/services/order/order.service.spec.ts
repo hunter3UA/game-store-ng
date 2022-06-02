@@ -40,7 +40,7 @@ describe('OrderService', () => {
       expect(response).toBe(true);
     });
 
-    const request = httpMock.expectOne(`${environment.apiBaseUrl}/order/1`);
+    const request = httpMock.expectOne(`${environment.apiBaseUrl}/orders/1`);
 
     expect(request.request.method).toBe('DELETE');
 
@@ -52,7 +52,7 @@ describe('OrderService', () => {
       expect(typeof response).toBe(typeof new OrderDTO());
     });
 
-    const request = httpMock.expectOne(`${environment.apiBaseUrl}/order/1`);
+    const request = httpMock.expectOne(`${environment.apiBaseUrl}/orders/1`);
 
     expect(request.request.method).toBe('GET');
 
@@ -69,7 +69,7 @@ describe('OrderService', () => {
         expect(response).not.toBeNull();
       });
 
-    const request = httpMock.expectOne(`${environment.apiBaseUrl}/pay`);
+    const request = httpMock.expectOne(`${environment.apiBaseUrl}/orders/pay`);
 
     expect(request.request.method).toBe('POST');
     request.flush(new Blob());

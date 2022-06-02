@@ -40,7 +40,7 @@ describe('BasketService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/games/my-key/buy`
+      `${environment.apiBaseUrl}/basket/games/my-key/buy`
     );
 
     expect(request.request.method).toBe('GET');

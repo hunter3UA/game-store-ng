@@ -13,7 +13,7 @@ export class OrderService {
   constructor(private http: HttpClient, private orderAdapter: OrderAdapter) {}
 
   makeOrder(orderId: number): Observable<OrderDTO> {
-    let url = `${environment.apiBaseUrl}/order/${orderId}`;
+    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
@@ -27,12 +27,12 @@ export class OrderService {
   }
 
   cancelOrder(orderId: number): Observable<boolean> {
-    let url = `${environment.apiBaseUrl}/order/${orderId}`;
+    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
     return this.http.delete<boolean>(url);
   }
 
   generateInvoiceFile(orderPaymentModel: OrderPaymentDTO): Observable<any> {
-    let url = `${environment.apiBaseUrl}/pay`;
+    let url = `${environment.apiBaseUrl}/orders/pay`;
     return this.http.post(url, orderPaymentModel, {
       observe: 'response',
       responseType: 'blob',
@@ -40,7 +40,7 @@ export class OrderService {
   }
 
   payOrder(orderPaymentModel: OrderPaymentDTO): Observable<any> {
-    let url = `${environment.apiBaseUrl}/pay`;
+    let url = `${environment.apiBaseUrl}/orders/pay`;
     return this.http.post(url, orderPaymentModel);
   }
 }

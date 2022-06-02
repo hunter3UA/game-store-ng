@@ -15,14 +15,14 @@ export class PlatformService {
   ) {}
 
   addPlatform(type: string): Observable<PlatformTypeDTO> {
-    let url = `${environment.apiBaseUrl}/platformTypes/add`;
+    let url = `${environment.apiBaseUrl}/platform-types/new`;
     return this.http
       .post(url, { type: type })
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 
   getAllPlatforms(): Observable<PlatformTypeDTO[]> {
-    let url = `${environment.apiBaseUrl}/platformTypes`;
+    let url = `${environment.apiBaseUrl}/platform-types`;
     return this.http
       .get(url)
       .pipe(
@@ -33,7 +33,7 @@ export class PlatformService {
   }
 
   getPlatform(id): Observable<PlatformTypeDTO> {
-    let url = `${environment.apiBaseUrl}/platformTypes/${id}`;
+    let url = `${environment.apiBaseUrl}/platform-types/${id}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
@@ -42,14 +42,14 @@ export class PlatformService {
   updatePlatform(
     platformToUpdate: PlatformTypeDTO
   ): Observable<PlatformTypeDTO> {
-    let url = `${environment.apiBaseUrl}/platformTypes/update`;
+    let url = `${environment.apiBaseUrl}/platform-types/update`;
     return this.http
       .put(url, platformToUpdate)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 
   removePlatform(id: number): Observable<boolean> {
-    let url = `${environment.apiBaseUrl}/platformTypes/remove/${id}`;
+    let url = `${environment.apiBaseUrl}/platform-types/remove/${id}`;
     return this.http.delete<boolean>(url);
   }
 }

@@ -30,7 +30,7 @@ describe('PlatformService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/platformTypes/add`
+      `${environment.apiBaseUrl}/platform-types/new`
     );
 
     expect(request.request.method).toBe('POST');
@@ -49,7 +49,7 @@ describe('PlatformService', () => {
       expect(response.id).toBe(fakePlatform.id);
     });
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/platformTypes/update`
+      `${environment.apiBaseUrl}/platform-types/update`
     );
 
     expect(request.request.method).toBe('PUT');
@@ -69,7 +69,7 @@ describe('PlatformService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/platformTypes/1`
+      `${environment.apiBaseUrl}/platform-types/1`
     );
 
     expect(request.request.method).toBe('GET');
@@ -89,7 +89,7 @@ describe('PlatformService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/platformTypes`
+      `${environment.apiBaseUrl}/platform-types`
     );
 
     expect(request.request.method).toBe('GET');
@@ -103,7 +103,7 @@ describe('PlatformService', () => {
     });
 
     const request = httpMock.expectOne(
-      `${environment.apiBaseUrl}/platformTypes/remove/1`
+      `${environment.apiBaseUrl}/platform-types/remove/1`
     );
 
     expect(request.request.method).toBe('DELETE');

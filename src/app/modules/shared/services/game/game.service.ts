@@ -37,7 +37,7 @@ export class GameService {
   }
 
   getGameByKey(key: string): Observable<GameDTO> {
-    let url = `${environment.apiBaseUrl}/game/${key}`;
+    let url = `${environment.apiBaseUrl}/games/${key}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.gameAdapter.adapt(data)));
@@ -58,7 +58,6 @@ export class GameService {
   downloadGame(gameKey: string): Observable<any> {
     let url = `${environment.apiBaseUrl}/games/${gameKey}/download`;
     return this.http.get(url, {
-      headers: new HttpHeaders({ 'Access-Control-Expose-Headers': '*' }),
       observe: 'response',
       responseType: 'blob',
     });
