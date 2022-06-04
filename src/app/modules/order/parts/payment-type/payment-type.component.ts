@@ -34,7 +34,7 @@ export class PaymentTypeComponent {
           ?.split(';')[1]
           .split('=')[1];
         this.fileService.downloadFile(fileName, resp.body);
-        this.router.navigate(['/basket']);
+        this.router.navigate(['/games']);
         alert('Succeeded');
       },
       error: (error) => this.errorService.handleError(error),

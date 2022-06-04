@@ -46,7 +46,7 @@ export class IboxPaymentComponent implements OnInit {
     this.orderService.payOrder(this.orderPaymentModel).subscribe({
       next: () => {
         alert('Succeeded');
-        this.router.navigate(['/basket']);
+        this.router.navigate(['/games']);
       },
       error: (error) => this.errorHandler.handleError(error),
     });
