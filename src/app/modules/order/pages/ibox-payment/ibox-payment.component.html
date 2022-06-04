@@ -1,0 +1,12 @@
+<form>
+  <div class="form-group">
+    <label>CustomerId: {{this.currentOrder.customerId}}</label>
+  </div>
+  <div class="form-group">
+    <label>Invoice number: {{this.currentOrder.id}}</label>
+  </div>
+  <div class="form-group">
+    <label>Total sum: {{this.currentOrder.totalSum}}</label>
+  </div>
+  <input type="button" (click)="payOrder()" value="Pay">
+</form>

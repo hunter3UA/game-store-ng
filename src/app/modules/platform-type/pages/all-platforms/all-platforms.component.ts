@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlatformTypeModel } from 'src/app/modules/core/api-models/platforms/platform.type.model';
+import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -7,9 +7,9 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './all-platforms.component.html',
 })
 export class AllPlatformsComponent implements OnInit {
-  public platforms: Array<PlatformTypeModel>;
+  public platforms: Array<PlatformTypeDTO>;
   constructor(private platformService: PlatformService) {
-    this.platforms = new Array<PlatformTypeModel>();
+    this.platforms = new Array<PlatformTypeDTO>();
   }
 
   ngOnInit(): void {

@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { PublisherModel } from '../api-models/publisher/publisher.model';
+import { PublisherDTO } from '../api-models/publisher/publisher.dto';
 import { Adapter } from './adapter';
 
 @Injectable({ providedIn: 'root' })
-export class PublisherAdapter implements Adapter<PublisherModel> {
-  adapt(item: any): PublisherModel {
-    let publisher = new PublisherModel();
+export class PublisherAdapter implements Adapter<PublisherDTO> {
+  adapt(item: any): PublisherDTO {
+    let publisher = new PublisherDTO();
     publisher.id = item.id;
     publisher.companyName = item.companyName;
     publisher.description = item.description;

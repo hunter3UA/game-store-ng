@@ -16,14 +16,12 @@ export class ErrorInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
-      retry(1),
+      retry(0),
       catchError((error: HttpErrorResponse) => {
         let errorMessage = '';
         if (error.error instanceof ErrorEvent) {
-          // client-side error
           errorMessage = `Error: ${error.error.message}`;
         } else {
-          // server-side error
           errorMessage = `Error Status: ${error.status}\nMessage: ${error.message}`;
         }
         console.log(errorMessage);

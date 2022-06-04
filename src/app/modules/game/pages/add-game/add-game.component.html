@@ -6,6 +6,11 @@
     <p *ngIf="nameOfGame.invalid && nameOfGame.touched">Enter valid name of game</p>
   </div>
   <div class="form-group">
+    <label for="gameName">Key</label>
+    <input class="form-control" id="gameName" maxlength="150" [(ngModel)]="gameModel.key" name="inputKey"
+      #nameOfGame="ngModel">
+  </div>
+  <div class="form-group">
     <label for="gamePrice">Price</label>
     <input class="form-control" id="gamePrice" type="number" #gamePrice (keydown)="keyDown($event)" min="1" required
       [(ngModel)]="gameModel.price" name="inputPrice">

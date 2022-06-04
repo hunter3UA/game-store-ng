@@ -1,5 +1,4 @@
-export class AddGameModel {
-  public id: number;
+export class AddGameDTO {
   public name: string;
   public key: string;
   public description: string;

@@ -1,0 +1,25 @@
+<h1>My order</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of currentOrder.orderDetails">
+      <th scope="row"><a [routerLink]="['/games/',item.game.key]">{{item.game.name}}</a> </th>
+      <td>
+        <label>Quantity : {{item.quantity}}</label>
+      </td>
+      <td>{{item.price}}</td>
+      <td>{{item.total}}</td>
+    </tr>
+  </tbody>
+</table>
+<div>Total sum: {{currentOrder.totalSum}}</div>
+<app-payment-type [orderId]="this.currentOrder.id"></app-payment-type>
+
+<button class="btn btn-danger" (click)="cancelOrder()">Cancel order</button>

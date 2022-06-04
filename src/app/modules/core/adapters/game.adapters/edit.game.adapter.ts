@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { EditGameModel } from '../../api-models/game/edit.game.model';
+import { EditGameDTO } from '../../api-models/game/edit.game.dto';
 import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
-export class EditGameAdapter implements Adapter<EditGameModel> {
-  adapt(item: any): EditGameModel {
-    let editGameModel: EditGameModel = new EditGameModel();
+export class EditGameAdapter implements Adapter<EditGameDTO> {
+  adapt(item: any): EditGameDTO {
+    let editGameModel: EditGameDTO = new EditGameDTO();
     editGameModel.id = item.id;
     editGameModel.key = item.key;
     editGameModel.description = item.description;

@@ -1,43 +1,46 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
-import { OrderItemAdapter } from 'src/app/modules/core/adapters/order.item.adapter';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
-import { OrderDetailsModel } from 'src/app/modules/core/api-models/order/oreder.details.model';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  constructor(
-    private http: HttpClient,
-    private orderAdapter: OrderAdapter,
-    private orderitemAdapter: OrderItemAdapter
-  ) {}
+  constructor(private http: HttpClient, private orderAdapter: OrderAdapter) {}
 
-  addOrderItem(gameKey: string): Observable<OrderDetailsModel> {
-    let url = `${environment.apiBaseUrl}/games/${gameKey}/buy`;
+  makeOrder(orderId: number): Observable<OrderDTO> {
+    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
     return this.http
-      .get(url, { withCredentials: true })
-      .pipe(map((data: any) => this.orderitemAdapter.adapt(data)));
+      .get(url)
+      .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  getOrder(): Observable<OrderModel> {
-    let url = `${environment.apiBaseUrl}/basket`;
+  getOrder(): Observable<OrderDTO> {
+    let url = `${environment.apiBaseUrl}/order`;
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  removeOrderItem(itemId: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}/basket/details/remove/${itemId}`;
-    return this.http.delete(url);
+  cancelOrder(orderId: number): Observable<boolean> {
+    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
+    return this.http.delete<boolean>(url);
   }
-  changeQuantity(itemId: number, quantity: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}/basket/details/update`;
-    return this.http.put(url, { orderDetailsId: itemId, quantity: quantity });
+
+  generateInvoiceFile(orderPaymentModel: OrderPaymentDTO): Observable<any> {
+    let url = `${environment.apiBaseUrl}/orders/pay`;
+    return this.http.post(url, orderPaymentModel, {
+      observe: 'response',
+      responseType: 'blob',
+    });
+  }
+
+  payOrder(orderPaymentModel: OrderPaymentDTO): Observable<any> {
+    let url = `${environment.apiBaseUrl}/orders/pay`;
+    return this.http.post(url, orderPaymentModel);
   }
 }

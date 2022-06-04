@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AddCommentModel } from 'src/app/modules/core/api-models/comment/add.comment.model';
+import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
-import { Comment } from '../../../core/api-models/comment/comment.model';
+import { CommentDTO } from '../../../core/api-models/comment/comment.dto';
 
 @Component({
   selector: 'app-comments-of-game',
@@ -10,15 +10,15 @@ import { Comment } from '../../../core/api-models/comment/comment.model';
 })
 export class CommentsOfGameComponent implements OnInit {
   public gamekey: string;
-  public comments: Array<Comment>;
-  public newComment: AddCommentModel;
+  public comments: Array<CommentDTO>;
+  public newComment: AddCommentDTO;
   constructor(
     private route: ActivatedRoute,
     private commentService: CommentService
   ) {
     this.gamekey = this.route.snapshot.params['gamekey'];
-    this.newComment = new AddCommentModel();
-    this.comments = new Array<Comment>();
+    this.newComment = new AddCommentDTO();
+    this.comments = new Array<CommentDTO>();
   }
 
   ngOnInit(): void {
@@ -42,7 +42,6 @@ export class CommentsOfGameComponent implements OnInit {
     this.commentService.getComments(this.gamekey).subscribe((data) => {
       if (data) {
         this.comments = data;
-        console.log(this.comments);
       }
     });
   }

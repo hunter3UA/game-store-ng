@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
+import { FileService } from 'src/app/modules/shared/services/file/file.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({
@@ -9,15 +10,16 @@ import { GameService } from 'src/app/modules/shared/services/game/game.service';
   templateUrl: './game-details.component.html',
 })
 export class GameDetailsComponent implements OnInit {
-  public game: GameModel;
+  public game: GameDTO;
   public key: string;
   constructor(
     private gameService: GameService,
     private route: ActivatedRoute,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private fileService: FileService
   ) {
     this.key = this.route.snapshot.params['key'];
-    this.game = new GameModel();
+    this.game = new GameDTO();
   }
 
   ngOnInit(): void {
@@ -32,12 +34,7 @@ export class GameDetailsComponent implements OnInit {
   }
   downloadGame() {
     this.gameService.downloadGame(this.key).subscribe((response) => {
-      let fileName = this.game.name;
-      let blob: Blob = response.body as Blob;
-      let a = document.createElement('a');
-      a.download = fileName;
-      a.href = window.URL.createObjectURL(blob);
-      a.click();
+      this.fileService.downloadFile(this.game.name, response.body);
     });
   }
 }

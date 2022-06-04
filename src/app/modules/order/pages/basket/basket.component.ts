@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderModel } from 'src/app/modules/core/api-models/order/order.model';
+import { Router } from '@angular/router';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderStatus } from 'src/app/modules/core/enums/order.status';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
+import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -7,9 +11,14 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './basket.component.html',
 })
 export class BasketComponent implements OnInit {
-  public currentOrder: OrderModel;
-  constructor(private orderService: OrderService) {
-    this.currentOrder = new OrderModel();
+  public currentOrder: OrderDTO;
+  constructor(
+    private basketService: BasketService,
+    private orderService: OrderService,
+    private errorHandler: ErrorHandlerService,
+    private router: Router
+  ) {
+    this.currentOrder = new OrderDTO();
   }
 
   ngOnInit(): void {
@@ -17,9 +26,13 @@ export class BasketComponent implements OnInit {
   }
 
   loadOrder() {
-    this.orderService.getOrder().subscribe((data) => {
-      this.currentOrder = data;
-      console.log(data);
+    this.basketService.getOrder().subscribe({
+      next: (data) => {
+        this.currentOrder = data;
+        if (this.currentOrder.status == OrderStatus.Processing) {
+          this.router.navigate(['/order']);
+        }
+      },
     });
   }
 
@@ -31,16 +44,28 @@ export class BasketComponent implements OnInit {
       }
     });
     if (val) {
-      this.orderService.changeQuantity(+id, +quantity).subscribe({
+      this.basketService.changeQuantity(+id, +quantity).subscribe({
         next: () => this.loadOrder(),
-        error: (error) => console.log(error),
+        error: (error) => this.errorHandler.handleError(error),
       });
     }
   }
 
   removeOrderItem(itemId: number) {
-    this.orderService.removeOrderItem(itemId).subscribe(() => {
+    this.basketService.removeOrderItem(itemId).subscribe(() => {
       this.loadOrder();
     });
+  }
+
+  makeOrder() {
+    if (this.currentOrder.orderDetails.length > 0) {
+      this.orderService.makeOrder(this.currentOrder.id).subscribe({
+        next: () => this.router.navigate(['/order']),
+        error: () => {
+          this.loadOrder();
+          alert('Some games was deleted from your order');
+        },
+      });
+    }
   }
 }

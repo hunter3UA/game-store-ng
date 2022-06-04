@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GenreModel } from 'src/app/modules/core/api-models/genre/genre.model';
+import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
 })
 export class UpdateGenreComponent implements OnInit {
   public genreId: number;
-  public genreToEdit: GenreModel;
-  public allGenres: Array<GenreModel>;
+  public genreToEdit: GenreDTO;
+  public allGenres: Array<GenreDTO>;
 
   constructor(
     private genreService: GenreService,
@@ -18,7 +18,7 @@ export class UpdateGenreComponent implements OnInit {
     private router: Router
   ) {
     this.genreId = this.route.snapshot.params['id'];
-    this.genreToEdit = new GenreModel();
+    this.genreToEdit = new GenreDTO();
   }
 
   ngOnInit(): void {

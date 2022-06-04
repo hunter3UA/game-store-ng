@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PublisherModel } from 'src/app/modules/core/api-models/publisher/publisher.model';
+import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './all-publishers.component.html',
 })
 export class AllPublishersComponent implements OnInit {
-  public publishers: Array<PublisherModel>;
+  public publishers: Array<PublisherDTO>;
 
   constructor(private publisherService: PublisherService) {
-    this.publishers = new Array<PublisherModel>();
+    this.publishers = new Array<PublisherDTO>();
   }
 
   ngOnInit(): void {
@@ -21,12 +21,10 @@ export class AllPublishersComponent implements OnInit {
     this.publisherService.getAllPublishers().subscribe((data) => {
       if (data) {
         this.publishers = data;
-        console.log(this.publishers);
       }
     });
   }
   removePublisher(id: number) {
-    console.log(id);
     this.publisherService.removePublisher(id).subscribe((response) => {
       this.loadPublishers();
     });

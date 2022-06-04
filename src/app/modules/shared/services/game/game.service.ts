@@ -3,22 +3,26 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
-import { GameModel } from 'src/app/modules/core/api-models/game/game.model';
+import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { environment } from 'src/environments/environment';
-import { AddGameModel } from '../../../core/api-models/game/add.game.model';
+import { AddGameDTO } from '../../../core/api-models/game/add.game.dto';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
+  public totalGames: number;
 
-  deleteGame(id: number): Observable<any> {
-    let url = `${environment.apiBaseUrl}/games/remove/${id}`;
-    return this.http.delete(url);
+  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {
+    this.totalGames = 0;
   }
 
-  getAllGames(): Observable<GameModel[]> {
+  deleteGame(id: number): Observable<boolean> {
+    let url = `${environment.apiBaseUrl}/games/remove/${id}`;
+    return this.http.delete<boolean>(url);
+  }
+
+  getAllGames(): Observable<GameDTO[]> {
     let url = `${environment.apiBaseUrl}/games`;
     return this.http
       .get(url)
@@ -27,14 +31,19 @@ export class GameService {
       );
   }
 
-  getGameByKey(key: string): Observable<GameModel> {
-    let url = `${environment.apiBaseUrl}/game/${key}`;
+  getTotalGames(): Observable<any> {
+    let url = `${environment.apiBaseUrl}/games`;
+    return this.http.get<GameDTO[]>(url);
+  }
+
+  getGameByKey(key: string): Observable<GameDTO> {
+    let url = `${environment.apiBaseUrl}/games/${key}`;
     return this.http
       .get(url)
       .pipe(map((data: any) => this.gameAdapter.adapt(data)));
   }
 
-  addGame(addGameModel: AddGameModel): Observable<GameModel> {
+  addGame(addGameModel: AddGameDTO): Observable<GameDTO> {
     let url = `${environment.apiBaseUrl}/games/new`;
     return this.http
       .post(url, addGameModel)
@@ -49,7 +58,6 @@ export class GameService {
   downloadGame(gameKey: string): Observable<any> {
     let url = `${environment.apiBaseUrl}/games/${gameKey}/download`;
     return this.http.get(url, {
-      headers: new HttpHeaders({ 'Access-Control-Expose-Headers': '*' }),
       observe: 'response',
       responseType: 'blob',
     });
