@@ -10,6 +10,8 @@ export class CommentAdapter implements Adapter<CommentDTO> {
     comment.name = item.name;
     comment.body = item.body;
     comment.answers = item.answers;
+    comment.isQuote = item.isQuote;
+    comment.isDeleted = item.isDeleted;
 
     return comment;
   }

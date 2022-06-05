@@ -1,0 +1,16 @@
+<div mat-dialog-content>
+  <form>
+    <div>
+      <label>Name</label>
+      <input class="form-control" required type="text" [(ngModel)]="newComment.name" #name name="name">
+    </div>
+    <div>
+      <label>Body</label>
+      <input class="form-control" required type="text" [(ngModel)]="newComment.body" #body name="body">
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-danger" (click)="closeDialog()">Close</button>
+  <button class="btn btn-success" (click)="addReply()">Ok</button>
+</div>

@@ -2,27 +2,25 @@
   <li *ngFor="let comment of comments">
     <div style="border: 1px solid black; margin:1px;  border-radius: 10px;">
       <p id="comment{{comment.id}}">Author: {{comment.name}}</p>
-      <p *ngIf="parentComment!=null; else withoutAnswer">Message:[<a [routerLink]="'.'"
-          fragment="comment{{parentComment.id}}">{{parentComment.name}}</a>]
-        {{comment.body}}</p>
-      <ng-template #withoutAnswer>
-        <p>Message:{{comment.body}}</p>
-      </ng-template>
-      <a href="#addComment{{comment.id}}" data-toggle="collapse">Reply</a>
-      <div class="collapse" id="addComment{{comment.id}}">
-        <form class="col-5">
-          <div>
-            <label>Name</label>
-            <input class="form-control" type="text" (ngModel)="newComment.name" #name name="name">
-          </div>
-          <div>
-            <label>Body</label>
-            <input class="form-control" type="text" (ngModel)="newComment.body" #body name="body">
-          </div>
-          <div>
-            <input type="submit" (click)="addReply(name.value,body.value, comment.id)" value="Add reply">
-          </div>
-        </form>
+      <div *ngIf="parentComment!=null && !comment.isQuote ;">
+        Message:[<a [routerLink]="'.'" fragment="comment{{parentComment.id}}">{{parentComment.name}}</a>]
+        <p *ngIf="!comment.isDeleted">{{comment.body}}</p>
+        <p *ngIf="comment.isDeleted">Comment is deleted</p>
+      </div>
+      <div *ngIf="parentComment!=null && comment.isQuote==true">
+        <quote *ngIf="!parentComment.isDeleted">{{parentComment.body}}</quote>
+        <p *ngIf="parentComment.isDeleted">Comment is deleted</p>
+        <p>{{comment.body}}</p>
+      </div>
+      <div *ngIf="parentComment==null">
+        <p *ngIf="!comment.isDeleted">{{comment.body}}</p>
+        <p *ngIf="comment.isDeleted">Comment is deleted</p>
+      </div>
+      <div *ngIf="!comment.isDeleted">
+        <button (click)="addReply(comment.id,false)" class="btn btn-success">Reply</button>
+        <button (click)="addReply(comment.id,true)" class="btn btn-success">Quote</button>
+        <button class="btn btn-info" (click)="updateComment(comment)">Edit</button>
+        <button class="btn btn-danger" (click)="removeComment(comment.id)">Delete</button>
       </div>
     </div>
     <app-comment-item [gameKey]="this.gameKey" [parentComment]="comment" [comments]="comment.answers"

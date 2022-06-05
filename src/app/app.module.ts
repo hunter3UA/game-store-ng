@@ -10,6 +10,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommentModule } from './modules/comment/comment.module';
 import { ErrorModule } from './modules/error/error.module';
 import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
@@ -20,6 +21,7 @@ import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor'
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,
     ErrorModule,
+    NoopAnimationsModule,
   ],
   exports: [],
   providers: [

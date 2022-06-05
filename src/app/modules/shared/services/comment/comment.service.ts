@@ -28,9 +28,21 @@ export class CommentService {
   }
 
   addComment(gameKey: string, comment: AddCommentDTO): Observable<CommentDTO> {
-    let url = `${environment.apiBaseUrl}/games/${gameKey}/newcomment`;
+    let url = `${environment.apiBaseUrl}/games/${gameKey}/new-comment`;
     return this.http
       .post(url, comment)
       .pipe(map((data: any) => this.commentAdapter.adapt(data)));
+  }
+
+  updateComment(comment: CommentDTO): Observable<CommentDTO> {
+    let url = `${environment.apiBaseUrl}/games/comments/update`;
+    return this.http
+      .put(url, comment)
+      .pipe(map((data: any) => this.commentAdapter.adapt(data)));
+  }
+
+  removeComment(id: number): Observable<boolean> {
+    let url = `${environment.apiBaseUrl}/games/comments/remove/${id}`;
+    return this.http.delete<boolean>(url);
   }
 }
