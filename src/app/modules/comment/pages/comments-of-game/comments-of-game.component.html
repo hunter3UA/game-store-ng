@@ -2,11 +2,11 @@
 <form class="col-5">
   <div>
     <label>Name</label>
-    <input class="form-control" type="text" [(ngModel)]="newComment.name" name="name">
+    <input class="form-control" type="text" minlength="5" maxlength="150" [(ngModel)]="newComment.name" name="name">
   </div>
   <div>
     <label>Body</label>
-    <input class="form-control" type="text" [(ngModel)]="newComment.body" name="body">
+    <input class="form-control" type="text" minlength="5" maxlength="10000" [(ngModel)]="newComment.body" name="body">
   </div>
   <div>
     <input type="submit" (click)="addComment()" value="Add">

@@ -16,7 +16,6 @@ export class CommentService {
   ) {}
 
   getComments(gameKey: string): Observable<CommentDTO[]> {
-    console.log(gameKey);
     let url = `${environment.apiBaseUrl}/games/${gameKey}/comments`;
     return this.http
       .get(url)
@@ -44,5 +43,10 @@ export class CommentService {
   removeComment(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/games/comments/remove/${id}`;
     return this.http.delete<boolean>(url);
+  }
+
+  banUser(): Observable<any> {
+    let url = `${environment.apiBaseUrl}/games/comments/ban`;
+    return this.http.delete(url);
   }
 }

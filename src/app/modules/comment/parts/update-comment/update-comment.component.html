@@ -2,11 +2,13 @@
   <form>
     <div>
       <label>Name</label>
-      <input class="form-control" type="text" required [ngModel]="this.updateCommentDTO.name" #name name="name">
+      <input class="form-control" type="text" required minlength="5" maxlength="150"
+        [ngModel]="this.updateCommentDTO.name" #name name="name">
     </div>
     <div>
       <label>Body</label>
-      <input class="form-control" type="text" required [ngModel]="this.updateCommentDTO.body" #body name="body">
+      <input class="form-control" type="text" required minlength="5" maxlength="10000"
+        [ngModel]="this.updateCommentDTO.body" #body name="body">
     </div>
     <div mat-dialog-actions>
       <button class="btn btn-danger" (click)="closeDialog()">Close</button>

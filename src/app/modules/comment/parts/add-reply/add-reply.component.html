@@ -2,11 +2,13 @@
   <form>
     <div>
       <label>Name</label>
-      <input class="form-control" required type="text" [(ngModel)]="newComment.name" #name name="name">
+      <input class="form-control" required type="text" minlength="5" maxlength="150" [(ngModel)]="newComment.name" #name
+        name="name">
     </div>
     <div>
       <label>Body</label>
-      <input class="form-control" required type="text" [(ngModel)]="newComment.body" #body name="body">
+      <input class="form-control" required type="text" minlength="5" maxlength="10000" [(ngModel)]="newComment.body"
+        #body name="body">
     </div>
   </form>
 </div>

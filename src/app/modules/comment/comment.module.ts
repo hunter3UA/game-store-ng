@@ -8,9 +8,10 @@ import { QuoteComponent } from './parts/quote/quote.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AddReplyComponent } from './parts/add-reply/add-reply.component';
 import { UpdateCommentComponent } from './parts/update-comment/update-comment.component';
+import { BanTypeComponent } from './pages/ban-type/ban-type.component';
 
 @NgModule({
-  declarations: [CommentsOfGameComponent, CommentItemComponent, QuoteComponent, AddReplyComponent, UpdateCommentComponent],
+  declarations: [CommentsOfGameComponent, CommentItemComponent, QuoteComponent, AddReplyComponent, UpdateCommentComponent, BanTypeComponent],
   imports: [CommonModule, CommentRoutingModule, FormsModule, MatDialogModule],
 })
 export class CommentModule {}
