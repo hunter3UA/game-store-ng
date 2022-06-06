@@ -1,0 +1,32 @@
+<label>Genres:</label>
+<div>
+  <label for="nameOfGame">Name:</label>
+  <input type="text" name="nameOfGame">
+</div>
+<div *ngFor="let genre of genresList">
+  <input type="checkbox" id="genre{{genre.id}}" name="genre{{genre.id}}" value="{{genre.id}}">
+  <label for="genre{{genre.id}}">{{genre.name}}</label><br>
+</div>
+<label>Platforms:</label>
+<div *ngFor="let platform of platformsList">
+  <input type="checkbox" id="platform{{platform.id}}" name="platform{{platform.id}}" value="{{platform.id}}">
+  <label for="platform{{platform.id}}">{{platform.type}}</label><br>
+</div>
+<label>Publishers:</label>
+<div *ngFor="let publisher of publishersList">
+  <input type="checkbox" id="publisher{{publisher.id}}" name="publisher{{publisher.id}}" value="{{publisher.id}}">
+  <label for="publisher{{publisher.id}}">{{publisher.companyName}}</label><br>
+</div>
+<div>
+  <p>Min:<input type="text" style="width:70px;">- Max<input type="text" style="width:70px;"></p>
+</div>
+<div>
+  <select>
+    <option [ngValue]="null">--</option>
+    <option>Most popular</option>
+    <option>Most commented</option>
+    <option>Price Asc</option>
+    <option>Price Desc</option>
+    <option>New</option>
+  </select>
+</div>

@@ -8,6 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { UpdateGameComponent } from './pages/update-game/update-game.component';
+import { FilterPanelComponent } from './parts/filter-panel/filter-panel.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { UpdateGameComponent } from './pages/update-game/update-game.component';
     AllGamesComponent,
     GameDetailsComponent,
     UpdateGameComponent,
+    FilterPanelComponent,
   ],
   imports: [
     CommonModule,
