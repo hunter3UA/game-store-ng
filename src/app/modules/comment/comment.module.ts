@@ -4,9 +4,14 @@ import { CommentRoutingModule } from './comment-routing.module';
 import { CommentsOfGameComponent } from './pages/comments-of-game/comments-of-game.component';
 import { CommentItemComponent } from './parts/comment-item/comment-item.component';
 import { FormsModule } from '@angular/forms';
+import { QuoteComponent } from './parts/quote/quote.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { AddReplyComponent } from './parts/add-reply/add-reply.component';
+import { UpdateCommentComponent } from './parts/update-comment/update-comment.component';
+import { BanTypeComponent } from './pages/ban-type/ban-type.component';
 
 @NgModule({
-  declarations: [CommentsOfGameComponent, CommentItemComponent],
-  imports: [CommonModule, CommentRoutingModule, FormsModule],
+  declarations: [CommentsOfGameComponent, CommentItemComponent, QuoteComponent, AddReplyComponent, UpdateCommentComponent, BanTypeComponent],
+  imports: [CommonModule, CommentRoutingModule, FormsModule, MatDialogModule],
 })
 export class CommentModule {}

@@ -3,7 +3,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
 import { CommentDTO } from '../../../core/api-models/comment/comment.dto';
-
+import { MatDialog } from '@angular/material/dialog';
+import { AddReplyComponent } from '../add-reply/add-reply.component';
+import { UpdateCommentComponent } from '../update-comment/update-comment.component';
 @Component({
   selector: 'app-comment-item',
   templateUrl: './comment-item.component.html',
@@ -15,31 +17,39 @@ export class CommentItemComponent {
 
   @Input() gameKey: string;
 
-  newComment: AddCommentDTO;
-
-  constructor(private commentService: CommentService, private router: Router) {
-    this.newComment = new AddCommentDTO();
+  constructor(
+    private commentService: CommentService,
+    private router: Router,
+    private dialogRef: MatDialog
+  ) {
     this.comments = new Array<CommentDTO>();
     this.gameKey = '';
   }
+  addReply(parentCommentId: number, isQuote: boolean) {
+    this.dialogRef.open(AddReplyComponent, {
+      width: '600px',
+      data: {
+        gameKey: this.gameKey,
+        parentCommentId: parentCommentId,
+        isQuote: isQuote,
+      },
+    });
+  }
 
-  addReply(name: string, body: string, parentId: number) {
-    this.newComment.name = name;
-    this.newComment.body = body;
+  updateComment(comment: CommentDTO) {
+    this.dialogRef.open(UpdateCommentComponent, {
+      width: '600px',
+      data: [comment, { gameKey: this.gameKey }],
+    });
+  }
 
-    this.newComment.parentCommentId = parentId;
-
-    this.commentService
-      .addComment(this.gameKey, this.newComment)
-      .subscribe((data) => {
-        if (data)
-          this.router
-            .navigateByUrl('/', { skipLocationChange: true })
-            .then(() => {
-              this.router.navigate([`/games/${this.gameKey}/comments`], {
-                fragment: `comment${data.id}`,
-              });
-            });
+  removeComment(id: number) {
+    this.commentService.removeComment(id).subscribe((data) => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([`/games/${this.gameKey}/comments`], {
+          fragment: `comment${id}`,
+        });
       });
+    });
   }
 }
