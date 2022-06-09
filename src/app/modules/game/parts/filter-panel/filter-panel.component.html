@@ -1,32 +1,44 @@
-<label>Genres:</label>
-<div>
-  <label for="nameOfGame">Name:</label>
-  <input type="text" name="nameOfGame">
-</div>
-<div *ngFor="let genre of genresList">
-  <input type="checkbox" id="genre{{genre.id}}" name="genre{{genre.id}}" value="{{genre.id}}">
-  <label for="genre{{genre.id}}">{{genre.name}}</label><br>
-</div>
-<label>Platforms:</label>
-<div *ngFor="let platform of platformsList">
-  <input type="checkbox" id="platform{{platform.id}}" name="platform{{platform.id}}" value="{{platform.id}}">
-  <label for="platform{{platform.id}}">{{platform.type}}</label><br>
-</div>
-<label>Publishers:</label>
-<div *ngFor="let publisher of publishersList">
-  <input type="checkbox" id="publisher{{publisher.id}}" name="publisher{{publisher.id}}" value="{{publisher.id}}">
-  <label for="publisher{{publisher.id}}">{{publisher.companyName}}</label><br>
-</div>
-<div>
-  <p>Min:<input type="text" style="width:70px;">- Max<input type="text" style="width:70px;"></p>
-</div>
-<div>
-  <select>
-    <option [ngValue]="null">--</option>
-    <option>Most popular</option>
-    <option>Most commented</option>
-    <option>Price Asc</option>
-    <option>Price Desc</option>
-    <option>New</option>
-  </select>
-</div>
+<form>
+  <div>
+    <!-- <label>Items on page:</label>
+    <select></select> -->
+  </div>
+  <label>Genres:</label>
+  <div>
+    <label for="nameOfGame">Name:</label>
+    <input type="text" name="nameOfGame" [(ngModel)]="this.gameFilter.name">
+  </div>
+  <div>
+    <mtx-checkbox-group [items]="this.genresList" [(ngModel)]="this.gameFilter.genres" [bindValue]="'id'"
+      [bindLabel]="'name'" name="genres">
+    </mtx-checkbox-group>
+  </div>
+  <label>Platforms:</label>
+  <div>
+    <mtx-checkbox-group [items]="this.platformsList" [(ngModel)]="this.gameFilter.platforms" [bindValue]="'id'"
+      [bindLabel]="'type'" name="platforms">
+    </mtx-checkbox-group>
+  </div>
+  <label>Publishers:</label>
+  <div>
+    <mtx-checkbox-group [items]="this.publishersList" [(ngModel)]="this.gameFilter.publishers" [bindValue]="'id'"
+      [bindLabel]="'companyName'" name="publishers">
+    </mtx-checkbox-group>
+  </div>
+  <div>
+    <p>Min:<input type="text" name="minPrice" style="width:70px;" [(ngModel)]="this.gameFilter.minPrice">- Max<input
+        type="text" style="width:70px;" name="maxPrice" [(ngModel)]="this.gameFilter.maxPrice"></p>
+  </div>
+  <div>
+
+    <select>
+      <option [ngValue]="null">--</option>
+      <option>Most popular</option>
+      <option>Most commented</option>
+      <option>Price Asc</option>
+      <option>Price Desc</option>
+      <option>New</option>
+    </select>
+  </div>
+  <input type="button" (click)="getFilter()" value="filter">
+</form>

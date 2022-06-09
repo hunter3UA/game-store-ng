@@ -56,7 +56,7 @@ export class UpdateGameComponent implements OnInit {
   }
 
   loadGame(key: string) {
-    this.gameService.getGameByKey(key).subscribe({
+    this.gameService.getGameByKey(key, false).subscribe({
       next: (data) => {
         this.gameToEdit = data;
         if (this.gameToEdit.publisher) {

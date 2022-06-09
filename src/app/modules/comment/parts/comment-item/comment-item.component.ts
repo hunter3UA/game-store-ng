@@ -1,6 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
 import { CommentDTO } from '../../../core/api-models/comment/comment.dto';
 import { MatDialog } from '@angular/material/dialog';

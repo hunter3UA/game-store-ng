@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+
 import { Router } from '@angular/router';
 import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
@@ -49,4 +50,7 @@ export class AddReplyComponent {
         this.closeDialog();
       });
   }
+}
+function MAT_DIALOG_DATA(MAT_DIALOG_DATA: any) {
+  throw new Error('Function not implemented.');
 }

@@ -9,6 +9,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { GameDetailsComponent } from './pages/game-details/game-details.component';
 import { UpdateGameComponent } from './pages/update-game/update-game.component';
 import { FilterPanelComponent } from './parts/filter-panel/filter-panel.component';
+import { MtxCheckboxGroupModule } from '@ng-matero/extensions/checkbox-group';
+import {} from '@ng-matero/extensions';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { FilterPanelComponent } from './parts/filter-panel/filter-panel.componen
     FormsModule,
     SharedModule,
     NgMultiSelectDropDownModule.forRoot(),
+    MtxCheckboxGroupModule,
   ],
 })
 export class GameModule {}

@@ -8,9 +8,11 @@ import { HomeComponent } from './modules/root/components/home/home.component';
 import { HeaderComponent } from './modules/root/components/header/header.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommentModule } from './modules/comment/comment.module';
-import { ErrorModule } from './modules/error/error.module';
+
 import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {} from '@ng-matero/extensions';
+import { ErrorModule } from './modules/error/error.module';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
@@ -21,7 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,
     ErrorModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
   ],
   exports: [],
   providers: [
