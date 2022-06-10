@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
-import { GameFilterDTO } from 'src/app/modules/core/api-models/game/game.filter.dto';
 import { ItemPageDTO } from 'src/app/modules/core/common/item.page.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
@@ -15,7 +14,6 @@ import { GameService } from '../../../shared/services/game/game.service';
 export class AllGamesComponent implements OnInit {
   public gamePage: ItemPageDTO<GameDTO>;
   public params: any;
-  public pages: any;
 
   constructor(
     private gameService: GameService,
@@ -30,10 +28,10 @@ export class AllGamesComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.params = params;
-      this.pages = this.params;
-      this.pages.page = '';
-      this.pages = QueryHelper.removeEmptyFields(this.pages);
+      this.params = QueryHelper.parseParamsObjectToFilterObject(this.params);
+      console.log('Object', this.params);
       this.params = QueryHelper.parseObjectToQueryString(this.params);
+      console.log('Query', this.params);
       this.loadAllGames(this.params);
     });
   }

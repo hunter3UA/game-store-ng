@@ -1,17 +1,8 @@
 <form>
-  <div>
-    <!-- <label>Items on page:</label>
-    <select></select> -->
-  </div>
   <label>Genres:</label>
   <div>
     <label for="nameOfGame">Name:</label>
     <input type="text" name="nameOfGame" [(ngModel)]="this.gameFilter.name">
-  </div>
-  <div>
-    <mtx-checkbox-group [items]="this.genresList" [(ngModel)]="this.gameFilter.genres" [bindValue]="'id'"
-      [bindLabel]="'name'" name="genres">
-    </mtx-checkbox-group>
   </div>
   <label>Platforms:</label>
   <div>
@@ -28,17 +19,6 @@
   <div>
     <p>Min:<input type="text" name="minPrice" style="width:70px;" [(ngModel)]="this.gameFilter.minPrice">- Max<input
         type="text" style="width:70px;" name="maxPrice" [(ngModel)]="this.gameFilter.maxPrice"></p>
-  </div>
-  <div>
-
-    <select>
-      <option [ngValue]="null">--</option>
-      <option>Most popular</option>
-      <option>Most commented</option>
-      <option>Price Asc</option>
-      <option>Price Desc</option>
-      <option>New</option>
-    </select>
   </div>
   <input type="button" (click)="getFilter()" value="filter">
 </form>

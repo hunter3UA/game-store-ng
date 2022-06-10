@@ -9,5 +9,8 @@ export class GameFilterDTO {
   public maxPrice: number;
   public page?: number;
   public elementsonPage: number;
-  public sortingType: SortingType;
+  public sortingType: number;
+  public publishingDate: number;
+
+  constructor() {}
 }

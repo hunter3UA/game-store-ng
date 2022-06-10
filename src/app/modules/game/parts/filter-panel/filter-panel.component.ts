@@ -1,10 +1,10 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameFilterDTO } from 'src/app/modules/core/api-models/game/game.filter.dto';
-
 import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { SortingType } from 'src/app/modules/core/enums/sorting.type';
 import { QueryHelper } from 'src/app/modules/shared/services/common/query.helper';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
@@ -19,23 +19,33 @@ export class FilterPanelComponent implements OnInit {
   public genresList: Array<GenreDTO>;
   public publishersList: Array<PublisherDTO>;
   public gameFilter: GameFilterDTO;
+  public sotringValues: Array<any>;
 
-  @Input() params: any;
+  @Input() maxGameCount: number;
 
   constructor(
     private platformService: PlatformService,
     private genreService: GenreService,
     private publisherService: PublisherService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.genresList = new Array<GenreDTO>();
     this.platformsList = new Array<PlatformTypeDTO>();
     this.publishersList = new Array<PublisherDTO>();
+    this.gameFilter = new GameFilterDTO();
+    this.sotringValues = Object.entries(SortingType)
+      .slice(5, 10)
+      .map(([key, value]) => {
+        return { label: key, id: value };
+      });
   }
 
   ngOnInit(): void {
-    this.gameFilter = new GameFilterDTO();
-
+    this.route.queryParams.subscribe((params) => {
+      this.gameFilter = QueryHelper.parseParamsObjectToFilterObject(params);
+    });
+    console.log(this.gameFilter);
     this.loadGenres();
     this.loadPlaforms();
     this.loadPublishers();
