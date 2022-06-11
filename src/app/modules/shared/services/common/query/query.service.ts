@@ -1,7 +1,13 @@
+import { Injectable } from '@angular/core';
 import { GameFilterDTO } from 'src/app/modules/core/api-models/game/game.filter.dto';
 
-export class QueryHelper {
-  static parseObjectToQueryString(object: any): string {
+@Injectable({
+  providedIn: 'root',
+})
+export class QueryService {
+  constructor() {}
+
+  parseObjectToQueryString(object: any): string {
     let str: string =
       '?' +
       Object.keys(object)
@@ -23,11 +29,12 @@ export class QueryHelper {
     return str;
   }
 
-  static removeEmptyFields(object: any): any {
+  removeEmptyFields(object: any): any {
     Object.keys(object).forEach((key) => {
       if (
         (object instanceof Array && object[key].length == 0) ||
-        object[key] == ''
+        object[key] == '' ||
+        object[key] == undefined
       ) {
         delete object[key];
       }
@@ -35,7 +42,7 @@ export class QueryHelper {
     return object;
   }
 
-  static parseParamsObjectToFilterObject(object: any): GameFilterDTO {
+  parseParamsObjectToFilterObject(object: any): GameFilterDTO {
     let gameFilter: GameFilterDTO = new GameFilterDTO();
     if (object['name'] != undefined) {
       gameFilter.name = object['name'];
@@ -80,7 +87,7 @@ export class QueryHelper {
       object['elementsOnPage'] != undefined &&
       Number(object['elementsOnPage']) > 0
     ) {
-      gameFilter.elementsonPage = Number(object['elementsOnPage']);
+      gameFilter.elementsOnPage = Number(object['elementsOnPage']);
     }
 
     if (

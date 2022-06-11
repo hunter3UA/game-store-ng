@@ -12,7 +12,7 @@ import { FilterPanelComponent } from './parts/filter-panel/filter-panel.componen
 import { MtxCheckboxGroupModule } from '@ng-matero/extensions/checkbox-group';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
-import { MtxSelectModule } from '@ng-matero/extensions/select';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { MtxSelectModule } from '@ng-matero/extensions/select';
     MtxCheckboxGroupModule,
     MatCheckboxModule,
     MatSelectModule,
-    MtxSelectModule,
+    MatRadioModule,
   ],
 })
 export class GameModule {}

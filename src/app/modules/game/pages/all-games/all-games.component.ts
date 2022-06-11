@@ -4,8 +4,9 @@ import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ItemPageDTO } from 'src/app/modules/core/common/item.page.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
-import { QueryHelper } from 'src/app/modules/shared/services/common/query.helper';
+import { QueryService } from 'src/app/modules/shared/services/common/query/query.service';
 import { GameService } from '../../../shared/services/game/game.service';
+import { GameFilterHelper } from '../../helpers/game.filter.helper';
 
 @Component({
   selector: 'app-all-games',
@@ -20,7 +21,8 @@ export class AllGamesComponent implements OnInit {
     private router: Router,
     private basketService: BasketService,
     private route: ActivatedRoute,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private queryService: QueryService
   ) {
     this.gamePage = new ItemPageDTO<GameDTO>();
   }
@@ -28,15 +30,15 @@ export class AllGamesComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.params = params;
-      this.params = QueryHelper.parseParamsObjectToFilterObject(this.params);
-      console.log('Object', this.params);
-      this.params = QueryHelper.parseObjectToQueryString(this.params);
-      console.log('Query', this.params);
+      this.params = GameFilterHelper.parseParamsObjectToFilterObject(
+        this.params
+      );
+      this.params = this.queryService.parseObjectToQueryString(this.params);
       this.loadAllGames(this.params);
     });
   }
 
-  loadAllGames(params) {
+  loadAllGames(params: string) {
     this.gameService.getAllGames(params).subscribe({
       next: (data) => {
         this.gamePage = data;
@@ -46,10 +48,10 @@ export class AllGamesComponent implements OnInit {
   }
 
   removeGame(id: number) {
-    // this.gameService.deleteGame(id).subscribe({
-    //   next: () => this.loadAllGames(),
-    //   error: (error) => this.errorHandler.handleError(error),
-    // });
+    this.gameService.deleteGame(id).subscribe({
+      next: () => this.loadAllGames(this.params),
+      error: (error) => this.errorHandler.handleError(error),
+    });
   }
 
   addOrderItem(gameKey: string) {

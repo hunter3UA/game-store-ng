@@ -1,25 +1,37 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GameFilterDTO } from 'src/app/modules/core/api-models/game/game.filter.dto';
 import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { SelectListItem } from 'src/app/modules/core/common/select.list.item';
 import { SortingType } from 'src/app/modules/core/enums/sorting.type';
-import { QueryHelper } from 'src/app/modules/shared/services/common/query.helper';
+import { ElementsOnPageModel } from 'src/app/modules/core/common/elements.on.page.model';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
+import { PublishingDate } from 'src/app/modules/core/enums/publishing.date';
+import { QueryService } from 'src/app/modules/shared/services/common/query/query.service';
+import { GameFilterHelper } from '../../helpers/game.filter.helper';
 
 @Component({
   selector: 'app-filter-panel',
   templateUrl: './filter-panel.component.html',
 })
-export class FilterPanelComponent implements OnInit {
-  public platformsList: Array<PlatformTypeDTO>;
+export class FilterPanelComponent implements OnInit, OnChanges {
+  public platformsList: Array<any>;
   public genresList: Array<GenreDTO>;
   public publishersList: Array<PublisherDTO>;
   public gameFilter: GameFilterDTO;
-  public sotringValues: Array<any>;
+  public elementsOnPage: Array<SelectListItem>;
+  public sotringValues: Array<SelectListItem>;
+  public publishedAt: Array<SelectListItem>;
 
   @Input() maxGameCount: number;
 
@@ -28,32 +40,53 @@ export class FilterPanelComponent implements OnInit {
     private genreService: GenreService,
     private publisherService: PublisherService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private queryService: QueryService
   ) {
     this.genresList = new Array<GenreDTO>();
     this.platformsList = new Array<PlatformTypeDTO>();
     this.publishersList = new Array<PublisherDTO>();
+    this.publishedAt = new Array<SelectListItem>();
     this.gameFilter = new GameFilterDTO();
-    this.sotringValues = Object.entries(SortingType)
-      .slice(5, 10)
-      .map(([key, value]) => {
-        return { label: key, id: value };
-      });
+    this.initializeDdlLists();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.maxGameCount) {
+      this.maxGameCount = changes['maxGameCount'].currentValue;
+      this.elementsOnPage.push(new SelectListItem('All', this.maxGameCount));
+    }
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      this.gameFilter = QueryHelper.parseParamsObjectToFilterObject(params);
+      this.gameFilter =
+        GameFilterHelper.parseParamsObjectToFilterObject(params);
     });
-    console.log(this.gameFilter);
     this.loadGenres();
     this.loadPlaforms();
     this.loadPublishers();
+    this.elementsOnPage = ElementsOnPageModel.getElements();
+  }
+
+  initializeDdlLists() {
+    this.sotringValues = Object.entries(SortingType)
+      .slice(5, 10)
+      .map(([key, value]) => {
+        return new SelectListItem(key, value);
+      });
+    this.publishedAt.push(new SelectListItem('None'));
+    Object.entries(PublishingDate)
+      .slice(5, 10)
+      .map(([key, value]) => {
+        this.publishedAt.push(new SelectListItem(key, value));
+      });
   }
 
   loadPlaforms() {
     this.platformService.getAllPlatforms().subscribe({
-      next: (data) => (this.platformsList = data),
+      next: (data) => {
+        this.platformsList = data;
+      },
     });
   }
 
@@ -64,6 +97,7 @@ export class FilterPanelComponent implements OnInit {
       },
     });
   }
+
   loadPublishers() {
     this.publisherService.getAllPublishers().subscribe({
       next: (data) => (this.publishersList = data),
@@ -71,10 +105,15 @@ export class FilterPanelComponent implements OnInit {
   }
 
   getFilter() {
-    console.log(this.gameFilter);
-    let params = QueryHelper.removeEmptyFields(this.gameFilter);
+    let params = this.queryService.removeEmptyFields(this.gameFilter);
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
       this.router.navigate([`/games`], { queryParams: params });
+    });
+  }
+
+  resetFilter() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([`/games`]);
     });
   }
 }
