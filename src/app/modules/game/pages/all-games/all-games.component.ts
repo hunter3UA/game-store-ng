@@ -21,8 +21,7 @@ export class AllGamesComponent implements OnInit {
     private router: Router,
     private basketService: BasketService,
     private route: ActivatedRoute,
-    private errorHandler: ErrorHandlerService,
-    private queryService: QueryService
+    private errorHandler: ErrorHandlerService
   ) {
     this.gamePage = new ItemPageDTO<GameDTO>();
   }
@@ -33,7 +32,6 @@ export class AllGamesComponent implements OnInit {
       this.params = GameFilterHelper.parseParamsObjectToFilterObject(
         this.params
       );
-      this.params = this.queryService.parseObjectToQueryString(this.params);
       this.loadAllGames(this.params);
     });
   }

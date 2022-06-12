@@ -14,8 +14,10 @@ export class HeaderComponent implements OnInit {
   }
 
   loadAllGames() {
-    // this.gameService.getAllGames().subscribe((data) => {
-    //   this.totalCountOfGames = data.length;
-    // });
+    this.gameService.getTotalGames().subscribe((data) => {
+      if (data) {
+        this.totalCountOfGames = data;
+      }
+    });
   }
 }

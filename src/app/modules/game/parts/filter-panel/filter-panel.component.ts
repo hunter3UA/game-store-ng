@@ -83,6 +83,7 @@ export class FilterPanelComponent implements OnInit, OnChanges {
   }
 
   loadPlaforms() {
+    this.platformService.getAllPlatforms().pipe();
     this.platformService.getAllPlatforms().subscribe({
       next: (data) => {
         this.platformsList = data;

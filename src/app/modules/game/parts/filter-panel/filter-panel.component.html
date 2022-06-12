@@ -1,5 +1,9 @@
 <form>
   <div>
+    <label for="gameName">Name</label>
+    <input type="text" name="gameName" [(ngModel)]="this.gameFilter.name">
+  </div>
+  <div>
     <mat-form-field>
       <mat-label>Elements on page</mat-label>
       <mat-select [(ngModel)]="this.gameFilter.elementsOnPage" name="elementsOnPage">

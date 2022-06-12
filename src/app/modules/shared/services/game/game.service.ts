@@ -7,39 +7,25 @@ import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ItemPageDTO } from 'src/app/modules/core/common/item.page.dto';
 import { environment } from 'src/environments/environment';
 import { AddGameDTO } from '../../../core/api-models/game/add.game.dto';
-import { QueryHelper } from '../common/query.helper';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GameService {
-  public totalGames: number;
-
-  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {
-    this.totalGames = 0;
-  }
+  constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
 
   deleteGame(id: number): Observable<boolean> {
     let url = `${environment.apiBaseUrl}/games/remove/${id}`;
     return this.http.delete<boolean>(url);
   }
 
-  // getAllGames(): Observable<GameDTO[]> {
-  //   let url = `${environment.apiBaseUrl}/games`;
-  //   return this.http
-  //     .get(url)
-  //     .pipe(
-  //       map((data: any[]) => data.map((item) => this.gameAdapter.adapt(item)))
-  //     );
-  // }
   getAllGames(params): Observable<ItemPageDTO<GameDTO>> {
-    let url = `${environment.apiBaseUrl}/games${params}`;
-
-    return this.http.get<ItemPageDTO<GameDTO>>(url);
+    let url = `${environment.apiBaseUrl}/games`;
+    return this.http.get<ItemPageDTO<GameDTO>>(url, { params: params });
   }
 
   getTotalGames(): Observable<any> {
-    let url = `${environment.apiBaseUrl}/games`;
+    let url = `${environment.apiBaseUrl}/games/count`;
     return this.http.get<GameDTO[]>(url);
   }
 

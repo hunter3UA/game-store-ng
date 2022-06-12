@@ -3,7 +3,7 @@ import { GameFilterDTO } from '../../core/api-models/game/game.filter.dto';
 export class GameFilterHelper {
   static parseParamsObjectToFilterObject(object: any): GameFilterDTO {
     let gameFilter: GameFilterDTO = new GameFilterDTO();
-    if (object['name'] != undefined) {
+    if (object['name'] != undefined && object['name'].length > 3) {
       gameFilter.name = object['name'];
     }
 
