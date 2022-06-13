@@ -1,0 +1,56 @@
+<form>
+  <div>
+    <label for="gameName">Name</label>
+    <input type="text" name="gameName" [(ngModel)]="this.gameFilter.name">
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Elements on page</mat-label>
+      <mat-select [(ngModel)]="this.gameFilter.elementsOnPage" name="elementsOnPage">
+        <mat-option *ngFor="let item of this.elementsOnPage" [value]="item.value">
+          {{item.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-label>Sorting type</mat-label>
+      <mat-select [(ngModel)]="this.gameFilter.sortingType" name="sorting">
+        <mat-option *ngFor="let item of this.sotringValues" [value]="item.value">
+          {{item.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-radio-group [(ngModel)]="this.gameFilter.publishingDate" name="publishing">
+      <mat-radio-button *ngFor="let item of this.publishedAt" [value]="item.value">
+        {{item.label}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <label>Genres:</label>
+  <div>
+    <mtx-checkbox-group *ngIf="this.genresList.length>0" [items]="this.genresList" [(ngModel)]="this.gameFilter.genres"
+      [bindLabel]="'name'" [bindValue]="'id'" name="genres">
+    </mtx-checkbox-group>
+  </div>
+  <label>Platforms:</label>
+  <div>
+    <mtx-checkbox-group *ngIf="this.platformsList.length>0" [items]="this.platformsList"
+      [(ngModel)]="this.gameFilter.platforms" [bindLabel]="'type'" [bindValue]="'id'" name="platforms">
+    </mtx-checkbox-group>
+  </div>
+  <label>Publishers:</label>
+  <div>
+    <mtx-checkbox-group *ngIf="this.publishersList.length>0" [items]="this.publishersList"
+      [(ngModel)]="this.gameFilter.publishers" [bindValue]="'id'" [bindLabel]="'companyName'" name="publishers">
+    </mtx-checkbox-group>
+  </div>
+  <div>
+    <p>Min:<input type="number" name="minPrice" style="width:70px;" [(ngModel)]="this.gameFilter.minPrice">- Max<input
+        type="number" style="width:70px;" name="maxPrice" [(ngModel)]="this.gameFilter.maxPrice"></p>
+  </div>
+  <input type="button" class="btn btn-success" (click)="getFilter()" value="filter">
+  <input type="reset" class="btn btn-danger" (click)="resetFilter()" value="Reset">
+</form>
