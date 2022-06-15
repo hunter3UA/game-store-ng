@@ -13,6 +13,7 @@ export class EditGameAdapter implements Adapter<EditGameDTO> {
     editGameModel.price = item.price;
     editGameModel.unitsInStock = item.unitsInStock;
     editGameModel.discontinued = item.discontinued;
+    editGameModel.publishedAt = item.publishedAt;
 
     return editGameModel;
   }

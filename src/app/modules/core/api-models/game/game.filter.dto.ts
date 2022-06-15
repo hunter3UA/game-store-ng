@@ -1,5 +1,3 @@
-import { SortingType } from '../../enums/sorting.type';
-
 export class GameFilterDTO {
   public name: string;
   public genres: Array<number>;

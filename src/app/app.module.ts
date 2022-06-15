@@ -8,11 +8,10 @@ import { HomeComponent } from './modules/root/components/home/home.component';
 import { HeaderComponent } from './modules/root/components/header/header.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CommentModule } from './modules/comment/comment.module';
-
 import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {} from '@ng-matero/extensions';
 import { ErrorModule } from './modules/error/error.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
@@ -27,6 +26,7 @@ import { ErrorModule } from './modules/error/error.module';
   ],
   exports: [],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

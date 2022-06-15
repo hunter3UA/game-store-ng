@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GameRoutingModule } from './game-routing.module';
 import { AddGameComponent } from './pages/add-game/add-game.component';

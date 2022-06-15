@@ -28,7 +28,9 @@ export class GameDetailsComponent implements OnInit {
 
   loadGame() {
     this.gameService.getGameByKey(this.key, true).subscribe({
-      next: (data) => (this.game = data),
+      next: (data) => {
+        this.game = data;
+      },
       error: (error) => this.errorHandler.handleError(error),
     });
   }

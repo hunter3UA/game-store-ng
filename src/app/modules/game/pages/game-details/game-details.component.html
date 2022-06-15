@@ -19,9 +19,9 @@
     </ul>
     <div *ngIf="game.platformTypes.length==0">Without platforms</div>
   </div>
-  <p>Publisher:
+  <div>Publisher:
     <a *ngIf="game.publisher" [routerLink]="['/publishers',game.publisher.id]">{{game.publisher.companyName}}</a>
-    <a *ngIf="!game.publisher" #unknown>Unknown</a>
-  </p>
+    <div *ngIf="!game.publisher" #unknown>Unknown</div>
+  </div>
   <a class="btn btn-success" (click)="downloadGame()">Download game</a>
 </div>

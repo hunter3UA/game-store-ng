@@ -42,5 +42,9 @@
         {{publisher.companyName}}</option>
     </select>
   </div>
+  <div>
+    <label>PublishedAt:</label>
+    <input type="date" [(ngModel)]="this.gameToEdit.publishedAt" name="publishedAt">
+  </div>
   <input type="submit" (click)="updateGame()" value="Update game">
 </form>

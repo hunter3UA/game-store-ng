@@ -50,5 +50,9 @@
         {{publisher.companyName}}</option>
     </select>
   </div>
+  <div>
+    <label>PublishedAt</label>
+    <input type="date" [(ngModel)]="gameModel.publishedAt" name="publishedAt">
+  </div>
   <input type="submit" [disabled]="!form.valid" (click)="addGame()" value="Add game">
 </form>

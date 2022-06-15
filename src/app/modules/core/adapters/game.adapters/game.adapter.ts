@@ -1,9 +1,11 @@
+import { DatePipe } from '@angular/common';
 import { Injectable } from '@angular/core';
 import { GameDTO } from '../../api-models/game/game.dto';
 import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
 export class GameAdapter implements Adapter<GameDTO> {
+  constructor(private datePipe: DatePipe) {}
   adapt(item: any): GameDTO {
     let game = new GameDTO();
     game.id = item.id;
@@ -16,8 +18,10 @@ export class GameAdapter implements Adapter<GameDTO> {
     game.price = item.price;
     game.discontinued = item.discontinued;
     game.unitsInStock = item.unitsInStock;
-    game.publishedAt = new Date(item.publishedAt);
-
+    game.publishedAt = this.datePipe.transform(
+      new Date(item.publishedAt),
+      'yyyy-MM-dd'
+    );
     return game;
   }
 }

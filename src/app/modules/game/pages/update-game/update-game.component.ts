@@ -59,7 +59,6 @@ export class UpdateGameComponent implements OnInit {
     this.gameService.getGameByKey(key, false).subscribe({
       next: (data) => {
         this.gameToEdit = data;
-        console.log(this.gameToEdit);
         if (this.gameToEdit.publisher) {
           this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
         } else {

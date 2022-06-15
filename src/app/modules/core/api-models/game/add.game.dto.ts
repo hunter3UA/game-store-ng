@@ -8,7 +8,8 @@ export class AddGameDTO {
   public price: number;
   public discontinued: boolean;
   public unitsInStock: number;
-
+  public publishedAt: Date;
+  public date: Date;
   constructor() {
     this.genresId = new Array<number>();
     this.platformsId = new Array<number>();

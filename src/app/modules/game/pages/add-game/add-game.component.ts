@@ -62,6 +62,7 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame() {
+    console.log(this.gameModel.publishedAt);
     this.gameModel.platformsId = this.gameComponentModel.selectedPlatforms.map(
       (p) => p.id
     );
