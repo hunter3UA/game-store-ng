@@ -9,6 +9,7 @@ export class EditGameDTO {
   public genres: Array<number>;
   public platforms: Array<number>;
   public publisherId: number;
+  public publishedAt: Date;
 
   constructor() {
     this.genres = new Array<number>();

@@ -13,6 +13,7 @@ export class GameDTO {
   public price: number;
   public discontinued: boolean;
   public unitsInStock: number;
+  public publishedAt: Date;
   constructor() {
     this.genres = new Array<GenreDTO>();
     this.platformTypes = new Array<PlatformTypeDTO>();

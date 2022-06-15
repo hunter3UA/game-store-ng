@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({
@@ -13,11 +14,14 @@ export class HeaderComponent implements OnInit {
     this.loadAllGames();
   }
 
-  loadAllGames() {
-    this.gameService.getTotalGames().subscribe((data) => {
-      if (data) {
-        this.totalCountOfGames = data;
-      }
-    });
+  async loadAllGames() {
+    this.totalCountOfGames = await lastValueFrom(
+      this.gameService.getTotalGames()
+    );
+    // this.gameService.getTotalGames().subscribe((data) => {
+    //   if (data) {
+    //     this.totalCountOfGames = data;
+    //   }
+    // });
   }
 }

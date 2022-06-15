@@ -13,6 +13,7 @@ import { MtxCheckboxGroupModule } from '@ng-matero/extensions/checkbox-group';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatRadioModule } from '@angular/material/radio';
     MatCheckboxModule,
     MatSelectModule,
     MatRadioModule,
+    MatDatepickerModule,
   ],
 })
 export class GameModule {}

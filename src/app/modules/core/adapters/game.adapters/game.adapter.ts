@@ -16,6 +16,7 @@ export class GameAdapter implements Adapter<GameDTO> {
     game.price = item.price;
     game.discontinued = item.discontinued;
     game.unitsInStock = item.unitsInStock;
+    game.publishedAt = new Date(item.publishedAt);
 
     return game;
   }

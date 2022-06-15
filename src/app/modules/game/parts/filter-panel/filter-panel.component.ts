@@ -106,9 +106,10 @@ export class FilterPanelComponent implements OnInit, OnChanges {
   }
 
   getFilter() {
-    let params = this.queryService.removeEmptyFields(this.gameFilter);
+    this.gameFilter = this.queryService.removeEmptyFields(this.gameFilter);
+    this.gameFilter.page = 1;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`/games`], { queryParams: params });
+      this.router.navigate([`/games`], { queryParams: this.gameFilter });
     });
   }
 
