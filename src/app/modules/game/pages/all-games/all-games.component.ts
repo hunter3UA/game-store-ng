@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
 import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { ItemPageDTO } from 'src/app/modules/core/common/item.page.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
-import { QueryService } from 'src/app/modules/shared/services/common/query/query.service';
 import { GameService } from '../../../shared/services/game/game.service';
 import { GameFilterHelper } from '../../helpers/game.filter.helper';
 
@@ -21,7 +21,8 @@ export class AllGamesComponent implements OnInit {
     private router: Router,
     private basketService: BasketService,
     private route: ActivatedRoute,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private gameAdapter: GameAdapter
   ) {
     this.gamePage = new ItemPageDTO<GameDTO>();
   }
@@ -40,6 +41,9 @@ export class AllGamesComponent implements OnInit {
     this.gameService.getAllGames(params).subscribe({
       next: (data) => {
         this.gamePage = data;
+        this.gamePage.items = this.gamePage.items.map((item) =>
+          this.gameAdapter.adapt(item)
+        );
       },
       error: (error) => this.errorHandler.handleError(error),
     });

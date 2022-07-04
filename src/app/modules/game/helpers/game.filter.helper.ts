@@ -20,11 +20,7 @@ export class GameFilterHelper {
         object.publishers instanceof Array
           ? object.publishers
           : [object.publishers];
-      gameFilter.publishers = Array.from(gameFilter.publishers, Number).filter(
-        (el) => {
-          return !Number.isNaN(el) && el > 0 && el < 1000;
-        }
-      );
+      gameFilter.publishers = Array.from(gameFilter.publishers, String);
     }
 
     if (object['platforms'] != undefined) {

@@ -12,6 +12,7 @@ import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorModule } from './modules/error/error.module';
 import { DatePipe } from '@angular/common';
+import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],

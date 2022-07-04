@@ -1,3 +1,6 @@
+<div>
+
+</div>
 <form>
   <div>
     <label for="gameName">Name</label>
@@ -6,7 +9,7 @@
   <div>
     <mat-form-field>
       <mat-label>Elements on page</mat-label>
-      <mat-select [(ngModel)]="this.gameFilter.elementsOnPage" name="elementsOnPage">
+      <mat-select (selectionChange)="sort()" [(ngModel)]="this.gameFilter.elementsOnPage" name="elementsOnPage">
         <mat-option *ngFor="let item of this.elementsOnPage" [value]="item.value">
           {{item.label}}
         </mat-option>
@@ -16,7 +19,7 @@
   <div>
     <mat-form-field>
       <mat-label>Sorting type</mat-label>
-      <mat-select [(ngModel)]="this.gameFilter.sortingType" name="sorting">
+      <mat-select (selectionChange)="sort()" [(ngModel)]="this.gameFilter.sortingType" name="sorting">
         <mat-option *ngFor="let item of this.sotringValues" [value]="item.value">
           {{item.label}}
         </mat-option>
@@ -44,7 +47,8 @@
   <label>Publishers:</label>
   <div>
     <mtx-checkbox-group *ngIf="this.publishersList.length>0" [items]="this.publishersList"
-      [(ngModel)]="this.gameFilter.publishers" [bindValue]="'id'" [bindLabel]="'companyName'" name="publishers">
+      [(ngModel)]="this.gameFilter.publishers" [bindValue]="'companyName'" [bindLabel]="'companyName'"
+      name="publishers">
     </mtx-checkbox-group>
   </div>
   <div>

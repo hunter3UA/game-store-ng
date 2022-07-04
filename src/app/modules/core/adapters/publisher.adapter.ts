@@ -6,7 +6,7 @@ import { Adapter } from './adapter';
 export class PublisherAdapter implements Adapter<PublisherDTO> {
   adapt(item: any): PublisherDTO {
     let publisher = new PublisherDTO();
-    publisher.id = item.id;
+    publisher.id = item.id == 0 ? item.objectId : item.id;
     publisher.companyName = item.companyName;
     publisher.description = item.description;
     publisher.homePage = item.homePage;

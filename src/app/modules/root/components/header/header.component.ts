@@ -11,17 +11,14 @@ export class HeaderComponent implements OnInit {
 
   constructor(private gameService: GameService) {}
   ngOnInit(): void {
-    this.loadAllGames();
+    //this.loadAllGames();
   }
 
-  async loadAllGames() {
-    this.totalCountOfGames = await lastValueFrom(
-      this.gameService.getTotalGames()
-    );
-    // this.gameService.getTotalGames().subscribe((data) => {
-    //   if (data) {
-    //     this.totalCountOfGames = data;
-    //   }
-    // });
+  loadAllGames() {
+    this.gameService.getTotalGames().subscribe((data) => {
+      if (data) {
+        this.totalCountOfGames = data;
+      }
+    });
   }
 }

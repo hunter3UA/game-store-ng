@@ -8,7 +8,7 @@ export class GameAdapter implements Adapter<GameDTO> {
   constructor(private datePipe: DatePipe) {}
   adapt(item: any): GameDTO {
     let game = new GameDTO();
-    game.id = item.id;
+    game.id = item.id != 0 ? item.id : item.objectId;
     game.name = item.name;
     game.key = item.key;
     game.description = item.description;
@@ -18,6 +18,8 @@ export class GameAdapter implements Adapter<GameDTO> {
     game.price = item.price;
     game.discontinued = item.discontinued;
     game.unitsInStock = item.unitsInStock;
+    game.quantityPerUnit = item.quantityPerUnit;
+    game.reorderLevel = item.reorderLevel;
     game.publishedAt = this.datePipe.transform(
       new Date(item.publishedAt),
       'yyyy-MM-dd'

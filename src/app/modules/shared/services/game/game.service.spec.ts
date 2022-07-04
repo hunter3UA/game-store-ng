@@ -32,7 +32,7 @@ describe('GameService', () => {
       description: 'desc',
       genresId: [1, 2],
       platformsId: [1],
-      publisherId: 1,
+      publisherName: 1,
       price: 100,
       discontinued: false,
       unitsInStock: 10,

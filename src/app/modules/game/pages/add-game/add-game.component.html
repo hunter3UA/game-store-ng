@@ -44,9 +44,10 @@
     </ng-multiselect-dropdown>
   </div>
   <div class="form-group">
-    <select name="list" [(ngModel)]="gameModel.publisherId" #publishersddl id="publisherDDL">
+    <select name="list" [(ngModel)]="gameModel.publisherName" #publishersddl id="publisherDDL">
       <option selected="true" [ngValue]="null">None</option>
-      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
+      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers"
+        [ngValue]="publisher.companyName">
         {{publisher.companyName}}</option>
     </select>
   </div>
