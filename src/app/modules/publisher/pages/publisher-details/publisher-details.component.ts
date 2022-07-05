@@ -8,13 +8,13 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './publisher-details.component.html',
 })
 export class PublisherDetailsComponent implements OnInit {
-  public publisherId: number;
+  public publisherName: string;
   public currentPublisher: PublisherDTO;
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute
   ) {
-    this.publisherId = this.route.snapshot.params['id'];
+    this.publisherName = this.route.snapshot.params['name'];
     this.currentPublisher = new PublisherDTO();
   }
 
@@ -23,7 +23,7 @@ export class PublisherDetailsComponent implements OnInit {
   }
 
   loadPublisher() {
-    this.publisherService.getPublisher(this.publisherId).subscribe((data) => {
+    this.publisherService.getPublisher(this.publisherName).subscribe((data) => {
       if (data) {
         this.currentPublisher = data;
       }

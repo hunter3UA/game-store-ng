@@ -1,8 +1,13 @@
-import { HttpClient } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaderResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderHistoryDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { environment } from 'src/environments/environment';
 
@@ -24,6 +29,15 @@ export class OrderService {
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
+  }
+
+  getOrders(orderHistoryDTO: any): Observable<Array<OrderDTO>> {
+    let url = `${environment.apiBaseUrl}/orders`;
+    return this.http
+      .get(url, { params: orderHistoryDTO })
+      .pipe(
+        map((data: any[]) => data.map((item) => this.orderAdapter.adapt(item)))
+      );
   }
 
   cancelOrder(orderId: number): Observable<boolean> {
