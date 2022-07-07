@@ -8,28 +8,23 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './order-history.component.html',
 })
 export class OrderHistoryComponent implements OnInit {
-  public orders:Array<OrderDTO>;
-  public orderHistory:OrderHistoryDTO;
+  public orders: Array<OrderDTO>;
+  public orderHistory: OrderHistoryDTO;
 
-
-  constructor(private orderService:OrderService) {
-    this.orders = new Array<OrderDTO>
+  constructor(private orderService: OrderService) {
+    this.orders = new Array<OrderDTO>();
+    this.orderHistory = new OrderHistoryDTO();
   }
 
   ngOnInit(): void {
-    this.loadOrders();
-    console.log(this.orders);
+    this.loadOrders(this.orderHistory);
   }
 
-  loadOrders(){
-    this.orderService.getOrders(this.orderHistory).subscribe(
-      {
-        next:(data)=>{ this.orders=data;},
-    
-        
-      }
-    )
+  loadOrders(orderHistory: OrderHistoryDTO) {
+    this.orderService.getOrders(orderHistory).subscribe({
+      next: (data) => {
+        this.orders = data;
+      },
+    });
   }
-
-  
 }

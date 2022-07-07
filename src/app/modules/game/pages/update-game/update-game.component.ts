@@ -44,15 +44,17 @@ export class UpdateGameComponent implements OnInit {
   }
 
   updateGame() {
-    // this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
-    // this.editedGame.publisherId = this.gameComponentModel.selectedPublisher.id;
-    // this.editedGame.genres = this.gameToEdit.genres.map((g) => g.id);
-    // this.editedGame.platforms = this.gameToEdit.platformTypes.map((p) => p.id);
-    // this.gameService.updateGame(this.editedGame).subscribe((response) => {
-    //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-    //     this.router.navigate([`/games/update/${response.key}`]);
-    //   });
-    // });
+    this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
+    this.editedGame.publisherName =
+      this.gameComponentModel.selectedPublisher.companyName;
+
+    this.editedGame.genres = this.gameToEdit.genres.map((g) => g.id);
+    this.editedGame.platforms = this.gameToEdit.platformTypes.map((p) => p.id);
+    this.gameService.updateGame(this.editedGame).subscribe((response) => {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([`/games/update/${response.key}`]);
+      });
+    });
   }
 
   loadGame(key: string) {

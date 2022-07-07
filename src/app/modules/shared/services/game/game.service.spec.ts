@@ -127,7 +127,7 @@ describe('GameService', () => {
       unitsInStock: 0,
       genres: [1, 2, 3],
       platforms: [1, 2],
-      publisherId: 1,
+      publisherName: 1,
       description: 'desc',
     };
 

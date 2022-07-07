@@ -12,6 +12,16 @@ export class OrderAdapter implements Adapter<OrderDTO> {
     order.orderDetails = item.orderDetails;
     order.totalSum = item.totalSum;
     order.status = item.status;
+    order.freight = item.freight;
+    order.shipAddress = item.shipAddress;
+    order.shipCountry = item.shipCountry;
+    order.shipCity = item.shipCity;
+    order.shipName = item.shipName;
+    order.shippedDate = item.shippedDate;
+    order.shipPostalCode = item.shipPostalCode;
+    order.shipRegion = item.shipRegion;
+    order.shipVia = item.shipVia;
+    order.shipperCompanyName = item.shipperCompanyName;
     return order;
   }
 }

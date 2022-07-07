@@ -8,7 +8,7 @@ export class EditGameDTO {
   public unitsInStock: number;
   public genres: Array<number>;
   public platforms: Array<number>;
-  public publisherId: number;
+  public publisherName: string;
   public publishedAt: Date;
 
   constructor() {

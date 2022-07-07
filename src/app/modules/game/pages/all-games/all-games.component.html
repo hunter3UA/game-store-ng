@@ -3,7 +3,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
           <th scope="col">Description</th>
@@ -11,7 +10,6 @@
       </thead>
       <tbody>
         <tr *ngFor="let game of gamePage.items">
-          <td>{{game.id}}</td>
           <td>{{game.name}}</td>
           <td>{{game.price}}</td>
           <td>{{game.description}}</td>
