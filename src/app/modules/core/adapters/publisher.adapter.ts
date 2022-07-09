@@ -10,6 +10,7 @@ export class PublisherAdapter implements Adapter<PublisherDTO> {
     publisher.companyName = item.companyName;
     publisher.description = item.description;
     publisher.homePage = item.homePage;
+    publisher.typeOfBase = item.typeOfBase;
 
     return publisher;
   }

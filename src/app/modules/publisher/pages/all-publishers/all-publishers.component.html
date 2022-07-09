@@ -11,8 +11,10 @@
       <td>{{publisher.homePage}}</td>
       <td>
         <a class="btn btn-info" [routerLink]="['/publishers',publisher.companyName]">Details</a>
-        <a class="btn btn-success" [routerLink]="['/publishers/update',publisher.companyName]">Update</a>
-        <a class="btn btn-danger" (click)="removePublisher(publisher.id)">Remove</a>
+        <a *ngIf="publisher.typeOfBase!=1" class="btn btn-success"
+          [routerLink]="['/publishers/update',publisher.companyName]">Update</a>
+        <a *ngIf="publisher.typeOfBase!=1" class="btn btn-danger" (click)="removePublisher(publisher.id)">Remove</a>
+
       </td>
     </tr>
   </tbody>

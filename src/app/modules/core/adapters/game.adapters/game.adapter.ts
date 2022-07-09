@@ -20,6 +20,8 @@ export class GameAdapter implements Adapter<GameDTO> {
     game.unitsInStock = item.unitsInStock;
     game.quantityPerUnit = item.quantityPerUnit;
     game.reorderLevel = item.reorderLevel;
+    game.numberOfViews = item.numberOfViews;
+    game.typeOfBase = item.typeOfBase;
     game.publishedAt = this.datePipe.transform(
       new Date(item.publishedAt),
       'yyyy-MM-dd'

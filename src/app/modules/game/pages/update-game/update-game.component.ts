@@ -48,8 +48,11 @@ export class UpdateGameComponent implements OnInit {
     this.editedGame.publisherName =
       this.gameComponentModel.selectedPublisher.companyName;
 
-    this.editedGame.genres = this.gameToEdit.genres.map((g) => g.id);
-    this.editedGame.platforms = this.gameToEdit.platformTypes.map((p) => p.id);
+    this.editedGame.genresId = this.gameToEdit.genres.map((g) => g.id);
+    this.editedGame.platformsId = this.gameToEdit.platformTypes.map(
+      (p) => p.id
+    );
+    console.log(this.editedGame);
     this.gameService.updateGame(this.editedGame).subscribe((response) => {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate([`/games/update/${response.key}`]);

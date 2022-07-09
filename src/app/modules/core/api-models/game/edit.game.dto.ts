@@ -6,13 +6,15 @@ export class EditGameDTO {
   public price: number;
   public discontinued: boolean;
   public unitsInStock: number;
-  public genres: Array<number>;
-  public platforms: Array<number>;
+  public genresId: Array<number>;
+  public platformsId: Array<number>;
   public publisherName: string;
   public publishedAt: Date;
-
+  public numberOfViews: number;
+  public quantityPerUnit: string;
   constructor() {
-    this.genres = new Array<number>();
-    this.platforms = new Array<number>();
+    this.genresId = new Array<number>();
+    this.platformsId = new Array<number>();
+    this.publishedAt = new Date();
   }
 }

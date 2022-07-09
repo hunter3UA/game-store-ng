@@ -14,7 +14,8 @@ export class EditGameAdapter implements Adapter<EditGameDTO> {
     editGameModel.unitsInStock = item.unitsInStock;
     editGameModel.discontinued = item.discontinued;
     editGameModel.publishedAt = item.publishedAt;
-
+    editGameModel.numberOfViews = item.numberOfViews;
+    editGameModel.quantityPerUnit = item.quantityPerUnit;
     return editGameModel;
   }
 }

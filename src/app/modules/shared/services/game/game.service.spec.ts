@@ -125,8 +125,8 @@ describe('GameService', () => {
       price: 100,
       discontinued: false,
       unitsInStock: 0,
-      genres: [1, 2, 3],
-      platforms: [1, 2],
+      genresId: [1, 2, 3],
+      platformsId: [1, 2],
       publisherName: 1,
       description: 'desc',
     };

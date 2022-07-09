@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', component: AllPublishersComponent },
   { path: 'new', component: AddPublisherComponent },
   { path: ':name', component: PublisherDetailsComponent },
-  { path: 'update/:id', component: UpdatePublisherComponent },
+  { path: 'update/:name', component: UpdatePublisherComponent },
 ];
 
 @NgModule({

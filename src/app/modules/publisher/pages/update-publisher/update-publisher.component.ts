@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -13,9 +14,11 @@ export class UpdatePublisherComponent implements OnInit {
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private errorService: ErrorHandlerService
   ) {
     this.publisherName = this.route.snapshot.params['name'];
+    console.log(this.publisherName);
     this.publisherToEdit = new PublisherDTO();
   }
 
@@ -24,10 +27,11 @@ export class UpdatePublisherComponent implements OnInit {
   }
 
   loadPublisher() {
-    this.publisherService.getPublisher(this.publisherName).subscribe((data) => {
-      if (data) {
-        this.publisherToEdit = data;
-      }
+    this.publisherService.getPublisher(this.publisherName).subscribe({
+      next: (data) => (this.publisherToEdit = data),
+      error: (error) => {
+        this.errorService.handleError(error);
+      },
     });
   }
 

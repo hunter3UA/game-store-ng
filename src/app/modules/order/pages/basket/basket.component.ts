@@ -29,6 +29,7 @@ export class BasketComponent implements OnInit {
     this.basketService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
+        console.log(this.currentOrder);
         if (this.currentOrder.status == OrderStatus.Processing) {
           this.router.navigate(['/order']);
         }
@@ -52,6 +53,7 @@ export class BasketComponent implements OnInit {
   }
 
   removeOrderItem(itemId: number) {
+    console.log(itemId);
     this.basketService.removeOrderItem(itemId).subscribe(() => {
       this.loadOrder();
     });

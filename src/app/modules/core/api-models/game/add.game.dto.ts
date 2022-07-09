@@ -10,9 +10,9 @@ export class AddGameDTO {
   public unitsInStock: number;
   public publishedAt: Date;
   public date: Date;
+  public quantityPerUnit: string;
   constructor() {
     this.genresId = new Array<number>();
     this.platformsId = new Array<number>();
-    this.publisherName = null;
   }
 }
