@@ -44,15 +44,7 @@ export class UpdateGameComponent implements OnInit {
   }
 
   updateGame() {
-    this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
-    this.editedGame.publisherName =
-      this.gameComponentModel.selectedPublisher.companyName;
-
-    this.editedGame.genresId = this.gameToEdit.genres.map((g) => g.id);
-    this.editedGame.platformsId = this.gameToEdit.platformTypes.map(
-      (p) => p.id
-    );
-    console.log(this.editedGame);
+    this.initialize();
     this.gameService.updateGame(this.editedGame).subscribe((response) => {
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate([`/games/update/${response.key}`]);
@@ -79,6 +71,7 @@ export class UpdateGameComponent implements OnInit {
       .getAllPlatforms()
       .subscribe((data) => (this.gameComponentModel.platforms = data));
   }
+
   loadGenres() {
     this.genreService.getAllGenres().subscribe((data) => {
       this.gameComponentModel.genres = data;
@@ -89,5 +82,16 @@ export class UpdateGameComponent implements OnInit {
     this.publisherService.getAllPublishers().subscribe((data) => {
       this.gameComponentModel.publishers = data;
     });
+  }
+
+  initialize() {
+    this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
+    this.editedGame.publisherName =
+      this.gameComponentModel.selectedPublisher.companyName;
+    this.editedGame.genresId = this.gameToEdit.genres.map((g) => g.id);
+    this.editedGame.platformsId = this.gameToEdit.platformTypes.map(
+      (p) => p.id
+    );
+    this.editedGame.oldGameKey = this.key;
   }
 }

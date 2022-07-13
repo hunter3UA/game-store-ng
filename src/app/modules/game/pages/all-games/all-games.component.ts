@@ -49,8 +49,8 @@ export class AllGamesComponent implements OnInit {
     });
   }
 
-  removeGame(id: number) {
-    this.gameService.deleteGame(id).subscribe({
+  removeGame(key: string) {
+    this.gameService.deleteGame(key).subscribe({
       next: () => this.loadAllGames(this.params),
       error: (error) => this.errorHandler.handleError(error),
     });

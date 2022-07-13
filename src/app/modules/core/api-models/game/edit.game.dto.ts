@@ -1,7 +1,7 @@
 export class EditGameDTO {
   public id: number;
   public name: string;
-  public key: string;
+  public newGameKey: string;
   public description: string;
   public price: number;
   public discontinued: boolean;
@@ -9,12 +9,13 @@ export class EditGameDTO {
   public genresId: Array<number>;
   public platformsId: Array<number>;
   public publisherName: string;
-  public publishedAt: Date;
+  public publishedAt: number;
   public numberOfViews: number;
   public quantityPerUnit: string;
+  public oldGameKey: string;
   constructor() {
     this.genresId = new Array<number>();
     this.platformsId = new Array<number>();
-    this.publishedAt = new Date();
+    this.publishedAt = new Date().getDate();
   }
 }

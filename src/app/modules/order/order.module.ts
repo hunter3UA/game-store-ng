@@ -9,6 +9,7 @@ import { VisaPaymentComponent } from './pages/visa-payment/visa-payment.componen
 import { IboxPaymentComponent } from './pages/ibox-payment/ibox-payment.component';
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { FormsModule } from '@angular/forms';
+import { ShipperDetailsComponent } from './pages/shipper-details/shipper-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     VisaPaymentComponent,
     IboxPaymentComponent,
     OrderHistoryComponent,
+    ShipperDetailsComponent,
   ],
   imports: [CommonModule, OrderRoutingModule, FormsModule],
 })

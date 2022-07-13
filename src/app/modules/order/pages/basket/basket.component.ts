@@ -29,9 +29,8 @@ export class BasketComponent implements OnInit {
     this.basketService.getOrder().subscribe({
       next: (data) => {
         this.currentOrder = data;
-        console.log(this.currentOrder);
         if (this.currentOrder.status == OrderStatus.Processing) {
-          this.router.navigate(['/order']);
+          this.router.navigate(['/shipper-details']);
         }
       },
     });
@@ -62,7 +61,7 @@ export class BasketComponent implements OnInit {
   makeOrder() {
     if (this.currentOrder.orderDetails.length > 0) {
       this.orderService.makeOrder(this.currentOrder.id).subscribe({
-        next: () => this.router.navigate(['/order']),
+        next: () => this.router.navigate(['/shipper-details']),
         error: () => {
           this.loadOrder();
           alert('Some games was deleted from your order');

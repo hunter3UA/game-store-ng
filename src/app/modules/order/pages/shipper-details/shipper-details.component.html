@@ -1,0 +1,52 @@
+<form class="col-4" #form>
+  <div class="form-group">
+    <label for="shipName">Ship name</label>
+    <input class="form-control" maxlength="150" [(ngModel)]="this.currentOrder.shipName" name="shipName"
+      #shipName="ngModel" required>
+    <p *ngIf="shipName.invalid && shipName.touched">Enter ship name</p>
+  </div>
+  <div class="form-group">
+    <label for="shipCountry">Ship country</label>
+    <input class="form-control" maxlength="150" [(ngModel)]="this.currentOrder.shipCountry" name="shipCountry"
+      #shipCountry="ngModel" required>
+    <p *ngIf="shipCountry.invalid && shipCountry.touched">Enter ship country</p>
+  </div>
+  <div class="form-group">
+    <label for="shipRegion">Ship region</label>
+    <input class="form-control" id="shipRegion" maxlength="150" #shipRegion="ngModel" required
+      [(ngModel)]="this.currentOrder.shipRegion" name="shipRegion" required>
+    <p *ngIf="shipRegion.invalid && shipRegion.touched">Enter ship region</p>
+  </div>
+  <div class="form-group">
+    <label for="shipCity">Ship city</label>
+    <input class="form-control" id="shipCity" maxlength="150" [(ngModel)]="this.currentOrder.shipCity" name="shipCity"
+      #shipCity="ngModel" required>
+    <p *ngIf="shipCity.invalid && shipCity.touched">Enter ship city</p>
+  </div>
+  <div class="form-group">
+    <label for="shipAddress">Ship address</label>
+    <input class="form-control" id="shipAddress" maxlength="150" #shipAddress required
+      [(ngModel)]="this.currentOrder.shipAddress" name="shipAddress" required>
+    <p *ngIf="shipAddress.invalid && shipAddress.touched">Enter ship address</p>
+  </div>
+  <!-- Заполнить -->
+  <div class="form-group">
+    <label for="shipPostalCode">Ship postal code</label>
+    <input class="form-control" id="shipPostalCode" maxlength="150" required
+      [(ngModel)]="this.currentOrder.shipPostalCode" name="shipPostalCode" required>
+  </div>
+  <select name="list" [(ngModel)]="currentOrder.shipVia">
+    <option value="0" selected="true">None</option>
+    <option name="publishers" *ngFor="let shipper of shippers" [ngValue]="shipper.shipperID">
+      {{shipper.companyName}}</option>
+  </select>
+  <div class="form-group">
+    <input class="btn btn-success" type="submit" value="Confirm shipper" [disabled]="!form.valid">
+  </div>
+
+</form>
+<div>
+
+
+  <button class="btn btn-danger" (click)="cancelOrder()">Cancel order</button>
+</div>

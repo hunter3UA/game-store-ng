@@ -121,7 +121,7 @@ describe('GameService', () => {
     const fakeGame: EditGameDTO = {
       id: 1,
       name: 'test',
-      key: 'key',
+      newGameKey: 'key',
       price: 100,
       discontinued: false,
       unitsInStock: 0,

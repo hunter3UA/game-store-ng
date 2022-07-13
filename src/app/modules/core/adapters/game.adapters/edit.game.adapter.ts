@@ -7,7 +7,7 @@ export class EditGameAdapter implements Adapter<EditGameDTO> {
   adapt(item: any): EditGameDTO {
     let editGameModel: EditGameDTO = new EditGameDTO();
     editGameModel.id = item.id;
-    editGameModel.key = item.key;
+    editGameModel.newGameKey = item.key;
     editGameModel.description = item.description;
     editGameModel.name = item.name;
     editGameModel.price = item.price;

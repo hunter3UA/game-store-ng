@@ -20,6 +20,6 @@
   </tbody>
 </table>
 <div>Total sum: {{currentOrder.totalSum}}</div>
-<app-payment-type [orderId]="this.currentOrder.id"></app-payment-type>
-
+<app-payment-type [orderId]="this.currentOrder.id">
+</app-payment-type>
 <button class="btn btn-danger" (click)="cancelOrder()">Cancel order</button>

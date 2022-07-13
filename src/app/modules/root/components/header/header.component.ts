@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private gameService: GameService) {}
   ngOnInit(): void {
-    //this.loadAllGames();
+    this.loadAllGames();
   }
 
   loadAllGames() {

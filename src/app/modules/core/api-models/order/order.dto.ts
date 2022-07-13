@@ -13,7 +13,7 @@ export class OrderDTO {
   public shipCity: string;
   public shipCountry: string;
   public shippedDate: Date;
-  public shipPostalCode: string;
+  public shipPostalCode: number;
   public shipRegion: string;
   public shipVia: number;
   public shipName: string;
