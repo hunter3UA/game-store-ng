@@ -1,7 +1,7 @@
-<form class="col-4" #form>
+<form class="col-4" #form="ngForm" (ngSubmit)="form.valid ">
   <div class="form-group">
     <label for="shipName">Ship name</label>
-    <input class="form-control" maxlength="150" [(ngModel)]="this.currentOrder.shipName" name="shipName"
+    <input class="form-control" id="shipName" maxlength="150" [(ngModel)]="this.currentOrder.shipName" name="shipName"
       #shipName="ngModel" required>
     <p *ngIf="shipName.invalid && shipName.touched">Enter ship name</p>
   </div>
@@ -29,24 +29,24 @@
       [(ngModel)]="this.currentOrder.shipAddress" name="shipAddress" required>
     <p *ngIf="shipAddress.invalid && shipAddress.touched">Enter ship address</p>
   </div>
-  <!-- Заполнить -->
   <div class="form-group">
     <label for="shipPostalCode">Ship postal code</label>
     <input class="form-control" id="shipPostalCode" maxlength="150" required
-      [(ngModel)]="this.currentOrder.shipPostalCode" name="shipPostalCode" required>
+      [(ngModel)]="this.currentOrder.shipPostalCode" #shipPostalCode="ngModel" name="shipPostalCode" required>
+    <p *ngIf="shipPostalCode.invalid && shipPostalCode.touched">Enter postal code</p>
   </div>
-  <select name="list" [(ngModel)]="currentOrder.shipVia">
-    <option value="0" selected="true">None</option>
-    <option name="publishers" *ngFor="let shipper of shippers" [ngValue]="shipper.shipperID">
+  <select name="shipper" #shipper="ngModel" class="custom-select" [(ngModel)]="this.currentOrder.shipperCompanyName"
+    [ngClass]="{ 'is-invalid': form.submitted && shipper.invalid }" required>
+    <option value="null" class="text-primary font-weight-bolder"> --- Select shipper ---</option>
+    <option name="publishers" *ngFor="let shipper of shippers" [ngValue]="shipper.companyName">
       {{shipper.companyName}}</option>
   </select>
+  <p *ngIf="shipper.invalid && shipper.touched">Choose shipper</p>
   <div class="form-group">
-    <input class="btn btn-success" type="submit" value="Confirm shipper" [disabled]="!form.valid">
+    <input class="btn btn-success" type="submit" (click)="confirmShipper()" [disabled]="!form.valid || shipper.value==0"
+      value="Confirm shipper">
   </div>
-
 </form>
 <div>
-
-
   <button class="btn btn-danger" (click)="cancelOrder()">Cancel order</button>
 </div>

@@ -5,6 +5,7 @@ export class OrderDTO {
   public id: number;
   public customerId: number;
   public orderDate: Date;
+  public expiration: Date;
   public orderDetails: Array<OrderDetailsDTO>;
   public totalSum: number;
   public status: OrderStatus;
@@ -15,7 +16,6 @@ export class OrderDTO {
   public shippedDate: Date;
   public shipPostalCode: number;
   public shipRegion: string;
-  public shipVia: number;
   public shipName: string;
   public shipperCompanyName: string;
 }

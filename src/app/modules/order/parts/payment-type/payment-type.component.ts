@@ -14,8 +14,7 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 })
 export class PaymentTypeComponent {
   @Input() orderId: number;
-  @Input() orderToUpdate: OrderDTO;
-  @Input() isValid: boolean;
+
   private orderPaymentModel: OrderPaymentDTO;
 
   constructor(
@@ -25,7 +24,6 @@ export class PaymentTypeComponent {
     private errorService: ErrorHandlerService
   ) {
     this.orderPaymentModel = new OrderPaymentDTO();
-    this.orderId = 0;
   }
 
   generateInvoice() {

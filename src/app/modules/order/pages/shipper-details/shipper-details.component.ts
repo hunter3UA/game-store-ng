@@ -16,7 +16,9 @@ export class ShipperDetailsComponent implements OnInit {
     private shipperService: ShipperService,
     private orderService: OrderService,
     private router: Router
-  ) {}
+  ) {
+    this.currentOrder = new OrderDTO();
+  }
 
   ngOnInit(): void {
     this.loadOrder();
@@ -40,9 +42,10 @@ export class ShipperDetailsComponent implements OnInit {
     });
   }
 
-  confirmShippers() {
+  confirmShipper() {
+    console.log(this.currentOrder);
     this.orderService.updateOrder(this.currentOrder).subscribe({
-      next: () => this.router.navigate(['/payment-type']),
+      next: () => this.router.navigate(['/order']),
     });
   }
 

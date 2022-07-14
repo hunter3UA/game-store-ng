@@ -20,8 +20,8 @@ export class OrderAdapter implements Adapter<OrderDTO> {
     order.shippedDate = item.shippedDate;
     order.shipPostalCode = item.shipPostalCode;
     order.shipRegion = item.shipRegion;
-    order.shipVia = item.shipVia;
     order.shipperCompanyName = item.shipperCompanyName;
+    order.expiration = item.expiration;
     return order;
   }
 }
