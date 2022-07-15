@@ -1,6 +1,15 @@
 <div>
-  <p>Company name: {{currentPublisher?.companyName}}</p>
-  <p>Home page:{{currentPublisher?.homePage}}</p>
+  <p>Company name: {{currentPublisher.companyName}}</p>
+  <p>Home page:{{currentPublisher.homePage}}</p>
+  <p>Contact name:{{currentPublisher.contactName}}</p>
+  <p>Contact tittle:{{currentPublisher.contactTitle}}</p>
+  <p>Country:{{currentPublisher.country}}</p>
+  <p>Region:{{currentPublisher.region}}</p>
+  <p>City:{{currentPublisher.city}}</p>
+  <p>Address:{{currentPublisher.address}}</p>
+  <p>Fax:{{currentPublisher.fax}}</p>
+  <p>Phone:{{currentPublisher.phone}}</p>
+  <p>Postal code:{{currentPublisher.postalCode}}</p>
   <label>Description</label>
   <textarea class="form-control" disabled="true" [value]="currentPublisher.description"
     name="textareaDescription"></textarea>

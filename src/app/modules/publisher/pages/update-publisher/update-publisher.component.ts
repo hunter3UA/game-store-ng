@@ -18,7 +18,6 @@ export class UpdatePublisherComponent implements OnInit {
     private errorService: ErrorHandlerService
   ) {
     this.publisherName = this.route.snapshot.params['name'];
-    console.log(this.publisherName);
     this.publisherToEdit = new PublisherDTO();
   }
 

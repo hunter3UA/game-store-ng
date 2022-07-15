@@ -11,6 +11,7 @@
         <th scope="col">Ship postal code</th>
         <th scope="col">Ship region</th>
         <th scope="col">Shipper company name</th>
+        <th scope="col">Order status</th>
         <th scope="col">Total sum</th>
 
       </thead>
@@ -25,6 +26,8 @@
           <td>{{order.shipPostalCode}}</td>
           <td>{{order.shipRegion}}</td>
           <td>{{order.shipperCompanyName}}</td>
+          <td>{{statuses[order.status]}}
+          </td>
           <td>{{order.totalSum}}</td>
 
 

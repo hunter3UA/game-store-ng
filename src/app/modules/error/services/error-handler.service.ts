@@ -31,7 +31,6 @@ export class ErrorHandlerService {
 
   private handle400Error = (error: HttpErrorResponse) => {
     this.createErrorMessage(error);
-    console.log('ER');
     this.router.navigate(['/400']);
   };
 

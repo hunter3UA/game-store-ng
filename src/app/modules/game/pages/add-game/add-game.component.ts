@@ -60,6 +60,11 @@ export class AddGameComponent implements OnInit {
     if (val.key === '-') return false;
     return true;
   }
+  checkKey(target: any) {
+    let key = target.value;
+    key = key.replace(/[^'0-9a-zA-Z]/g, '');
+    target.value = key;
+  }
 
   addGame() {
     console.log(this.gameModel.publishedAt);
