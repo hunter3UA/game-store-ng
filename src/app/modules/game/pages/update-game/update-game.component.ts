@@ -58,8 +58,6 @@ export class UpdateGameComponent implements OnInit {
         this.gameToEdit = data;
         if (this.gameToEdit.publisher) {
           this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
-        } else {
-          this.gameComponentModel.selectedPublisher.id = null;
         }
       },
       error: (error) => this.errorService.handleError(error),

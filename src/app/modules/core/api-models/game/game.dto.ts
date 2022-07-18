@@ -19,6 +19,7 @@ export class GameDTO {
   public reorderLevel: number;
   public numberOfViews: number;
   public typeOfBase: TypeOfBase;
+  public isDeleted: boolean;
   constructor() {
     this.genres = new Array<GenreDTO>();
     this.platformTypes = new Array<PlatformTypeDTO>();

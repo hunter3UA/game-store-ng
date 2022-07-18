@@ -17,7 +17,6 @@ export class PublisherDetailsComponent implements OnInit {
     private errorService: ErrorHandlerService
   ) {
     this.publisherName = this.route.snapshot.params['name'];
-
     this.currentPublisher = new PublisherDTO();
   }
 
@@ -26,8 +25,6 @@ export class PublisherDetailsComponent implements OnInit {
   }
 
   loadPublisher() {
-    console.log(this.publisherName);
-
     this.publisherService.getPublisher(this.publisherName).subscribe({
       next: (data) => {
         this.currentPublisher = data;

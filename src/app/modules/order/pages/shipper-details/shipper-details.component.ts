@@ -43,7 +43,6 @@ export class ShipperDetailsComponent implements OnInit {
   }
 
   confirmShipper() {
-    console.log(this.currentOrder);
     this.orderService.updateOrder(this.currentOrder).subscribe({
       next: () => this.router.navigate(['/order']),
     });

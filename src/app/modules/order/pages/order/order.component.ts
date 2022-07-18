@@ -39,7 +39,6 @@ export class OrderComponent implements OnInit {
     this.shipperService.getListOfShippers().subscribe({
       next: (data) => {
         this.shippers = data;
-        console.log(this.shippers);
       },
     });
   }

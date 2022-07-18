@@ -6,6 +6,7 @@
           <th scope="col">Name</th>
           <th scope="col">Price</th>
           <th scope="col">Description</th>
+          <th scope="col">Is deleted</th>
         </tr>
       </thead>
       <tbody>
@@ -13,6 +14,7 @@
           <td>{{game.name}}</td>
           <td>{{game.price}}</td>
           <td>{{game.description}}</td>
+          <td>{{game.isDeleted}}</td>
           <td>
             <a class="btn btn-success" (click)="addOrderItem(game.key)">Buy</a>
             <a class="btn btn-success" [routerLink]="['/games',game.key]">Details</a>

@@ -6,6 +6,7 @@ import { Adapter } from '../adapter';
 export class EditGameAdapter implements Adapter<EditGameDTO> {
   adapt(item: any): EditGameDTO {
     let editGameModel: EditGameDTO = new EditGameDTO();
+    //if (typeof item.id == typeof Number)
     editGameModel.id = item.id;
     editGameModel.newGameKey = item.key;
     editGameModel.description = item.description;
