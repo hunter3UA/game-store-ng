@@ -19,7 +19,6 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommentModule,
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,
     ErrorModule,
