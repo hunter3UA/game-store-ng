@@ -32,7 +32,7 @@ describe('GameService', () => {
       description: 'desc',
       genresId: [1, 2],
       platformsId: [1],
-      publisherId: 1,
+      publisherName: 1,
       price: 100,
       discontinued: false,
       unitsInStock: 10,
@@ -121,13 +121,13 @@ describe('GameService', () => {
     const fakeGame: EditGameDTO = {
       id: 1,
       name: 'test',
-      key: 'key',
+      newGameKey: 'key',
       price: 100,
       discontinued: false,
       unitsInStock: 0,
-      genres: [1, 2, 3],
-      platforms: [1, 2],
-      publisherId: 1,
+      genresId: [1, 2, 3],
+      platformsId: [1, 2],
+      publisherName: 1,
       description: 'desc',
     };
 

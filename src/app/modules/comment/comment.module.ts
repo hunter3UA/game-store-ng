@@ -11,7 +11,15 @@ import { UpdateCommentComponent } from './parts/update-comment/update-comment.co
 import { BanTypeComponent } from './pages/ban-type/ban-type.component';
 
 @NgModule({
-  declarations: [CommentsOfGameComponent, CommentItemComponent, QuoteComponent, AddReplyComponent, UpdateCommentComponent, BanTypeComponent],
+  declarations: [
+    CommentsOfGameComponent,
+    CommentItemComponent,
+    QuoteComponent,
+    AddReplyComponent,
+    UpdateCommentComponent,
+    BanTypeComponent,
+  ],
   imports: [CommonModule, CommentRoutingModule, FormsModule, MatDialogModule],
+  providers: [],
 })
 export class CommentModule {}

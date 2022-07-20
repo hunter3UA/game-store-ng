@@ -1,0 +1,51 @@
+<div style="display:block; width:100%;">
+  <div style="width:80%; float: left;">
+    <table>
+      <thead>
+        <th scope="col">Order date</th>
+        <th scope="col">Freight</th>
+        <th scope="col">Ship address</th>
+        <th scope="col">Ship city</th>
+        <th scope="col">Ship country</th>
+        <th scope="col">Shipped date</th>
+        <th scope="col">Ship postal code</th>
+        <th scope="col">Ship region</th>
+        <th scope="col">Shipper company name</th>
+        <th scope="col">Order status</th>
+        <th scope="col">Total sum</th>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.orderDate}}</td>
+          <td>{{order.freight}}</td>
+          <td>{{order.shipAddress}}</td>
+          <td>{{order.shipCity}}</td>
+          <td>{{order.shipCountry}}</td>
+          <td>{{order.shippedDate}}</td>
+          <td>{{order.shipPostalCode}}</td>
+          <td>{{order.shipRegion}}</td>
+          <td>{{order.shipperCompanyName}}</td>
+          <td>{{statuses[order.status]}}
+          </td>
+          <td>{{order.totalSum}}</td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="width:20%; float: left; background-color: goldenrod;">
+    <form>
+      <div>
+        <label>From:</label>
+        <input type="date" [(ngModel)]="this.orderHistory.from" name="filterOfOrderFrom">
+      </div>
+      <div>
+        <label>To:</label>
+        <input type="date" [(ngModel)]="this.orderHistory.to" name="filterOfOrderTo">
+      </div>
+      <input type="submit" (click)="loadOrders(this.orderHistory)">
+    </form>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
@@ -12,7 +13,7 @@ export class AllPlatformsComponent implements OnInit {
     this.platforms = new Array<PlatformTypeDTO>();
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.loadPlatforms();
   }
 

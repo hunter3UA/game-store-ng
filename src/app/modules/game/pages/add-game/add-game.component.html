@@ -7,8 +7,8 @@
   </div>
   <div class="form-group">
     <label for="gameName">Key</label>
-    <input class="form-control" id="gameName" maxlength="150" [(ngModel)]="gameModel.key" name="inputKey"
-      #nameOfGame="ngModel">
+    <input class="form-control" id="gameName" (change)="checkKey($event.target)" maxlength="150"
+      [(ngModel)]="gameModel.key" name="inputKey" #nameOfGame="ngModel">
   </div>
   <div class="form-group">
     <label for="gamePrice">Price</label>
@@ -18,19 +18,24 @@
   </div>
   <div class="form-group">
     <label for="gameDiscounted">Discontinued</label>
-    <input class="form-control" id="gameDiscounted" type="checkbox" [(ngModel)]="gameModel.discontinued"
-      name="chbDiscounted">
+    <input class="defaultCheckbox" id="gameDiscontinued" type="checkbox" [(ngModel)]="gameModel.discontinued"
+      name="chbDiscontinued">
   </div>
+
   <div class="form-group">
     <label for="unitsOfGameInStock">Units in stock</label>
     <input class="form-control" id="unitsOfGameInStock" type="number" min="0" (keydown)="keyDown($event)"
       [(ngModel)]="gameModel.unitsInStock" name="inputUnitsOfGameInStock">
   </div>
   <div class="form-group">
+    <label for="gameQuantityPerUnit">Quantity per unit</label>
+    <input class="form-control" id="gameName" maxlength="150" [(ngModel)]="gameModel.quantityPerUnit" name="inputKey"
+      #nameOfGame="ngModel">
+  </div>
+  <div class="form-group">
     <label for="gameDescription">Description</label>
-    <textarea class="form-control" id="gameDescription" required rows="3" minlength="10" maxlength="5000"
-      #gameDescription="ngModel" [(ngModel)]="gameModel.description" name="inputDescription"></textarea>
-    <p *ngIf="gameDescription.invalid && gameDescription.touched">Enter description</p>
+    <textarea class="form-control" id="gameDescription" rows="3" maxlength="5000" #gameDescription="ngModel"
+      [(ngModel)]="gameModel.description" name="inputDescription"></textarea>
   </div>
   <div class="form-group">
     <ng-multiselect-dropdown #ddlPlatforms="ngModel" name="ddlPlatforms"
@@ -44,11 +49,16 @@
     </ng-multiselect-dropdown>
   </div>
   <div class="form-group">
-    <select name="list" [(ngModel)]="gameModel.publisherId" #publishersddl id="publisherDDL">
-      <option selected="true" [ngValue]="null">None</option>
-      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher.id">
+    <select name="list" [(ngModel)]="gameModel.publisherName" #publishersddl id="publisherDDL">
+      <option value="undefined" selected="true">None</option>
+      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers"
+        [ngValue]="publisher.companyName">
         {{publisher.companyName}}</option>
     </select>
+  </div>
+  <div>
+    <label>PublishedAt</label>
+    <input type="date" [(ngModel)]="gameModel.publishedAt" name="publishedAt">
   </div>
   <input type="submit" [disabled]="!form.valid" (click)="addGame()" value="Add game">
 </form>

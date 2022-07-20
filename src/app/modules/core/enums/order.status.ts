@@ -1,5 +1,5 @@
 export enum OrderStatus {
-  Opened,
+  Opened = 1,
   Processing,
   Succeeded,
   Canceled,

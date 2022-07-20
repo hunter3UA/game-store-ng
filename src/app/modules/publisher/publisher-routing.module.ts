@@ -8,8 +8,8 @@ import { UpdatePublisherComponent } from './pages/update-publisher/update-publis
 const routes: Routes = [
   { path: '', component: AllPublishersComponent },
   { path: 'new', component: AddPublisherComponent },
-  { path: ':id', component: PublisherDetailsComponent },
-  { path: 'update/:id', component: UpdatePublisherComponent },
+  { path: ':name', component: PublisherDetailsComponent },
+  { path: 'update/:name', component: UpdatePublisherComponent },
 ];
 
 @NgModule({

@@ -13,9 +13,47 @@
   </div>
   <div class="form-group">
     <label>Description</label>
-    <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToAdd.description"
-      maxlength="1000" name="textareaDescription"></textarea>
-    <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
+    <textarea class="form-control" #pubDescription="ngModel" [(ngModel)]="publisherToAdd.description" maxlength="1000"
+      name="textareaDescription"></textarea>
+  </div>
+  <div class="form-group">
+    <label>Contact name</label>
+    <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.contactName" maxlength="400"
+      name="contactName">
+  </div>
+  <div class="form-group">
+    <label>Contact title</label>
+    <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.contactTitle" maxlength="400"
+      name="contactName">
+  </div>
+  <div class="form-group">
+    <label>Country</label>
+    <input class="form-control" #country="ngModel" [(ngModel)]="publisherToAdd.country" name="country">
+  </div>
+  <div class="form-group">
+    <label>Region</label>
+    <input class="form-control" #region="ngModel" [(ngModel)]="publisherToAdd.region" name="region">
+  </div>
+  <div class="form-group">
+    <label>City</label>
+    <input class="form-control" #city="ngModel" [(ngModel)]="publisherToAdd.city" name="cite">
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.address" name="adrress">
+  </div>
+  <div class="form-group">
+    <label>Phone</label>
+    <input class="form-control" #phone="ngModel" [(ngModel)]="publisherToAdd.phone" name="phone">
+  </div>
+  <div class="form-group">
+    <label>Fax</label>
+    <input class="form-control" #fax="ngModel" [(ngModel)]="publisherToAdd.fax" maxlength="400" name="fax">
+  </div>
+  <div class="form-group">
+    <label>Postal code</label>
+    <input class="form-control" #postalCode="ngModel" [(ngModel)]="publisherToAdd.postalCode" maxlength="400"
+      name="postalCode">
   </div>
   <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="addPublisher()" value="Add publisher">
 </form>

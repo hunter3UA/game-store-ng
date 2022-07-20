@@ -33,8 +33,9 @@ export class PublisherService {
       );
   }
 
-  getPublisher(id: number): Observable<PublisherDTO> {
-    let url = `${environment.apiBaseUrl}/publishers/${id}`;
+  getPublisher(publisherName: string): Observable<PublisherDTO> {
+    let pubName = encodeURIComponent(publisherName);
+    let url = `${environment.apiBaseUrl}/publishers/${pubName}`;
     return this.http
       .get(url)
       .pipe(map((item: any) => this.publisherAdapter.adapt(item)));

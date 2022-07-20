@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
+import { OrderHistoryDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
+import { UpdateOrderDTO } from 'src/app/modules/core/api-models/order/update.order.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -24,6 +26,20 @@ export class OrderService {
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
+  }
+
+  getOrders(orderHistoryDTO: any): Observable<Array<OrderDTO>> {
+    let url = `${environment.apiBaseUrl}/orders`;
+    return this.http
+      .get(url, { params: orderHistoryDTO })
+      .pipe(
+        map((data: any[]) => data.map((item) => this.orderAdapter.adapt(item)))
+      );
+  }
+
+  updateOrder(orderToUpdate: OrderDTO): Observable<any> {
+    let url = `${environment.apiBaseUrl}/orders`;
+    return this.http.put(url, orderToUpdate);
   }
 
   cancelOrder(orderId: number): Observable<boolean> {

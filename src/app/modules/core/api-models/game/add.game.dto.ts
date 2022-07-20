@@ -4,14 +4,15 @@ export class AddGameDTO {
   public description: string;
   public genresId: Array<number>;
   public platformsId: Array<number>;
-  public publisherId?: number;
+  public publisherName: string;
   public price: number;
   public discontinued: boolean;
   public unitsInStock: number;
-
+  public publishedAt: Date;
+  public date: Date;
+  public quantityPerUnit: string;
   constructor() {
     this.genresId = new Array<number>();
     this.platformsId = new Array<number>();
-    this.publisherId = null;
   }
 }

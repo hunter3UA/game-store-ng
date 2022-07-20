@@ -32,7 +32,7 @@ export class BasketService {
   }
 
   removeOrderItem(itemId: number): Observable<boolean> {
-    let url = `${environment.apiBaseUrl}/basket/details/remove/${itemId}`;
+    let url = `${environment.apiBaseUrl}/basket/details/${itemId}`;
     return this.http.delete<boolean>(url);
   }
   changeQuantity(

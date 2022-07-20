@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
 @Component({
@@ -8,14 +9,15 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
   templateUrl: './update-publisher.component.html',
 })
 export class UpdatePublisherComponent implements OnInit {
-  public publisherId: number;
+  public publisherName: string;
   public publisherToEdit: PublisherDTO;
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private errorService: ErrorHandlerService
   ) {
-    this.publisherId = this.route.snapshot.params['id'];
+    this.publisherName = this.route.snapshot.params['name'];
     this.publisherToEdit = new PublisherDTO();
   }
 
@@ -24,10 +26,11 @@ export class UpdatePublisherComponent implements OnInit {
   }
 
   loadPublisher() {
-    this.publisherService.getPublisher(this.publisherId).subscribe((data) => {
-      if (data) {
-        this.publisherToEdit = data;
-      }
+    this.publisherService.getPublisher(this.publisherName).subscribe({
+      next: (data) => (this.publisherToEdit = data),
+      error: (error) => {
+        this.errorService.handleError(error);
+      },
     });
   }
 
@@ -35,7 +38,7 @@ export class UpdatePublisherComponent implements OnInit {
     this.publisherService
       .updatePublisher(this.publisherToEdit)
       .subscribe(() => {
-        this.router.navigate(['/publishers', this.publisherToEdit.id]);
+        this.router.navigate(['/publishers', this.publisherToEdit.companyName]);
       });
   }
 }

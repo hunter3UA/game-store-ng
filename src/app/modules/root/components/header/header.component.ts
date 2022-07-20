@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 
 @Component({

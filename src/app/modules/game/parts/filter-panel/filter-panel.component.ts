@@ -32,6 +32,7 @@ export class FilterPanelComponent implements OnInit, OnChanges {
   public elementsOnPage: Array<SelectListItem>;
   public sotringValues: Array<SelectListItem>;
   public publishedAt: Array<SelectListItem>;
+  public startGameFilter: GameFilterDTO;
 
   @Input() maxGameCount: number;
 
@@ -60,6 +61,8 @@ export class FilterPanelComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.gameFilter =
+        GameFilterHelper.parseParamsObjectToFilterObject(params);
+      this.startGameFilter =
         GameFilterHelper.parseParamsObjectToFilterObject(params);
     });
     this.loadGenres();
@@ -105,16 +108,30 @@ export class FilterPanelComponent implements OnInit, OnChanges {
     });
   }
 
+  sort() {
+    this.gameFilter.page = 1;
+    this.getFilter();
+  }
+
   getFilter() {
-    let params = this.queryService.removeEmptyFields(this.gameFilter);
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`/games`], { queryParams: params });
-    });
+    this.gameFilter = this.queryService.removeEmptyFields(this.gameFilter);
+    console.log(this.gameFilter);
+    if (
+      JSON.stringify(this.gameFilter) !== JSON.stringify(this.startGameFilter)
+    ) {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate([`/games`], { queryParams: this.gameFilter });
+      });
+    }
   }
 
   resetFilter() {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigate([`/games`]);
+      this.router.navigate([`/games`], {
+        queryParams: {
+          sortingType: this.gameFilter.sortingType,
+        },
+      });
     });
   }
 }

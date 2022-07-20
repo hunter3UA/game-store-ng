@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
+import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { PaymentType } from 'src/app/modules/core/enums/payment.type';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
@@ -12,6 +14,7 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 })
 export class PaymentTypeComponent {
   @Input() orderId: number;
+
   private orderPaymentModel: OrderPaymentDTO;
 
   constructor(
@@ -21,7 +24,6 @@ export class PaymentTypeComponent {
     private errorService: ErrorHandlerService
   ) {
     this.orderPaymentModel = new OrderPaymentDTO();
-    this.orderId = 0;
   }
 
   generateInvoice() {

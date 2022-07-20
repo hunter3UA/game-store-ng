@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { ShipperDTO } from 'src/app/modules/core/api-models/shipper/shipper.dto';
@@ -6,24 +6,31 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 import { ShipperService } from 'src/app/modules/shared/services/shipper/shipper.service';
 
 @Component({
-  selector: 'app-order',
-  templateUrl: './order.component.html',
+  selector: 'app-shipper-details',
+  templateUrl: './shipper-details.component.html',
 })
-export class OrderComponent implements OnInit {
+export class ShipperDetailsComponent implements OnInit {
   public currentOrder: OrderDTO;
   public shippers: Array<ShipperDTO>;
   constructor(
-    private router: Router,
+    private shipperService: ShipperService,
     private orderService: OrderService,
-    private shipperService: ShipperService
+    private router: Router
   ) {
     this.currentOrder = new OrderDTO();
-    this.shippers = new Array<ShipperDTO>();
   }
 
   ngOnInit(): void {
     this.loadOrder();
     this.loadShippers();
+  }
+
+  loadShippers() {
+    this.shipperService.getListOfShippers().subscribe({
+      next: (data) => {
+        this.shippers = data;
+      },
+    });
   }
 
   loadOrder() {
@@ -35,11 +42,9 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  loadShippers() {
-    this.shipperService.getListOfShippers().subscribe({
-      next: (data) => {
-        this.shippers = data;
-      },
+  confirmShipper() {
+    this.orderService.updateOrder(this.currentOrder).subscribe({
+      next: () => this.router.navigate(['/order']),
     });
   }
 

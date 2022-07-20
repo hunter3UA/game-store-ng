@@ -26,6 +26,10 @@
       name="inputDescription"></textarea>
   </div>
   <div class="form-group">
+    <label for="gameQuantityPerUnit">Quantity per unit</label>
+    <input class="form-control" [(ngModel)]="gameToEdit.quantityPerUnit" maxlength="150" name="quantityPerUnit">
+  </div>
+  <div class="form-group">
     <ng-multiselect-dropdown #ddlPlatforms name="ddlPlatforms" [data]="gameComponentModel.platforms"
       [(ngModel)]="gameToEdit.platformTypes" [settings]="{idField: 'id',textField: 'type',enableCheckAll: false}">
     </ng-multiselect-dropdown>
@@ -36,11 +40,16 @@
     </ng-multiselect-dropdown>
   </div>
   <div class="form-group">
-    <select name="list" [(ngModel)]="gameComponentModel.selectedPublisher.id">
-      <option [ngValue]="null" selected>None</option>
-      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers" [ngValue]="publisher?.id">
+    <select name="list" [(ngModel)]="gameComponentModel.selectedPublisher.companyName">
+      <option value="undefined" selected="true">None</option>
+      <option name="publishers" *ngFor="let publisher of gameComponentModel.publishers"
+        [ngValue]="publisher.companyName">
         {{publisher.companyName}}</option>
     </select>
+  </div>
+  <div>
+    <label>PublishedAt:</label>
+    <input type="date" [(ngModel)]="this.gameToEdit.publishedAt" name="publishedAt">
   </div>
   <input type="submit" (click)="updateGame()" value="Update game">
 </form>

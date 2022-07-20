@@ -14,8 +14,8 @@ import { AddGameDTO } from '../../../core/api-models/game/add.game.dto';
 export class GameService {
   constructor(private http: HttpClient, private gameAdapter: GameAdapter) {}
 
-  deleteGame(id: number): Observable<boolean> {
-    let url = `${environment.apiBaseUrl}/games/remove/${id}`;
+  deleteGame(key: string): Observable<boolean> {
+    let url = `${environment.apiBaseUrl}/games/remove/${key}`;
     return this.http.delete<boolean>(url);
   }
 
@@ -26,7 +26,7 @@ export class GameService {
 
   getTotalGames(): Observable<any> {
     let url = `${environment.apiBaseUrl}/games/count`;
-    return this.http.get<GameDTO[]>(url);
+    return this.http.get(url);
   }
 
   getGameByKey(key: string, isView?: boolean): Observable<GameDTO> {
