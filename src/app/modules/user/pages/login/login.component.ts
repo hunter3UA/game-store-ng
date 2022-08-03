@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { CookieService } from 'ngx-cookie-service';
-import { LoginDTO } from 'src/app/modules/core/api-models/user/login.dto';
+import { LoginDTO } from 'src/app/modules/core/api-models/auth/login.dto';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 
@@ -24,8 +24,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   public login() {
+    let jwtHelper = new JwtHelperService();
     this.authService.login(this.loginDTO).subscribe({
-      next: () => {
+      next: (data) => {
+        console.log(jwtHelper.decodeToken(data.token));
         this.router.navigate(['/']);
       },
       error: (error) => this.errorService.handleError(error),

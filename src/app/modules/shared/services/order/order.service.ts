@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
-import { OrderHistoryDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
+import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { UpdateOrderDTO } from 'src/app/modules/core/api-models/order/update.order.dto';
 import { environment } from 'src/environments/environment';
@@ -28,10 +28,19 @@ export class OrderService {
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  getOrders(orderHistoryDTO: any): Observable<Array<OrderDTO>> {
+  getOrderHistory(orderFilterDTO: any): Observable<Array<OrderDTO>> {
+    let url = `${environment.apiBaseUrl}/orders/history`;
+    return this.http
+      .get(url, { params: orderFilterDTO })
+      .pipe(
+        map((data: any[]) => data.map((item) => this.orderAdapter.adapt(item)))
+      );
+  }
+
+  getStoreOrders(orderFilterDTO: any): Observable<Array<OrderDTO>> {
     let url = `${environment.apiBaseUrl}/orders`;
     return this.http
-      .get(url, { params: orderHistoryDTO })
+      .get(url, { params: orderFilterDTO })
       .pipe(
         map((data: any[]) => data.map((item) => this.orderAdapter.adapt(item)))
       );

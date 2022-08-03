@@ -1,4 +1,4 @@
-export class OrderHistoryDTO {
+export class OrderFilterDTO {
   from: Date;
   to: Date;
 }

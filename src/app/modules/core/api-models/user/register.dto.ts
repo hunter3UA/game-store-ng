@@ -1,5 +1,5 @@
-export class RegisterDTO {
+export class RegsiterDTO {
   public userName: string;
   public email: string;
-  public password: string;
+  public passsword: string;
 }

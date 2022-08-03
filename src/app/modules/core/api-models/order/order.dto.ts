@@ -3,7 +3,7 @@ import { OrderDetailsDTO } from './oreder.details.dto';
 
 export class OrderDTO {
   public id: number;
-  public customerId: number;
+  public customerId: string;
   public orderDate: Date;
   public expiration: Date;
   public orderDetails: Array<OrderDetailsDTO>;

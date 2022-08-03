@@ -10,6 +10,7 @@ import { IboxPaymentComponent } from './pages/ibox-payment/ibox-payment.componen
 import { OrderHistoryComponent } from './pages/order-history/order-history.component';
 import { FormsModule } from '@angular/forms';
 import { ShipperDetailsComponent } from './pages/shipper-details/shipper-details.component';
+import { OrderListComponent } from './pages/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { ShipperDetailsComponent } from './pages/shipper-details/shipper-details
     IboxPaymentComponent,
     OrderHistoryComponent,
     ShipperDetailsComponent,
+    OrderListComponent,
   ],
   imports: [CommonModule, OrderRoutingModule, FormsModule],
 })

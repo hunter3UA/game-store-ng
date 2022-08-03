@@ -5,17 +5,17 @@ import { OrderStatus } from 'src/app/modules/core/enums/order.status';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
-  selector: 'app-order-history',
-  templateUrl: './order-history.component.html',
+  selector: 'app-order-list',
+  templateUrl: './order-list.component.html',
 })
-export class OrderHistoryComponent implements OnInit {
+export class OrderListComponent implements OnInit {
   public orders: Array<OrderDTO>;
-  public orderHistory: OrderFilterDTO;
+  public orderFilterDTO: OrderFilterDTO;
   public statuses: any;
 
   constructor(private orderService: OrderService) {
     this.orders = new Array<OrderDTO>();
-    this.orderHistory = new OrderFilterDTO();
+    this.orderFilterDTO = new OrderFilterDTO();
     this.statuses = new Array<string>('');
     Object.entries(OrderStatus)
       .slice(4, 8)
@@ -25,11 +25,11 @@ export class OrderHistoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadOrders(this.orderHistory);
+    this.loadOrders(this.orderFilterDTO);
   }
 
   loadOrders(orderHistory: OrderFilterDTO) {
-    this.orderService.getOrderHistory(orderHistory).subscribe({
+    this.orderService.getStoreOrders(orderHistory).subscribe({
       next: (data) => {
         this.orders = data;
       },
