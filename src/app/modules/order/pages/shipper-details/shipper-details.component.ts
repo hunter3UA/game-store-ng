@@ -34,7 +34,7 @@ export class ShipperDetailsComponent implements OnInit {
   }
 
   loadOrder() {
-    this.orderService.getOrder().subscribe({
+    this.orderService.getOrderByCustomer().subscribe({
       next: (data) => {
         this.currentOrder = data;
       },

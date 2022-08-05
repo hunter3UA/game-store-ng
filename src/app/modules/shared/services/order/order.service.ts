@@ -5,6 +5,7 @@ import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
+import { OrderDetailsDTO } from 'src/app/modules/core/api-models/order/oreder.details.dto';
 import { UpdateOrderDTO } from 'src/app/modules/core/api-models/order/update.order.dto';
 import { environment } from 'src/environments/environment';
 
@@ -15,23 +16,30 @@ export class OrderService {
   constructor(private http: HttpClient, private orderAdapter: OrderAdapter) {}
 
   makeOrder(orderId: number): Observable<OrderDTO> {
-    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
+    let url = `${environment.apiBaseUrl}/orders`;
     return this.http
-      .get(url)
+      .post(url, orderId)
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
-  getOrder(): Observable<OrderDTO> {
+  getOrderByCustomer(): Observable<OrderDTO> {
     let url = `${environment.apiBaseUrl}/order`;
     return this.http
       .get(url, { withCredentials: true })
       .pipe(map((data: any) => this.orderAdapter.adapt(data)));
   }
 
+  getOrderById(orderId: number): Observable<OrderDTO> {
+    let url = `${environment.apiBaseUrl}/orders/${orderId}`;
+    return this.http
+      .get(url)
+      .pipe(map((data: any) => this.orderAdapter.adapt(data)));
+  }
+
   getOrderHistory(orderFilterDTO: any): Observable<Array<OrderDTO>> {
     let url = `${environment.apiBaseUrl}/orders/history`;
     return this.http
-      .get(url, { params: orderFilterDTO })
+      .get<Array<OrderDTO>>(url, { params: orderFilterDTO })
       .pipe(
         map((data: any[]) => data.map((item) => this.orderAdapter.adapt(item)))
       );
@@ -61,6 +69,17 @@ export class OrderService {
     return this.http.post(url, orderPaymentModel, {
       observe: 'response',
       responseType: 'blob',
+    });
+  }
+
+  changeQuantity(
+    itemId: number,
+    quantity: number
+  ): Observable<OrderDetailsDTO> {
+    let url = `${environment.apiBaseUrl}/orders/details/update`;
+    return this.http.put<OrderDetailsDTO>(url, {
+      orderDetailsId: itemId,
+      quantity: quantity,
     });
   }
 

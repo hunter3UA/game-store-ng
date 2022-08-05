@@ -35,7 +35,7 @@ export class TokenStorageService {
 
   public saveRefreshToken(refeshToken: string): void {
     var date = new Date();
-    date.setDate(date.getUTCDay() + 7);
+    date.setHours(date.getUTCHours() + 3);
     this.cookies.delete(REFRESH_TOKEN_KEY);
     this.cookies.set(REFRESH_TOKEN_KEY, refeshToken, date);
   }

@@ -39,7 +39,7 @@ export class AuthInterceptor implements HttpInterceptor {
     let authReq = req;
     const token = this.tokenService.getAccessToken();
 
-    if (token != null) {
+    if (token) {
       authReq = this.addTokenHeader(req, token);
     }
 

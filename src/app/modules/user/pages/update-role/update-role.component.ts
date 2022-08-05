@@ -4,7 +4,7 @@ import { EditUserAdapter } from 'src/app/modules/core/adapters/user.adapters/edi
 import { UpdateUserDTO } from 'src/app/modules/core/api-models/user/update.user.dto';
 import { SelectListItem } from 'src/app/modules/core/common/select.list.item';
 import { Role } from 'src/app/modules/core/enums/role';
-import { DdlHelper } from 'src/app/modules/shared/helpers/ddl.helper';
+import { EnumHelper } from 'src/app/modules/shared/helpers/enum.helper';
 import { UserService } from 'src/app/modules/shared/services/user/user.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class UpdateRoleComponent implements OnInit {
   public userName: string;
   public userToUpdate: UpdateUserDTO;
   public roles: Array<SelectListItem>;
-  public ddlHelper: DdlHelper;
+  public ddlHelper: EnumHelper;
 
   constructor(
     private userService: UserService,
@@ -23,7 +23,7 @@ export class UpdateRoleComponent implements OnInit {
     private editUserAdapter: EditUserAdapter,
     private router: Router
   ) {
-    this.ddlHelper = new DdlHelper();
+    this.ddlHelper = new EnumHelper();
     this.userName = this.route.snapshot.params['name'];
     this.roles = this.ddlHelper.mapToSelectList(Role);
     this.userToUpdate = new UpdateUserDTO();

@@ -11,6 +11,7 @@ import { OrderHistoryComponent } from './pages/order-history/order-history.compo
 import { FormsModule } from '@angular/forms';
 import { ShipperDetailsComponent } from './pages/shipper-details/shipper-details.component';
 import { OrderListComponent } from './pages/order-list/order-list.component';
+import { OrderDetailsComponent } from './pages/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OrderListComponent } from './pages/order-list/order-list.component';
     OrderHistoryComponent,
     ShipperDetailsComponent,
     OrderListComponent,
+    OrderDetailsComponent,
   ],
   imports: [CommonModule, OrderRoutingModule, FormsModule],
 })

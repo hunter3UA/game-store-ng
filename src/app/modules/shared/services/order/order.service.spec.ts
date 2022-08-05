@@ -24,7 +24,7 @@ describe('OrderService', () => {
   });
 
   it('getOrder() should return order', () => {
-    service.getOrder().subscribe((response) => {
+    service.getOrderByCustomer().subscribe((response) => {
       expect(typeof response).toBe(typeof new OrderDTO());
     });
 
