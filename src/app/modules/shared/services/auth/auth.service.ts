@@ -27,8 +27,9 @@ export class AuthService {
 
   login(login: LoginDTO): Observable<JwtToken> {
     let url = `${environment.apiBaseUrl}/authentication/login`;
-    return this.http.post<JwtToken>(url, login).pipe(
+    return this.http.post<JwtToken>(url, login, { withCredentials: true }).pipe(
       tap((token) => {
+        console.log(token);
         this.tokenService.authenticate(token);
       })
     );

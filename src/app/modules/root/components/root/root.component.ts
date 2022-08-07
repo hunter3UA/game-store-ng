@@ -16,17 +16,14 @@ export class RootComponent implements OnInit {
   }
 
   authenticate() {
-    let accessToken = this.tokenService.getAccessToken();
-    let refreshToken = this.tokenService.getRefreshToken();
-
     if (
-      accessToken &&
-      this.jwtHelper.isTokenExpired(accessToken) &&
-      refreshToken
+      !this.tokenService.isAuthenticated() &&
+      this.tokenService.getRefreshToken()
     ) {
       let refreshTokenRequest = new RefreshTokenRequestDTO();
-      refreshTokenRequest.expiredAccessToken = accessToken;
-      refreshTokenRequest.refreshToken = refreshToken;
+      refreshTokenRequest.expiredAccessToken =
+        this.tokenService.getAccessToken();
+      refreshTokenRequest.refreshToken = this.tokenService.getRefreshToken();
       this.tokenService.refreshJwtToken(refreshTokenRequest).subscribe();
     }
   }

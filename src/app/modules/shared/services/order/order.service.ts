@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
+import { Adapter } from 'src/app/modules/core/adapters/adapter';
+import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
@@ -70,6 +71,11 @@ export class OrderService {
       observe: 'response',
       responseType: 'blob',
     });
+  }
+
+  removeOrderDetails(orderDetailsId: number) {
+    let url = `${environment.apiBaseUrl}/orders/details/${orderDetailsId}`;
+    return this.http.delete(url);
   }
 
   changeQuantity(

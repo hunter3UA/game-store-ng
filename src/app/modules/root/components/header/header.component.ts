@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { lastValueFrom } from 'rxjs';
+import { User } from 'src/app/modules/core/models/user';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { TokenStorageService } from 'src/app/modules/user/services/token-storage/token-storage.service';
 
@@ -9,13 +10,18 @@ import { TokenStorageService } from 'src/app/modules/user/services/token-storage
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {
+  public currentUser: User;
   public totalCountOfGames: number;
   public jwtHelper = new JwtHelperService();
 
   constructor(
     private gameService: GameService,
     public tokenService: TokenStorageService
-  ) {}
+  ) {
+    this.currentUser = new User();
+    this.currentUser = this.tokenService.getUser();
+    console.log(this.currentUser);
+  }
   ngOnInit(): void {
     this.loadAllGames();
   }
@@ -39,12 +45,3 @@ export class HeaderComponent implements OnInit {
     this.tokenService.signOut();
   }
 }
-/*isUserAuthenticated() {
-    const token: string | null = localStorage.getItem("accessToken");
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  } */

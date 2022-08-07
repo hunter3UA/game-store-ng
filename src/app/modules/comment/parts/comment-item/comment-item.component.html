@@ -20,7 +20,7 @@
         <button (click)="addReply(comment.id,false)" class="btn btn-success">Reply</button>
         <button (click)="addReply(comment.id,true)" class="btn btn-success">Quote</button>
         <button class="btn btn-info" (click)="updateComment(comment)">Edit</button>
-        <button class="btn btn-danger" (click)="removeComment(comment.id)">Delete</button>
+        <button *ngIf="this.isCanBeDeleted()" class="btn btn-danger" (click)="removeComment(comment.id)">Delete</button>
       </div>
       <a routerLink="/games/comments/ban">Ban</a>
     </div>

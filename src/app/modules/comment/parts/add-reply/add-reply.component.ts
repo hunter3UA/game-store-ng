@@ -4,6 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddCommentDTO } from 'src/app/modules/core/api-models/comment/add.comment.dto';
 import { CommentService } from 'src/app/modules/shared/services/comment/comment.service';
+import { TokenStorageService } from 'src/app/modules/user/services/token-storage/token-storage.service';
 
 @Component({
   selector: 'app-add-reply',
@@ -17,6 +18,7 @@ export class AddReplyComponent {
     isQuote: boolean;
   };
   constructor(
+    private tokenService: TokenStorageService,
     private dialogRef: MatDialogRef<AddReplyComponent>,
     private commentService: CommentService,
     private router: Router,
@@ -24,6 +26,8 @@ export class AddReplyComponent {
   ) {
     this.modalData = data;
     this.newComment = new AddCommentDTO();
+    if (tokenService.isAuthenticated())
+      this.newComment.name = this.tokenService.getUser().unique_name;
   }
 
   closeDialog() {

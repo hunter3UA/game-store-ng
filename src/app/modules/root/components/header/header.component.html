@@ -72,6 +72,10 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'/orders'">Manage orders</a>
       </li>
+      <li *ngIf="this.tokenService.isAuthenticated()" class="nav-item">
+        {{this.currentUser.role}}
+      </li>
+
 
 
     </ul>

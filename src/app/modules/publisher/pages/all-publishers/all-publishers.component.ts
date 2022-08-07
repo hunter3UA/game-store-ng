@@ -18,11 +18,14 @@ export class AllPublishersComponent implements OnInit {
   }
 
   loadPublishers() {
-    this.publisherService.getAllPublishers().subscribe((data) => {
-      if (data) {
-        this.publishers = data;
-      }
-    });
+    this.publisherService
+      .getAllPublishers()
+      .pipe()
+      .subscribe((data) => {
+        if (data) {
+          this.publishers = data;
+        }
+      });
   }
   removePublisher(id: number) {
     this.publisherService.removePublisher(id).subscribe((response) => {

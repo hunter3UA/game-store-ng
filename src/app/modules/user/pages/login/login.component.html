@@ -9,4 +9,5 @@
     <input type="password" [(ngModel)]="this.loginDTO.password" name="password">
   </div>
   <input type="submit" (click)="login()" value="Login">
+  <label>{{this.error}}</label>
 </form>

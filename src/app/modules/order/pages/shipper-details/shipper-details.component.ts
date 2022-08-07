@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GameAdapter } from 'src/app/modules/core/adapters/game.adapters/game.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { ShipperDTO } from 'src/app/modules/core/api-models/shipper/shipper.dto';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';

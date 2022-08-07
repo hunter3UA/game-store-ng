@@ -31,7 +31,6 @@ export class OrderDetailsComponent implements OnInit {
     this.orderService.getOrderById(this.id).subscribe({
       next: (data) => {
         this.orderToUpdate = data;
-        console.log(data);
       },
     });
   }
@@ -60,5 +59,14 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
-  updateOrder() {}
+  removeOrderItem(detailsId: number) {
+    console.log(detailsId);
+    this.orderService.removeOrderDetails(detailsId).subscribe({
+      next: () => this.loadOrder(),
+    });
+  }
+
+  updateOrder() {
+    this.orderService.updateOrder(this.orderToUpdate).subscribe({});
+  }
 }

@@ -6,6 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, tap } from 'rxjs';
 import { JwtToken } from 'src/app/modules/core/api-models/auth/jwt.token';
 import { RefreshTokenRequestDTO } from 'src/app/modules/core/api-models/auth/refresh.token.request.dto';
+import { Role } from 'src/app/modules/core/enums/role';
 import { User } from 'src/app/modules/core/models/user';
 import { environment } from 'src/environments/environment';
 
@@ -35,7 +36,7 @@ export class TokenStorageService {
 
   public saveRefreshToken(refeshToken: string): void {
     var date = new Date();
-    date.setHours(date.getUTCHours() + 3);
+    date.setMinutes(date.getMinutes() + 10);
     this.cookies.delete(REFRESH_TOKEN_KEY);
     this.cookies.set(REFRESH_TOKEN_KEY, refeshToken, date);
   }
@@ -73,6 +74,14 @@ export class TokenStorageService {
         this.authenticate(token);
       })
     );
+  }
+  public hasPermission(roles: Array<string>): boolean {
+    let isAuthenticated = this.isAuthenticated();
+    let currentUser = this.getUser();
+    if (!isAuthenticated) return false;
+    if (roles.includes(currentUser.role)) return true;
+
+    return false;
   }
 
   public signOut(): void {

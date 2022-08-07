@@ -21,9 +21,14 @@ const routes: Routes = [
     path: 'orders/history',
     component: OrderHistoryComponent,
     canActivate: [AuthGuard, RoleGuard],
-    data: { roles: [Role.Admin] },
+    data: { roles: [Role.Manager] },
   },
-  { path: 'orders', component: OrderListComponent },
+  {
+    path: 'orders',
+    component: OrderListComponent,
+    canActivate: [AuthGuard, RoleGuard],
+    data: { roles: [Role.Manager] },
+  },
   { path: 'shipper-details', component: ShipperDetailsComponent },
   { path: 'order-details/:id', component: OrderDetailsComponent },
 ];

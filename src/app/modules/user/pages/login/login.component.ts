@@ -12,11 +12,11 @@ import { AuthService } from 'src/app/modules/shared/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   public loginDTO: LoginDTO;
+  public error: string;
 
   constructor(
     private authService: AuthService,
-    private router: Router,
-    private errorService: ErrorHandlerService
+    private router: Router //  private errorService: ErrorHandlerService
   ) {
     this.loginDTO = new LoginDTO();
   }
@@ -27,10 +27,12 @@ export class LoginComponent implements OnInit {
     let jwtHelper = new JwtHelperService();
     this.authService.login(this.loginDTO).subscribe({
       next: (data) => {
-        console.log(jwtHelper.decodeToken(data.token));
         this.router.navigate(['/']);
       },
-      error: (error) => this.errorService.handleError(error),
+      error: (error) => {
+        if (error.status == 404) this.error = 'User not found';
+        console.log(this.error);
+      },
     });
   }
 }

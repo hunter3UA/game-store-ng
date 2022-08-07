@@ -11,6 +11,8 @@ import {
   BehaviorSubject,
   catchError,
   filter,
+  from,
+  lastValueFrom,
   Observable,
   switchMap,
   take,
@@ -42,6 +44,14 @@ export class AuthInterceptor implements HttpInterceptor {
     if (token) {
       authReq = this.addTokenHeader(req, token);
     }
+
+    // if (
+    //   !this.tokenService.isAuthenticated() &&
+    //   this.tokenService.getRefreshToken()
+    // ) {
+    //   console.log('TRUE');
+    //   return from(this.refreshToken(req, next));
+    // }
 
     return next.handle(authReq).pipe(
       catchError((error) => {
@@ -93,6 +103,23 @@ export class AuthInterceptor implements HttpInterceptor {
     return request.clone({
       headers: request.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token),
     });
+  }
+
+  private async refreshToken(request: HttpRequest<any>, next: HttpHandler) {
+    let isAuth = this.tokenService.isAuthenticated();
+    let refreshToken = this.tokenService.getRefreshToken();
+    if (refreshToken && !isAuth) {
+      let refreshTokenRequest = new RefreshTokenRequestDTO();
+      refreshTokenRequest.refreshToken = refreshToken;
+      refreshTokenRequest.expiredAccessToken =
+        this.tokenService.getAccessToken();
+      let newToken = await lastValueFrom(
+        this.tokenService.refreshJwtToken(refreshTokenRequest)
+      );
+      this.tokenService.authenticate(newToken);
+    }
+
+    return await lastValueFrom(next.handle(request));
   }
 }
 
