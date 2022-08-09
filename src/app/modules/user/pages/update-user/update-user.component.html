@@ -1,0 +1,14 @@
+<form class="col-4" #form="ngForm" (ngSubmit)="form.valid ">
+  <div class="form-group">
+    <label>User name</label>
+    <input type="text" [(ngModel)]="this.userToUpdate.userName" name="userName">
+  </div>
+  <div class="form-group">
+    <label>{{this.userToUpdate.email}}</label>
+    <select name="shipper" #shipper="ngModel" class="custom-select" [(ngModel)]="this.userToUpdate.role" required>
+      <option name="publishers" *ngFor="let role of roles" [ngValue]="role.value">
+        {{role.label}}</option>
+    </select>
+  </div>
+  <input class="btn btn-success" type="submit" (click)="this.updateRole()" value="Update role">
+</form>

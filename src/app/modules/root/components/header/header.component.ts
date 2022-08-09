@@ -20,7 +20,6 @@ export class HeaderComponent implements OnInit {
   ) {
     this.currentUser = new User();
     this.currentUser = this.tokenService.getUser();
-    console.log(this.currentUser);
   }
   ngOnInit(): void {
     this.loadAllGames();

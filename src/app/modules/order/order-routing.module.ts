@@ -20,8 +20,8 @@ const routes: Routes = [
   {
     path: 'orders/history',
     component: OrderHistoryComponent,
-    canActivate: [AuthGuard, RoleGuard],
-    data: { roles: [Role.Manager] },
+    // canActivate: [AuthGuard, RoleGuard],
+    // data: { roles: [Role.Manager] },
   },
   {
     path: 'orders',

@@ -57,15 +57,7 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'/orders/history'">Orders history</a>
       </li>
-      <li class="nav-item">
-        <a *ngIf="!isUserAuthenticated()" class="nav-link" [routerLink]="'/login'">Login</a>
-      </li>
-      <li class="nav-item">
-        <a *ngIf="!isUserAuthenticated()" class="nav-link" [routerLink]="'/registration'">Create account</a>
-      </li>
-      <li class="nav-button" *ngIf="isUserAuthenticated()" class="nav-link" (click)="logOut()">
-        <i aria-hidden="true">Logout</i>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" [routerLink]="'/users'">Manage users</a>
       </li>
@@ -73,9 +65,17 @@
         <a class="nav-link" [routerLink]="'/orders'">Manage orders</a>
       </li>
       <li *ngIf="this.tokenService.isAuthenticated()" class="nav-item">
-        {{this.currentUser.role}}
+        {{this.currentUser?.role}}
       </li>
-
+      <li class="nav-item">
+        <a *ngIf="!isUserAuthenticated()" class="nav-link" [routerLink]="'/login'">Login</a>
+      </li>
+      <li class="nav-item">
+        <a *ngIf="!isUserAuthenticated()" class="nav-link" [routerLink]="'/registration'">Create account</a>
+      </li>
+      <li class="nav-item" *ngIf="isUserAuthenticated()" class="nav-link" (click)="logOut()">
+        <input type="button" class="btn btn-danger" value="Logout">
+      </li>
 
 
     </ul>

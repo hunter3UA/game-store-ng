@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -13,7 +14,10 @@ import { TokenStorageService } from 'src/app/modules/user/services/token-storage
   providedIn: 'root',
 })
 export class RoleGuard implements CanActivate {
-  constructor(private tokenService: TokenStorageService) {}
+  constructor(
+    private tokenService: TokenStorageService,
+    private router: Router
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -29,6 +33,6 @@ export class RoleGuard implements CanActivate {
       if (el == currentUser.role) isSucceded = true;
     });
 
-    return isSucceded;
+    return isSucceded ? isSucceded : this.router.navigateByUrl('/home');
   }
 }

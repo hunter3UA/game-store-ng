@@ -56,6 +56,11 @@ export class CommentItemComponent {
   }
 
   isCanBeDeleted() {
-    return this.tokenService.hasPermission([Role.Moderator]);
+    return this.tokenService.hasPermission([
+      Role.Moderator,
+      Role.Manager,
+      Role.Publisher,
+      Role.Admin,
+    ]);
   }
 }

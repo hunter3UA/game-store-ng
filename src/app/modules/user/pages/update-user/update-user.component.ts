@@ -4,18 +4,18 @@ import { EditUserAdapter } from 'src/app/modules/core/adapters/user.adapters/edi
 import { UpdateUserDTO } from 'src/app/modules/core/api-models/user/update.user.dto';
 import { SelectListItem } from 'src/app/modules/core/common/select.list.item';
 import { Role } from 'src/app/modules/core/enums/role';
-import { EnumHelper } from 'src/app/modules/shared/helpers/enum.helper';
+import { EnumHelper } from 'src/app/modules/core/helpers/enum.helper';
 import { UserService } from 'src/app/modules/shared/services/user/user.service';
 
 @Component({
-  selector: 'app-update-role',
-  templateUrl: './update-role.component.html',
+  selector: 'app-update-user',
+  templateUrl: './update-user.component.html',
 })
-export class UpdateRoleComponent implements OnInit {
+export class UpdateUserComponent implements OnInit {
   public userName: string;
   public userToUpdate: UpdateUserDTO;
   public roles: Array<SelectListItem>;
-  public ddlHelper: EnumHelper;
+  public enumHelper: EnumHelper;
 
   constructor(
     private userService: UserService,
@@ -23,9 +23,9 @@ export class UpdateRoleComponent implements OnInit {
     private editUserAdapter: EditUserAdapter,
     private router: Router
   ) {
-    this.ddlHelper = new EnumHelper();
+    this.enumHelper = new EnumHelper();
     this.userName = this.route.snapshot.params['name'];
-    this.roles = this.ddlHelper.mapToSelectList(Role);
+    this.roles = EnumHelper.mapToSelectList(Role);
     this.userToUpdate = new UpdateUserDTO();
   }
 

@@ -14,8 +14,8 @@ import { TokenStorageService } from 'src/app/modules/user/services/token-storage
 @Injectable({
   providedIn: 'root',
 })
-export class GameUpdateGuard implements CanActivate {
-  public key: string;
+export class PublisherUpdateGuard implements CanActivate {
+  public name: string;
   constructor(
     private gameService: GameService,
     private tokenService: TokenStorageService,
@@ -30,19 +30,11 @@ export class GameUpdateGuard implements CanActivate {
     | boolean
     | UrlTree {
     let currentUser = this.tokenService.getUser();
-    console.log(currentUser);
-    this.key = route.params['key'];
-    return this.loadGame();
-  }
+    this.name = route.params['name'];
 
-  async loadGame() {
-    let currentGame = await lastValueFrom(
-      this.gameService.getGameByKey(this.key, false)
-    );
-    let currentUser = this.tokenService.getUser();
     if (
       (currentUser.role == Role.Publisher &&
-        currentUser.PublisherName == currentGame.publisher.companyName) ||
+        currentUser.PublisherName == this.name) ||
       currentUser.role == Role.Manager ||
       currentUser.role == Role.Admin
     )
