@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { PublisherPermissionService } from 'src/app/modules/core/services/permissions/publisher-permission/publisher-permission.service';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
@@ -15,7 +16,8 @@ export class PublisherDetailsComponent implements OnInit {
     private publisherService: PublisherService,
     private route: ActivatedRoute,
     private errorService: ErrorHandlerService,
-    private router: Router
+    private router: Router,
+    public publisherPermission: PublisherPermissionService
   ) {
     this.publisherName = this.route.snapshot.params['name'];
     this.currentPublisher = new PublisherDTO();

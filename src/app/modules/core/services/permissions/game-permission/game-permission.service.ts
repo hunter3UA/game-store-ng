@@ -11,9 +11,7 @@ export class GamePermissionService {
   constructor(private tokenService: TokenStorageService) {}
 
   removeGameAccess() {
-    let res = this.tokenService.hasPermission([Role.Admin, Role.Manager]);
-    console.log(res);
-    return res;
+    return this.tokenService.hasPermission([Role.Admin, Role.Manager]);
   }
 
   editGameAccess(game: GameDTO) {
