@@ -1,7 +1,10 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
-import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
+import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.filter.dto';
 import { OrderStatus } from 'src/app/modules/core/enums/order.status';
+import { EnumHelper } from 'src/app/modules/core/helpers/enum.helper';
+import { DateService } from 'src/app/modules/core/services/date/date.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -11,17 +14,19 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
 export class OrderHistoryComponent implements OnInit {
   public orders: Array<OrderDTO>;
   public orderHistory: OrderFilterDTO;
-  public statuses: any;
+  public statuses: Array<string>;
 
-  constructor(private orderService: OrderService) {
+  constructor(
+    private orderService: OrderService,
+    private dateService: DateService
+  ) {
     this.orders = new Array<OrderDTO>();
     this.orderHistory = new OrderFilterDTO();
-    this.statuses = new Array<string>('');
-    Object.entries(OrderStatus)
-      .slice(4, 8)
-      .map(([key]) => {
-        this.statuses.push(key);
-      });
+    let defaultDate = new Date();
+    this.statuses = new Array<string>();
+    defaultDate.setDate(defaultDate.getDate() - 30);
+    this.orderHistory.to = this.dateService.converToYMDFormat(defaultDate);
+    this.statuses = EnumHelper.mapNumberEnumToStringList(OrderStatus);
   }
 
   ngOnInit(): void {

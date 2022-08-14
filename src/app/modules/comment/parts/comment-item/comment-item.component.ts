@@ -59,7 +59,6 @@ export class CommentItemComponent {
     return this.tokenService.hasPermission([
       Role.Moderator,
       Role.Manager,
-      Role.Publisher,
       Role.Admin,
     ]);
   }

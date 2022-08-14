@@ -1,13 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Adapter } from 'src/app/modules/core/adapters/adapter';
 import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapters/order.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
-import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
 import { OrderPaymentDTO } from 'src/app/modules/core/api-models/order/order.payment.dto';
 import { OrderDetailsDTO } from 'src/app/modules/core/api-models/order/oreder.details.dto';
-import { UpdateOrderDTO } from 'src/app/modules/core/api-models/order/update.order.dto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

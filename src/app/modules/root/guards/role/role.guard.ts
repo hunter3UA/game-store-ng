@@ -26,11 +26,16 @@ export class RoleGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    if (!this.tokenService.isAuthenticated()) {
+      this.router.navigateByUrl('/login');
+    }
     let roles: Array<string> = route.data['roles'];
     let isSucceded = false;
     let currentUser: User = this.tokenService.getUser();
     roles.forEach((el) => {
-      if (el == currentUser.role) isSucceded = true;
+      if (el == currentUser.role) {
+        isSucceded = true;
+      }
     });
 
     return isSucceded ? isSucceded : this.router.navigateByUrl('/home');

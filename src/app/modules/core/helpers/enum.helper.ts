@@ -1,7 +1,7 @@
 import { SelectListItem } from '../common/select.list.item';
 
 export class EnumHelper {
-  public static mapToSelectList(type: any): Array<SelectListItem> {
+  public static mapStringEnumToSelectList(type: any): Array<SelectListItem> {
     let items = Object.entries(type).map(([key, value]) => {
       return new SelectListItem(key, value);
     });
@@ -15,10 +15,18 @@ export class EnumHelper {
     return items;
   }
 
-  public static mapToStrinList(type: any): Array<string> {
+  public static mapStringEnumToStringList(type: any): Array<string> {
     let items = Object.entries(type).map(([key, value]) => {
       return value.toString();
     });
+    return items;
+  }
+  public static mapNumberEnumToStringList(type: any): Array<string> {
+    let items = new Array<string>();
+    items = Object.entries(type).map(([k, v]) => {
+      return v.toString();
+    });
+    items = items.slice(0, items.length / 2);
     return items;
   }
 }

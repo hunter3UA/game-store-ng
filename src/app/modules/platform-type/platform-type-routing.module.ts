@@ -12,14 +12,14 @@ const routes: Routes = [
   {
     path: 'new',
     component: AddPlatformComponent,
-    canActivate: [AuthGuard, RoleGuard],
-    data: { roles: [Role.Manager] },
+    canActivate: [RoleGuard],
+    data: { roles: [Role.Admin, Role.Manager] },
   },
   {
     path: 'update/:id',
     component: UpdatePlatformComponent,
-    canActivate: [AuthGuard, RoleGuard],
-    data: { roles: [Role.Manager] },
+    canActivate: [RoleGuard],
+    data: { roles: [Role.Admin, Role.Manager] },
   },
 ];
 

@@ -8,7 +8,9 @@ import {
 } from '@angular/router';
 import { lastValueFrom, Observable } from 'rxjs';
 import { Role } from 'src/app/modules/core/enums/role';
+import { TypeOfBase } from 'src/app/modules/core/enums/type.of.base';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
+import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 import { TokenStorageService } from 'src/app/modules/user/services/token-storage/token-storage.service';
 
 @Injectable({
@@ -17,7 +19,7 @@ import { TokenStorageService } from 'src/app/modules/user/services/token-storage
 export class PublisherUpdateGuard implements CanActivate {
   public name: string;
   constructor(
-    private gameService: GameService,
+    private publisherService: PublisherService,
     private tokenService: TokenStorageService,
     private router: Router
   ) {}
@@ -29,8 +31,15 @@ export class PublisherUpdateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let currentUser = this.tokenService.getUser();
+    if (!this.tokenService.isAuthenticated())
+      this.router.navigateByUrl('/login');
     this.name = route.params['name'];
+    return this.checkAccess();
+  }
+
+  async checkAccess() {
+    await this.getPublisherAsync();
+    let currentUser = this.tokenService.getUser();
 
     if (
       (currentUser.role == Role.Publisher &&
@@ -41,5 +50,17 @@ export class PublisherUpdateGuard implements CanActivate {
       return true;
 
     return this.router.navigateByUrl('/home');
+  }
+
+  async getPublisherAsync() {
+    let publisherToSearch = this.publisherService.getPublisher(this.name);
+    try {
+      let publisherByName = await lastValueFrom(publisherToSearch);
+      if (publisherByName.typeOfBase == TypeOfBase.Northwind)
+        return this.router.navigateByUrl('/publishers');
+    } catch (error) {
+      this.router.navigateByUrl('/publishers');
+    }
+    return true;
   }
 }

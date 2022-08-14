@@ -6,9 +6,11 @@ import { Adapter } from '../adapter';
 export class EditUserAdapter implements Adapter<UpdateUserDTO> {
   adapt(item: any): UpdateUserDTO {
     let updateUserDto = new UpdateUserDTO();
+    updateUserDto.id = item.id;
     updateUserDto.role = item.role;
     updateUserDto.userName = item.userName;
     updateUserDto.email = item.email;
+    updateUserDto.publisherName = item.publisherName;
 
     return updateUserDto;
   }

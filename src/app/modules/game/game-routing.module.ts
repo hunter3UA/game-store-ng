@@ -15,13 +15,13 @@ const routes: Routes = [
     path: 'new',
     component: AddGameComponent,
     canActivate: [AuthGuard, RoleGuard],
-    data: { roles: [Role.Manager] },
+    data: { roles: [Role.Admin, Role.Manager] },
   },
   { path: ':key', component: GameDetailsComponent },
   {
     path: 'update/:key',
     component: UpdateGameComponent,
-    canActivate: [AuthGuard, GameUpdateGuard],
+    canActivate: [GameUpdateGuard],
   },
 ];
 

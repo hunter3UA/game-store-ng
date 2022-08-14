@@ -33,13 +33,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  isUserAuthenticated() {
-    const token: string | null = this.tokenService.getAccessToken();
-    if (token && !this.jwtHelper.isTokenExpired(token)) {
-      return true;
-    } else return false;
-  }
-
   logOut() {
     this.tokenService.signOut();
   }

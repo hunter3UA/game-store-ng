@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe, formatDate } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
-import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.history.dto';
+import { OrderFilterDTO } from 'src/app/modules/core/api-models/order/order.filter.dto';
 import { OrderStatus } from 'src/app/modules/core/enums/order.status';
 import { EnumHelper } from 'src/app/modules/core/helpers/enum.helper';
+import { DateService } from 'src/app/modules/core/services/date/date.service';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -14,10 +16,16 @@ export class OrderListComponent implements OnInit {
   public orderFilterDTO: OrderFilterDTO;
   public statuses: Array<string>;
 
-  constructor(private orderService: OrderService) {
+  constructor(
+    private orderService: OrderService,
+    private dateService: DateService
+  ) {
     this.orders = new Array<OrderDTO>();
     this.orderFilterDTO = new OrderFilterDTO();
-    this.statuses = EnumHelper.mapToStrinList(OrderStatus);
+    let defaultDate = new Date();
+    defaultDate.setDate(defaultDate.getDate() - 30);
+    this.orderFilterDTO.from = this.dateService.converToYMDFormat(defaultDate);
+    this.statuses = EnumHelper.mapNumberEnumToStringList(OrderStatus);
   }
 
   ngOnInit(): void {

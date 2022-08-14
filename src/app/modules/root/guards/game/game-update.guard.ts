@@ -29,19 +29,21 @@ export class GameUpdateGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let currentUser = this.tokenService.getUser();
-    console.log(currentUser);
     this.key = route.params['key'];
     return this.loadGame();
   }
 
   async loadGame() {
+    if (!this.tokenService.isAuthenticated())
+      this.router.navigateByUrl('/login');
+
     let currentGame = await lastValueFrom(
       this.gameService.getGameByKey(this.key, false)
     );
     let currentUser = this.tokenService.getUser();
     if (
-      (currentUser.role == Role.Publisher &&
+      (currentGame &&
+        currentUser.role == Role.Publisher &&
         currentUser.PublisherName == currentGame.publisher.companyName) ||
       currentUser.role == Role.Manager ||
       currentUser.role == Role.Admin

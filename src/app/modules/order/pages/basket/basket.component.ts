@@ -44,7 +44,7 @@ export class BasketComponent implements OnInit {
       }
     });
     if (val) {
-      this.orderService.changeQuantity(+id, +quantity).subscribe({
+      this.basketService.changeQuantity(+id, +quantity).subscribe({
         next: () => this.loadOrder(),
         error: (error) => this.errorHandler.handleError(error),
       });

@@ -20,13 +20,11 @@ import { UserModule } from './modules/user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule,
     NgMultiSelectDropDownModule.forRoot(),
     SharedModule,
     ErrorModule,
     BrowserAnimationsModule,
   ],
-  exports: [],
   providers: [
     DatePipe,
     {

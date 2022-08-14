@@ -1,4 +1,4 @@
 export class OrderFilterDTO {
-  from: Date;
-  to: Date;
+  from: string;
+  to: string;
 }

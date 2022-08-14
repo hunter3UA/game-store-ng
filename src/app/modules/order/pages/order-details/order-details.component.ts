@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { SelectListItem } from 'src/app/modules/core/common/select.list.item';
-import { BasketService } from 'src/app/modules/shared/services/basket/basketr.service';
+import { OrderStatus } from 'src/app/modules/core/enums/order.status';
+import { Role } from 'src/app/modules/core/enums/role';
+import { EnumHelper } from 'src/app/modules/core/helpers/enum.helper';
 import { OrderService } from 'src/app/modules/shared/services/order/order.service';
 
 @Component({
@@ -10,17 +12,17 @@ import { OrderService } from 'src/app/modules/shared/services/order/order.servic
   templateUrl: './order-details.component.html',
 })
 export class OrderDetailsComponent implements OnInit {
-  public orderToUpdate: OrderDTO;
+  public orderToUpdate: OrderDTO = new OrderDTO();
   public id: number;
-  public statuses: SelectListItem[];
+  public statuses: Array<SelectListItem>;
 
   constructor(
     private orderService: OrderService,
-    private basketService: BasketService,
     private route: ActivatedRoute
   ) {
     this.id = this.route.snapshot.params['id'];
     this.orderToUpdate = new OrderDTO();
+    this.statuses = EnumHelper.mapNumberEnumToSelectList(OrderStatus);
   }
 
   ngOnInit(): void {
@@ -35,32 +37,16 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
-  changeQuantity(id: number, quantity: number) {
-    this.orderToUpdate.orderDetails.filter((item) => {
-      if (item.id == id) {
-        item.quantity = quantity;
-        let newTotal = item.price;
-        if (item.discount != 0) {
-          newTotal = item.price - (item.discount / 100) * item.price;
-        }
-
-        item.total = newTotal * item.quantity;
-      }
+  changeDetails(id: number) {
+    let detailsToUpdate = this.orderToUpdate.orderDetails.find((od) => {
+      return od.id == id;
     });
-  }
-
-  changeDiscount(id: number, discount: number) {
-    this.orderToUpdate.orderDetails.filter((item) => {
-      if (item.id == id && discount != 0) {
-        item.discount = discount;
-        let newTotal = item.price - (item.discount / 100) * item.price;
-        item.total = newTotal * item.quantity;
-      }
-    });
+    detailsToUpdate.total =
+      detailsToUpdate.price * detailsToUpdate.quantity -
+      detailsToUpdate.discount;
   }
 
   removeOrderItem(detailsId: number) {
-    console.log(detailsId);
     this.orderService.removeOrderDetails(detailsId).subscribe({
       next: () => this.loadOrder(),
     });
