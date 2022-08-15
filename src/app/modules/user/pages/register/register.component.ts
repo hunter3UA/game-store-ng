@@ -22,8 +22,8 @@ export class RegisterComponent implements OnInit {
 
   createUser() {
     this.authService.register(this.registerDto).subscribe({
-      next: () => {
-        this.router.navigateByUrl("'home'");
+      next: (data) => {
+        this.router.navigate(['/home']);
       },
       error: (error) => this.errorService.handleError(error),
     });

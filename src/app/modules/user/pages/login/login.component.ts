@@ -14,17 +14,13 @@ export class LoginComponent implements OnInit {
   public loginDTO: LoginDTO;
   public error: string;
 
-  constructor(
-    private authService: AuthService,
-    private router: Router //  private errorService: ErrorHandlerService
-  ) {
+  constructor(private authService: AuthService, private router: Router) {
     this.loginDTO = new LoginDTO();
   }
 
   ngOnInit(): void {}
 
   public login() {
-    let jwtHelper = new JwtHelperService();
     this.authService.login(this.loginDTO).subscribe({
       next: (data) => {
         this.router.navigate(['/']);
