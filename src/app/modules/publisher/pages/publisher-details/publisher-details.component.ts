@@ -31,6 +31,7 @@ export class PublisherDetailsComponent implements OnInit {
     this.publisherService.getPublisher(this.publisherName).subscribe({
       next: (data) => {
         this.currentPublisher = data;
+        console.log(this.currentPublisher);
       },
       error: (error) => {
         this.errorService.handleError(error);
