@@ -1,0 +1,39 @@
+{
+    "Button":{
+        "Lang":{
+            "English":"English",
+            "Ukrainian":"Ukrainian",
+            "Russian":"Russian"
+        },
+        "Buy":"Buy",
+        "Details":"Details",
+        "Add":"Add",
+        "Edit":"Edit",
+        "Update":"Update",    
+        "Remove":"Remove",
+        "Comments":"Comments",
+        "Download":"Download",   
+        "Header":{
+            "Home":"Home",
+            "Total":"Total",
+            "Games":"Games",
+            "History":"History",
+            "Orders":"Orders",
+            "Manage orders":"Manage orders",
+            "Users":"Users",
+            "Platforms":"Platforms",
+            "Publishers":"Publishers",
+            "Genres":"Genres",
+            "Profile":"Profile",
+            "Basket":"Basket",       
+            "All":"All",
+            "Login":"Login",
+            "Logout":"Logout",
+            "Registration":"Registration"
+        }
+    },
+    "Errors":{
+        "RequiredField":"This field is required",
+        "MinChar":"The field cannot be less than {{ number }} characters"
+    }
+}

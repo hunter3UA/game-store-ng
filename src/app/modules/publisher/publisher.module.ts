@@ -7,6 +7,7 @@ import { AddPublisherComponent } from './pages/add-publisher/add-publisher.compo
 import { PublisherDetailsComponent } from './pages/publisher-details/publisher-details.component';
 import { FormsModule } from '@angular/forms';
 import { UpdatePublisherComponent } from './pages/update-publisher/update-publisher.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,6 @@ import { UpdatePublisherComponent } from './pages/update-publisher/update-publis
     PublisherDetailsComponent,
     UpdatePublisherComponent,
   ],
-  imports: [CommonModule, PublisherRoutingModule, FormsModule],
+  imports: [CommonModule, PublisherRoutingModule, FormsModule, SharedModule],
 })
 export class PublisherModule {}

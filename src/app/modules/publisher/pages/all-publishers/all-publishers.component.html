@@ -10,7 +10,8 @@
       <td>{{publisher.companyName}}</td>
       <td>{{publisher.homePage}}</td>
       <td>
-        <a class="btn btn-info" [routerLink]="['/publishers',publisher.companyName]">Details</a>
+        <a class="btn btn-info"
+          [routerLink]="['/publishers',publisher.companyName]">{{"Button.Details" | translate}}</a>
       </td>
     </tr>
   </tbody>

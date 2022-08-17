@@ -24,10 +24,11 @@
       [routerLink]="['/publishers',game.publisher.companyName]">{{game.publisher.companyName}}</a>
     <div *ngIf="!game.publisher" #unknown>Unknown</div>
   </div>
-  <a class="btn btn-success" (click)="downloadGame()">Download game</a>
+  <a class="btn btn-success" (click)="downloadGame()">{{"Button.Download" | translate}}</a>
   <a *ngIf="this.gamePemission.editGameAccess(game)" class="btn btn-info"
-    [routerLink]="['/games/update',game.key]">Edit</a>
+    [routerLink]="['/games/update',game.key]">{{"Button.Edit" | translate}}</a>
   <a *ngIf="this.gamePemission.commentsAccess(game)" class="btn btn-info"
-    [routerLink]="['/games',game.key,'comments']">Comments</a>
-  <a class="btn btn-danger" *ngIf="this.gamePemission.removeGameAccess()" (click)="removeGame(game.key)">Remove</a>
+    [routerLink]="['/games',game.key,'comments']">{{"Button.Comments" | translate}}</a>
+  <a class="btn btn-danger" *ngIf="this.gamePemission.removeGameAccess()"
+    (click)="removeGame(game.key)">{{"Button.Remove" | translate}}</a>
 </div>

@@ -16,7 +16,7 @@
 </div>
 <div>
   <a *ngIf="currentPublisher.typeOfBase!=1" class="btn btn-success"
-    [routerLink]="['/publishers/update',currentPublisher.companyName]">Update</a>
+    [routerLink]="['/publishers/update',currentPublisher.companyName]">{{"Button.Edit" | translate}}</a>
   <a *ngIf="this.publisherPermission.removePublisherAccess(currentPublisher)" class="btn btn-danger"
-    (click)="removePublisher(publisher.id)">Remove</a>
+    (click)="removePublisher(publisher.id)">{{"Button.Remove" | translate}}</a>
 </div>

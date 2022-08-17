@@ -1,0 +1,39 @@
+{
+    "Button":{
+        "Lang":{
+            "English":"Английский",
+            "Ukrainian":"Украинский",
+            "Russian":"Русский"
+        },
+        "Buy":"Купить",
+        "Details":"Детали",
+        "Add":"Добавить",
+        "Edit":"Редактировать",
+        "Update":"Обновить",    
+        "Remove":"Удалить",
+        "Comments":"Коментарии",
+        "Download":"Загрузить",  
+        "Header":{
+            "Home":"Главная",
+            "Total":"Всего",
+            "Orders":"Заказы",
+            "History":"История",
+            "Manage orders":"Управление ордерами",
+            "Users":"Пользователи",
+            "Games":"Игры",
+            "Platforms":"Платформы",
+            "Publishers":"Издатели",
+            "Genres":"Жанры",
+            "Profile":"Профиль",
+            "Basket":"Корзина",
+            "All":"Все",
+            "Login":"Войти",
+            "Logout":"Выйти",
+            "Registration":"Регистрация"
+        }
+    },
+    "Errors":{
+        "RequiredField":"Это поле обязательно"
+    }
+   
+}

@@ -57,5 +57,5 @@
       name="postalCode">
   </div>
   <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="updatePublisher()"
-    value="Update publisher">
+    [value]="'Button.Update' | translate">
 </form>
