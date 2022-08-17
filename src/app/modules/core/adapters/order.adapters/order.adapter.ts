@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { OrderDTO } from '../api-models/order/order.dto';
-import { Adapter } from './adapter';
+import { OrderDTO } from '../../api-models/order/order.dto';
+import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
 export class OrderAdapter implements Adapter<OrderDTO> {

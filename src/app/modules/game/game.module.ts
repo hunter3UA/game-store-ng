@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { PaginationComponent } from './parts/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     GameDetailsComponent,
     UpdateGameComponent,
     FilterPanelComponent,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,

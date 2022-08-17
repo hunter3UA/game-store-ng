@@ -1,0 +1,21 @@
+<nav aria-label="pagination">
+  <ul>
+    <li>
+      <button aria-label="Go To Previous Page" [attr.aria-disabled]="current === 1" [disabled]="current === 1">
+        Previous
+      </button>
+    </li>
+    <li *ngFor="let page of pages;">
+      <a [attr.aria-current]="page === current ? 'page' : null" [attr.aria-label]="
+            page === current ? 'Current Page, Page ' + page : 'Go to Page ' + page
+          " [class.current]="page === current" tabindex="0" queryParamsHandling="merge" [routerLink]="['/games']"
+        [queryParams]="{page:page}">
+        {{ page }}</a>
+    </li>
+    <li>
+      <button aria-label="Go To Next Page" [attr.aria-disabled]="current === total" [disabled]="current === total">
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>

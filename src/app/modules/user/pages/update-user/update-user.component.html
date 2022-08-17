@@ -1,0 +1,24 @@
+<form class="col-4" #form="ngForm" (ngSubmit)="form.valid ">
+  <div class="form-group">
+    <label>User name</label>
+    <input type="text" [(ngModel)]="this.userToUpdate.userName" minlength="4" name="userName" #uname="ngModel"
+      required="true">
+    <p *ngIf="uname.invalid && uname.touched">Name must be greater than 5 symbols</p>
+  </div>
+  <div class="form-group">
+    <label>{{this.userToUpdate.email}}</label>
+    <select name="roles" class="custom-select" [(ngModel)]="this.userToUpdate.role">
+      <option name="userRoles" *ngFor="let role of roles" [ngValue]="role.value">
+        {{role.label}}</option>
+    </select>
+  </div>
+  <div *ngIf="this.showPublishers()">
+    <select name="publishers" [(ngModel)]="this.userToUpdate.publisherName">
+      <option value="null">None</option>
+      <option name="userPublishers" *ngFor="let publisher of publishers" [ngValue]="publisher.companyName">
+        {{publisher.companyName}}
+      </option>
+    </select>
+  </div>
+  <input class="btn btn-success" [disabled]="!form.valid" type="submit" (click)="this.updateRole()" value="Update">
+</form>

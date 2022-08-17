@@ -1,35 +1,21 @@
+import { OrderStatus } from '../../enums/order.status';
+import { OrderDetailsDTO } from './oreder.details.dto';
+
 export class UpdateOrderDTO {
   public id: number;
+  public customerId: string;
   public orderDate: Date;
   public expiration: Date;
-  public customerId: number;
-  public shipVia: number;
+  public orderDetails: Array<OrderDetailsDTO>;
+  public totalSum: number;
+  public status: OrderStatus;
+  public freight: number;
+  public shipAddress: string;
+  public shipCity: string;
+  public shipCountry: string;
+  public shippedDate: Date;
+  public shipPostalCode: number;
+  public shipRegion: string;
+  public shipName: string;
+  public shipperCompanyName: string;
 }
-/*
-public class UpdateOrderDTO
-    {
-        public int Id { get; set; }
-
-        public DateTime OrderDate { get; set; }
-
-        public DateTime Expiration { get; set; }
-
-        public int CustomerId { get; set; }
-
-        public int ShipVia { get; set; }
-
-        public string ShipName { get; set; }
-
-        public string ShipAddress { get; set; }
-
-        public string ShipCity { get; set; }
-
-        public decimal ShipPostalCode { get; set; }
-
-        public string ShipCountry { get; set; }
-
-        public string ShipRegion { get; set; }
-
-        public OrderStatus OrderStatus { get; set; }
-    }
-*/

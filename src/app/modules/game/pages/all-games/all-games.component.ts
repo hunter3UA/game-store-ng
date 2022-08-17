@@ -49,13 +49,6 @@ export class AllGamesComponent implements OnInit {
     });
   }
 
-  removeGame(key: string) {
-    this.gameService.deleteGame(key).subscribe({
-      next: () => this.loadAllGames(this.params),
-      error: (error) => this.errorHandler.handleError(error),
-    });
-  }
-
   addOrderItem(gameKey: string) {
     this.basketService.addOrderItem(gameKey).subscribe({
       next: () => this.router.navigate(['/basket']),

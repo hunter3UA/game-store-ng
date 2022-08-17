@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
+import { PublisherPermissionService } from 'src/app/modules/core/services/permissions/publisher-permission/publisher-permission.service';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { PublisherService } from 'src/app/modules/shared/services/publisher/publisher.service';
 
@@ -14,7 +15,9 @@ export class PublisherDetailsComponent implements OnInit {
   constructor(
     private publisherService: PublisherService,
     private route: ActivatedRoute,
-    private errorService: ErrorHandlerService
+    private errorService: ErrorHandlerService,
+    private router: Router,
+    public publisherPermission: PublisherPermissionService
   ) {
     this.publisherName = this.route.snapshot.params['name'];
     this.currentPublisher = new PublisherDTO();
@@ -28,10 +31,17 @@ export class PublisherDetailsComponent implements OnInit {
     this.publisherService.getPublisher(this.publisherName).subscribe({
       next: (data) => {
         this.currentPublisher = data;
+        console.log(this.currentPublisher);
       },
       error: (error) => {
         this.errorService.handleError(error);
       },
+    });
+  }
+
+  removePublisher(id: number) {
+    this.publisherService.removePublisher(id).subscribe((response) => {
+      this.router.navigateByUrl('/publishers');
     });
   }
 }

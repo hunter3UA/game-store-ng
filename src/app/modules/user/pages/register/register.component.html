@@ -1,0 +1,19 @@
+<form class="form-inline" #form="ngForm">
+  <div class="form-group">
+    <label for="inputName">Username</label>
+    <input type="text" id="inputName" name="inputName" class="form-control mx-sm-3"
+      [(ngModel)]="this.registerDto.userName">
+  </div>
+  <div class="form-group">
+    <label for="inputEmail">Email</label>
+    <input type="text" id="inputEmail" name="inputEmail" email class="form-control mx-sm-3"
+      [(ngModel)]="this.registerDto.email">
+  </div>
+  <div class="form-group">
+    <label for="inputPassword6">Password</label>
+    <input type="password" id="inputPassword6" name="inputPasssword" minlength="8" required class="form-control mx-sm-3"
+      aria-describedby="passwordHelpInline" [(ngModel)]="this.registerDto.password">
+  </div>
+  <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="this.createUser()"
+    value="Registration">
+</form>

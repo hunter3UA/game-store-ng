@@ -12,7 +12,8 @@ import { ErrorInterceptor } from './modules/root/Interceptors/error.interceptor'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ErrorModule } from './modules/error/error.module';
 import { DatePipe } from '@angular/common';
-import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthInterceptor } from './modules/root/Interceptors/auth.interceptor';
+import { UserModule } from './modules/user/user.module';
 
 @NgModule({
   declarations: [RootComponent, HomeComponent, HeaderComponent],
@@ -24,12 +25,16 @@ import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
     ErrorModule,
     BrowserAnimationsModule,
   ],
-  exports: [],
   providers: [
     DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
       multi: true,
     },
   ],

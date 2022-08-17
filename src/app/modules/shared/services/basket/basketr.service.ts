@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapter';
+import { OrderAdapter } from 'src/app/modules/core/adapters/order.adapters/order.adapter';
 import { OrderItemAdapter } from 'src/app/modules/core/adapters/order.item.adapter';
 import { OrderDTO } from 'src/app/modules/core/api-models/order/order.dto';
 import { OrderDetailsDTO } from 'src/app/modules/core/api-models/order/oreder.details.dto';

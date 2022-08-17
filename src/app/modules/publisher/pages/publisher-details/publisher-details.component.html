@@ -14,3 +14,9 @@
   <textarea class="form-control" disabled="true" [value]="currentPublisher.description"
     name="textareaDescription"></textarea>
 </div>
+<div>
+  <a *ngIf="currentPublisher.typeOfBase!=1" class="btn btn-success"
+    [routerLink]="['/publishers/update',currentPublisher.companyName]">Update</a>
+  <a *ngIf="this.publisherPermission.removePublisherAccess(currentPublisher)" class="btn btn-danger"
+    (click)="removePublisher(publisher.id)">Remove</a>
+</div>

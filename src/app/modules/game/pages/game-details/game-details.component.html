@@ -25,4 +25,9 @@
     <div *ngIf="!game.publisher" #unknown>Unknown</div>
   </div>
   <a class="btn btn-success" (click)="downloadGame()">Download game</a>
+  <a *ngIf="this.gamePemission.editGameAccess(game)" class="btn btn-info"
+    [routerLink]="['/games/update',game.key]">Edit</a>
+  <a *ngIf="this.gamePemission.commentsAccess(game)" class="btn btn-info"
+    [routerLink]="['/games',game.key,'comments']">Comments</a>
+  <a class="btn btn-danger" *ngIf="this.gamePemission.removeGameAccess()" (click)="removeGame(game.key)">Remove</a>
 </div>

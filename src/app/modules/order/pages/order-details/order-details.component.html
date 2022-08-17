@@ -1,0 +1,69 @@
+<form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Ship name</label>
+      <input type="shipName" class="form-control" name="shipName" [(ngModel)]="this.orderToUpdate.shipName"
+        id="shipName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputShipCountry">Ship country</label>
+      <input type="shipCountry" class="form-control" name="shipCountry" [(ngModel)]="this.orderToUpdate.shipCountry"
+        id="inputshipCountry">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputshipRegion">Ship region</label>
+    <input type="text" class="form-control" name="shipRegion" [(ngModel)]="this.orderToUpdate.shipRegion"
+      id="shipRegion">
+  </div>
+  <div class="form-group">
+    <label>Ship city</label>
+    <input type="text" name="shipCity" [(ngModel)]="this.orderToUpdate.shipCity" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Ship address</label>
+    <input type="text" name="shipAddress" [(ngModel)]="this.orderToUpdate.shipAddress" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Ship postal code</label>
+    <input type="text" name="shipPostalCode" [(ngModel)]="this.orderToUpdate.shipPostalCode" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Status: </label>
+    <select name="orderStatuses" [(ngModel)]="this.orderToUpdate.status">
+      <option name="orderStatus" *ngFor="let status of statuses" [ngValue]="status.value">
+        {{status.label}}</option>
+    </select>
+  </div>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th>Quantity</th>
+          <th>Discount</th>
+          <th>Price</th>
+          <th>Sum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of orderToUpdate.orderDetails">
+          <th scope="row"><a [routerLink]="['/games/',item.game.key]">{{item.game.name}}</a> </th>
+          <td>
+            <input type="number" min="1" [max]="item.game.unitsInStock" name="itemQuantity" onKeyDown="return false"
+              [(ngModel)]="item.quantity" (focusout)="changeDetails(item.id)">
+          </td>
+          <td><input type="number" min="0" max="100" (focusout)="changeDetails(item.id)" [(ngModel)]="item.discount"
+              name="itemDiscount"></td>
+          <td><input type="number" [(ngModel)]="item.price" (focusout)="changeDetails(item.id)" name="itemPrice">
+          </td>
+          <td>{{item.total}}</td>
+          <td><button class="btn btn-danger" (click)="removeOrderItem(item.id)">X</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>Total sum: {{orderToUpdate.totalSum}}</div>
+  </div>
+  <button type="submit" (click)="updateOrder()" class="btn btn-primary">Update</button>
+</form>

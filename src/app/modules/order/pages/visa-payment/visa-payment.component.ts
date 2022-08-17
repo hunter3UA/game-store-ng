@@ -28,7 +28,7 @@ export class VisaPaymentComponent implements OnInit {
   }
 
   loadOrder() {
-    this.orderService.getOrder().subscribe({
+    this.orderService.getOrderByCustomer().subscribe({
       next: (data) => {
         this.currentOrder = data;
         if (this.currentOrder.status != OrderStatus.Processing) {

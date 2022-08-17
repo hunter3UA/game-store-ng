@@ -18,19 +18,11 @@
           <td>
             <a class="btn btn-success" (click)="addOrderItem(game.key)">Buy</a>
             <a class="btn btn-success" [routerLink]="['/games',game.key]">Details</a>
-            <a class="btn btn-info" [routerLink]="['/games/update',game.key]">Edit</a>
-            <a class="btn btn-danger" (click)="removeGame(game.key)">Remove</a>
-
-            <a *ngIf="game.typeOfBase!=1" class="btn btn-info"
-              [routerLink]="['/games',game.key,'comments']">Comments</a>
           </td>
         </tr>
       </tbody>
     </table>
-    <div>
-      <a *ngFor="let item of [].constructor(this.gamePage.pageInfo.totalPages); let i = index;"
-        [routerLink]="['/games']" queryParamsHandling="merge" [queryParams]="{page:i+1}">{{i+1}}</a>
-    </div>
+    <app-pagination [pageInfoDto]="this.gamePage.pageInfo" [queryParams]="this.params"></app-pagination>
   </div>
   <div style="width:20%; float: left; background-color: goldenrod;">
     <app-filter-panel [maxGameCount]="this.gamePage.pageInfo.totalItems ">

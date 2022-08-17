@@ -1,0 +1,49 @@
+<div style="display:block; width:100%;">
+  <div style="width:80%; float: left;">
+    <table style="border:1 px solid black">
+      <thead>
+        <th scope="col">Freight</th>
+        <th scope="col">Ship address</th>
+        <th scope="col">Ship city</th>
+        <th scope="col">Ship country</th>
+        <th scope="col">Shipped date</th>
+        <th scope="col">Ship postal code</th>
+        <th scope="col">Ship region</th>
+        <th scope="col">Shipper company name</th>
+        <th scope="col">Order status</th>
+        <th scope="col">Total sum</th>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{order.freight}}</td>
+          <td>{{order.shipAddress}}</td>
+          <td>{{order.shipCity}}</td>
+          <td>{{order.shipCountry}}</td>
+          <td>{{order.shippedDate}}</td>
+          <td>{{order.shipPostalCode}}</td>
+          <td>{{order.shipRegion}}</td>
+          <td>{{order.shipperCompanyName}}</td>
+          <td>{{statuses[order.status-1]}}
+          </td>
+          <td>{{order.totalSum}}</td>
+          <td><a [routerLink]="['/order-details',order.id]">Modify</a></td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="width:20%; float: left; background-color: goldenrod;">
+    <form>
+      <div>
+        <label>From:</label>
+        <input type="date" [(ngModel)]="this.orderFilterDTO.from" name="filterOfOrderFrom">
+      </div>
+      <div>
+        <label>To:</label>
+        <input type="date" [(ngModel)]="this.orderFilterDTO.to" name="filterOfOrderTo">
+      </div>
+      <input type="submit" (click)="loadOrders(this.orderFilterDTO)">
+    </form>
+  </div>
+</div>

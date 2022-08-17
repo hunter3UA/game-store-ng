@@ -19,6 +19,7 @@ import { PublisherService } from 'src/app/modules/shared/services/publisher/publ
 import { PublishingDate } from 'src/app/modules/core/enums/publishing.date';
 import { QueryService } from 'src/app/modules/shared/services/common/query/query.service';
 import { GameFilterHelper } from '../../helpers/game.filter.helper';
+import { EnumHelper } from 'src/app/modules/core/helpers/enum.helper';
 
 @Component({
   selector: 'app-filter-panel',
@@ -72,17 +73,9 @@ export class FilterPanelComponent implements OnInit, OnChanges {
   }
 
   initializeDdlLists() {
-    this.sotringValues = Object.entries(SortingType)
-      .slice(5, 10)
-      .map(([key, value]) => {
-        return new SelectListItem(key, value);
-      });
-    this.publishedAt.push(new SelectListItem('None'));
-    Object.entries(PublishingDate)
-      .slice(5, 10)
-      .map(([key, value]) => {
-        this.publishedAt.push(new SelectListItem(key, value));
-      });
+    this.sotringValues = EnumHelper.mapNumberEnumToSelectList(SortingType);
+    this.publishedAt = EnumHelper.mapNumberEnumToSelectList(PublishingDate);
+    this.publishedAt.unshift(new SelectListItem('None'));
   }
 
   loadPlaforms() {

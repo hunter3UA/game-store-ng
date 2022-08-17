@@ -55,7 +55,26 @@
         <a class="nav-link">Total:{{totalCountOfGames}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/order-history'">Orders history</a>
+        <a class="nav-link" [routerLink]="'/orders/history'">Orders history</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/users'">Manage users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="'/orders'">Manage orders</a>
+      </li>
+      <li *ngIf="!this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
+          [routerLink]="'/login'">Login</a></li>
+      <li *ngIf="!this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
+          [routerLink]="'/registration'">Create
+          account</a></li>
+      <li *ngIf="this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
+          [routerLink]="'/profile'">Profile</a></li>
+
+
+      <li class="nav-item" *ngIf="this.tokenService.isAuthenticated()" class="nav-link" (click)="logOut()">
+        <input type="button" class="btn btn-danger" value="Logout">
       </li>
     </ul>
   </div>

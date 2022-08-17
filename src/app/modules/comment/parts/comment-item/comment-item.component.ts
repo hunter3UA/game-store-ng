@@ -5,6 +5,8 @@ import { CommentDTO } from '../../../core/api-models/comment/comment.dto';
 import { MatDialog } from '@angular/material/dialog';
 import { AddReplyComponent } from '../add-reply/add-reply.component';
 import { UpdateCommentComponent } from '../update-comment/update-comment.component';
+import { TokenStorageService } from 'src/app/modules/user/services/token-storage/token-storage.service';
+import { Role } from 'src/app/modules/core/enums/role';
 @Component({
   selector: 'app-comment-item',
   templateUrl: './comment-item.component.html',
@@ -17,6 +19,7 @@ export class CommentItemComponent {
   @Input() gameKey: string;
 
   constructor(
+    public tokenService: TokenStorageService,
     private commentService: CommentService,
     private router: Router,
     private dialogRef: MatDialog
@@ -50,5 +53,13 @@ export class CommentItemComponent {
         });
       });
     });
+  }
+
+  isCanBeDeleted() {
+    return this.tokenService.hasPermission([
+      Role.Moderator,
+      Role.Manager,
+      Role.Admin,
+    ]);
   }
 }

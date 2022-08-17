@@ -64,7 +64,6 @@ export class BasketComponent implements OnInit {
         next: () => this.router.navigate(['/shipper-details']),
         error: () => {
           this.loadOrder();
-          alert('Some games was deleted from your order');
         },
       });
     }
