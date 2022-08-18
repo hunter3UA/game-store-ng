@@ -1,32 +1,32 @@
 <form class="col-4" #form="ngForm">
   <div class="form-group">
-    <label for="gameName">Name</label>
+    <label for="gameName">{{"Name" | translate }}</label>
     <input class="form-control" [(ngModel)]="gameToEdit.name" maxlength="150" name="inputName" required
       #nameOfGame="ngModel">
   </div>
   <div class="form-group">
-    <label for="gameName">Key</label>
+    <label for="gameName">{{"Game.Key" | translate}}</label>
     <input class="form-control" [(ngModel)]="gameToEdit.key" maxlength="150" name="inputKey" #nameOfGame="ngModel">
   </div>
   <div class="form-group">
-    <label for="gamePrice">Price</label>
+    <label for="gamePrice">{{"Game.Price" | translate}}</label>
     <input class="form-control" type="number" min="1" [(ngModel)]="gameToEdit.price" name="inputPrice">
   </div>
   <div class="form-group">
-    <label for="gameDiscounted">Discontinued</label>
+    <label for="gameDiscounted">{{"Game.Discontinued" | translate}}</label>
     <input class="form-control" type="checkbox" [(ngModel)]="gameToEdit.discontinued" name="chbDiscounted">
   </div>
   <div class="form-group">
-    <label for="unitsOfGameInStock">Units in stock</label>
+    <label for="unitsOfGameInStock">{{"Game.Units in stock" | translate}}</label>
     <input class="form-control" type="number" [(ngModel)]="gameToEdit.unitsInStock" name="inputUnitsOfGameInStock">
   </div>
   <div class="form-group">
-    <label for="gameDescription">Description</label>
+    <label for="gameDescription">{{"Labels.Description" | translate}}</label>
     <textarea class="form-control" rows="3" minlength="10" maxlength="5000" [(ngModel)]="gameToEdit.description"
       name="inputDescription"></textarea>
   </div>
   <div class="form-group">
-    <label for="gameQuantityPerUnit">Quantity per unit</label>
+    <label for="gameQuantityPerUnit">{{"Game.Quantity per unit" | translate}}</label>
     <input class="form-control" [(ngModel)]="gameToEdit.quantityPerUnit" maxlength="150" name="quantityPerUnit">
   </div>
   <div class="form-group">
@@ -48,7 +48,7 @@
     </select>
   </div>
   <div>
-    <label>PublishedAt:</label>
+    <label>{{"Game.Published at" | translate}}</label>
     <input type="date" [(ngModel)]="this.gameToEdit.publishedAt" name="publishedAt">
   </div>
   <input type="submit" (click)="updateGame()" [value]="'Button.Update' | translate">

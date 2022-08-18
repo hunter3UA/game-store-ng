@@ -11,8 +11,13 @@
         "Edit":"Редагувати",
         "Update":"Оновити",    
         "Remove":"Видалити",
+        "Apply":"Застосувати",
+        "Reset":"Скинути",
         "Comments":"Коментарі",
-        "Download":"Завантажити",  
+        "Download":"Завантажити", 
+        "Login":"Увійти",
+        "Logout":"Вийти",
+        "Registration":"Рєстрація",
         "Header":{
             "Home":"Головна",
             "Total":"Усього",
@@ -26,14 +31,88 @@
             "Genres":"Жанри",
             "Profile":"Профіль",
             "Basket":"Кошик",
-            "All":"Усі",
-            "Login":"Увійти",
-            "Logout":"Вийти",
-            "Registration":"Рєстрація"
+            "All":"Усі"
         }
+    },
+    "Labels":{
+        "Games":"Ігри",
+        "Genres":"Жанри",
+        "Platforms":"Платформи",
+        "Publishers":"Видавці",
+        "Users":"Користувачі",
+        "Password":"Пароль",
+        "Username":"Ім'я користувача",
+        "Email":"Ел. пошта",
+        "Role":"Роль",
+        "Home page":"Домашня сторінка",
+        "Description":"Опис",
+        "Other":"Інші",
+        "Unknown":"Невідомий"
     },
     "Errors":{
         "RequiredField":"Це поле є обов'язковим",
         "MinChar":"Це поле не може бути менше ніж {{ number }} символів"
+    },
+    "Name":"Назва",
+    "Quantity":"Кількість",
+    "Sorting":{
+        "Elements on page":"Елементів на сторінці",
+        "Sorting by":"Сортувати",
+        "Popularity":"За популярністю",
+        "Commented":"за коментарями",
+        "PriceAsc":"За зростанням ціни",
+        "PriceDesc":"За зменшенням ціни",
+        "Publishing":"За датою публікації",
+        "None":"Немає",
+        "Week":"Тиждень",
+        "Month":"Місяць",
+        "Year":"Рік",
+        "TwoYears":"Два роки",
+        "ThreeYears":"Три роки"
+    },
+     "Publisher":{
+        "Company name":"Назва компанії",
+        "Contact name":"Контакта особа",
+        "Contact title":"Контактна назва",
+        "Address":"Адреса",
+        "Country":"Країна",
+        "Region":"Регіон",
+        "City":"Місто",
+        "Phone":"Телефон",
+        "Fax":"Факс",
+        "Postal code":"Поштовий індекс"
+    },
+    "Genre":{
+        "Parent genre":"Батьківський жанр"
+    },
+    "Game":{
+        "Key":"Ключ",
+        "Price":"Ціна",
+        "Discontinued":"Знято з виробництва",
+        "Units in stock":"Кількість на складі",
+        "Quantity per unit":"Кількість на одиницю",
+        "Published at":"Опубліковано",
+        "Sum":"Сума"
+    },
+    "Order":{
+        "Make order":"Створити замовлення",
+        "Total sum":"Загальна сума",
+        "Cancel":"Відмінити",
+        "Confirm":"Підтвердити",
+        "Status":"Статус",
+        "Discount":"Знижка",
+        "Order date":"Дата замовлення",
+        "Shipped date":"Дата доставки",
+        "Freight":"Сума доставки"
+    },
+    "Shipper":{
+        "Ship name":"Отримувач",
+        "Ship country":"Країна доставка",
+        "Ship region":"Регіон доставки",
+        "Ship city":"Місто доставки",
+        "Ship address":"Адреса доставки",
+        "Ship postal code":"Поштовий індекс доставки",
+        "Choose shipper":"Оберіть вантажоперевізника",
+        "Shipper name":"Назва вантажоперевізника"
     }
 }

@@ -11,8 +11,13 @@
         "Edit":"Редактировать",
         "Update":"Обновить",    
         "Remove":"Удалить",
+        "Apply":"Применить",
+        "Reset":"Сбросить",
         "Comments":"Коментарии",
         "Download":"Загрузить",  
+        "Login":"Войти",
+        "Logout":"Выйти",
+        "Registration":"Регистрация",
         "Header":{
             "Home":"Главная",
             "Total":"Всего",
@@ -26,14 +31,88 @@
             "Genres":"Жанры",
             "Profile":"Профиль",
             "Basket":"Корзина",
-            "All":"Все",
-            "Login":"Войти",
-            "Logout":"Выйти",
-            "Registration":"Регистрация"
+            "All":"Все"     
         }
     },
+    "Labels":{
+        "Games":"Игры",
+        "Genres":"Жанры",
+        "Platforms":"Платформы",
+        "Publishers":"Издатели",
+        "Users":"Пользователи",
+        "Username":"Имя пользователя",
+        "Password":"Пароль",
+        "Email":"Эл. почта",
+        "Role":"Роль",
+        "Home page":"Домашняя страница",
+        "Description":"Описание",
+        "Other":"Другие",
+        "Unknown":"Неизвестный"
+    },
     "Errors":{
-        "RequiredField":"Это поле обязательно"
+        "RequiredField":"Это поле обязательно",
+        "MinChar":"Это поле не може содержать меньше чем {{ number }} символов"
+    },
+    "Name":"Название",
+    "Quantity":"Количество",
+    "Sorting":{
+        "Elements on page":"Елементов на странице",
+        "Sorting by":"Сортировать",
+        "Popularity":"По популярностью",
+        "Commented":"По коментарям",
+        "PriceAsc":"По возрастанию цены",
+        "PriceDesc":"По убыванию цены",
+        "Publishing":"По дате публикации",
+        "None":"Нет",
+        "Week":"Неделя",
+        "Month":"Месяц",
+        "Year":"Год",
+        "TwoYears":"Два года",
+        "ThreeYears":"Три года"
+    },
+    "Publisher":{
+        "Company name":"Название компании",
+        "Contact name":"Конактная личность",
+        "Contact title":"Контактное название",
+        "Address":"Адрес",
+        "Country":"Страна",
+        "Region":"Регион",
+        "City":"Город",
+        "Phone":"Телефон",
+        "Fax":"Факс",
+        "Postal code":"Почтовый индекс"
+    },
+    "Genre":{
+        "Parent genre":"Родительский жанр"
+    },
+    "Game":{
+        "Key":"Ключ",
+        "Price":"Цена",
+        "Discontinued":"Снято с производства",
+        "Units in stock":"Количество на складе",
+        "Quantity per unit":"Количество на единицу",
+        "Published at":"Опубликовано",
+        "Sum":"Сума"
+    },
+    "Order":{
+        "Make order":"Сделать заказ",
+        "Total sum":"Общая сума",
+        "Cancel":"Отменить",
+        "Confirm":"Подтвердить",
+        "Status":"Статус",
+        "Discount":"Скидка",
+        "Order date":"Дата заказа",
+        "Shipped date":"Дата доставки",
+        "Freight":"Сума доставки"
+    },
+    "Shipper":{
+        "Ship name":"Получатель",
+        "Ship country":"Страна доставка",
+        "Ship region":"Регион доставки",
+        "Ship city":"Город доставки",
+        "Ship address":"Адрес доставки",
+        "Ship postal code":"Почтовый индекс доставки",
+        "Choose shipper":"Выберете грузоперевозчика",
+        "Shipper name":"Название грузоперевозчика"
     }
-   
 }

@@ -1,15 +1,16 @@
 <form #form="ngForm">
   <div class="form-group col-md-4">
-    <label>Email</label>
+    <label>{{"Labels.Email" | translate}}</label>
     <input class="form-control" type="email" [(ngModel)]="this.loginDTO.email" required #uemail="ngModel" email
       name="email">
     <p *ngIf="uemail.invalid && uemail.touched">{{"Errors.RequiredField" | translate}} </p>
   </div>
   <div class="form-group col-md-4">
-    <label>Password</label>
+    <label for="inputPassword6">{{"Labels.Password" | translate}}</label>
     <input class="form-control" type="password" [(ngModel)]="this.loginDTO.password" required #upassword="ngModel"
       name="password">
     <p *ngIf="upassword.invalid && upassword.touched">{{"Errors.RequiredField" | translate}} </p>
   </div>
-  <input class="btn btn-success" [disabled]="!form.valid" (click)="login()" type="submit" value="Login">
+  <input class="btn btn-success" [disabled]="!form.valid" (click)="login()" type="submit"
+    [value]="'Button.Login' | translate">
 </form>

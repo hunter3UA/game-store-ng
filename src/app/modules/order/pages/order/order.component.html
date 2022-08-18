@@ -1,11 +1,10 @@
-<h1>My order</h1>
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th>Quantity</th>
-      <th>Price</th>
-      <th>Sum</th>
+      <th scope="col">{{"Name" | translate}}</th>
+      <th>{{"Quantity" | translate}}</th>
+      <th>{{"Game.Price" | translate}}</th>
+      <th>{{"Game.Sum" | translate}}</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +18,7 @@
     </tr>
   </tbody>
 </table>
-<div>Total sum: {{currentOrder.totalSum}}</div>
+<div>{{"Order.Total sum" | translate}}: {{currentOrder.totalSum}}</div>
 <app-payment-type [orderId]="this.currentOrder.id">
 </app-payment-type>
-<button class="btn btn-danger" (click)="cancelOrder()">Cancel order</button>
+<button class="btn btn-danger" (click)="cancelOrder()">{{"Order.Cancel" | translate}}</button>

@@ -1,35 +1,35 @@
 <form>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Ship name</label>
+      <label for="inputEmail4">{{"Shipper.Ship name" | translate}}</label>
       <input type="shipName" class="form-control" name="shipName" [(ngModel)]="this.orderToUpdate.shipName"
         id="shipName">
     </div>
     <div class="form-group col-md-6">
-      <label for="inputShipCountry">Ship country</label>
+      <label for="inputShipCountry">{{"Shipper.Ship country" | translate}}</label>
       <input type="shipCountry" class="form-control" name="shipCountry" [(ngModel)]="this.orderToUpdate.shipCountry"
         id="inputshipCountry">
     </div>
   </div>
   <div class="form-group">
-    <label for="inputshipRegion">Ship region</label>
+    <label for="inputshipRegion">{{"Shipper.Ship region" | translate}}</label>
     <input type="text" class="form-control" name="shipRegion" [(ngModel)]="this.orderToUpdate.shipRegion"
       id="shipRegion">
   </div>
   <div class="form-group">
-    <label>Ship city</label>
+    <label>{{"Shipper.Ship city" | translate}}</label>
     <input type="text" name="shipCity" [(ngModel)]="this.orderToUpdate.shipCity" class="form-control">
   </div>
   <div class="form-group">
-    <label>Ship address</label>
+    <label>{{"Shipper.Ship address" | translate}}</label>
     <input type="text" name="shipAddress" [(ngModel)]="this.orderToUpdate.shipAddress" class="form-control">
   </div>
   <div class="form-group">
-    <label>Ship postal code</label>
+    <label>{{"Shipper.Ship postal code" | translate}}</label>
     <input type="text" name="shipPostalCode" [(ngModel)]="this.orderToUpdate.shipPostalCode" class="form-control">
   </div>
   <div class="form-group">
-    <label>Status: </label>
+    <label>{{"Order.Status" | translate}}: </label>
     <select name="orderStatuses" [(ngModel)]="this.orderToUpdate.status">
       <option name="orderStatus" *ngFor="let status of statuses" [ngValue]="status.value">
         {{status.label}}</option>
@@ -39,11 +39,11 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Name</th>
-          <th>Quantity</th>
-          <th>Discount</th>
-          <th>Price</th>
-          <th>Sum</th>
+          <th scope="col">{{"Name" | translate}}</th>
+          <th>{{"Quantity" | translate}}</th>
+          <th>{{"Order.Discount" | translate}}</th>
+          <th>{{"Game.Price" | translate}}</th>
+          <th>{{"Game.Sum" | translate}}</th>
         </tr>
       </thead>
       <tbody>
@@ -63,7 +63,7 @@
         </tr>
       </tbody>
     </table>
-    <div>Total sum: {{orderToUpdate.totalSum}}</div>
+    <div>{{"Order.Total sum" | translate}}: {{orderToUpdate.totalSum}}</div>
   </div>
-  <button type="submit" (click)="updateOrder()" class="btn btn-primary">Update</button>
+  <button type="submit" (click)="updateOrder()" class="btn btn-primary">{{"Button.Update" | translate}}</button>
 </form>

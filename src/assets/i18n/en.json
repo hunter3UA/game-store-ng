@@ -13,6 +13,12 @@
         "Remove":"Remove",
         "Comments":"Comments",
         "Download":"Download",   
+        "Filter":"Filter",
+        "Apply":"Apply",
+        "Reset":"Reset",
+        "Login":"Login",
+        "Logout":"Logout",
+        "Registration":"Registration",
         "Header":{
             "Home":"Home",
             "Total":"Total",
@@ -26,14 +32,89 @@
             "Genres":"Genres",
             "Profile":"Profile",
             "Basket":"Basket",       
-            "All":"All",
-            "Login":"Login",
-            "Logout":"Logout",
-            "Registration":"Registration"
+            "All":"All"
         }
+    },
+    "Labels":{
+        "Games":"Games",
+        "Genres":"Genres",
+        "Platforms":"Platforms",
+        "Publishers":"Publishers",
+        "Users":"Users",
+        "Password":"Password",
+        "Username":"Username",
+        "Email":"Email",
+        "Role":"Role",
+        "Home page":"Home page",
+        "Description":"Description",
+        "Other":"Other",
+        "Unknown":"Unknown"
     },
     "Errors":{
         "RequiredField":"This field is required",
-        "MinChar":"The field cannot be less than {{ number }} characters"
+        "MinChar":"The field cannot be less than {{ number }} characters",
+        "Email":"Email"
+    },
+    "Sorting":{
+        "Elements on page":"Elements on page",
+        "Sorting by":"Sorting by",
+        "Popularity":"Popularity",
+        "Commented":"Commented",
+        "PriceAsc":"PriceAsc",
+        "PriceDesc":"PriceDesc",
+        "Publishing":"PublishingDate",
+        "None":"None",
+        "Week":"Week",
+        "Month":"Month",
+        "Year":"Year",
+        "TwoYears":"Two years",
+        "ThreeYears":"Three years" 
+    },
+    "Name":"Name",
+    "Quantity":"Quantity",
+    "Publisher":{
+        "Company name":"Company name",
+        "Contact name":"Contact name",
+        "Contact title":"Contact title",
+        "Address":"Address",
+        "Country":"Country",
+        "Region":"Region",
+        "City":"City",
+        "Phone":"Phone",
+        "Fax":"Fax",
+        "Postal code":"Postal code"
+    },
+    "Genre":{
+        "Parent genre":"Parent genre"
+    },
+    "Game":{
+        "Key":"Key",
+        "Price":"Price",
+        "Discontinued":"Discontinued",
+        "Units in stock":"Units in stock",
+        "Quantity per unit":"Quantity per unit",
+        "Published at":"Published at",
+        "Sum":"Sum"
+    },
+    "Order":{
+        "Make order":"Make order",
+        "Total sum":"Total sum",
+        "Cancel":"Cancel",
+        "Confirm":"Confirm",
+        "Status":"Status",
+        "Discount":"Discount",
+        "Order date":"Order date",
+        "Shipped date":"Shipped date",
+        "Freight":"Freight"
+    },
+    "Shipper":{
+        "Ship name":"Ship name",
+        "Ship country":"Ship country",
+        "Ship region":"Ship region",
+        "Ship city":"Ship city",
+        "Ship address":"Ship address",
+        "Ship postal code":"Ship postal code",
+        "Choose shipper":"Choose shipper",
+        "Shipper name":"Shipper name"
     }
 }

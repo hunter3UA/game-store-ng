@@ -73,14 +73,14 @@
           {{"Button.Header.Profile" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="'/login'">{{"Button.Header.Login" | translate}}</a>
-          <a class="dropdown-item" [routerLink]="'/registration'">{{"Button.Header.Registration" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/login'">{{"Button.Login" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/registration'">{{"Button.Registration" | translate}}</a>
         </div>
       </li>
       <li *ngIf="this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
           [routerLink]="'/profile'">{{"Button.Header.Profile" | translate}}</a></li>
       <li class="nav-item" *ngIf="this.tokenService.isAuthenticated()" class="nav-link" (click)="logOut()">
-        <input type="button" class="btn btn-danger" [value]="'Button.Header.Logout' | translate">
+        <input type="button" class="btn btn-danger" [value]="'Button.Logout' | translate">
       </li>
       <div class="row">
         <div class="col-2">
