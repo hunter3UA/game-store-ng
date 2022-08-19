@@ -1,12 +1,15 @@
 <form class="col-4" #form="ngForm" (ngSubmit)="form.valid ">
   <div class="form-group">
-    <label>User name</label>
+    <label>{{"Labels.Username" | translate}}: </label>
     <input type="text" [(ngModel)]="this.userToUpdate.userName" minlength="4" name="userName" #uname="ngModel"
       required="true">
     <p *ngIf="uname.invalid && uname.touched">Name must be greater than 5 symbols</p>
   </div>
   <div class="form-group">
-    <label>{{this.userToUpdate.email}}</label>
+    <label>{{"Labels.Email" | translate}}: {{this.userToUpdate.email}}</label>
+  </div>
+  <div class="form-group">
+    <label>{{"Labels.Role" | translate}}</label>
     <select name="roles" class="custom-select" [(ngModel)]="this.userToUpdate.role">
       <option name="userRoles" *ngFor="let role of roles" [ngValue]="role.value">
         {{role.label}}</option>
@@ -20,5 +23,5 @@
       </option>
     </select>
   </div>
-  <input class="btn btn-success" [disabled]="!form.valid" type="submit" (click)="this.updateRole()" value="Update">
+  <input class="btn btn-success" [disabled]="!form.valid" type="submit" (click)="this.updateRole()" [value]="'Button.Update' | translate">
 </form>

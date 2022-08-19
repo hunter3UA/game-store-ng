@@ -6,76 +6,91 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'home'">Home</a>
+        <a class="nav-link" [routerLink]="'home'">{{'Button.Header.Home' | translate}}</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-expanded="false">
-          Games
+          {{'Button.Header.Games' | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownGames">
-          <a class="dropdown-item" [routerLink]="'/games'">All Games</a>
-          <a class="dropdown-item" [routerLink]="'/games/new'">Add Game</a>
+          <a class="dropdown-item" [routerLink]="'/games'">{{"Button.Header.All" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/games/new'">{{"Button.Add" | translate}}</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPublishers" role="button" data-toggle="dropdown"
           aria-expanded="false">
-          Publishers
+          {{"Button.Header.Publishers" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="'/publishers'">All Publishers</a>
-          <a class="dropdown-item" [routerLink]="'/publishers/new'">Add publisher</a>
+          <a class="dropdown-item" [routerLink]="'/publishers'">{{"Button.Header.All" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/publishers/new'">{{"Button.Add" | translate}}</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPlatformTypes" role="button"
           data-toggle="dropdown" aria-expanded="false">
-          Platform types
+          {{"Button.Header.Platforms" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="'/platforms'">All platforms</a>
-          <a class="dropdown-item" [routerLink]="'/platforms/new'">Add platform</a>
+          <a class="dropdown-item" [routerLink]="'/platforms'">{{"Button.Header.All" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/platforms/new'">{{"Button.Add" | translate}}</a>
         </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenres" role="button" data-toggle="dropdown"
           aria-expanded="false">
-          Genres
+          {{"Button.Header.Genres" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="'/genres'">All genres</a>
-          <a class="dropdown-item" [routerLink]="'/genres/new'">Add genre</a>
+          <a class="dropdown-item" [routerLink]="'/genres'">{{"Button.Header.All" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/genres/new'">{{"Button.Add" | translate}}</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownOrders" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          Orders
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/orders/history'">{{"Button.Header.History" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/orders'">{{"Button.Header.Manage orders" | translate}}</a>
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/basket'">Basket</a>
+        <a class="nav-link" [routerLink]="'/basket'">{{"Button.Header.Basket" | translate}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">Total:{{totalCountOfGames}}</a>
+        <a class="nav-link">{{"Button.Header.Total" | translate}}:{{totalCountOfGames}}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/orders/history'">Orders history</a>
+        <a class="nav-link" [routerLink]="'/users'">{{"Button.Header.Users" | translate}}</a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/users'">Manage users</a>
+      <li *ngIf="!this.tokenService.isAuthenticated()" class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccount" role="button" data-toggle="dropdown"
+          aria-expanded="false">
+          {{"Button.Header.Profile" | translate}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/login'">{{"Button.Login" | translate}}</a>
+          <a class="dropdown-item" [routerLink]="'/registration'">{{"Button.Registration" | translate}}</a>
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="'/orders'">Manage orders</a>
-      </li>
-      <li *ngIf="!this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
-          [routerLink]="'/login'">Login</a></li>
-      <li *ngIf="!this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
-          [routerLink]="'/registration'">Create
-          account</a></li>
       <li *ngIf="this.tokenService.isAuthenticated()" class="nav-item"> <a class="nav-link"
-          [routerLink]="'/profile'">Profile</a></li>
-
-
+          [routerLink]="'/profile'">{{"Button.Header.Profile" | translate}}</a></li>
       <li class="nav-item" *ngIf="this.tokenService.isAuthenticated()" class="nav-link" (click)="logOut()">
-        <input type="button" class="btn btn-danger" value="Logout">
+        <input type="button" class="btn btn-danger" [value]="'Button.Logout' | translate">
       </li>
+      <div class="row">
+        <div class="col-2">
+          <select (change)="translator.use($event.target.value)">
+            <option value="en">{{'Button.Lang.English' | translate}}</option>
+            <option value="ua">{{'Button.Lang.Ukrainian' | translate}}</option>
+            <option value="ru">{{'Button.Lang.Russian' | translate}}</option>
+          </select>
+        </div>
+      </div>
     </ul>
   </div>
 </nav>

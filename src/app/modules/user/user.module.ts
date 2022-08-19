@@ -7,6 +7,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserPageComponent } from './pages/user-page/user-page.component';
 import { UpdateUserComponent } from './pages/update-user/update-user.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,6 @@ import { UpdateUserComponent } from './pages/update-user/update-user.component';
     UserPageComponent,
     UpdateUserComponent,
   ],
-  imports: [CommonModule, UserRoutingModule, FormsModule],
+  imports: [CommonModule, UserRoutingModule, FormsModule, SharedModule],
 })
 export class UserModule {}

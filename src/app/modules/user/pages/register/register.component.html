@@ -1,19 +1,22 @@
-<form class="form-inline" #form="ngForm">
-  <div class="form-group">
-    <label for="inputName">Username</label>
-    <input type="text" id="inputName" name="inputName" class="form-control mx-sm-3"
+<form class="form" #form="ngForm">
+  <div class="form-group col-md-4">
+    <label for="inputName">{{"Labels.Username" | translate}}</label>
+    <input type="text" #uname="ngModel" name="inputName" minlength="4" required class="form-control"
       [(ngModel)]="this.registerDto.userName">
+    <p *ngIf="uname.invalid && uname.touched">{{ "Errors.MinChar" | translate:{'number':'4' } }} </p>
   </div>
-  <div class="form-group">
-    <label for="inputEmail">Email</label>
-    <input type="text" id="inputEmail" name="inputEmail" email class="form-control mx-sm-3"
+  <div class="form-group col-md-4">
+    <label for="inputEmail">{{"Labels.Email" | translate}}</label>
+    <input type="text" name="inputEmail" email #uemail="ngModel" class="form-control"
       [(ngModel)]="this.registerDto.email">
+    <p *ngIf="uemail.invalid && uemail.touched">{{ "RequiredField" | translate }}</p>
   </div>
-  <div class="form-group">
-    <label for="inputPassword6">Password</label>
-    <input type="password" id="inputPassword6" name="inputPasssword" minlength="8" required class="form-control mx-sm-3"
+  <div class="form-group col-md-4">
+    <label for="inputPassword6">{{"Labels.Password" | translate}}</label>
+    <input type="password" name="inputPasssword" #upassword="ngModel" minlength="8" required class="form-control"
       aria-describedby="passwordHelpInline" [(ngModel)]="this.registerDto.password">
+    <p *ngIf="upassword.invalid && upassword.touched">{{ "Errors.MinChar" | translate:{'number':'8' } }} </p>
   </div>
   <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="this.createUser()"
-    value="Registration">
+    [value]="'Button.Registration' | translate">
 </form>

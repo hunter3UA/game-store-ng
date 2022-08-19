@@ -1,59 +1,60 @@
 <form class="col-4" #form="ngForm">
   <div class="form-group">
-    <label>Company name</label>
+    <label>{{"Publisher.Company name" | translate}}</label>
     <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToAdd.companyName" maxlength="40"
       name="inputCompanyName">
     <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
   </div>
   <div class="form-group">
-    <label>HomePage</label>
+    <label>{{".Home page" | translate}}</label>
     <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToAdd.homePage" maxlength="400"
       name="inputHomePage">
     <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
   </div>
   <div class="form-group">
-    <label>Description</label>
+    <label>{{"Labels.Description" | translate}}</label>
     <textarea class="form-control" #pubDescription="ngModel" [(ngModel)]="publisherToAdd.description" maxlength="1000"
       name="textareaDescription"></textarea>
   </div>
   <div class="form-group">
-    <label>Contact name</label>
+    <label>{{"Publisher.Contact name" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.contactName" maxlength="400"
       name="contactName">
   </div>
   <div class="form-group">
-    <label>Contact title</label>
+    <label>{{"Publisher.Contact title" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.contactTitle" maxlength="400"
       name="contactName">
   </div>
   <div class="form-group">
-    <label>Country</label>
+    <label>{{"Publisher.Country" | translate}}</label>
     <input class="form-control" #country="ngModel" [(ngModel)]="publisherToAdd.country" name="country">
   </div>
   <div class="form-group">
-    <label>Region</label>
+    <label>{{"Publisher.Region" | translate}}</label>
     <input class="form-control" #region="ngModel" [(ngModel)]="publisherToAdd.region" name="region">
   </div>
   <div class="form-group">
-    <label>City</label>
+    <label>{{"Publisher.City" | translate}}</label>
     <input class="form-control" #city="ngModel" [(ngModel)]="publisherToAdd.city" name="cite">
   </div>
   <div class="form-group">
-    <label>Address</label>
+    <label>{{"Publisher.Address" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToAdd.address" name="adrress">
   </div>
   <div class="form-group">
-    <label>Phone</label>
+    <label>{{"Publisher.Phone" | translate}}</label>
     <input class="form-control" #phone="ngModel" [(ngModel)]="publisherToAdd.phone" name="phone">
   </div>
   <div class="form-group">
-    <label>Fax</label>
+    <label>{{"Publisher.Fax" | translate}}</label>
     <input class="form-control" #fax="ngModel" [(ngModel)]="publisherToAdd.fax" maxlength="400" name="fax">
   </div>
   <div class="form-group">
-    <label>Postal code</label>
+    <label>{{"Publisher.Postal code" | translate}}</label>
     <input class="form-control" #postalCode="ngModel" [(ngModel)]="publisherToAdd.postalCode" maxlength="400"
       name="postalCode">
   </div>
-  <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="addPublisher()" value="Add publisher">
+  <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="addPublisher()"
+    [value]="'Button.Add' | translate">
 </form>

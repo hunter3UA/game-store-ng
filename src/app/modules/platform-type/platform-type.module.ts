@@ -5,6 +5,7 @@ import { AllPlatformsComponent } from './pages/all-platforms/all-platforms.compo
 import { AddPlatformComponent } from './pages/add-platform/add-platform.component';
 import { FormsModule } from '@angular/forms';
 import { UpdatePlatformComponent } from './pages/update-platform/update-platform.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,6 @@ import { UpdatePlatformComponent } from './pages/update-platform/update-platform
     AddPlatformComponent,
     UpdatePlatformComponent,
   ],
-  imports: [CommonModule, PlatformTypeRoutingModule, FormsModule],
+  imports: [CommonModule, PlatformTypeRoutingModule, FormsModule, SharedModule],
 })
 export class PlatformTypeModule {}

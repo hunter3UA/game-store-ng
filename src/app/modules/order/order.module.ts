@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { ShipperDetailsComponent } from './pages/shipper-details/shipper-details.component';
 import { OrderListComponent } from './pages/order-list/order-list.component';
 import { OrderDetailsComponent } from './pages/order-details/order-details.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,6 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
     OrderListComponent,
     OrderDetailsComponent,
   ],
-  imports: [CommonModule, OrderRoutingModule, FormsModule],
+  imports: [CommonModule, OrderRoutingModule, FormsModule, SharedModule],
 })
 export class OrderModule {}

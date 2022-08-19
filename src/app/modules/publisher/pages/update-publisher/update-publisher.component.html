@@ -1,61 +1,61 @@
 <form class="col-4" #form="ngForm">
   <div class="form-group">
-    <label>Company name</label>
+    <label>{{"Publisher.Company name" | translate}}</label>
     <input class="form-control" required #companyName="ngModel" [(ngModel)]="publisherToEdit.companyName" maxlength="40"
       name="inputCompanyName">
     <p *ngIf="companyName.invalid && companyName.touched">Enter company name</p>
   </div>
   <div class="form-group">
-    <label>HomePage</label>
+    <label>{{"Labels.Home page" | translate}}</label>
     <input class="form-control" required #homePage="ngModel" [(ngModel)]="publisherToEdit.homePage" maxlength="400"
       name="inputHomePage">
     <p *ngIf="homePage.invalid && homePage.touched">Enter home page</p>
   </div>
   <div class="form-group">
-    <label>Description</label>
+    <label>{{"Labels.Description" | translate}}</label>
     <textarea class="form-control" required #pubDescription="ngModel" [(ngModel)]="publisherToEdit.description"
       maxlength="1000" name="textareaDescription"></textarea>
     <p *ngIf="pubDescription.invalid && pubDescription.touched">Enter description</p>
   </div>
   <div class="form-group">
-    <label>Contact name</label>
+    <label>{{"Publisher.Contact name" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToEdit.contactName" maxlength="400"
       name="contactName">
   </div>
   <div class="form-group">
-    <label>Contact title</label>
+    <label>{{"Publisher.Contact title" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToEdit.contactTitle" maxlength="400"
       name="contactName">
   </div>
   <div class="form-group">
-    <label>Country</label>
+    <label>{{"Publisher.Country" | translate}}</label>
     <input class="form-control" #country="ngModel" [(ngModel)]="publisherToEdit.country" name="country">
   </div>
   <div class="form-group">
-    <label>Region</label>
+    <label>{{"Publisher.Region" | translate}}</label>
     <input class="form-control" #region="ngModel" [(ngModel)]="publisherToEdit.region" name="region">
   </div>
   <div class="form-group">
-    <label>City</label>
+    <label>{{"Publisher.City" | translate}}</label>
     <input class="form-control" #city="ngModel" [(ngModel)]="publisherToEdit.city" name="cite">
   </div>
   <div class="form-group">
-    <label>Address</label>
+    <label>{{"Publisher.Address" | translate}}</label>
     <input class="form-control" #contactName="ngModel" [(ngModel)]="publisherToEdit.address" name="adrress">
   </div>
   <div class="form-group">
-    <label>Phone</label>
+    <label>{{"Publisher.Phone" | translate}}</label>
     <input class="form-control" #phone="ngModel" [(ngModel)]="publisherToEdit.phone" name="phone">
   </div>
   <div class="form-group">
-    <label>Fax</label>
+    <label>{{"Publisher.Fax" | translate}}</label>
     <input class="form-control" #fax="ngModel" [(ngModel)]="publisherToEdit.fax" maxlength="400" name="fax">
   </div>
   <div class="form-group">
-    <label>Postal code</label>
+    <label>{{"Publisher.Postal code" | translate}}</label>
     <input class="form-control" #postalCode="ngModel" [(ngModel)]="publisherToEdit.postalCode" maxlength="400"
       name="postalCode">
   </div>
   <input type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="updatePublisher()"
-    value="Update publisher">
+    [value]="'Button.Update' | translate">
 </form>

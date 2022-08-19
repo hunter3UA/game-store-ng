@@ -6,9 +6,10 @@ import { AllGenresComponent } from './pages/all-genres/all-genres.component';
 import { AddGenreComponent } from './pages/add-genre/add-genre.component';
 import { FormsModule } from '@angular/forms';
 import { UpdateGenreComponent } from './pages/update-genre/update-genre.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [AllGenresComponent, AddGenreComponent, UpdateGenreComponent],
-  imports: [CommonModule, GenreRoutingModule, FormsModule],
+  imports: [CommonModule, GenreRoutingModule, FormsModule, SharedModule],
 })
 export class GenreModule {}

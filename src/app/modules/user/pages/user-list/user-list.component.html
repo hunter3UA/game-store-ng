@@ -2,9 +2,9 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Email</th>
-        <th scope="col">Username</th>
-        <th scope="col">Role</th>
+        <th scope="col">{{"Labels.Email" | translate}}</th>
+        <th scope="col">{{'Labels.Username' | translate}}</th>
+        <th scope="col">{{"Labels.Role" | translate}}</th>
       </tr>
     </thead>
     <tbody>
@@ -13,7 +13,7 @@
         <td>{{user.userName}}</td>
         <td>{{user.role}}</td>
         <td>
-          <a class="btn btn-success" [routerLink]="['/users/update',user.userName]">Update role</a>
+          <a class="btn btn-success" [routerLink]="['/users/update',user.userName]">{{'Button.Update' | translate}}</a>
         </td>
       </tr>
     </tbody>

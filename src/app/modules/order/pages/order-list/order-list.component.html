@@ -2,17 +2,16 @@
   <div style="width:80%; float: left;">
     <table style="border:1 px solid black">
       <thead>
-        <th scope="col">Freight</th>
-        <th scope="col">Ship address</th>
-        <th scope="col">Ship city</th>
-        <th scope="col">Ship country</th>
-        <th scope="col">Shipped date</th>
-        <th scope="col">Ship postal code</th>
-        <th scope="col">Ship region</th>
-        <th scope="col">Shipper company name</th>
-        <th scope="col">Order status</th>
-        <th scope="col">Total sum</th>
-
+        <th scope="col">{{"Order.Freight" | translate}}</th>
+        <th scope="col">{{"Shipper.Ship address" | translate}}</th>
+        <th scope="col">{{"Shipper.Ship city" | translate}}</th>
+        <th scope="col">{{"Shipper.Ship country" | translate}}</th>
+        <th scope="col">{{"Order.Shipped date" | translate}}</th>
+        <th scope="col">{{"Shipper.Ship postal code" | translate}}</th>
+        <th scope="col">{{"Shipper.Ship region" | translate}}</th>
+        <th scope="col">{{"Shipper.Shipper name" | translate}}</th>
+        <th scope="col">{{"Order.Status" | translate}}</th>
+        <th scope="col">{{"Order.Total sum" | translate}}</th>
       </thead>
       <tbody>
         <tr *ngFor="let order of orders">

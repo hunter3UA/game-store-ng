@@ -1,9 +1,10 @@
 <form #form="ngForm">
   <div class="form-group col-4">
-    <label>Type</label>
+    <label>{{"Name" | translate}}</label>
     <input type="text" class="form-control" required #platformType="ngModel" name="type" maxlength="50"
       [(ngModel)]="typeOfPlatform">
-    <p *ngIf="platformType.invalid && platformType.touched">Enter platform type</p>
+    <p *ngIf="platformType.invalid && platformType.touched">{{"Errors.RequiredField" | translate}}</p>
   </div>
-  <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addPlatform()" value="Add type">
+  <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addPlatform()"
+    [value]="'Button.Add' | translate">
 </form>

@@ -1,18 +1,19 @@
 <form #form="ngForm">
   <div class="form-group col-4">
     <div class="form-group">
-      <label>Name</label>
+      <label>{{"Name" | translate}}</label>
       <input class="form-control" type="text" required #genreName="ngModel" [(ngModel)]="genreToAdd.name"
         maxlength="150" name="genreName">
-      <p *ngIf="genreName.invalid && genreName.touched">Enter valid name of genre</p>
+      <p *ngIf="genreName.invalid && genreName.touched">{{"Errors.RequiredField" | translate}}</p>
     </div>
     <div>
-      <label>Parent genre: </label>
+      <label>{{"Genre.Parent genre" | translate}}: </label>
       <select #parentGenre name="parentGenre">
         <option selected [ngValue]="null">None</option>
         <option *ngFor="let genre of allGenres" value="{{genre.id}}">{{genre.name}}</option>
       </select>
     </div>
-    <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addGenre()" value="Add genre">
+    <input type="submit" [disabled]="!form.valid" class="btn btn-success" (click)="addGenre()"
+      [value]="'Button.Add' | translate">
   </div>
 </form>

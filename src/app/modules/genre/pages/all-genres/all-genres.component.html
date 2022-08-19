@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Name</th>
+      <th scope="col">{{"Labels.Name" | translate}}</th>
     </tr>
   </thead>
   <tbody>
@@ -10,8 +10,9 @@
       <th scope="row">{{genre.id}}</th>
       <td>{{genre.name}}</td>
       <td>
-        <button class="btn btn-success" [routerLink]="['/genres/update',genre.id]">Edit</button>
-        <button class="btn btn-danger" (click)="removeGenre(genre.id)">Remove</button>
+        <button class="btn btn-success"
+          [routerLink]="['/genres/update',genre.id]">{{"Button.Edit" | translate}}</button>
+        <button class="btn btn-danger" (click)="removeGenre(genre.id)">{{"Button.Remove" | translate}}</button>
       </td>
     </tr>
   </tbody>

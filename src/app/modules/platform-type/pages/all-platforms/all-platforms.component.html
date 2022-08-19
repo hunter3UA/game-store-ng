@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Type</th>
+      <th scope="col">{{"Name" | translate}}</th>
     </tr>
   </thead>
   <tbody>
@@ -10,8 +10,9 @@
       <th scope="row">{{platform.id}}</th>
       <td>{{platform.type}}</td>
       <td>
-        <button class="btn btn-success" [routerLink]="['/platforms/update',platform.id]">Edit</button>
-        <button class="btn btn-danger" (click)="removePlatform(platform.id)">Remove</button>
+        <button class="btn btn-success"
+          [routerLink]="['/platforms/update',platform.id]">{{"Button.Edit" | translate}}</button>
+        <button class="btn btn-danger" (click)="removePlatform(platform.id)">{{"Button.Remove" | translate}}</button>
       </td>
     </tr>
   </tbody>
