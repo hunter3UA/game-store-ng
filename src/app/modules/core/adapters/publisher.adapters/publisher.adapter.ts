@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { PublisherDTO } from '../api-models/publisher/publisher.dto';
-import { Adapter } from './adapter';
+import { PublisherDTO } from '../../api-models/publisher/publisher.dto';
+import { Adapter } from '../adapter';
 
 @Injectable({ providedIn: 'root' })
 export class PublisherAdapter implements Adapter<PublisherDTO> {

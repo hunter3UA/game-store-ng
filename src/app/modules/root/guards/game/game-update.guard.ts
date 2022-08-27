@@ -52,7 +52,7 @@ export class GameUpdateGuard implements CanActivate {
     if (
       (currentGame &&
         currentUser.role == Role.Publisher &&
-        currentUser.PublisherName == currentGame.publisher.companyName) ||
+        currentUser.publisher == currentGame.publisher.companyName) ||
       currentUser.role == Role.Manager ||
       currentUser.role == Role.Admin
     )

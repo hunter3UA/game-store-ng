@@ -27,7 +27,7 @@ export class AddReplyComponent {
     this.modalData = data;
     this.newComment = new AddCommentDTO();
     if (tokenService.isAuthenticated())
-      this.newComment.name = this.tokenService.getUser().unique_name;
+      this.newComment.name = this.tokenService.getUser().name;
   }
 
   closeDialog() {

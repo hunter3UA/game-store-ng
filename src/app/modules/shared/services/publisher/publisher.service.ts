@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { PublisherAdapter } from 'src/app/modules/core/adapters/publisher.adapter';
+import { PublisherAdapter } from 'src/app/modules/core/adapters/publisher.adapters/publisher.adapter';
 import { AddPublisherDTO } from 'src/app/modules/core/api-models/publisher/add.publisher.dto';
 import { PublisherDTO } from 'src/app/modules/core/api-models/publisher/publisher.dto';
 import { environment } from 'src/environments/environment';

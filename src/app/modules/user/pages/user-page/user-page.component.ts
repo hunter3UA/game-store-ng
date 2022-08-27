@@ -24,7 +24,7 @@ export class UserPageComponent implements OnInit {
     private tokenService: TokenStorageService,
     private errorService: ErrorHandlerService
   ) {
-    this.userName = this.tokenService.getUser().unique_name;
+    this.userName = this.tokenService.getUser().name;
     this.userToUpdate = new UpdateUserDTO();
   }
 

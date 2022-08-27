@@ -56,7 +56,7 @@ export class TokenStorageService {
     if (
       currentUser &&
       currentUser.role == Role.Publisher &&
-      currentUser.PublisherName == publisherName
+      currentUser.publisher == publisherName
     ) {
       return true;
     }

@@ -1,6 +1,6 @@
 export class User {
   public email: string;
-  public unique_name: string;
+  public name: string;
   public role: string;
-  public PublisherName: string;
+  public publisher: string;
 }

@@ -21,7 +21,7 @@ export class CommentsOfGameComponent implements OnInit {
     this.gamekey = this.route.snapshot.params['gamekey'];
     this.newComment = new AddCommentDTO();
     if (this.tokenService.isAuthenticated())
-      this.newComment.name = this.tokenService.getUser().unique_name;
+      this.newComment.name = this.tokenService.getUser().name;
     this.comments = new Array<CommentDTO>();
   }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { GameDTO } from 'src/app/modules/core/api-models/game/game.dto';
 import { GamePermissionService } from 'src/app/modules/core/services/permissions/game-permission/game-permission.service';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
@@ -19,13 +20,17 @@ export class GameDetailsComponent implements OnInit {
     private errorHandler: ErrorHandlerService,
     private fileService: FileService,
     private router: Router,
-    public gamePemission: GamePermissionService
+    public gamePemission: GamePermissionService,
+    public translateService: TranslateService
   ) {
     this.key = this.route.snapshot.params['key'];
     this.game = new GameDTO();
   }
 
   ngOnInit(): void {
+    this.translateService.onLangChange.subscribe((e) => {
+      console.log(e);
+    });
     this.loadGame();
   }
 

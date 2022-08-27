@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'update/:name',
     component: UpdatePublisherComponent,
-    canActivate: [PublisherUpdateGuard],
+    // canActivate: [PublisherUpdateGuard],
   },
 ];
 

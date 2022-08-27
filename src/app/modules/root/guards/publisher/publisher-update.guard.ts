@@ -43,7 +43,7 @@ export class PublisherUpdateGuard implements CanActivate {
 
     if (
       (currentUser.role == Role.Publisher &&
-        currentUser.PublisherName == this.name) ||
+        currentUser.publisher == this.name) ||
       currentUser.role == Role.Manager ||
       currentUser.role == Role.Admin
     )

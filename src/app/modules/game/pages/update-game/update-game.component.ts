@@ -56,9 +56,8 @@ export class UpdateGameComponent implements OnInit {
     this.gameService.getGameByKey(key, false).subscribe({
       next: (data) => {
         this.gameToEdit = data;
-        if (this.gameToEdit.publisher) {
-          this.gameComponentModel.selectedPublisher = this.gameToEdit.publisher;
-        }
+        this.editedGame.oldPublisherName =
+          this.gameToEdit.publisher.companyName;
       },
       error: (error) => this.errorService.handleError(error),
     });
@@ -84,12 +83,6 @@ export class UpdateGameComponent implements OnInit {
 
   initialize() {
     this.editedGame = this.editGameAdapter.adapt(this.gameToEdit);
-    this.editedGame.publisherName =
-      this.gameComponentModel.selectedPublisher.companyName;
-    this.editedGame.genresId = this.gameToEdit.genres.map((g) => g.id);
-    this.editedGame.platformsId = this.gameToEdit.platformTypes.map(
-      (p) => p.id
-    );
     this.editedGame.oldGameKey = this.key;
   }
 }
