@@ -31,11 +31,6 @@ import { PaginationComponent } from './parts/pagination/pagination.component';
     FormsModule,
     SharedModule,
     NgMultiSelectDropDownModule.forRoot(),
-    MtxCheckboxGroupModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatDatepickerModule,
   ],
 })
 export class GameModule {}

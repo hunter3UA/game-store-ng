@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddPlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/add.platrorm.type.dto';
+import { PlatformTypeTranslateDTO } from 'src/app/modules/core/api-models/platforms/platform.translate.dto';
+import { LocalizationHelper } from 'src/app/modules/core/helpers/localization.helper';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -7,17 +10,20 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
   templateUrl: './add-platform.component.html',
 })
 export class AddPlatformComponent {
-  public typeOfPlatform: string;
+  public platformToAdd: AddPlatformTypeDTO;
 
   constructor(
     private platformService: PlatformService,
     private router: Router
   ) {
-    this.typeOfPlatform = '';
+    this.platformToAdd = new AddPlatformTypeDTO();
+    this.platformToAdd.translations = LocalizationHelper.initialize(
+      PlatformTypeTranslateDTO
+    );
   }
 
   addPlatform() {
-    this.platformService.addPlatform(this.typeOfPlatform).subscribe(() => {
+    this.platformService.addPlatform(this.platformToAdd).subscribe(() => {
       this.router.navigate(['/platforms']);
     });
   }

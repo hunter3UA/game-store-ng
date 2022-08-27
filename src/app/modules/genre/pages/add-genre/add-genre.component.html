@@ -1,10 +1,24 @@
 <form #form="ngForm">
   <div class="form-group col-4">
-    <div class="form-group">
-      <label>{{"Name" | translate}}</label>
-      <input class="form-control" type="text" required #genreName="ngModel" [(ngModel)]="genreToAdd.name"
-        maxlength="150" name="genreName">
-      <p *ngIf="genreName.invalid && genreName.touched">{{"Errors.RequiredField" | translate}}</p>
+    <div>
+      <mat-tab-group>
+        <mat-tab [label]="'Button.Lang.English' | translate">
+          <div class="form-group">
+            <label>{{"Name" | translate}}</label>
+            <input class="form-control" type="text" required #genreName="ngModel" [(ngModel)]="genreToAdd.name"
+              maxlength="150" name="genreName">
+            <p *ngIf="genreName.invalid && genreName.touched">{{"Errors.RequiredField" | translate}}</p>
+          </div>
+        </mat-tab>
+        <mat-tab *ngFor="let translate of this.genreToAdd.translations"
+          [label]="'Button.Lang.'+ translate.lang | translate">
+          <div class="form-group">
+            <label>{{"Name" | translate}}</label>
+            <input class="form-control" type="text" ngModel [(ngModel)]="translate.name"
+              name="genreName{{translate.lang}}">
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
     <div>
       <label>{{"Genre.Parent genre" | translate}}: </label>

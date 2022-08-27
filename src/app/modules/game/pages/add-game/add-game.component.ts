@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddGameDTO } from 'src/app/modules/core/api-models/game/add.game.dto';
+import { GameTranslateDTO } from 'src/app/modules/core/api-models/game/game.translate.dto';
+import { LocalizationHelper } from 'src/app/modules/core/helpers/localization.helper';
 import { ErrorHandlerService } from 'src/app/modules/error/services/error-handler.service';
 import { GameService } from 'src/app/modules/shared/services/game/game.service';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
@@ -28,6 +30,8 @@ export class AddGameComponent implements OnInit {
     this.gameModel = new AddGameDTO();
     this.gameModel.price = 1;
     this.gameModel.unitsInStock = 0;
+    this.gameModel.translations =
+      LocalizationHelper.initialize(GameTranslateDTO);
   }
 
   ngOnInit(): void {

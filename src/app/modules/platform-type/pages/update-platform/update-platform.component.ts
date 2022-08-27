@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PlatformTypeTranslateDTO } from 'src/app/modules/core/api-models/platforms/platform.translate.dto';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
+import { LocalizationHelper } from 'src/app/modules/core/helpers/localization.helper';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
 @Component({
@@ -17,6 +19,9 @@ export class UpdatePlatformComponent implements OnInit {
   ) {
     this.platformId = this.route.snapshot.params['id'];
     this.platformToEdit = new PlatformTypeDTO();
+    this.platformToEdit.translations = LocalizationHelper.initialize(
+      PlatformTypeTranslateDTO
+    );
   }
 
   ngOnInit(): void {

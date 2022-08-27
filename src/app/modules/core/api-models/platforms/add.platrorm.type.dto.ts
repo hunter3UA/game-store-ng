@@ -1,7 +1,6 @@
 import { PlatformTypeTranslateDTO } from './platform.translate.dto';
 
-export class PlatformTypeDTO {
-  public id: number;
+export class AddPlatformTypeDTO {
   public type: string;
   public translations: Array<PlatformTypeTranslateDTO>;
 }

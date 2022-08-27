@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { PlatformAdapter } from 'src/app/modules/core/adapters/platform.adapter';
+import { AddPlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/add.platrorm.type.dto';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { environment } from 'src/environments/environment';
 
@@ -14,10 +15,10 @@ export class PlatformService {
     private platformAdapter: PlatformAdapter
   ) {}
 
-  addPlatform(type: string): Observable<PlatformTypeDTO> {
+  addPlatform(newPlatform: AddPlatformTypeDTO): Observable<PlatformTypeDTO> {
     let url = `${environment.apiBaseUrl}/platform-types/new`;
     return this.http
-      .post(url, { type: type })
+      .post(url, newPlatform)
       .pipe(map((data: any) => this.platformAdapter.adapt(data)));
   }
 

@@ -4,7 +4,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MaterialModule } from './imports/material.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -13,6 +13,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [],
   imports: [CommonModule, SharedRoutingModule, HttpClientModule],
-  exports: [TranslateModule, MatTabsModule],
+  exports: [TranslateModule, MaterialModule],
 })
 export class SharedModule {}

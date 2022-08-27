@@ -1,3 +1,5 @@
+import { GameTranslateDTO } from "./game.translate.dto";
+
 export class AddGameDTO {
   public name: string;
   public key: string;
@@ -11,6 +13,7 @@ export class AddGameDTO {
   public publishedAt: Date;
   public date: Date;
   public quantityPerUnit: string;
+  public translations:Array<GameTranslateDTO>;
   constructor() {
     this.genresId = new Array<number>();
     this.platformsId = new Array<number>();

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddGenreDTO } from 'src/app/modules/core/api-models/genre/add.genre.dto';
 import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
+import { GenreTranslateDTO } from 'src/app/modules/core/api-models/genre/genre.translate.dto';
+import { LocalizationHelper } from 'src/app/modules/core/helpers/localization.helper';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
 @Component({
@@ -15,6 +17,8 @@ export class AddGenreComponent implements OnInit {
   constructor(private genreService: GenreService, private router: Router) {
     this.allGenres = new Array<GenreDTO>();
     this.genreToAdd = new AddGenreDTO();
+    this.genreToAdd.translations =
+      LocalizationHelper.initialize(GenreTranslateDTO);
   }
 
   ngOnInit(): void {
@@ -27,8 +31,9 @@ export class AddGenreComponent implements OnInit {
     });
   }
   addGenre() {
-    this.genreService.addGenre(this.genreToAdd).subscribe(() => {
-      this.router.navigate(['/genres']);
-    });
+    console.log(this.genreToAdd);
+    // this.genreService.addGenre(this.genreToAdd).subscribe(() => {
+    //   this.router.navigate(['/genres']);
+    // });
   }
 }
