@@ -1,6 +1,6 @@
 <form #form="ngForm">
   <mat-tab-group>
-    <mat-tab [label]="'Button.Lang.English' | translate">
+    <mat-tab [label]="'Button.Lang.en' | translate">
       <div class="form-group col-4">
         <label>{{"Name" | translate}}</label>
         <input type="text" class="form-control" required #platformType="ngModel" name="type" maxlength="50"
@@ -9,10 +9,10 @@
       </div>
     </mat-tab>
     <mat-tab *ngFor="let translate of this.platformToAdd.translations"
-      [label]="'Button.Lang.'+ translate.lang | translate">
+      [label]="'Button.Lang.'+ translate.language | translate">
       <div class="form-group col-4">
         <label>{{"Name" | translate}}</label>
-        <input class="form-control" type="text" ngModel [(ngModel)]="translate.type" name="type{{translate.lang}}">
+        <input class="form-control" type="text" ngModel [(ngModel)]="translate.type" name="type{{translate.language}}">
       </div>
     </mat-tab>
   </mat-tab-group>

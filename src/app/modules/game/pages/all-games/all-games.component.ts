@@ -45,7 +45,9 @@ export class AllGamesComponent implements OnInit {
           this.gameAdapter.adapt(item)
         );
       },
-      error: (error) => this.errorHandler.handleError(error),
+      error: (error) => {
+        this.errorHandler.handleError(error);
+      },
     });
   }
 

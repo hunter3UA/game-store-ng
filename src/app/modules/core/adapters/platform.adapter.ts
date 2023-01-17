@@ -8,7 +8,8 @@ export class PlatformAdapter implements Adapter<PlatformTypeDTO> {
     let platformType = new PlatformTypeDTO();
     platformType.id = item.id;
     platformType.type = item.type;
-
+    platformType.translations = item.translations;
+    
     return platformType;
   }
 }

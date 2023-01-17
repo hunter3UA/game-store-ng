@@ -17,6 +17,7 @@ import { GameComponentModel } from '../../models/game.component.model';
 export class AddGameComponent implements OnInit {
   public gameComponentModel: GameComponentModel;
   public gameModel: AddGameDTO;
+  public errors: string;
 
   constructor(
     private genreService: GenreService,
@@ -71,15 +72,13 @@ export class AddGameComponent implements OnInit {
   }
 
   addGame() {
-    this.gameModel.platformsId = this.gameComponentModel.selectedPlatforms.map(
-      (p) => p.id
-    );
-    this.gameModel.genresId = this.gameComponentModel.selectedGenres.map(
-      (g) => g.id
-    );
+    console.log(this.gameModel);
     this.gameService.addGame(this.gameModel).subscribe({
       next: () => this.router.navigate(['/games']),
-      error: (error) => this.errorHandler.handleError(error),
+      error: (error) => {
+        if (error.status == 422) this.errors = error.error.error;
+        else this.errorHandler.handleError(error);
+      },
     });
   }
 }

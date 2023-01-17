@@ -1,3 +1,3 @@
 export class TranslateType {
-  public lang: string;
+  public language: string;
 }

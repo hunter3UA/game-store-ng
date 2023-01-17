@@ -1,9 +1,9 @@
 {
     "Button":{
         "Lang":{
-            "English":"English",
-            "Ukrainian":"Ukrainian",
-            "Russian":"Russian"
+            "en":"English",
+            "ua":"Ukrainian",
+            "ru":"Russian"
         },
         "Buy":"Buy",
         "Details":"Details",

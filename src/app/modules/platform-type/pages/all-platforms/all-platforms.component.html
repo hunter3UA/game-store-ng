@@ -8,7 +8,7 @@
   <tbody>
     <tr *ngFor="let platform of platforms">
       <th scope="row">{{platform.id}}</th>
-      <td>{{platform.type}}</td>
+      <td>{{platform.type | customTranslate:'type':platform:this.translateService.currentLang}}</td>
       <td>
         <button class="btn btn-success"
           [routerLink]="['/platforms/update',platform.id]">{{"Button.Edit" | translate}}</button>

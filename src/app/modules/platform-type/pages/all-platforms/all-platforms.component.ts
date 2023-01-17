@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 import { PlatformTypeDTO } from 'src/app/modules/core/api-models/platforms/platform.type.dto';
 import { PlatformService } from 'src/app/modules/shared/services/platform/platform.service';
 
@@ -9,11 +9,15 @@ import { PlatformService } from 'src/app/modules/shared/services/platform/platfo
 })
 export class AllPlatformsComponent implements OnInit {
   public platforms: Array<PlatformTypeDTO>;
-  constructor(private platformService: PlatformService) {
+
+  constructor(
+    private platformService: PlatformService,
+    public translateService: TranslateService
+  ) {
     this.platforms = new Array<PlatformTypeDTO>();
   }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit() {
     this.loadPlatforms();
   }
 

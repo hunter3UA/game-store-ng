@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
@@ -9,7 +10,10 @@ import { GenreService } from 'src/app/modules/shared/services/genre/genre.servic
 export class AllGenresComponent implements OnInit {
   public genres: Array<GenreDTO>;
 
-  constructor(private genreService: GenreService) {}
+  constructor(
+    private genreService: GenreService,
+    public translateService: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.loadGenres();

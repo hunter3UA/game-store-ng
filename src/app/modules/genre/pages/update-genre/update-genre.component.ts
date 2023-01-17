@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenreDTO } from 'src/app/modules/core/api-models/genre/genre.dto';
+import { GenreTranslateDTO } from 'src/app/modules/core/api-models/genre/genre.translate.dto';
+import { LocalizationHelper } from 'src/app/modules/core/helpers/localization.helper';
 import { GenreService } from 'src/app/modules/shared/services/genre/genre.service';
 
 @Component({
@@ -31,6 +33,10 @@ export class UpdateGenreComponent implements OnInit {
       this.genreToEdit = data;
       if (!this.genreToEdit.parentGenreId)
         this.genreToEdit.parentGenreId = null;
+      this.genreToEdit.translations = LocalizationHelper.fillLanguages(
+        this.genreToEdit.translations,
+        GenreTranslateDTO
+      );
     });
   }
 

@@ -58,6 +58,7 @@ export class UpdateGameComponent implements OnInit {
         this.gameToEdit = data;
         this.editedGame.oldPublisherName =
           this.gameToEdit.publisher.companyName;
+        console.log(this.gameToEdit);
       },
       error: (error) => this.errorService.handleError(error),
     });

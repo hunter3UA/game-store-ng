@@ -6,5 +6,6 @@ export class GenreDTO {
   public subGenres: Array<GenreDTO>;
   public parentGenreId: number | null;
   public categoryId: number;
+  public description: string;
   public translations: Array<GenreTranslateDTO>;
 }

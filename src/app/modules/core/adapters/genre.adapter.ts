@@ -11,6 +11,9 @@ export class GenreAdapter implements Adapter<GenreDTO> {
     genre.subGenres = item.subGenres;
     genre.parentGenreId = item.parentGenreId;
     genre.categoryId = item.categoryId;
+    genre.translations = item.translations;
+    genre.description = item.description;
+
     return genre;
   }
 }

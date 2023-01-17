@@ -19,9 +19,6 @@ export class UpdatePlatformComponent implements OnInit {
   ) {
     this.platformId = this.route.snapshot.params['id'];
     this.platformToEdit = new PlatformTypeDTO();
-    this.platformToEdit.translations = LocalizationHelper.initialize(
-      PlatformTypeTranslateDTO
-    );
   }
 
   ngOnInit(): void {
@@ -32,6 +29,10 @@ export class UpdatePlatformComponent implements OnInit {
     this.platformService.getPlatform(this.platformId).subscribe((data) => {
       if (data) {
         this.platformToEdit = data;
+        this.platformToEdit.translations = LocalizationHelper.fillLanguages(
+          this.platformToEdit.translations,
+          PlatformTypeTranslateDTO
+        );
       }
     });
   }

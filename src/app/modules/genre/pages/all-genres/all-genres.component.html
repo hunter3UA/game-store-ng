@@ -2,13 +2,13 @@
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">{{"Labels.Name" | translate}}</th>
+      <th scope="col">{{"Name" | translate}}</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let genre of genres">
       <th scope="row">{{genre.id}}</th>
-      <td>{{genre.name}}</td>
+      <td>{{genre.name | customTranslate:'name':genre:this.translateService.currentLang}}</td>
       <td>
         <button class="btn btn-success"
           [routerLink]="['/genres/update',genre.id]">{{"Button.Edit" | translate}}</button>

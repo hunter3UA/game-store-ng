@@ -1,4 +1,4 @@
 export enum Language {
-  Ukrainian,
-  Russian
+  ua,
+  ru,
 }

@@ -32,8 +32,8 @@ export class AddGenreComponent implements OnInit {
   }
   addGenre() {
     console.log(this.genreToAdd);
-    // this.genreService.addGenre(this.genreToAdd).subscribe(() => {
-    //   this.router.navigate(['/genres']);
-    // });
+    this.genreService.addGenre(this.genreToAdd).subscribe(() => {
+      this.router.navigate(['/genres']);
+    });
   }
 }
